@@ -25,6 +25,12 @@
     transition: all 0.3s ease 0.2s;
 }
 
+.TitreSite {
+	background-color: #bf360c;
+	border: 10px solid black;
+	text-align: center;
+}
+
 
 .encadre {
 	margin-top: 10px;
