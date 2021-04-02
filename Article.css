@@ -1,11 +1,11 @@
+/*--tout ce qui ce trouve là où on met du texte, espacement en haut et en bas--*/
 article {
 	font-family: Helvetica;
 	padding-top: 5em;
 	padding-bottom: 5em;
 }
 
-
-
+/*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
 .header{
     position: fixed;
     left: 0;
@@ -18,6 +18,8 @@ article {
     padding: 0 10px;
 }
 
+
+/*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)--*/
 .menu a{
     font-weight: bold;
     text-decoration: ;
@@ -28,17 +30,29 @@ article {
     transition: all 0.1s ease 0.2s;
 }
 
+/*--Affecte les transitions lorsque l'on clique sur un élément du header(Menu, Article...)--*/
+.menu a:hover{
+    color: #62bcda;
+    transition: all 0.3s ease 0.2s;
+}
+
+/*--Affecte le titre en haut de la page--*/
 .TitreSite {
 	background-color: #bf360c;
 	border: 10px solid black;
 	text-align: center;
 }
 
-.menu a:hover{
-    color: #62bcda;
-    transition: all 0.3s ease 0.2s;
+/*--Affecte le paragraphe contenu dans la division "encadre"--*/
+.encadre {
+	margin-top: 100px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	padding: 10px;
 }
 
+
+/*--Affecte le footer et ce qui s'y trouve--*/
 footer {
 	background-color: #bf360c;
 	text-align: center;
