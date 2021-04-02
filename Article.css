@@ -8,7 +8,6 @@
 }
 .menu{
     padding: 0 10px;
-    padding-left: 800px;
 }
 
 .menu a{
@@ -24,4 +23,12 @@
 .menu a:hover{
     color: #62bcda;
     transition: all 0.3s ease 0.2s;
+}
+
+footer {
+	background-color: #bf360c;
+	text-align: center;
+	color: #fff;
+	padding: 0.5em;
+	margin: 0;
 }
