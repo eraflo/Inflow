@@ -1,3 +1,9 @@
+article {
+	font-family: Helvetica;
+	padding-top: 5em;
+	padding-bottom: 5em;
+}
+
 .header{
     position: fixed;
     left: 0;
@@ -33,7 +39,7 @@
 
 
 .encadre {
-	margin-top: 10px;
+	margin-top: 100px;
 	margin-bottom: 10px;
 	border: 1px solid black;
 	padding: 10px;
