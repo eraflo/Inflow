@@ -19,7 +19,11 @@
     color: #FFF;
     transition: all 0.1s ease 0.2s;
 }
-
+.TitreSite {
+	background-color: #bf360c;
+	border: 10px solid black;
+	text-align: center;
+}
 .menu a:hover{
     color: #62bcda;
     transition: all 0.3s ease 0.2s;
