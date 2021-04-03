@@ -53,6 +53,11 @@ article {
 	font-size: 50px;
 }
 
+form {
+	margin-top: 20px;
+	display: flex;
+}
+
 
 
 /*--Affecte le footer et ce qui s'y trouve--*/
