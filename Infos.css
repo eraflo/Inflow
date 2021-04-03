@@ -53,12 +53,19 @@ article {
 	font-size: 50px;
 }
 
-form {
-	margin-top: 20px;
-	display: flex;
+#Infos {
+	text-align: right;
 }
 
+.Plateforme {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px 15em;
+}
 
+.Plateforme :first-child {
+		align-self: center;
+}
 
 /*--Affecte le footer et ce qui s'y trouve--*/
 footer {
