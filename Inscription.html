@@ -33,17 +33,26 @@
 		<form method="post" action="Inscription.php">
 			<p>
 				<label for="Identifiant">Identifiant :</label> 
-				<input type="text" name="Identifiant" id="Identifiant" maxlength="10" placeholder="10 caractères max" />
+				<input type="text" name="Identifiant" id="Identifiant" maxlength="10" placeholder="10 caractères max" required />
 				
 				<br/>
 				<br/>
 				<label for="pass"> Mot de passe :</label>
-				<input type="password" name="pass" id="pass" />
+				<input type="password" name="pass" id="pass" required />
+				
+				<br/>
+				<br/>
+				<label for="pass"> Confirmer Mot de passe :</label>
+				<input type="password" name="pass" id="pass" required />
 				
 				<br/>
 				<br/>
 				<label for="email"> Adresse Email :</label>
-				<input type="email" />
+				<input type="email" required />
+				
+				<br/>
+				<br/>
+				<input type="submit" value="Envoyer" />
 				
 			</p>
 		</form>
