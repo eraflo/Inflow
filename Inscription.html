@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html>
   <head>
   <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
     <meta charset="utf-8">
     <title>Projet Rap</title>
-	<!--Relié le script html au script css correspondant-->
+	<!--Relié le script html aux autres scripts correspondant-->
 	<link rel="stylesheet" type="text/css" href="C:\Users\flori\Documents\ProjetRap\Inscription.css">
   </head>
   
@@ -31,6 +32,10 @@
 	<article>
 	
 		<form method="post" action="Inscription.php">
+			<script type="text/javascript" src="C:\Users\flori\Documents\ProjetRap\Inscription.js"></script>
+				<?php
+					include("C:\Users\flori\Documents\ProjetRap\Inscription.js")
+				?>
 			<p>
 				<label for="pseudo">Identifiant :</label> 
 				<input type="text" name="pseudo" id="pseudo" maxlength="10" placeholder="10 caractères max" required />
@@ -55,6 +60,7 @@
 				<input type="submit" value="Envoyer" />
 				
 			</p>
+			</script>
 		</form>
 	
 	
@@ -67,6 +73,5 @@
 	
 	
   </body>
-  
-  
+
 </html>
