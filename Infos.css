@@ -62,7 +62,16 @@ article {
 	font-size: 50px;
 }
 
+.Plateforme {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px 50em;
+	text-align: center;
+}
 
+.Plateforme :first-child {
+		align-self: center;
+}
 
 /*--Affecte le footer et ce qui s'y trouve--*/
 footer {
@@ -71,7 +80,6 @@ footer {
 	color: #fff;
 	padding: 0.5em;
 	margin-bottom: 0;
-	position: absolute;
 	bottom: 0;
 	width: 100%;
 }
