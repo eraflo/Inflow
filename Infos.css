@@ -76,6 +76,10 @@ article {
 		align-self: center;
 }
 
+#Staff {
+	font-size: 50px;
+}
+
 /*--Affecte le footer et ce qui s'y trouve--*/
 footer {
 	background-color: #bf360c;
