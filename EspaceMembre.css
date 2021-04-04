@@ -22,8 +22,6 @@ article {
 	margin-right: 15px;
 	color: white;
 }
-
-
 /*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
 .header{
     position: static;
@@ -77,6 +75,7 @@ footer {
 	color: #fff;
 	padding: 0.5em;
 	margin-bottom: 0;
+	position: absolute;
 	bottom: 0;
 	width: 100%;
 }
