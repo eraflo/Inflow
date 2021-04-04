@@ -1,4 +1,5 @@
 html {
+	height: 100%;
     background-position: center;
     background-image: url("logo.jpg");
     background-repeat: no-repeat;
@@ -8,6 +9,8 @@ html {
 
 /*--Ne pas laisser de rebord blanc--*/
 body {
+	position: relative;
+	min-height: 100%;
 	margin: 0 auto;
 	background-size: cover;
 }
