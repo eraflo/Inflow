@@ -1,12 +1,10 @@
 html {
 	height: 100%;
     background-position: center;
-    background-image: url("logo.jpg");
-    background-repeat: no-repeat;
-    background-color: black;
-    background-size: 50% 200%;
+	background: url("background.png");
+    background-color: white;
+    background-size: cover;
 }
-
 /*--Ne pas laisser de rebord blanc--*/
 body {
 	position: relative;
@@ -22,7 +20,7 @@ article {
 	padding-bottom: 5em;
 	margin-left: 15px;
 	margin-right: 15px;
-	color: white;
+	color: solid black;
 }
 /*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
 .header{
@@ -31,7 +29,7 @@ article {
     right: 0;
     height: 80px;
     line-height: 80px;
-    background-color: #222222;
+    background-color: rgb(42, 70, 196);
 }
 .menu{
     padding: 0 10px;
@@ -55,11 +53,25 @@ article {
     transition: all 0.3s ease 0.2s;
 }
 
+a.selected{
+	color: black;
+}
+
 /*--Affecte le titre en haut de la page--*/
-.TitreSite {
-	background-color: #bf360c;
-	border: 10px solid black;
+.bannière {
+	background-image: url("banniere_twi.png");
+	background-color: white;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 5px solid white;
+	width: 100%;
+	height: 220px;
+	
+}
+
+.hidden {
 	text-align: center;
+	visibility: hidden;
 	font-size: 50px;
 }
 
@@ -72,7 +84,7 @@ form {
 
 /*--Affecte le footer et ce qui s'y trouve--*/
 footer {
-	background-color: #bf360c;
+	background-color: rgb(42, 70, 196);
 	text-align: center;
 	color: #fff;
 	padding: 0.5em;
