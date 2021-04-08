@@ -1,7 +1,7 @@
 html {
 	height: 100%;
     background-position: center;
-	background: url("background.png");
+	background: url("assets/background.png");
     background-color: white;
     background-size: cover;
 }
@@ -59,7 +59,7 @@ a.selected{
 
 /*--Affecte le titre en haut de la page--*/
 .bannière {
-	background-image: url("banniere_twi.png");
+	background-image: url("assets/banniere_twi.png");
 	background-color: white;
 	background-repeat: no-repeat;
 	background-position: center;

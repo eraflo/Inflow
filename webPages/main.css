@@ -1,7 +1,7 @@
 html {
 	height: 100%;
+	background: url("assets/background.png");
     background-position: center;
-	background: url("background.png");
     background-color: white;
     background-size: cover;
 }
@@ -13,8 +13,6 @@ body {
 	margin: 0 auto;
 	background-size: cover;
 }
-
-
 
 /*--tout ce qui ce trouve là où on met du texte, espacement en haut et en bas--*/
 article {
@@ -56,17 +54,12 @@ article {
     transition: all 0.3s ease 0.2s;
 }
 
-.menu a:active{
-	color: black;
-}
 
-a.selected{
-	color: black;
-}
+
 
 /*--Affecte le titre en haut de la page--*/
 .bannière {
-	background-image: url("banniere_twi.png");
+	background-image: url("assets/banniere_twi.png");
 	background-color: white;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -82,21 +75,8 @@ a.selected{
 	font-size: 50px;
 }
 
-.Plateforme {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 10px 10em;
-	text-align: center;
-	padding-bottom: 2em;
-}
-
-.Plateforme :first-child {
-		align-self: center;
-}
-
-
-#Staff {
-	font-size: 50px;
+a.selected{
+	color: black;
 }
 
 /*--Affecte le footer et ce qui s'y trouve--*/
@@ -110,3 +90,4 @@ footer {
 	bottom: 0;
 	width: 100%;
 }
+
