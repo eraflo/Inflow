@@ -1,3 +1,10 @@
+/*--Rappel:
+	html => balise
+	.header => class
+	#Staff => id
+--*/
+
+/*--Affecte toute la page HTML--*/
 html {
 	height: 100%;
 	background: url("assets/background.png");
@@ -7,7 +14,9 @@ html {
 	font-family: 'Roboto', sans-serif;
 }
 
-/*--Ne pas laisser de rebord blanc--*/
+/*--Ne pas laisser de rebord blanc
+	Affecte le corps de la page sans affecter
+		le header--*/
 body {
 	position: relative;
 	min-height: 100%;
@@ -21,7 +30,7 @@ article {
 	padding-bottom: 5em;
 	margin-left: 15px;
 	margin-right: 15px;
-	color: solid black;
+	color: black;
 }
 
 /*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
@@ -36,30 +45,34 @@ article {
 .menu {
 	padding: 0 10px;
 	font-family: 'Oswald', sans-serif;
+	font-size: 1.1em;
 }
 
 
-/*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)--*/
+/*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
+	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
 .menu a{
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
     padding: 0 10px;
     color: #FFF;
-    transition: all 0.1s ease 0.2s;
+    transition: all 0.5s ease-in-out;
 }
 
 /*--Affecte les transitions lorsque l'on clique sur un élément du header(Menu, Article...)--*/
 .menu a:hover{
     color: #62bcda;
     transition: all 0.3s ease 0.2s;
-	text-shadow: 6px 2px 8px #62bcda;
+	text-shadow: 0px 0px 18px white;
 }
-
+/*--Change de couleur lorsque l'utilisateur clique sur l'élément
+	(Seulement avant le changement de page)--*/
 .menu a:active{
 	color: black;
+	text-shadow: 0px 0px 20px white;
 }
-
+/*--Page actuelle sélectionnée--*/
 a.selected {
 	color: black;
 	text-shadow: 0px 0px 12px #62bcda;
@@ -92,6 +105,11 @@ a.selected{
 	color: black;
 }
 
+a.discord-link {
+	font-weight: bold;
+	color: white;
+}
+
 .Plateforme {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -120,4 +138,5 @@ footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+	font-family: 'Open Sans', sans-serif;	
 }
