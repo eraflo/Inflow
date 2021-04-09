@@ -154,7 +154,6 @@ footer {
 	
 	html {
 		filter: brightness(85%);
-		icon: url("assets/Inflow_logo_dark_64px.png");
 	}
 	
 	body {
@@ -179,14 +178,5 @@ footer {
 	.menu, footer {
 		background-color: royalblue;
 		color: black;
-	}
-}
-
-/*--Affiche le bon logo en fonction du thème--*/
-/*--NE FONCTIONNE PAS
-	Besoin de travail--*/
-@media (prefers-color-scheme: light) {
-	html {
-		icon: url("assets/Inflow_logo_64px.png");
 	}
 }
