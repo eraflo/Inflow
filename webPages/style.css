@@ -151,32 +151,42 @@ footer {
 		border: 5px solid royalblue;
 		background-color: royalblue;
 	}
-
+	
 	html {
 		filter: brightness(85%);
+		icon: url("assets/Inflow_logo_dark_64px.png");
 	}
-
+	
 	body {
 		color: #fefefe;
 	}
-
+	
 	article {
 		color: royalblue;
 	}
-
+	
 	.liste-équipe {
 		color: royalblue;
 	}
-
+	
 	.liens-sociaux {
 		color: royalblue;
 	}
 	.liens-sociaux a {
 		color: grey;
 	}
-
+	
 	.menu, footer {
 		background-color: royalblue;
 		color: black;
+	}
+}
+
+/*--Affiche le bon logo en fonction du thème--*/
+/*--NE FONCTIONNE PAS
+	Besoin de travail--*/
+@media (prefers-color-scheme: light) {
+	html {
+		icon: url("assets/Inflow_logo_64px.png");
 	}
 }
