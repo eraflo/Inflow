@@ -45,6 +45,7 @@ article {
     line-height: 80px;
     background-color: rgb(42, 70, 196);
 }
+/*--Affecte les différents éléments contenus dans header, mais pas le header en lui même--*/
 .menu {
 	padding: 0 10px;
 	font-family: 'Oswald', sans-serif;
@@ -63,7 +64,7 @@ article {
     transition: all 0.5s ease-in-out;
 }
 
-/*--Affecte les transitions lorsque l'on clique sur un élément du header(Menu, Article...)--*/
+/*--Affecte les transitions lorsque l'on a la souris sur un élément du header(Menu, Article...)--*/
 .menu a:hover{
     color: #62bcda;
     transition: all 0.3s ease 0.2s;
@@ -98,23 +99,29 @@ a.selected {
 	visibility: hidden;
 }
 
+/*--Dans EspaceMembre.html, gère les différentes zones où l'on peut écrire--*/
 form {
 	margin-top: 20px;
 	display: flex;
 }
 
+/*--Code en 2 fois : à vérifier si erreur ou pas. En progression.--*/
 a.selected{
 	color: black;
 }
 
+/*--Gère le lien discord--*/
 a.discord-link {
 	font-weight: bold;
 	color: white;
 }
 
+/*--Gère les liens des réseaux sociaux--*/
 .lien-sociaux {
 	color: black;
 }
+
+/*--Classe gérant dans Infos.html la mise en page du texte. Va de ici --*/
 .Plateforme {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -128,6 +135,9 @@ a.discord-link {
 	align-self: center;
 }
 
+/*--A ici--*/
+
+/*--Gère le sous-titre dans Infos.html--*/
 #Staff {
 	font-size: 50px;
 	font-family: 'Open Sans', sans-serif;
@@ -147,6 +157,7 @@ footer {
 }
 
 
+/*--Gère le dark/white mode--*/
 @media (prefers-color-scheme: dark) {
 	.bannière {
 		border: 5px solid royalblue;
