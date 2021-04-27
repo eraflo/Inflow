@@ -27,7 +27,7 @@
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
         <nav class="menu">
-            <a href="main.html">Menu</a>
+            <a href="main.html" class="selected">Menu</a>
             <a href="Article.html">Article</a>
             <a href="Playlist.html">Playlist</a>
             <div class="dropdown">
@@ -37,7 +37,15 @@
                     <a href="Connexion.html">Connexion</a>
                 </div>
             </div>
-            <a href="Infos.html" id="Infos" class="selected">Infos</a>
+            <a href="Infos.html" id="Infos">Infos</a>
+            <!-- search bar right align -->
+            <div class="search">
+                <form action="#">
+                    <input type="text" placeholder="Recherche" name="search">
+                    <button>
+                    </button>
+                </form>
+            </div>
         </nav>
     </header>
 
