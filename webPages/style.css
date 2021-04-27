@@ -13,6 +13,7 @@ html {
 	background-color: white;
 	background-size: cover;
 	font-family: 'Roboto', sans-serif;
+
 }
 
 /*--Ne pas laisser de rebord blanc
@@ -45,6 +46,7 @@ article {
     line-height: 80px;
     background-color: rgb(42, 70, 196);
 }
+
 /*--Affecte les différents éléments contenus dans header, mais pas le header en lui même--*/
 .menu {
 	padding: 0 10px;
@@ -76,11 +78,6 @@ article {
 	color: black;
 	text-shadow: 0px 0px 20px white;
 }
-/*--Page actuelle sélectionnée--*/
-a.selected {
-	color: black;
-	text-shadow: 0px 0px 12px #62bcda;
-}
 
 /*--Affecte le titre en haut de la page--*/
 .bannière {
@@ -108,6 +105,7 @@ form {
 /*--Code en 2 fois : à vérifier si erreur ou pas. En progression.--*/
 a.selected{
 	color: black;
+  text-shadow: 0px 0px 12px #62bcda;
 }
 
 /*--Gère le lien discord--*/
@@ -129,13 +127,13 @@ a.discord-link {
 	text-align: center;
 	padding-bottom: 2em;
 	font-family: 'Oswald', sans-serif;
+
 }
 
 .Plateforme :first-child {
 	align-self: center;
 }
 
-/*--A ici--*/
 
 /*--Gère le sous-titre dans Infos.html--*/
 #Staff {
@@ -143,9 +141,10 @@ a.discord-link {
 	font-family: 'Open Sans', sans-serif;
 }
 
+
 /*--Affecte le footer et ce qui s'y trouve--*/
 footer {
-	background-color: rgb(42, 70, 196);
+	background-color: yellow;
 	text-align: center;
 	color: white;
 	padding: 0.5em;
@@ -156,39 +155,63 @@ footer {
 	font-family: 'Open Sans', sans-serif;
 }
 
-
 /*--Gère le dark/white mode--*/
 @media (prefers-color-scheme: dark) {
 	.bannière {
 		border: 5px solid royalblue;
 		background-color: royalblue;
 	}
-	
+
 	html {
 		filter: brightness(85%);
 	}
-	
+
 	body {
 		color: #fefefe;
 	}
-	
+
 	article {
 		color: royalblue;
 	}
-	
+
 	.liste-équipe {
 		color: royalblue;
 	}
-	
+
 	.liens-sociaux {
 		color: royalblue;
 	}
 	.liens-sociaux a {
 		color: grey;
 	}
-	
+
 	.menu, footer {
 		background-color: royalblue;
 		color: black;
 	}
+}
+
+/** Les différentes fonctions pour assombrir les élements*/
+.darkbody {
+  background-color: #112F41 ;
+  color: #ffffff ;
+}
+.darkfoncé {
+  background-color: #0A263E ;
+  color: #ffffff ;
+}
+.btn {
+  margin-left: 1700px;
+  border: none;
+  background-color: #1D243E;
+  text-align: left;
+  padding: 0.4rem;
+  color:white;
+  display: inline-block;
+  border-radius: 2rem;
+  outline:none
+}
+.dark button {
+  background: #144098;
+  color: #fff;
 }
