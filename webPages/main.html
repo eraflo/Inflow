@@ -3,7 +3,11 @@
 
 <head>
     <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <!-- Paramètre d'affichage mobile -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- Gestion du navigateur IE -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inflow</title>
     <!--Appliquer le style css et importer l'icone-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -32,8 +36,22 @@
             <a href="main.html" class="selected">Menu</a>
             <a href="Article.html">Article</a>
             <a href="Playlist.html">Playlist</a>
-            <a href="EspaceMembre.html">Espace Membre</a>
+            <div class="dropdown">
+                <button class="dropbtn">Espace Membre</button>
+                <div class="dropdown-content">
+                    <a href="Inscription.html">Inscription</a>
+                    <a href="Connexion.html">Connexion</a>
+                </div>
+            </div>
             <a href="Infos.html" id="Infos">Infos</a>
+            <!-- search bar right align -->
+            <div class="search">
+                <form action="#">
+                    <input type="text" placeholder="Recherche" name="search">
+                    <button>
+                    </button>
+                </form>
+            </div>
         </nav>
     </header>
 

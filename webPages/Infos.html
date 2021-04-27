@@ -3,7 +3,11 @@
 
 <head>
     <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <!-- Paramètre d'affichage mobile -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- Gestion du navigateur IE -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Infos Inflow</title>
     <!--Relier le script html au script css correspondant-->
     <!--Appliquer le style css et importer l'icone-->
@@ -29,11 +33,25 @@
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
         <nav class="menu">
-            <a href="main.html">Menu</a>
+            <a href="main.html" class="selected">Menu</a>
             <a href="Article.html">Article</a>
             <a href="Playlist.html">Playlist</a>
-            <a href="EspaceMembre.html">Espace Membre</a>
-            <a href="Infos.html" id="Infos" class="selected">Infos</a>
+            <div class="dropdown">
+                <button class="dropbtn">Espace Membre</button>
+                <div class="dropdown-content">
+                    <a href="Inscription.html">Inscription</a>
+                    <a href="Connexion.html">Connexion</a>
+                </div>
+            </div>
+            <a href="Infos.html" id="Infos">Infos</a>
+            <!-- search bar right align -->
+            <div class="search">
+                <form action="#">
+                    <input type="text" placeholder="Recherche" name="search">
+                    <button>
+                    </button>
+                </form>
+            </div>
         </nav>
     </header>
 
@@ -45,10 +63,10 @@
             <h1 id="Staff">Staff</h1>
             <div class="Plateforme">
                 <div class="liste-équipe">
-                    <p><b>PDG (Le Boss)</b> : Axel (Axelito)</p>
-                    <p><b>Rédaction</b> : Maxime, Jason, Romane, Elouan, Ilyes</p>
-                    <p><b>Modos</b> : Timothée, Antoine</p>
-                    <p><b>Dev Team</b> : Titouan, Lucas, Florian</p>
+                    <p><b>PDG </b> : Axel </p>
+                    <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
+                    <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
+                    <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
                 </div>
                 <div class="liens-sociaux">
                     <h3><i>Insta</i> :</h3>
@@ -62,8 +80,6 @@
                 </div>
             </div>
         </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
 
         <!-- >>>>>>> main
 				<p>Début</p>

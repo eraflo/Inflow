@@ -8,26 +8,25 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!-- Gestion du navigateur IE -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Articles Inflow</title>
+    <title>Espace Membre</title>
     <!--Relié le script html au script css correspondant-->
     <!--Appliquer le style css et importer l'icone-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" href="assets/Inflow_logo_64px.png" />
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
 
 </head>
 
+
 <body>
+
 
     <!--Titre de la page web où on se trouve-->
     <div class="bannière">
-        <h1 class="hidden">Article</h1>
+        <h1 class="hidden">Espace Membre</h1>
     </div>
-
 
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
@@ -36,7 +35,7 @@
             <a href="Article.html">Article</a>
             <a href="Playlist.html">Playlist</a>
             <div class="dropdown">
-                <button class="dropbtn">Espace Membre</button>
+                <button class="dropbtn"><a class="selected">Espace Membre</a></button>
                 <div class="dropdown-content">
                     <a href="Inscription.html">Inscription</a>
                     <a href="Connexion.html">Connexion</a>
@@ -54,26 +53,44 @@
         </nav>
     </header>
 
-
     <!--Début de là où on pourra mettre du texte-->
     <article>
 
+        <form method="post" action="Inscription.php">
+            <p>
+                <label for="Identifiant">Identifiant :</label>
+                <input type="text" name="Identifiant" id="Identifiant" maxlength="10" placeholder="10 caractères max" required />
 
-        <div classe="encadre">
-            <h3>Article 1</h3>
-        </div>
+                <br />
+                <br />
+                <label for="pass"> Mot de passe :</label>
+                <input type="password" name="pass" id="pass" required />
 
+                <br />
+                <br />
+                <label for="pass"> Confirmer Mot de passe :</label>
+                <input type="password" name="pass" id="pass" required />
 
-        <p>Début</p>
+                <br />
+                <br />
+                <label for="email"> Adresse Email :</label>
+                <input type="email" required />
+
+                <br />
+                <br />
+                <input type="submit" value="Envoyer" />
+
+            </p>
+        </form>
+
 
     </article>
-
 
     <!--Tout en bas de la page web, contient des infos-->
     <footer>
         <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-        <button id="darkTrigger" class="btn" >Thème sombre</button>
     </footer>
+
 </body>
 
 </html>

@@ -3,7 +3,11 @@
 
 <head>
     <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <!-- Paramètre d'affichage mobile -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- Gestion du navigateur IE -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Espace Membre</title>
     <!--Relié le script html au script css correspondant-->
     <!--Appliquer le style css et importer l'icone-->
@@ -27,44 +31,30 @@
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
         <nav class="menu">
-            <a href="main.html">Menu</a>
+            <a href="main.html" class="selected">Menu</a>
             <a href="Article.html">Article</a>
             <a href="Playlist.html">Playlist</a>
-            <a href="EspaceMembre.html" class="selected">Espace Membre</a>
+            <div class="dropdown">
+                <button class="dropbtn"><a class="selected">Espace Membre</a></button>
+                <div class="dropdown-content">
+                    <a href="Inscription.html">Inscription</a>
+                    <a href="Connexion.html">Connexion</a>
+                </div>
+            </div>
             <a href="Infos.html" id="Infos">Infos</a>
+            <!-- search bar right align -->
+            <div class="search">
+                <form action="#">
+                    <input type="text" placeholder="Recherche" name="search">
+                    <button>
+                    </button>
+                </form>
+            </div>
         </nav>
     </header>
 
     <!--Début de là où on pourra mettre du texte-->
     <article>
-
-        <form method="post" action="Inscription.php">
-            <p>
-                <label for="Identifiant">Identifiant :</label>
-                <input type="text" name="Identifiant" id="Identifiant" maxlength="10" placeholder="10 caractères max" required />
-
-                <br />
-                <br />
-                <label for="pass"> Mot de passe :</label>
-                <input type="password" name="pass" id="pass" required />
-
-                <br />
-                <br />
-                <label for="pass"> Confirmer Mot de passe :</label>
-                <input type="password" name="pass" id="pass" required />
-
-                <br />
-                <br />
-                <label for="email"> Adresse Email :</label>
-                <input type="email" required />
-
-                <br />
-                <br />
-                <input type="submit" value="Envoyer" />
-
-            </p>
-        </form>
-
 
     </article>
 
