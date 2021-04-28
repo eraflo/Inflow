@@ -59,7 +59,6 @@ $(document).ready(function() {
 window.onscroll = function() {
     scrollFunction()
 };
-
 function scrollFunction() {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         document.getElementsByClassName("bannière")[0].style.height = "0px";

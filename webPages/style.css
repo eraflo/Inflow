@@ -293,7 +293,7 @@ body.darkbody {
 }
 
 .darkfoncé {
-    background-color: #0A263E;
+    background-color: inherit;
     color: #ffffff;
 }
 
