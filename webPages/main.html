@@ -25,7 +25,10 @@
     <!-- JE (ANYR) N'ARRIVE PAS À LIER UN FICHIER JAVASCRIPT EXTERNE DONC JE METS LE JAVASCRIPT ICI-->
     <script>
         // Change la taille de la bannière
-        window.onscroll = function () { scrollFunction() };
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
         function scrollFunction() {
             if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
                 document.getElementsByClassName("bannière")[0].style.height = "50px";
@@ -38,7 +41,7 @@
     </script>
 
     <!--Titre de la page web où on se trouve-->
-    <img class="bannière" src="assets/banniere_twi.png"/>
+    <img class="bannière" src="assets/banniere_twi.png" />
 
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
@@ -69,10 +72,10 @@
     <article>
         <!-- <<<<<<< HEAD -->
 
-        <div classe="encadre">
-            <h3>Menu</h3>
-            <p>Info</p>
-        </div>
+
+        <h3>Menu</h3>
+        <p>Info</p>
+
 
 
 
@@ -91,7 +94,7 @@
     <!--Tout en bas de la page web, contient des infos-->
     <footer>
         <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-        <button id="darkTrigger" class="btn" >Thème sombre</button>
+        <button id="darkTrigger" class="btn">Thème sombre</button>
 
     </footer>
 

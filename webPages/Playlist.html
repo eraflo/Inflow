@@ -25,7 +25,10 @@
     <!-- JE (ANYR) N'ARRIVE PAS À LIER UN FICHIER JAVASCRIPT EXTERNE DONC JE METS LE JAVASCRIPT ICI-->
     <script>
         // Change la taille de la bannière
-        window.onscroll = function () { scrollFunction() };
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
         function scrollFunction() {
             if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
                 document.getElementsByClassName("bannière")[0].style.height = "70px";
@@ -43,9 +46,9 @@
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
         <nav class="menu">
-            <a href="main.html" class="selected">Menu</a>
+            <a href="main.html">Menu</a>
             <a href="Article.html">Article</a>
-            <a href="Playlist.html">Playlist</a>
+            <a href="Playlist.html" class="selected">Playlist</a>
             <div class="dropdown">
                 <button class="dropbtn">Espace Membre</button>
                 <div class="dropdown-content">
@@ -70,9 +73,8 @@
     <!--Début de là où on pourra mettre du texte-->
     <article>
 
-        <div classe="encadre">
-            <h3>Playlist 1</h3>
-        </div>
+        <h3>Playlist 1</h3>
+
 
 
         <p>Début</p>
