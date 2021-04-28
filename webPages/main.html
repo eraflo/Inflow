@@ -23,12 +23,23 @@
 
 
 <body>
-
+    <!-- JE (ANYR) N'ARRIVE PAS À LIER UN FICHIER JAVASCRIPT EXTERNE DONC JE METS LE JAVASCRIPT ICI-->
+    <script>
+        // Change la taille de la bannière
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+                document.getElementsByClassName("bannière")[0].style.height = "70px";
+                document.documentElement.style.marginTop = "70px";
+            } else {
+                document.getElementsByClassName("bannière")[0].style.height = "130px";
+                document.documentElement.style.marginTop = "130px";
+            }
+        }
+    </script>
 
     <!--Titre de la page web où on se trouve-->
-    <div class="bannière">
-        <h1 class="hidden">Inflow</h1>
-    </div>
+    <img class="bannière" src="assets/banniere_twi.png"/>
 
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
@@ -72,9 +83,9 @@
         <p>Info</p>
 
         <!-- >>>>>>> main
-				<p>Début</p>
+                <p>Début</p>
 
-		-->
+        -->
 
     </article>
 
