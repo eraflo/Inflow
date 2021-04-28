@@ -26,6 +26,21 @@ $(document).ready(function() {
         } else {
             $("header").addClass("darkfoncé");
         }
+        if ($(".Plateforme").hasClass("darkbody")) {
+            $(".Plateforme").removeClass("darkbody");
+        } else {
+            $(".Plateforme").addClass("darkbody");
+        }
+        if ($(".liste-équipe").hasClass("darkbody")) {
+            $(".liste-équipe").removeClass("darkbody");
+        } else {
+            $(".liste-équipe").addClass("darkbody");
+        }
+        if ($(".liens-sociaux").hasClass("darkbody")) {
+            $(".liens-sociaux").removeClass("darkbody");
+        } else {
+            $(".liens-sociaux").addClass("darkbody");
+        }
     });
 })
 
@@ -38,3 +53,18 @@ $(document).ready(function() {
         $("body").addClass("dark");
     }
 });
+
+// Change la taille de la bannière
+window.onscroll = function() {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+        document.getElementsByClassName("bannière")[0].style.height = "50px";
+        document.documentElement.style.marginTop = "50px";
+    } else {
+        document.getElementsByClassName("bannière")[0].style.height = "130px";
+        document.documentElement.style.marginTop = "130px";
+    }
+}
