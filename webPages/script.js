@@ -1,16 +1,22 @@
 $(document).ready(function () {
     // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
-    $("#darkTrigger").click(activate_dark_mode);
+    $("#darkTrigger").click(dark_mode_button_on_click);
 })
 
-function activate_dark_mode() {
+function dark_mode_button_on_click() {
+    activate_dark_mode()
+
     // Changer les variables locales du client
     if (window.localStorage["dark_mode"] == "user_forced") {
         window.localStorage["dark_mode"] = "user_desactivated";
-    } else if (window.localStorage["dark_mode"] == "user_desactivated") {
+    } else if ((window.localStorage["dark_mode"] == "user_desactivated") || (window.localStorage["dark_mode"] == "hour")) {
         window.localStorage["dark_mode"] = "user_forced";
     }
+}
 
+
+
+function activate_dark_mode() {
     // Toggle dark mode -- À CHANGER / LA VARIABLE window.localStorage["dark_mode"] STOCKE L'ÉTAT DU DARK MODE, PLUS BESOIN DE CHECK POUR CHAQUE DIV/CLASS
     if ($("body").hasClass("darkbody")) {
         $("body").removeClass("darkbody");
@@ -72,16 +78,18 @@ $(document).ready(function () {
         null;
     } else if (window.localStorage["dark_mode"] == "hour") {
         var d = new Date();
-        var n = d.getHours();
-        if (n > 18 || n < 8) {
+        var h = d.getHours();
+        if (h > 18 || h < 8) {
             activate_dark_mode();
+        } else {
+            null;
         }
     }
 });
 
 
 // Change la taille de la bannière fixe lors du scroll down/up
-window.onscroll = function() {
+window.onscroll = function () {
     scrollFunction()
 };
 function scrollFunction() {
