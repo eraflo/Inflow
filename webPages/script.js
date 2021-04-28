@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#darkTrigger").click(function() {
+    $("#darkTrigger").click(function () {
         if ($("body").hasClass("darkbody")) {
             $("body").removeClass("darkbody");
         } else {
@@ -54,15 +54,19 @@ $(document).ready(function() {
     }
 });
 
-// Change la taille de la bannière
+
+// Change la taille de la bannière fixe lors du scroll down/up
 window.onscroll = function() {
     scrollFunction()
 };
 
 function scrollFunction() {
-    if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
-        document.getElementsByClassName("bannière")[0].style.height = "50px";
-        document.documentElement.style.marginTop = "50px";
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        document.getElementsByClassName("bannière")[0].style.height = "0px";
+        document.documentElement.style.marginTop = "0px";
+    } else if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+        document.getElementsByClassName("bannière")[0].style.height = "70px";
+        document.documentElement.style.marginTop = "70px";
     } else {
         document.getElementsByClassName("bannière")[0].style.height = "130px";
         document.documentElement.style.marginTop = "130px";

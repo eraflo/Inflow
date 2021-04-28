@@ -76,6 +76,7 @@ img {
     max-height: 80px;
     overflow: hidden;
     transition: 1s;
+    background: inherit;
 }
 
 
@@ -279,43 +280,15 @@ footer {
     display: block;
 }
 
-
-/*--Gère le dark/white mode--*/
-
-@media (prefers-color-scheme: dark) {
-    .bannière {
-        background-color: royalblue;
-    }
-    html {
-        filter: brightness(85%);
-    }
-    body {
-        color: #fefefe;
-    }
-    article {
-        color: royalblue;
-    }
-    .liste-équipe {
-        color: royalblue;
-    }
-    .liens-sociaux {
-        color: royalblue;
-    }
-    .liens-sociaux a {
-        color: grey;
-    }
-    .menu,
-    footer {
-        background-color: royalblue;
-        color: black;
-    }
-}
-
-
 /** Les différentes fonctions pour assombrir les élements*/
 
-.darkbody {
+body.darkbody {
     background: url("assets/backgrounddark.jpg");
+    background-size: 100%;
+    background-repeat: repeat-y;
+    color: #ffffff;
+}
+.darkbody {
     color: #ffffff;
 }
 
