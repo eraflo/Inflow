@@ -18,6 +18,8 @@ function dark_mode_button_on_click() {
 
 function activate_dark_mode() {
     // Toggle dark mode -- À CHANGER / LA VARIABLE window.localStorage["dark_mode"] STOCKE L'ÉTAT DU DARK MODE, PLUS BESOIN DE CHECK POUR CHAQUE DIV/CLASS
+    $("*").addClass("noTransition");
+
     if ($("body").hasClass("darkbody")) {
         $("body").removeClass("darkbody");
     } else {
@@ -64,6 +66,17 @@ function activate_dark_mode() {
     } else {
         $("a").addClass("darkbody");
     }
+    if ($(".menu").hasClass("darkbody")) {
+        $(".menu").removeClass("darkbody");
+    } else {
+        $(".menu").addClass("darkbody");
+    }
+
+
+    setTimeout(function () {
+        $("*").removeClass("noTransition");
+    }, 50);
+    
 }
 
 

@@ -71,18 +71,19 @@ img {
     font-size: 1.1em;
     position: fixed;
     width: 100%;
-    height: inherit;
-    min-height: 40px;
-    max-height: 80px;
+    height: auto;
     overflow: hidden;
     transition: 1s;
-    background: inherit;
+}
+
+/*--Éléments dans la navbar--*/
+.menuElement {
+    display: inline-block;
 }
 
 
 /*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
-
 .menu a {
     font-weight: bold;
     text-transform: uppercase;
@@ -215,7 +216,7 @@ a.discord-link {
 /*--Affecte le footer et ce qui s'y trouve--*/
 
 footer {
-    background-color: rgb(42, 70, 196);
+    background-color: royalblue;
     text-align: center;
     color: white;
     padding: 0.5em;
@@ -229,46 +230,29 @@ footer {
 
 /*  Menu déroulant Espace Membre  */
 
-
-/* Bouton déroulant */
-
-.dropbtn {
-    background-color: inherit;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #FFF;
-    border: none;
-    padding: 0 5px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1em;
-}
-
-
 /* Le conteneur <div> - nécessaire pour positionner le contenu de la liste déroulante */
 
 .dropdown {
     position: relative;
-    display: inline-block;
 }
 
-.dropdown button:hover {
-    color: #62bcda;
+.dropdown:hover {
     transition: all 0.5s ease-in-out;
-    text-shadow: 0px 0px 18px white;
+    height: 240px;
+    width: auto;
 }
 
 
 /* Contenu déroulant (masqué par défaut) */
 
 .dropdown-content {
-    display: none;
+    display: block;
     position: absolute;
     text-align: center;
     background-color: royalblue;
     width: 100%;
     box-shadow: 12px 16px 8px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    transition: 1s;
 }
 
 
@@ -305,6 +289,14 @@ body.darkbody {
     color: #ffffff;
 }
 
+.dropdown-content.darkfoncé {
+    box-shadow: none;
+}
+
+nav.menu.darkbody {
+    background: linear-gradient(rgba(0,0,0,0.6) 90%, rgba(0,0,0,0));
+}
+
 .footer btn {
     margin-left: 1700px;
     border: none;
@@ -336,6 +328,7 @@ body.darkbody {
 .search {
     float: right;
     margin: 7px;
+    background: none;
 }
 
 .search button {
@@ -346,4 +339,28 @@ body.darkbody {
     border: none;
     cursor: pointer;
     visibility: hidden;
+}
+
+
+/* ENLEVER TEMPORAIREMENT LES TRANSITIONS */
+
+.noTransition {
+    /*CSS transitions*/
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    /*CSS transforms*/
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /*CSS animations*/
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
 }
