@@ -30,7 +30,6 @@ function activate_dark_mode() {
     } else {
         $("footer").addClass("darkfoncé");
     }
-
     if ($("article").hasClass("darkbody")) {
         $("article").removeClass("darkbody");
     } else {
@@ -73,6 +72,7 @@ function activate_dark_mode() {
     }
 
 
+    // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {
         $("*").removeClass("noTransition");
     }, 50);
@@ -110,13 +110,16 @@ function scrollFunction() {
         document.getElementsByClassName("bannière")[0].style.height = "0px";
         document.getElementsByClassName("bannière")[0].style.opacity = "0%";
         document.documentElement.style.marginTop = "0px";
+        document.getElementsByClassName("header")[0].style.top = "0px";
     } else if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
         document.getElementsByClassName("bannière")[0].style.height = "70px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
         document.documentElement.style.marginTop = "70px";
+        document.getElementsByClassName("header")[0].style.top = "70px";
     } else {
         document.getElementsByClassName("bannière")[0].style.height = "130px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
         document.documentElement.style.marginTop = "130px";
+        document.getElementsByClassName("header")[0].style.top = "130px";
     }
 }

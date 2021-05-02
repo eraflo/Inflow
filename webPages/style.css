@@ -9,7 +9,6 @@
 
 html {
     height: 100%;
-    background: url("assets/background.png");
     background-position: center;
     background-color: white;
     background-size: cover;
@@ -25,12 +24,13 @@ html {
 
 body {
     overflow: auto;
+    overflow-x: hidden;
     /* Hide scrollbars */
     position: relative;
     min-height: 100%;
     margin: 0 auto;
     background-size: cover;
-    overflow-x: hidden;
+    background: url("assets/background.png");
 }
 
 
@@ -52,7 +52,8 @@ img {
 /*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
 
 .header {
-    position: static;
+    position: sticky;
+    top: 130px;
     left: 0;
     right: 0;
     height: 80px;
@@ -60,6 +61,7 @@ img {
     background-color: royalblue;
     width: 100%;
     transition: 1s;
+    z-index: 100000;
 }
 
 
@@ -69,16 +71,15 @@ img {
     padding: 0 10px;
     font-family: 'Oswald', sans-serif;
     font-size: 1.1em;
-    position: fixed;
     width: 100%;
-    height: auto;
-    overflow: hidden;
+    height: inherit;
     transition: 1s;
 }
 
 /*--Éléments dans la navbar--*/
 .menuElement {
     display: inline-block;
+    background: none;
 }
 
 
@@ -141,7 +142,6 @@ img {
     position: fixed;
     top: 0;
     z-index: 1000;
-    overflow: hidden;
     object-fit: cover;
     transition: 1s;
 }
@@ -223,7 +223,8 @@ footer {
     margin-bottom: 0;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -246,7 +247,7 @@ footer {
 /* Contenu déroulant (masqué par défaut) */
 
 .dropdown-content {
-    display: block;
+    display: none;
     position: absolute;
     text-align: center;
     background-color: royalblue;
@@ -262,7 +263,7 @@ footer {
     color: white;
     padding: 0px 0px;
     text-decoration: none;
-    display: block;
+    padding: 10px;
 }
 
 
@@ -289,12 +290,17 @@ body.darkbody {
     color: #ffffff;
 }
 
+.menuElement.darkfoncé {
+    background: none;
+}
+
 .dropdown-content.darkfoncé {
     box-shadow: none;
+    background-color: rgba(0,0,0,0.6);
 }
 
 nav.menu.darkbody {
-    background: linear-gradient(rgba(0,0,0,0.6) 90%, rgba(0,0,0,0));
+    background: rgba(0,0,0,0.6);
 }
 
 .footer btn {
