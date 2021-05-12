@@ -1,3 +1,27 @@
+<?php
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+
+if(isset($_GET['id']) AND !empty($_GET['id'])) {
+    $get_id = htmlspecialchars($_GET['id']);
+
+    $article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
+    $article->execute(array($get_id));
+
+    if($article->rowCount() == 1) {
+        $article = $article->fetch();
+        $titre = $article['titre'];
+        $contenu = $article['contenu'];
+
+    } else {
+        die('Cette article n\'existe pas !!!');
+    }
+
+} else {
+    die('Erreur');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,8 +32,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!-- Gestion du navigateur IE -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Articles Inflow</title>
-    <!--Relié le script html au script css correspondant-->
+    <title>Inflow</title>
     <!--Appliquer le style css et importer l'icone-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -17,25 +40,23 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="icon" href="assets/Inflow_logo_64px.png" />
     <script src="jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
-
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
+
+
 <body>
-    
 
     <!--Titre de la page web où on se trouve-->
     <img class="bannière" src="assets/banniere_twi.png" />
 
-
     <!--Header, c'est-à-dire, le menu pour changer de page-->
     <header class="header">
         <nav class="menu">
-            <div class="menuElement"><a href="main.html">Menu</a></div>
-            <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
+            <div class="menuElement"><a href="main.php">Menu</a></div>
+            <div class="menuElement"><a href="Article.php" class="selected">Article</a></div>
             <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
-            <div class="dropdown menuElement">
-                <a href="#">Espace Membre</a>
+            <div class="dropdown menuElement"><a href="#">Espace Membre</a>
                 <div class="dropdown-content">
                     <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                     <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
@@ -53,26 +74,22 @@
         </nav>
     </header>
 
-
     <!--Début de là où on pourra mettre du texte-->
     <article>
 
-
-
-        <h3>Article 1</h3>
-
-
-
-        <p>Début</p>
+        <h1><?= $titre ?></h1>
+        <p><?= $contenu ?></p>
 
     </article>
-
 
     <!--Tout en bas de la page web, contient des infos-->
     <footer>
         <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
         <button id="darkTrigger" class="btn">Thème sombre</button>
+
     </footer>
+
+
 </body>
 
 </html>
