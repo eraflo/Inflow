@@ -76,7 +76,9 @@ img {
     transition: 1s;
 }
 
+
 /*--Éléments dans la navbar--*/
+
 .menuElement {
     display: inline-block;
     background: none;
@@ -85,6 +87,7 @@ img {
 
 /*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
+
 .menu a {
     font-weight: bold;
     text-transform: uppercase;
@@ -130,7 +133,7 @@ img {
 
 .menu a.selected.darkbody {
     color: #808080;
-    text-shadow: 0px 0px 4px black,0px 0px 8px white;
+    text-shadow: 0px 0px 4px black, 0px 0px 8px white;
 }
 
 
@@ -146,12 +149,15 @@ img {
     transition: 1s;
 }
 
+
 /*--Souligner les liens (c bo ptn)--*/
+
 a {
     display: inline-block;
     position: relative;
     text-decoration: none;
 }
+
 a:after {
     content: '';
     position: absolute;
@@ -164,10 +170,12 @@ a:after {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
+
 a:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
 
 /*--Classes ne devant pas être affichées--*/
 
@@ -232,6 +240,7 @@ a.discord-link {
 #Staff {
     font-size: 50px;
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 }
 
 
@@ -252,6 +261,7 @@ footer {
 
 
 /*  Menu déroulant Espace Membre  */
+
 
 /* Le conteneur <div> - nécessaire pour positionner le contenu de la liste déroulante */
 
@@ -295,6 +305,7 @@ footer {
     display: block;
 }
 
+
 /** Les différentes fonctions pour assombrir les élements*/
 
 body.darkbody {
@@ -303,6 +314,7 @@ body.darkbody {
     background-repeat: repeat-y;
     color: #ffffff;
 }
+
 .darkbody {
     color: #ffffff;
 }
@@ -318,11 +330,11 @@ body.darkbody {
 
 .dropdown-content.darkfoncé {
     box-shadow: none;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 nav.menu.darkbody {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .footer btn {
