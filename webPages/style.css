@@ -76,7 +76,9 @@ article {
     transition: 1s;
 }
 
+
 /*--Éléments dans la navbar--*/
+
 .menuElement {
     display: inline-block;
     background: none;
@@ -85,6 +87,7 @@ article {
 
 /*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
+
 .menu a {
     font-weight: bold;
     text-transform: uppercase;
@@ -122,6 +125,12 @@ article {
 }
 
 
+.menu a.selected.darkbody {
+    color: #808080;
+    text-shadow: 0px 0px 4px black, 0px 0px 8px white;
+}
+
+
 /*--Affecte la bannière en haut de la page--*/
 .bannière {
     width: 100%;
@@ -132,6 +141,7 @@ article {
     object-fit: cover;
     transition: 1s;
 }
+
 
 /*--Souligner les liens (c bo ptn)--*/
 a {
@@ -192,6 +202,7 @@ form {
 #Staff {
     font-size: 50px;
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 }
 
 
@@ -240,6 +251,31 @@ footer {
     display: block;
 }
 
+
+/** Les différentes fonctions pour assombrir les élements*/
+body.darkbody {
+    background: url("assets/backgrounddark.jpg");
+    background-size: 100%;
+    background-repeat: repeat-y;
+    color: #ffffff;
+}
+.darkbody {
+    color: #ffffff;
+}
+.darkfoncé {
+    background-color: inherit;
+    color: #ffffff;
+}
+.menuElement.darkfoncé {
+    background: none;
+}
+.dropdown-content.darkfoncé {
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+nav.menu.darkbody {
+    background: rgba(0, 0, 0, 0.6);
+}
 
 
 /*--Bouton dark mode - à changer de nom de classe--*/
