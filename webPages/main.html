@@ -2,6 +2,7 @@
 <?php
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
+
 if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
     if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu'])) {
 
@@ -60,7 +61,10 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                         <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
-                        <div class="menuElement"><a href="Admin.html">Admin</a></div>
+                        <div class="menuElement">
+                            <!--<?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1) {?>--><a href="Admin.html">Admin</a>
+                            <!--<<?php } ?>-->
+                        </div>
                     </div>
                 </div>
                 <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>

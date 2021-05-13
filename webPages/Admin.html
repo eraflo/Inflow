@@ -9,16 +9,6 @@ if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
     header("Location: main.html");
 }
 
-if(isset($_GET['id']) AND $_GET['id'] > 0) {
-    $getid = intval($_GET['id']);
-    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-    $requser->execute(array($getid));
-    $userinfos = $requser->fetch();
-    if(!isset($_SESSION['admin']) AND $userinfos['admin'] != 1) {
-        header("Location: main.html?id=".$_SESSION['id']);
-    }
-}
-
 if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
     if(isset($_GET['admin']) AND !empty($_GET['admin'])) {
 
@@ -30,12 +20,11 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
 
 if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
     $supprime = (int) $_GET['supprime'];
-
     $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
     $req->execute(array($supprime));
 }
 
-$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT 0,5');
+$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
 
 
 ?>
@@ -96,8 +85,10 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT 0,5');
             <li>
                 <?= $m['id'] ?> :
                     <?= $m['pseudo'] ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Confirmer</a>
-                        <?php } ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
+                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
+                        <?php } ?>
+                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
+                        <?php } ?>
             </li>
             <?php } ?>
         </ul>

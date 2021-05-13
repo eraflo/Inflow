@@ -1,98 +1,104 @@
-<!DOCTYPE html>
-<html>
+<?php
+session_start();
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-<head>
-    <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
-    <meta charset="UTF-8">
-    <!-- Paramètre d'affichage mobile -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!-- Gestion du navigateur IE -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Infos Inflow</title>
-    <!--Relier le script html au script css correspondant-->
-    <!--Appliquer le style css et importer l'icone-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" href="assets/Inflow_logo_64px.png" />
-    <script src="jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+?>
 
-</head>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
+        <meta charset="UTF-8">
+        <!-- Paramètre d'affichage mobile -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- Gestion du navigateur IE -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Infos Inflow</title>
+        <!--Relier le script html au script css correspondant-->
+        <!--Appliquer le style css et importer l'icone-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
+        <script src="jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+
+    </head>
 
 
-<body>
+    <body>
 
 
 
 
-    <!--Titre de la page web où on se trouve-->
-    <img class="bannière" src="assets/banniere_twi.png" />
+        <!--Titre de la page web où on se trouve-->
+        <img class="bannière" src="assets/banniere_twi.png" />
 
-    <!--Header, c'est-à-dire, le menu pour changer de page-->
-    <header class="header">
-        <nav class="menu">
-            <div class="menuElement"><a href="main.html">Menu</a></div>
-            <div class="menuElement"><a href="Article.html">Article</a></div>
-            <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
-            <div class="dropdown menuElement">
-                <a href="#">Espace Membre</a>
-                <div class="dropdown-content">
-                    <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                    <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+        <!--Header, c'est-à-dire, le menu pour changer de page-->
+        <header class="header">
+            <nav class="menu">
+                <div class="menuElement"><a href="main.html">Menu</a></div>
+                <div class="menuElement"><a href="Article.html">Article</a></div>
+                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
+                <div class="dropdown menuElement">
+                    <a href="#">Espace Membre</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                        <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+                    </div>
+                </div>
+                <div class="menuElement"><a href="Infos.html" id="Infos" class="selected">Infos</a></div>
+                <!-- search bar right align -->
+                <div class="search">
+                    <form action="#">
+                        <input type="text" placeholder="Recherche" name="search">
+                        <button>
+                    </button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+        <!--Début de là où on pourra mettre du texte-->
+        <article>
+            <!-- <<<<<<< HEAD -->
+
+            <h1 id="Staff">Staff</h1>
+            <div class="Plateforme">
+                <div class="liste-équipe">
+                    <p><b>PDG </b> : Axel </p>
+                    <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
+                    <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
+                    <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
+                </div>
+                <div class="liens-sociaux">
+                    <h3><i>Insta</i> :</h3>
+                    <p><a href="https://instagram.com/inflow_officiel?igshid" target="_blank">Rejoignez notre Instagram !</a></p>
+                    <h3><i>Twitter</i> :</h3>
+                    <p><a href="https://twitter.com/InflowOfficiel" target="_blank">Rejoignez-nous sur Twitter !</a></p>
+                    <h3><i>Twitch</i> :</h3>
+                    <p><a href="https://www.twitch.tv/inflowofficiel" target="_blank">Suivez-nous sur Twitch !</a></p>
+                    <h3><i>Discord</i> :</h3>
+                    <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" target="_blank">Rejoignez le Discord !</a></p>
                 </div>
             </div>
-            <div class="menuElement"><a href="Infos.html" id="Infos" class="selected">Infos</a></div>
-            <!-- search bar right align -->
-            <div class="search">
-                <form action="#">
-                    <input type="text" placeholder="Recherche" name="search">
-                    <button>
-                    </button>
-                </form>
-            </div>
-        </nav>
-    </header>
-
-    <!--Début de là où on pourra mettre du texte-->
-    <article>
-        <!-- <<<<<<< HEAD -->
-
-        <h1 id="Staff">Staff</h1>
-        <div class="Plateforme">
-            <div class="liste-équipe">
-                <p><b>PDG </b> : Axel </p>
-                <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
-                <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
-                <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
-            </div>
-            <div class="liens-sociaux">
-                <h3><i>Insta</i> :</h3>
-                <p><a href="https://instagram.com/inflow_officiel?igshid" target="_blank">Rejoignez notre Instagram !</a></p>
-                <h3><i>Twitter</i> :</h3>
-                <p><a href="https://twitter.com/InflowOfficiel" target="_blank">Rejoignez-nous sur Twitter !</a></p>
-                <h3><i>Twitch</i> :</h3>
-                <p><a href="https://www.twitch.tv/inflowofficiel" target="_blank">Suivez-nous sur Twitch !</a></p>
-                <h3><i>Discord</i> :</h3>
-                <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" target="_blank">Rejoignez le Discord !</a></p>
-            </div>
-        </div>
 
 
-        <!-- >>>>>>> main
+            <!-- >>>>>>> main
                 <p>Début</p>
 
         -->
-    </article>
+        </article>
 
-    <!--Tout en bas de la page web, contient des infos-->
-    <footer>
-        <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" class="discord-link" target="_blank">Rejoignez le Discord !</a></p>
-        <button class="btn" id="darkTrigger">Thème sombre</button>
-    </footer>
+        <!--Tout en bas de la page web, contient des infos-->
+        <footer>
+            <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" class="discord-link" target="_blank">Rejoignez le Discord !</a></p>
+            <button class="btn" id="darkTrigger">Thème sombre</button>
+        </footer>
 
 
-</body>
+    </body>
 
-</html>
+    </html>
