@@ -1,6 +1,7 @@
 <!--Page recensant tout les articles -> quand clique sur titre article, rediriger sur article dans Publication.html-->
 
 <?php
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
 $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5'); 

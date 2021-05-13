@@ -2,7 +2,10 @@
 
 <!--Connecte à base de données + gère affiche des articles-->
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+session_start();
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+
+
 
 if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $get_id = htmlspecialchars($_GET['id']);

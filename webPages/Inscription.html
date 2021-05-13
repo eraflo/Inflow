@@ -3,8 +3,9 @@
 <!--Partie php = atteindre base de donnée + récupère infos formulaire, vérifie si tout est bien rempli, si pseudo et email existe pas 
     déjà et transmet à base de donnée-->
 <?php
-
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+
 
 if(isset($_POST["forminscription"])) {
 
@@ -63,7 +64,7 @@ if(isset($_POST["forminscription"])) {
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Espace Membre</title>
+        <title>Inscription</title>
         <!--Relié le script html au script css correspondant-->
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -122,7 +123,7 @@ if(isset($_POST["forminscription"])) {
                                 <label for="pseudo">Identifiant :</label>
                             </td>
                             <td>
-                                <input type="text" name="pseudo" id="pseudo" maxlength="10" placeholder="10 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required />
+                                <input type="text" name="pseudo" id="pseudo" maxlength="30" placeholder="30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required />
                             </td>
                         </tr>
                         <tr>

@@ -2,12 +2,18 @@
 
 <!--Connecte à base de données + début gérer accès membres-->
 <?php
-//session_start();
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-/*if(!isset($_SESSION['admin']) OR $_SEESION['admin'] != 1) {
-    exit();
-}*/
+if(isset($_GET['id']) AND $_GET['id'] > 0) {
+    $getid = intval($_GET['id']);
+    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+    $requser->execute(array($getid));
+    $userinfos = $requser->fetch();
+    if(!isset($_SESSION['admin']) AND $userinfos['admin'] != 1) {
+        header("Location: main.html?id=".$_SESSION['id']);
+    }
+}
 
 if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
     if(isset($_GET['confirmer']) AND !empty($_GET['confirmer'])) {
@@ -18,14 +24,15 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
     }
 }
 
-    if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
-        $supprime = (int) $_GET['supprime'];
+if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
+    $supprime = (int) $_GET['supprime'];
 
-        $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
-        $req->execute(array($supprime));
-    }
+    $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
+    $req->execute(array($supprime));
+}
 
 $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT 0,5');
+
 
 ?>
 
