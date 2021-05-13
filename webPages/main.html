@@ -22,6 +22,8 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
     }
 }
 
+$membres = $bdd2->query('SELECT * FROM membres');
+$m = $membres->fetch();
 
 ?>
 
@@ -57,14 +59,31 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
         <header class="header">
             <nav class="menu">
                 <div class="menuElement"><a href="main.html" class="selected">Menu</a></div>
-                <div class="menuElement"><a href="Article.html">Article</a></div>
+                <div class="dropdown menuElement"><a href="#">Article</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Article.html">Article</a></div>
+                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Poster.html">Poster</a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
                 <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
                 <div class="dropdown menuElement"><a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+                        <?php if(empty($_SESSION)) { ?>
                         <div class="menuElement">
-                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <a href="Connexion.html">Connexion</a></div>
+                        <?php } ?>
+                        <?php if(!empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
+                        <?php } ?>
+                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Admin.html">Admin</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -83,17 +102,6 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
 
         <!--Début de là où on pourra mettre du texte-->
         <article>
-            <!--Formulaire pour postez des articles-->
-            <form method="POST">
-                <input type="text" name="article_titre" placeholder="Titre" /> </br>
-                <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea></br>
-                <input type="submit" value="Envoyer l'article" /><br/>
-            </form>
-            <br/>
-            <!--Affiche message en lien avec le transfert des données du formulaire. 
-            Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
-            <?php if(isset($message)) { echo $message; } ?>
-            <br/>
         </article>
 
 

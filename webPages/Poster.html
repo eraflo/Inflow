@@ -1,45 +1,29 @@
-<!--Page pour les admins, à améliorer pour gérer commentaires, articles, connexion...-->
-
-<!--Connecte à base de données + début gérer accès membres-->
+<!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
-    header("Location: main.html");
-}
+if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
+    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu'])) {
 
-if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
-    if(isset($_GET['admin']) AND !empty($_GET['admin'])) {
 
-        $admin = (int) $_GET['admin'];
-        $req = $bdd->prepare('UPDATE membres SET admin = 1 WHERE id = ?');
-        $req->execute(array($admin));
-        $_SESSION['admin'] = $admin;
+        $article_titre = htmlspecialchars($_POST['article_titre']);
+        $article_contenu = htmlspecialchars($_POST['article_contenu']);
+
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, date_time_publication)
+            VALUES (?, ?, NOW())');
+        $ins->execute(array($article_titre, $article_contenu));
+
+        $message = 'Votre article a bien été posté';
+
+    } else {
+        $message = 'Veuillez remplir tous les champs';
     }
 }
 
-if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
-    if(isset($_GET['confirmer']) AND !empty($_GET['confirmer'])) {
-
-        $confirmer = (int) $_GET['confirmer'];
-        $req = $bdd->prepare('UPDATE membres SET confirmer = 1 WHERE id = ?');
-        $req->execute(array($confirmer));
-        $_SESSION['confirmer'] = $confirmer;
-    }
-}
-
-if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
-    $supprime = (int) $_GET['supprime'];
-    $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
-    $req->execute(array($supprime));
-}
-
-$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
-$membres2 = $bdd->query('SELECT * FROM membres');
+$membres2 = $bdd2->query('SELECT * FROM membres');
 $m = $membres2->fetch();
-
-
 ?>
 
     <!DOCTYPE html>
@@ -52,7 +36,7 @@ $m = $membres2->fetch();
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Admin</title>
+        <title>Inflow</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -62,6 +46,8 @@ $m = $membres2->fetch();
         <script src="jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
     </head>
+
+
 
     <body>
 
@@ -75,9 +61,8 @@ $m = $membres2->fetch();
                 <div class="dropdown menuElement"><a href="#">Article</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Article.html">Article</a></div>
-                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
-                            <a href="Poster.html">Poster</a>
+                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?><a href="Poster.html" class="selected">Poster</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -96,7 +81,7 @@ $m = $membres2->fetch();
                         <?php } ?>
                         <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
-                            <a href="Admin.html" class="selected">Admin</a>
+                            <a href="Admin.html">Admin</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -107,26 +92,27 @@ $m = $membres2->fetch();
                     <form action="#">
                         <input type="text" placeholder="Recherche" name="search">
                         <button>
-                        </button>
+                    </button>
                     </form>
                 </div>
             </nav>
         </header>
 
-        <ul>
-            <?php while($m = $membres->fetch()) { ?>
-            <li>
-                <?= $m['id'] ?> :
-                    <?= $m['pseudo'] ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
-                        <?php } ?>
-                        <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
-                        <?php } ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
-                        <?php } ?>
-            </li>
-            <?php } ?>
-        </ul>
+        <!--Début de là où on pourra mettre du texte-->
+        <article>
+            <!--Formulaire pour postez des articles-->
+            <form method="POST">
+                <input type="text" name="article_titre" placeholder="Titre" /> </br>
+                <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea></br>
+                <input type="submit" value="Envoyer l'article" /><br/>
+            </form>
+            <br/>
+            <!--Affiche message en lien avec le transfert des données du formulaire. 
+            Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
+            <?php if(isset($message)) { echo $message; } ?>
+            <br/>
+        </article>
+
 
         <!--Tout en bas de la page web, contient des infos-->
         <footer>
@@ -134,6 +120,7 @@ $m = $membres2->fetch();
             <button id="darkTrigger" class="btn">Thème sombre</button>
 
         </footer>
+
 
     </body>
 

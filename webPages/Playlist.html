@@ -2,6 +2,8 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
+$membres2 = $bdd->query('SELECT * FROM membres');
+$m = $membres2->fetch();
 ?>
 
 
@@ -39,15 +41,31 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root",
         <header class="header">
             <nav class="menu">
                 <div class="menuElement"><a href="main.html">Menu</a></div>
-                <div class="menuElement"><a href="Article.html">Article</a></div>
+                <div class="dropdown menuElement"><a href="#">Article</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Article.html">Article</a></div>
+                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Poster.html">Poster</a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
                 <div class="menuElement"><a href="Playlist.html" class="selected">Playlist</a></div>
-                <div class="dropdown menuElement">
-                    <a href="#">Espace Membre</a>
+                <div class="dropdown menuElement"><a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+                        <?php if(empty($_SESSION)) { ?>
                         <div class="menuElement">
-                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <a href="Connexion.html">Connexion</a></div>
+                        <?php } ?>
+                        <?php if(!empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
+                        <?php } ?>
+                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Admin.html">Admin</a>
                             <?php } ?>
                         </div>
                     </div>
