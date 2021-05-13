@@ -5,6 +5,10 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
+if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
+    header("Location: main.html");
+}
+
 if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $getid = intval($_GET['id']);
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
@@ -16,11 +20,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 }
 
 if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
-    if(isset($_GET['confirmer']) AND !empty($_GET['confirmer'])) {
-        $confirmer = (int) $_GET['confirmer'];
+    if(isset($_GET['admin']) AND !empty($_GET['admin'])) {
 
-        $req = $bdd->prepare('UPDATE membres SET confirmer = 1 WHERE id = ?');
-        $req->execute(array($confirmer));
+        $admin = (int) $_GET['admin'];
+        $req = $bdd->prepare('UPDATE membres SET admin = 1 WHERE id = ?');
+        $req->execute(array($admin));
     }
 }
 
@@ -92,7 +96,7 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT 0,5');
             <li>
                 <?= $m['id'] ?> :
                     <?= $m['pseudo'] ?>
-                        <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Confirmer</a>
+                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Confirmer</a>
                         <?php } ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
             </li>
             <?php } ?>
