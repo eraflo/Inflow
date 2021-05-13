@@ -18,6 +18,8 @@ function dark_mode_button_on_click() {
 
 function activate_dark_mode() {
     // Toggle dark mode -- À CHANGER / LA VARIABLE window.localStorage["dark_mode"] STOCKE L'ÉTAT DU DARK MODE, PLUS BESOIN DE CHECK POUR CHAQUE DIV/CLASS
+    $("*").addClass("noTransition");
+
     if (document.documentElement.getAttribute("user-color-mode") == "user_forced")
         document.documentElement.setAttribute("user-color-mode", "user_desactivated");
     else if (document.documentElement.getAttribute("user-color-mode") == "user_desactivated")
@@ -25,64 +27,10 @@ function activate_dark_mode() {
     else
         document.documentElement.setAttribute("user-color-mode", "user_forced");
 
-    $("*").addClass("noTransition");
-
-    if ($("body").hasClass("darkbody")) {
-        $("body").removeClass("darkbody");
-    } else {
-        $("body").addClass("darkbody");
-    }
-    if ($("footer").hasClass("darkfoncé")) {
-        $("footer").removeClass("darkfoncé");
-    } else {
-        $("footer").addClass("darkfoncé");
-    }
-    if ($("article").hasClass("darkbody")) {
-        $("article").removeClass("darkbody");
-    } else {
-        $("article").addClass("darkbody");
-    }
-    if ($("div").hasClass("darkfoncé")) {
-        $("div").removeClass("darkfoncé");
-    } else {
-        $("div").addClass("darkfoncé");
-    }
-    if ($("header").hasClass("darkfoncé")) {
-        $("header").removeClass("darkfoncé");
-    } else {
-        $("header").addClass("darkfoncé");
-    }
-    if ($(".Plateforme").hasClass("darkbody")) {
-        $(".Plateforme").removeClass("darkbody");
-    } else {
-        $(".Plateforme").addClass("darkbody");
-    }
-    if ($(".liste-équipe").hasClass("darkbody")) {
-        $(".liste-équipe").removeClass("darkbody");
-    } else {
-        $(".liste-équipe").addClass("darkbody");
-    }
-    if ($(".liens-sociaux").hasClass("darkbody")) {
-        $(".liens-sociaux").removeClass("darkbody");
-    } else {
-        $(".liens-sociaux").addClass("darkbody");
-    }
-    if ($("a").hasClass("darkbody")) {
-        $("a").removeClass("darkbody");
-    } else {
-        $("a").addClass("darkbody");
-    }
-    if ($(".menu").hasClass("darkbody")) {
-        $(".menu").removeClass("darkbody");
-    } else {
-        $(".menu").addClass("darkbody");
-    }
-
-
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {
         $("*").removeClass("noTransition");
-    }, 50);
+    }, 10);
     
 }
 
