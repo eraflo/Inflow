@@ -18,6 +18,13 @@ function dark_mode_button_on_click() {
 
 function activate_dark_mode() {
     // Toggle dark mode -- À CHANGER / LA VARIABLE window.localStorage["dark_mode"] STOCKE L'ÉTAT DU DARK MODE, PLUS BESOIN DE CHECK POUR CHAQUE DIV/CLASS
+    if (document.documentElement.getAttribute("user-color-mode") == "user_forced")
+        document.documentElement.setAttribute("user-color-mode", "user_desactivated");
+    else if (document.documentElement.getAttribute("user-color-mode") == "user_desactivated")
+        document.documentElement.setAttribute("user-color-mode", "user_forced");
+    else
+        document.documentElement.setAttribute("user-color-mode", "user_forced");
+
     $("*").addClass("noTransition");
 
     if ($("body").hasClass("darkbody")) {
