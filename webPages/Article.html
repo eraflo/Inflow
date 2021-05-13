@@ -49,6 +49,10 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                         <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+                        <div class="menuElement">
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>

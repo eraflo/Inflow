@@ -94,8 +94,12 @@ if(isset($_POST["forminscription"])) {
                 <div class="dropdown menuElement">
                     <a href="#">Espace Membre</a>
                     <div class="dropdown-content">
-                        <div class="menuElement"><a class="selected" href="Inscription.html">Inscription</a></div>
+                        <div class="menuElement"><a href="Inscription.html" class="selected">Inscription</a></div>
                         <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+                        <div class="menuElement">
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>

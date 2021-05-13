@@ -55,10 +55,14 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                 <div class="menuElement"><a href="Article.html">Article</a></div>
                 <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
                 <div class="dropdown menuElement">
-                    <a href="#">EspaceMembre</a>
+                    <a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                         <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
+                        <div class="menuElement">
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>

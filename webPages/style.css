@@ -2,6 +2,7 @@
 
 
 /*--Stockage de variables principalement pour les couleurs du site--*/
+
 :root {
     --color-main-theme: royalblue;
     --image-background: url("assets/background.png");
@@ -14,12 +15,17 @@
     --color-unselected-links: white;
     --color-selected: black;
     --color-active: black;
-    --color-selection-text: inherit; /*couleur du texte lors de la selection*/
-    --color-selection-bg: rgb(16, 137, 237, 0.45); /*couleur du surlignage lors de la sélection*/
+    --color-selection-text: inherit;
+    /*couleur du texte lors de la selection*/
+    --color-selection-bg: rgb(16, 137, 237, 0.45);
+    /*couleur du surlignage lors de la sélection*/
     --color-underline: dodgerblue;
     --color-navbar-background: var(--color-main-theme);
 }
+
+
 /*mode nuit*/
+
 :root[user-color-mode=user_forced] {
     --color-main-theme: inherit;
     --image-background: url("assets/backgrounddark.jpg");
@@ -37,13 +43,18 @@
     --color-underline: rgb(143, 143, 33);
     --color-navbar-background: rgba(0, 0, 0, 0.6);
 }
+
+
 /*--Selection du texte--*/
+
 ::selection {
     background-color: var(--color-selection-bg);
     color: var(--color-selection-text)
 }
 
+
 /*--Affecte toute la page HTML--*/
+
 html {
     height: 100%;
     background-position: center;
@@ -57,6 +68,7 @@ html {
 
 /*--Ne pas laisser de rebord blanc
 	Affecte le corps de la page sans affecter le header--*/
+
 body {
     overflow: auto;
     overflow-x: hidden;
@@ -81,6 +93,7 @@ article {
 
 
 /*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
+
 .header {
     position: sticky;
     top: 130px;
@@ -96,6 +109,7 @@ article {
 
 
 /*--Affecte les différents éléments contenus dans header, mais pas le header en lui même--*/
+
 .menu {
     padding: 0 10px;
     font-family: 'Oswald', sans-serif;
@@ -104,7 +118,10 @@ article {
     height: inherit;
     transition: 1s;
 }
+
+
 /*--Éléments dans la navbar--*/
+
 .menuElement {
     display: inline-block;
     background: none;
@@ -113,6 +130,7 @@ article {
 
 /*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
+
 .menu a:any-link {
     font-weight: bold;
     text-transform: uppercase;
@@ -121,7 +139,10 @@ article {
     color: var(--color-unselected-links);
     transition: all 0.5s ease-in-out;
 }
+
+
 /*--Affecte les transitions lorsque l'on a la souris sur un élément du header(Menu, Article...)--*/
+
 .menu a:any-link:hover {
     color: var(--color-text-hover);
     transition: all 0.3s ease 0.2s;
@@ -131,13 +152,19 @@ article {
     -ms-transition: all 0.3s ease 0.2s;
     -o-transition: all 0.3s ease 0.2s;
 }
+
+
 /*--Change de couleur lorsque l'utilisateur clique sur l'élément
 	(Seulement avant le changement de page)--*/
+
 .menu a:any-link:active {
     color: var(--color-active);
     text-shadow: var(--color-text-shadow-selected);
 }
+
+
 /*--Page actuelle sélectionnée dans la navbar--*/
+
 .menu a.selected:any-link {
     color: var(--color-selected);
     text-shadow: var(--color-text-shadow-active);
@@ -145,6 +172,7 @@ article {
 
 
 /*--Affecte la bannière en haut de la page--*/
+
 .bannière {
     width: 100%;
     height: 130px;
@@ -157,14 +185,17 @@ article {
 
 
 /*--Souligner les liens (c bo ptn)--*/
+
 a {
     display: inline-block;
     position: relative;
     text-decoration: none;
 }
+
 a:any-link {
     color: var(--color-links);
 }
+
 a:any-link:after {
     content: '';
     position: absolute;
@@ -177,6 +208,7 @@ a:any-link:after {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
+
 a:any-link:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -184,6 +216,7 @@ a:any-link:hover:after {
 
 
 /*--Dans Inscription.html, gère les différentes zones où l'on peut écrire--*/
+
 form {
     margin-top: 20px;
     display: flex;
@@ -191,12 +224,14 @@ form {
 
 
 /*--Gère les liens des réseaux sociaux--*/
+
 .lien-sociaux {
     color: var(--color-links);
 }
 
 
 /*--Classe gérant dans Infos.html la mise en page du texte. Va de ici --*/
+
 .Plateforme {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -205,13 +240,17 @@ form {
     padding-bottom: 2em;
     font-family: 'Oswald', sans-serif;
 }
+
 .Plateforme :first-child {
     align-self: center;
 }
+
+
 /*--A ici--*/
 
 
 /*--Gère le sous-titre dans Infos.html--*/
+
 #Staff {
     font-size: 50px;
     font-family: 'Open Sans', sans-serif;
@@ -220,6 +259,7 @@ form {
 
 
 /*--Affecte le footer et ce qui s'y trouve--*/
+
 footer {
     background-color: var(--color-main-theme);
     text-align: center;
@@ -235,15 +275,22 @@ footer {
 
 
 /*  Menu déroulant Espace Membre  */
+
+
 /* Le conteneur <div> - nécessaire pour positionner le contenu de la liste déroulante */
+
 .dropdown {
     position: relative;
 }
+
 .dropdown:hover {
     transition: all 0.5s ease-in-out;
     width: auto;
 }
+
+
 /* Contenu déroulant (masqué par défaut) */
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -253,19 +300,26 @@ footer {
     box-shadow: 12px 16px 8px 0px rgba(0, 0, 0, 0.2);
     transition: 1s;
 }
+
+
 /* Liens dans la liste déroulante */
+
 .dropdown-content a {
     color: var(--color-text);
     text-decoration: none;
     padding: 10px;
 }
+
+
 /* Afficher le menu déroulant en survol */
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 
 /*--Bouton dark mode - à changer de nom de classe--*/
+
 .footer btn {
     margin-left: 1700px;
     border: none;
@@ -280,6 +334,7 @@ footer {
 
 
 /* styling search bar */
+
 .search input[type=text] {
     width: 300px;
     height: 25px;
@@ -287,11 +342,13 @@ footer {
     border: none;
     outline: none;
 }
+
 .search {
     float: right;
     margin: 7px;
     background: none;
 }
+
 .search button {
     float: right;
     padding: 5px 10px;
@@ -304,10 +361,14 @@ footer {
 
 
 /*--NE PAS AFFICHER UN ELEMENT--*/
+
 .hidden {
     visibility: hidden;
 }
+
+
 /*--ENLEVER LES TRANSITIONS D'UN ELEMENT--*/
+
 .noTransition {
     /*CSS transitions*/
     -o-transition-property: none !important;
@@ -329,8 +390,6 @@ footer {
     animation: none !important;
 }
 
-
-
 body {
     background: var(--image-background);
     background-color: var(--color-background);
@@ -338,21 +397,27 @@ body {
     background-repeat: repeat-y;
     color: #ffffff;
 }
+
 article {
     color: var(--color-text);
 }
-.dropdown-content{
+
+.dropdown-content {
     background-color: var(--color-navbar-background);
 }
+
 nav.menu {
     background: var(--color-navbar-background);
 }
+
 .menu a.selected:any-link {
     color: var(--color-selected);
     text-shadow: var(--color-text-shadow-selected);
 }
 
+
 /*--À quoi ça sert ? Peut-être suppr--*/
+
 .dark button {
     background: inherit;
     color: #fff;
@@ -360,6 +425,7 @@ nav.menu {
 
 
 /*--Code en 2 fois : à vérifier si erreur ou pas. En progression.--*/
+
 a.selected {
     color: var(--color-selected);
     text-shadow: 0px 0px 12px #62bcda;

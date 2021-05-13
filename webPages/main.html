@@ -1,7 +1,8 @@
 <!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
     if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu'])) {
@@ -20,6 +21,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
         $message = 'Veuillez remplir tous les champs';
     }
 }
+
 
 ?>
 
@@ -62,8 +64,8 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                         <div class="menuElement"><a href="Connexion.html">Connexion</a></div>
                         <div class="menuElement">
-                            <!--<?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1) {?>--><a href="Admin.html">Admin</a>
-                            <!--<<?php } ?>-->
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

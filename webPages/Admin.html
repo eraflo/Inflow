@@ -15,6 +15,7 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
         $admin = (int) $_GET['admin'];
         $req = $bdd->prepare('UPDATE membres SET admin = 1 WHERE id = ?');
         $req->execute(array($admin));
+        $_SESSION['admin'] = $admin;
     }
 }
 

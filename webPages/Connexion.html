@@ -15,13 +15,17 @@ session_start();
             $requser->execute(array($pseudoconnect, $passconnect));
             $userexist = $requser->rowCount();
             if($userexist == 1) {
-                $userinfos = $requser->fetch();
-                $_SESSION['id'] = $userinfos['id'];
-                $_SESSION['pseudo'] = $userinfos['pseudo'];
-                $_SESSION['adresse_email'] = $userinfos['adresse_email'];
-                $_SESSION['confirmer'] = $userinfos['confirmer'];
-                $_SESSION['admin'] = $userinfos['admin'];
-                header("Location: Profil.html?id=".$_SESSION['id']);
+                if(empty($_SESSION)) {
+                    $userinfos = $requser->fetch();
+                    $_SESSION['id'] = $userinfos['id'];
+                    $_SESSION['pseudo'] = $userinfos['pseudo'];
+                    $_SESSION['adresse_email'] = $userinfos['adresse_email'];
+                    $_SESSION['confirmer'] = $userinfos['confirmer'];
+                    $_SESSION['admin'] = $userinfos['admin'];
+                    header("Location: Profil.html?id=".$_SESSION['id']);
+                } else {
+                    $erreur = "Vous êtes déjà connecté";
+                }
             } else {
                 $erreur = "Identifiant ou mot de passe erroné";
             }
@@ -73,7 +77,11 @@ session_start();
                     <a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <div class="menuElement"><a class="selected" href="Connexion.html">Connexion</a></div>
+                        <div class="menuElement"><a href="Connexion.html" class="selected">Connexion</a></div>
+                        <div class="menuElement">
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?><a href="Admin.html">Admin</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
