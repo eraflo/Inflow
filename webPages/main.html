@@ -79,12 +79,12 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
         <article>
             <!--Formulaire pour postez des articles-->
             <form method="POST">
-                <input type="text" name="article_titre" placeholder="Titre" /> </br>
-                <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea></br>
+                <input type="text" name="article_titre" placeholder="Titre" /><br/>
+                <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
                 <input type="submit" value="Envoyer l'article" /><br/>
             </form>
             <br/>
-            <!--Affiche message en lien avec le transfert des données du formulaire. 
+            <!--Affiche message en lien avec le transfert des données du formulaire.
             Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
             <?php if(isset($message)) { echo $message; } ?>
             <br/>
