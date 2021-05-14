@@ -15,7 +15,10 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
         $admin = (int) $_GET['admin'];
         $req = $bdd->prepare('UPDATE membres SET admin = 1 WHERE id = ?');
         $req->execute(array($admin));
-        $_SESSION['admin'] = $admin;
+        $nadmin = $bdd->query('SELECT * FROM membres');
+        $newadmin = $nadmin->fetch();
+
+        $_SESSION['admin'] = $newadmin['admin'];
     }
 }
 
@@ -25,7 +28,9 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
         $confirmer = (int) $_GET['confirmer'];
         $req = $bdd->prepare('UPDATE membres SET confirmer = 1 WHERE id = ?');
         $req->execute(array($confirmer));
-        $_SESSION['confirmer'] = $confirmer;
+        $nconf = $bdd->query('SELECT * FROM membres');
+        $newconf = $nconf->fetch();
+        $_SESSION['confirmer'] = $newconf['confirmer'];
     }
 }
 
