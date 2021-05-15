@@ -50,6 +50,33 @@ if(isset($_SESSION['id'])) {
             $erreur = "Vos mots de passe ne correspondent pas ";
         }
     }
+
+    if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
+        $tailleMax = 2097152;
+        $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
+        if($_FILES['avatar']['size'] <= $tailleMax) {
+            $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+            if(in_array($extensionUpload, $extensionValides)) {
+                $chemin = "membres/avatars/".$_SESSION['id'].".".$extensionUpload;
+                $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                if($resultat) {
+                    $updateAvatar = $bdd->prepare("UPDATE membres SET avatar = :avatar WHERE id = :id");
+                    $updateAvatar->execute(array(
+                        'avatar' => $_SESSION['id'].".".$extensionUpload,
+                        'id' => $_SESSION['id']
+                        ));
+                    header("Location: Profil.html?id=".$_SESSION['id']);
+                } else {
+                    $erreur = "Il y a une erreur lors de l'importation de votre fichier";
+                }
+            } else {
+                $erreur = "Ce format d'image n'est pas valide";
+            }
+        } else {
+            $erreur = "Cette image en impose trop (5Mo max)";
+        }
+    }
+
     if(isset($_POST['newpseudo']) AND $_POST['newpseudo'] == $user['pseudo']) {
         header("Location: Profil.html?id=".$_SESSION['id']);
     }
@@ -136,7 +163,7 @@ if(isset($_SESSION['id'])) {
         <article>
             <div align="center">
                 <h1>Edition de mon profil</h1>
-                <form method="POST" action="">
+                <form method="POST" action="" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td align="right">
@@ -168,6 +195,14 @@ if(isset($_SESSION['id'])) {
                             </td>
                             <td>
                                 <input type="email" id="newemail" name="newemail" value="<?php echo $user['adresse_email']; ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <label>Avatar :</label>
+                            </td>
+                            <td>
+                                <input type="file" name="avatar" />
                             </td>
                         </tr>
                         <tr>
