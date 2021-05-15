@@ -1,11 +1,30 @@
+<!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-$membres2 = $bdd->query('SELECT * FROM membres');
+if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
+    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu'])) {
+
+
+        $article_titre = htmlspecialchars($_POST['article_titre']);
+        $article_contenu = htmlspecialchars($_POST['article_contenu']);
+
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, date_time_publication)
+            VALUES (?, ?, NOW())');
+        $ins->execute(array($article_titre, $article_contenu));
+
+        $message = 'Votre article a bien été posté';
+
+    } else {
+        $message = 'Veuillez remplir tous les champs';
+    }
+}
+
+$membres2 = $bdd2->query('SELECT * FROM membres');
 $m = $membres2->fetch();
 ?>
-
 
     <!DOCTYPE html>
     <html>
@@ -17,22 +36,20 @@ $m = $membres2->fetch();
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!--Nom De la page-->
-        <title>Playlist Inflow</title>
-        <!--Relié le script html au script css correspondant-->
+        <title>Poster</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <script src="jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-
     </head>
 
+
+
     <body>
-
-
 
         <!--Titre de la page web où on se trouve-->
         <img class="bannière" src="assets/banniere_twi.png" />
@@ -44,14 +61,13 @@ $m = $membres2->fetch();
                 <div class="dropdown menuElement"><a href="#">Article</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Article.html">Article</a></div>
-                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
-                            <a href="Poster.html">Poster</a>
+                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?><a href="Poster.html" class="selected">Poster</a>
                             <?php } ?>
                         </div>
                     </div>
                 </div>
-                <div class="menuElement"><a href="Playlist.html" class="selected">Playlist</a></div>
+                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
                 <div class="dropdown menuElement"><a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
@@ -84,22 +100,28 @@ $m = $membres2->fetch();
 
         <!--Début de là où on pourra mettre du texte-->
         <article>
-
-            <h3>Playlist 1</h3>
-
-
-
-            <p>Début</p>
-
+            <!--Formulaire pour postez des articles-->
+            <form method="POST">
+                <input type="text" name="article_titre" placeholder="Titre" /> </br>
+                <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea></br>
+                <input type="submit" value="Envoyer l'article" /><br/>
+            </form>
+            <br/>
+            <!--Affiche message en lien avec le transfert des données du formulaire. 
+            Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
+            <?php if(isset($message)) { echo $message; } ?>
+            <br/>
         </article>
+
 
         <!--Tout en bas de la page web, contient des infos-->
         <footer>
-
             <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-            <button id="darkTrigger">Thème sombre</button>
+            <button id="darkTrigger" class="btn">Thème sombre</button>
 
         </footer>
+
+
     </body>
 
     </html>

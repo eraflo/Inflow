@@ -1,11 +1,51 @@
+<!--Page pour les admins, à améliorer pour gérer commentaires, articles, connexion...-->
+
+<!--Connecte à base de données + début gérer accès membres-->
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
+if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
+    header("Location: main.html");
+}
+
+if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
+    if(isset($_GET['admin']) AND !empty($_GET['admin'])) {
+
+        $admin = (int) $_GET['admin'];
+        $req = $bdd->prepare('UPDATE membres SET admin = 1 WHERE id = ?');
+        $req->execute(array($admin));
+        $nadmin = $bdd->query('SELECT * FROM membres');
+        $newadmin = $nadmin->fetch();
+
+        $_SESSION['admin'] = $newadmin['admin'];
+    }
+}
+
+if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
+    if(isset($_GET['confirmer']) AND !empty($_GET['confirmer'])) {
+
+        $confirmer = (int) $_GET['confirmer'];
+        $req = $bdd->prepare('UPDATE membres SET confirmer = 1 WHERE id = ?');
+        $req->execute(array($confirmer));
+        $nconf = $bdd->query('SELECT * FROM membres');
+        $newconf = $nconf->fetch();
+        $_SESSION['confirmer'] = $newconf['confirmer'];
+    }
+}
+
+if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
+    $supprime = (int) $_GET['supprime'];
+    $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
+    $req->execute(array($supprime));
+}
+
+$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
-?>
 
+
+?>
 
     <!DOCTYPE html>
     <html>
@@ -17,22 +57,18 @@ $m = $membres2->fetch();
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!--Nom De la page-->
-        <title>Playlist Inflow</title>
-        <!--Relié le script html au script css correspondant-->
+        <title>Admin</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <script src="jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-
     </head>
 
     <body>
-
-
 
         <!--Titre de la page web où on se trouve-->
         <img class="bannière" src="assets/banniere_twi.png" />
@@ -51,7 +87,7 @@ $m = $membres2->fetch();
                         </div>
                     </div>
                 </div>
-                <div class="menuElement"><a href="Playlist.html" class="selected">Playlist</a></div>
+                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
                 <div class="dropdown menuElement"><a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
@@ -65,7 +101,7 @@ $m = $membres2->fetch();
                         <?php } ?>
                         <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
-                            <a href="Admin.html">Admin</a>
+                            <a href="Admin.html" class="selected">Admin</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -76,30 +112,34 @@ $m = $membres2->fetch();
                     <form action="#">
                         <input type="text" placeholder="Recherche" name="search">
                         <button>
-                    </button>
+                        </button>
                     </form>
                 </div>
             </nav>
         </header>
 
-        <!--Début de là où on pourra mettre du texte-->
-        <article>
-
-            <h3>Playlist 1</h3>
-
-
-
-            <p>Début</p>
-
-        </article>
+        <ul>
+            <?php while($m = $membres->fetch()) { ?>
+            <li>
+                <?= $m['id'] ?> :
+                    <?= $m['pseudo'] ?>
+                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
+                        <?php } ?>
+                        <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
+                        <?php } ?>
+                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
+                        <?php } ?>
+            </li>
+            <?php } ?>
+        </ul>
 
         <!--Tout en bas de la page web, contient des infos-->
         <footer>
-
             <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-            <button id="darkTrigger">Thème sombre</button>
+            <button id="darkTrigger" class="btn">Thème sombre</button>
 
         </footer>
+
     </body>
 
     </html>

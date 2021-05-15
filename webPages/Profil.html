@@ -1,11 +1,20 @@
 <?php
+
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-$membres2 = $bdd->query('SELECT * FROM membres');
-$m = $membres2->fetch();
-?>
+if(isset($_GET['id']) AND $_GET['id'] > 0) {
+    $getid = intval($_GET['id']);
+    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+    $requser->execute(array($getid));
+    $userinfos = $requser->fetch();
+    if(!isset($_SESSION['id']) OR $userinfos['id'] != $_SESSION['id']) {
+        header("Location: Connexion.html");
+    }
 
+
+
+?>
 
     <!DOCTYPE html>
     <html>
@@ -17,18 +26,19 @@ $m = $membres2->fetch();
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!--Nom De la page-->
-        <title>Playlist Inflow</title>
+        <title>Profil</title>
         <!--Relié le script html au script css correspondant-->
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <script src="jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
 
     </head>
+
 
     <body>
 
@@ -51,7 +61,7 @@ $m = $membres2->fetch();
                         </div>
                     </div>
                 </div>
-                <div class="menuElement"><a href="Playlist.html" class="selected">Playlist</a></div>
+                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
                 <div class="dropdown menuElement"><a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
@@ -61,7 +71,7 @@ $m = $membres2->fetch();
                         <?php } ?>
                         <?php if(!empty($_SESSION)) { ?>
                         <div class="menuElement">
-                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
+                            <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
                         <?php } ?>
                         <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
@@ -84,22 +94,38 @@ $m = $membres2->fetch();
 
         <!--Début de là où on pourra mettre du texte-->
         <article>
+            <div align="center">
+                <h1>Profil de
+                    <?php echo $userinfos['pseudo']; ?>
+                </h1>
+                <br/><br/> Pseudo =
+                <?php echo $userinfos['pseudo']; ?>
+                <br/> Email =
+                <?php echo $userinfos['adresse_email']; ?>
+                <br/>
 
-            <h3>Playlist 1</h3>
+                <?php
+                if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) {
+                    ?>
+                    <a href="editionprofil.html">Editer mon profil</a><br/>
+                    <a href="Déconnexion.html">Se déconnecter</a>
+                    <?php } ?>
 
 
+            </div>
 
-            <p>Début</p>
 
         </article>
 
         <!--Tout en bas de la page web, contient des infos-->
         <footer>
-
             <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-            <button id="darkTrigger">Thème sombre</button>
-
+            <button id="darkTrigger" class="btn">Thème sombre</button>
         </footer>
+
     </body>
 
     </html>
+    <?php
+}
+?>

@@ -1,34 +1,83 @@
-/*--Rappel:
-	html => balise
-	.header => class
-	#Staff => id
---*/
+/*--Fichier style css principal--*/
+
+
+/*--Stockage de variables principalement pour les couleurs du site--*/
+
+:root {
+    --color-main-theme: royalblue;
+    --image-background: url("assets/background.png");
+    --color-background: royalblue;
+    --color-text: black;
+    --color-text-shadow-selected: 0px 0px 20px white;
+    --color-text-shadow-active: 0px 0px 12px #62bcda;
+    --color-text-hover: #62bcda;
+    --color-links: black;
+    --color-unselected-links: white;
+    --color-selected: black;
+    --color-active: black;
+    --color-selection-text: inherit;
+    /*couleur du texte lors de la selection*/
+    --color-selection-bg: rgb(16, 137, 237, 0.45);
+    /*couleur du surlignage lors de la sélection*/
+    --color-underline: dodgerblue;
+    --color-navbar-background: var(--color-main-theme);
+}
+
+
+/*mode nuit*/
+
+:root[user-color-mode=user_forced] {
+    --color-main-theme: inherit;
+    --image-background: url("assets/backgrounddark.jpg");
+    --color-background: white;
+    --color-text: white;
+    --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
+    --color-text-shadow-active: inherit;
+    --color-text-hover: #C0C0C0;
+    --color-links: white;
+    --color-unselected-links: white;
+    --color-selected: #808080;
+    --color-active: black;
+    --color-selection-text: inherit;
+    --color-selection-bg: rgb(218, 167, 55, 0.6);
+    --color-underline: rgb(143, 143, 33);
+    --color-navbar-background: rgba(0, 0, 0, 0.6);
+}
+
+
+/*--Selection du texte--*/
+
+::selection {
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text)
+}
 
 
 /*--Affecte toute la page HTML--*/
 
 html {
     height: 100%;
-    background: url("assets/background.png");
     background-position: center;
     background-color: white;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
+    margin-top: 130px;
+    transition: 1s;
 }
 
 
 /*--Ne pas laisser de rebord blanc
-	Affecte le corps de la page sans affecter
-		le header--*/
+	Affecte le corps de la page sans affecter le header--*/
 
 body {
     overflow: auto;
+    overflow-x: hidden;
     /* Hide scrollbars */
     position: relative;
     min-height: 100%;
     margin: 0 auto;
     background-size: cover;
-    overflow-x: hidden;
+    background: var(--image-background);
 }
 
 
@@ -39,19 +88,23 @@ article {
     padding-bottom: 5em;
     margin-left: 15px;
     margin-right: 15px;
-    color: black;
+    color: var(--color-text);
 }
 
 
 /*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
 
 .header {
-    position: static;
+    position: sticky;
+    top: 130px;
     left: 0;
     right: 0;
     height: 80px;
     line-height: 80px;
-    background-color: rgb(42, 70, 196);
+    background-color: var(--color-main-theme);
+    width: 100%;
+    transition: 1s;
+    z-index: 100000;
 }
 
 
@@ -61,26 +114,37 @@ article {
     padding: 0 10px;
     font-family: 'Oswald', sans-serif;
     font-size: 1.1em;
+    width: 100%;
+    height: inherit;
+    transition: 1s;
+}
+
+
+/*--Éléments dans la navbar--*/
+
+.menuElement {
+    display: inline-block;
+    background: none;
 }
 
 
 /*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
 
-.menu a {
+.menu a:any-link {
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
     padding: 0 10px;
-    color: #FFF;
+    color: var(--color-unselected-links);
     transition: all 0.5s ease-in-out;
 }
 
 
 /*--Affecte les transitions lorsque l'on a la souris sur un élément du header(Menu, Article...)--*/
 
-.menu a:hover {
-    color: #62bcda;
+.menu a:any-link:hover {
+    color: var(--color-text-hover);
     transition: all 0.3s ease 0.2s;
     text-shadow: 0px 0px 18px white;
     -webkit-transition: all 0.3s ease 0.2s;
@@ -93,38 +157,61 @@ article {
 /*--Change de couleur lorsque l'utilisateur clique sur l'élément
 	(Seulement avant le changement de page)--*/
 
-.menu a:active {
-    color: black;
-    text-shadow: 0px 0px 20px white;
+.menu a:any-link:active {
+    color: var(--color-active);
+    text-shadow: var(--color-text-shadow-selected);
 }
 
 
-/*--Page actuelle sélectionnée--*/
+/*--Page actuelle sélectionnée dans la navbar--*/
 
-a.selected {
-    color: black;
-    text-shadow: 0px 0px 12px #62bcda;
+.menu a.selected:any-link {
+    color: var(--color-selected);
+    text-shadow: var(--color-text-shadow-active);
 }
 
 
-/*--Affecte le titre en haut de la page--*/
+/*--Affecte la bannière en haut de la page--*/
 
 .bannière {
-    background-image: url("assets/banniere_twi.png");
-    background-color: white;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 5px solid white;
     width: 100%;
-    height: 220px;
+    height: 130px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    object-fit: cover;
+    transition: 1s;
 }
 
 
-/*--Classes ne devant pas être affichées--*/
+/*--Souligner les liens (c bo ptn)--*/
 
-.hidden {
-    text-align: center;
-    visibility: hidden;
+a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+
+a:any-link {
+    color: var(--color-links);
+}
+
+a:any-link:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-underline);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+a:any-link:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 
@@ -136,25 +223,10 @@ form {
 }
 
 
-/*--Code en 2 fois : à vérifier si erreur ou pas. En progression.--*/
-
-a.selected {
-    color: black;
-}
-
-
-/*--Gère le lien discord--*/
-
-a.discord-link {
-    font-weight: bold;
-    color: white;
-}
-
-
 /*--Gère les liens des réseaux sociaux--*/
 
 .lien-sociaux {
-    color: black;
+    color: var(--color-links);
 }
 
 
@@ -182,20 +254,22 @@ a.discord-link {
 #Staff {
     font-size: 50px;
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 }
 
 
 /*--Affecte le footer et ce qui s'y trouve--*/
 
 footer {
-    background-color: rgb(42, 70, 196);
+    background-color: var(--color-main-theme);
     text-align: center;
-    color: white;
+    color: var(--color-text);
     padding: 0.5em;
     margin-bottom: 0;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -203,33 +277,15 @@ footer {
 /*  Menu déroulant Espace Membre  */
 
 
-/* Bouton déroulant */
-
-.dropbtn {
-    background-color: rgb(42, 70, 196);
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #FFF;
-    transition: all 0.5s ease-in-out;
-    border: none;
-    padding: 0 5px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1em;
-}
-
-
 /* Le conteneur <div> - nécessaire pour positionner le contenu de la liste déroulante */
 
 .dropdown {
     position: relative;
-    display: inline-block;
 }
 
-.dropdown button:hover {
-    color: #62bcda;
-    transition: all 0.3s ease 0.2s;
-    text-shadow: 0px 0px 18px white;
+.dropdown:hover {
+    transition: all 0.5s ease-in-out;
+    width: auto;
 }
 
 
@@ -239,20 +295,19 @@ footer {
     display: none;
     position: absolute;
     text-align: center;
-    background-color: royalblue;
+    background-color: var(--color-navbar-background);
     width: 100%;
     box-shadow: 12px 16px 8px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    transition: 1s;
 }
 
 
 /* Liens dans la liste déroulante */
 
 .dropdown-content a {
-    color: white;
-    padding: 0px 0px;
+    color: var(--color-text);
     text-decoration: none;
-    display: block;
+    padding: 10px;
 }
 
 
@@ -263,39 +318,18 @@ footer {
 }
 
 
-/*--Gère le dark/white mode--*/
+/*--Bouton dark mode - à changer de nom de classe--*/
 
-@media (prefers-color-scheme: dark) {
-    .bannière {
-        border: 5px solid royalblue;
-        background-color: royalblue;
-    }
-    html {
-        filter: brightness(85%);
-    }
-    body {
-        color: #fefefe;
-    }
-    article {
-        color: royalblue;
-    }
-    .liste-équipe {
-        color: royalblue;
-    }
-    .liens-sociaux {
-        color: royalblue;
-    }
-    .liens-sociaux a {
-        color: grey;
-    }
-    .menu,
-    footer {
-        background-color: royalblue;
-        color: black;
-    }
-    .dropbtn {
-        background-color: royalblue;
-    }
+.footer btn {
+    margin-left: 1700px;
+    border: none;
+    background-color: #1D243E;
+    text-align: right;
+    padding: 0.4rem;
+    color: white;
+    display: inline-block;
+    border-radius: 2rem;
+    outline: none;
 }
 
 
@@ -312,6 +346,7 @@ footer {
 .search {
     float: right;
     margin: 7px;
+    background: none;
 }
 
 .search button {
@@ -322,4 +357,76 @@ footer {
     border: none;
     cursor: pointer;
     visibility: hidden;
+}
+
+
+/*--NE PAS AFFICHER UN ELEMENT--*/
+
+.hidden {
+    visibility: hidden;
+}
+
+
+/*--ENLEVER LES TRANSITIONS D'UN ELEMENT--*/
+
+.noTransition {
+    /*CSS transitions*/
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    /*CSS transforms*/
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /*CSS animations*/
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+}
+
+body {
+    background: var(--image-background);
+    background-color: var(--color-background);
+    background-size: 100%;
+    background-repeat: repeat-y;
+    color: #ffffff;
+}
+
+article {
+    color: var(--color-text);
+}
+
+.dropdown-content {
+    background-color: var(--color-navbar-background);
+}
+
+nav.menu {
+    background: var(--color-navbar-background);
+}
+
+.menu a.selected:any-link {
+    color: var(--color-selected);
+    text-shadow: var(--color-text-shadow-selected);
+}
+
+
+/*--À quoi ça sert ? Peut-être suppr--*/
+
+.dark button {
+    background: inherit;
+    color: #fff;
+}
+
+
+/*--Code en 2 fois : à vérifier si erreur ou pas. En progression.--*/
+
+a.selected {
+    color: var(--color-selected);
+    text-shadow: 0px 0px 12px #62bcda;
 }

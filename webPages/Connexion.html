@@ -1,64 +1,148 @@
-<!DOCTYPE html>
-<html>
+<!--Page d'inscription en tant que membre-->
 
-<head>
-    <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
-    <meta charset="utf-8">
-    <title>Espace Membre</title>
-    <!--Relié le script html au script css correspondant-->
-    <!--Appliquer le style css et importer l'icone-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" href="assets/Inflow_logo_64px.png" />
+<!--Partie php = atteindre base de donnée + récupère infos formulaire, vérifie si tout est bien rempli, si pseudo et email existe pas 
+    déjà et transmet à base de donnée-->
+<?php
 
-</head>
+session_start();
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+    
+if(isset($_POST["formconnexion"])) {
+    $pseudoconnect = htmlspecialchars($_POST["pseudoconnect"]);
+    $passconnect = sha1($_POST['passconnect']);
+    if(!empty($pseudoconnect) AND !empty($passconnect)) {
+        $requser = $bdd->prepare('SELECT * FROM membres WHERE pseudo = ? AND mot_de_passe = ?');
+        $requser->execute(array($pseudoconnect, $passconnect));
+        $userexist = $requser->rowCount();
+        if($userexist == 1) {
+            if(empty($_SESSION)) {
+                $userinfos = $requser->fetch();
+                $_SESSION['id'] = $userinfos['id'];
+                $_SESSION['pseudo'] = $userinfos['pseudo'];
+                $_SESSION['adresse_email'] = $userinfos['adresse_email'];
+                $_SESSION['confirmer'] = $userinfos['confirmer'];
+                $_SESSION['admin'] = $userinfos['admin'];
+                header("Location: Profil.html?id=".$_SESSION['id']);
+            } else {
+                $erreur = "Vous êtes déjà connecté";
+            }
+        } else {
+            $erreur = "Identifiant ou mot de passe erroné";
+        }
+    } else {
+        $erreur = "Tous les champs ne sont pas remplis.";
+    }
+}
+
+$membres2 = $bdd->query('SELECT * FROM membres');
+$m = $membres2->fetch();
+
+?>
+
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
+        <meta charset="UTF-8">
+        <!-- Paramètre d'affichage mobile -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- Gestion du navigateur IE -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Connexion</title>
+        <!--Relié le script html au script css correspondant-->
+        <!--Appliquer le style css et importer l'icone-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
+        <script src="jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+
+    </head>
 
 
-<body>
+    <body>
 
 
-    <!--Titre de la page web où on se trouve-->
-    <div class="bannière">
-        <h1 class="hidden">Espace Membre</h1>
-    </div>
 
-    <!--Header, c'est-à-dire, le menu pour changer de page-->
-    <header class="header">
-        <nav class="menu">
-            <a href="main.html">Menu</a>
-            <a href="Article.html">Article</a>
-            <a href="Playlist.html">Playlist</a>
-            <div class="dropdown">
-                <button class="dropbtn">Espace Membre</button>
-                <div class="dropdown-content">
-                    <a href="Inscription.html">Inscription</a>
-                    <a href="Connexion.html">Connexion</a>
+        <!--Titre de la page web où on se trouve-->
+        <img class="bannière" src="assets/banniere_twi.png" />
+
+        <!--Header, c'est-à-dire, le menu pour changer de page-->
+        <header class="header">
+            <nav class="menu">
+                <div class="menuElement"><a href="main.html">Menu</a></div>
+                <div class="dropdown menuElement"><a href="#">Article</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Article.html">Article</a></div>
+                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Poster.html">Poster</a>
+                            <?php } ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <a href="Infos.html" id="Infos">Infos</a>
-            <!-- search bar right align -->
-            <div class="search">
-                <form action="#">
-                    <input type="text" id="barSearch" placeholder="Recherche" name="search">
-                    <button>
+                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
+                <div class="dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                        <?php if(empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Connexion.html">Connexion</a></div>
+                        <?php } ?>
+                        <?php if(!empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
+                        <?php } ?>
+                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Admin.html">Admin</a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                <!-- search bar right align -->
+                <div class="search">
+                    <form action="#">
+                        <input type="text" placeholder="Recherche" name="search">
+                        <button>
                     </button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+        <!--Début de là où on pourra mettre du texte-->
+        <article>
+            <!--Formulaire à remplir pour s'inscrire-->
+            <div align="center">
+                <h1>Connexion</h1>
+                <br/><br/>
+                <form method="POST" action="">
+                    <input type="text" name="pseudoconnect" placeholder="Identifiant" />
+                    <input type="password" name="passconnect" placeholder="Mot de Passe" />
+                    <input type="submit" name="formconnexion" value="Se connecter" />
                 </form>
+                <!--Affiche message si erreur ou si compte bien créé-->
+                <?php 
+                    if(isset($erreur)){
+                        echo $erreur;
+                    }
+                    ?>
             </div>
-        </nav>
-    </header>
 
-    <!--Début de là où on pourra mettre du texte-->
-    <article>
 
-    </article>
+        </article>
 
-    <!--Tout en bas de la page web, contient des infos-->
-    <footer>
-        <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-    </footer>
+        <!--Tout en bas de la page web, contient des infos-->
+        <footer>
+            <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+            <button id="darkTrigger" class="btn">Thème sombre</button>
+        </footer>
 
-</body>
+    </body>
 
-</html>
+    </html>

@@ -1,94 +1,126 @@
-<!DOCTYPE html>
-<html>
+<?php
+session_start();
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-<head>
-    <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
-    <meta charset="utf-8">
-    <title>Infos Inflow</title>
-    <!--Relier le script html au script css correspondant-->
-    <!--Appliquer le style css et importer l'icone-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" href="assets/Inflow_logo_64px.png" />
+$membres2 = $bdd->query('SELECT * FROM membres');
+$m = $membres2->fetch();
+?>
 
-</head>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
+        <meta charset="UTF-8">
+        <!-- Paramètre d'affichage mobile -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- Gestion du navigateur IE -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Infos Inflow</title>
+        <!--Relier le script html au script css correspondant-->
+        <!--Appliquer le style css et importer l'icone-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
+        <script src="jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+
+    </head>
 
 
-<body>
+    <body>
 
 
-    <!--Titre de la page web où on se trouve-->
-    <div class="bannière">
-        <h1 class="hidden">Infos</h1>
-    </div>
 
-    <!--Header, c'est-à-dire, le menu pour changer de page-->
-    <header class="header">
-        <nav class="menu">
-            <a href="main.html">Menu</a>
-            <a href="Article.html">Article</a>
-            <a href="Playlist.html">Playlist</a>
-            <div class="dropdown">
-                <button class="dropbtn">Espace Membre</button>
-                <div class="dropdown-content">
-                    <a href="Inscription.html">Inscription</a>
-                    <a href="Connexion.html">Connexion</a>
+
+        <!--Titre de la page web où on se trouve-->
+        <img class="bannière" src="assets/banniere_twi.png" />
+
+        <!--Header, c'est-à-dire, le menu pour changer de page-->
+        <header class="header">
+            <nav class="menu">
+                <div class="menuElement"><a href="main.html">Menu</a></div>
+                <div class="dropdown menuElement"><a href="#">Article</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Article.html">Article</a></div>
+                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Poster.html">Poster</a>
+                            <?php } ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <a href="Infos.html" id="Infos" class="selected">Infos</a>
-            <!-- search bar right align -->
-            <div class="search">
-                <form action="#">
-                    <input type="text" id="barSearch" placeholder="Recherche" name="search">
-                    <button>
+                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
+                <div class="dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                        <?php if(empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Connexion.html">Connexion</a></div>
+                        <?php } ?>
+                        <?php if(!empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
+                        <?php } ?>
+                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Admin.html">Admin</a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="menuElement"><a href="Infos.html" id="Infos" class="selected">Infos</a></div>
+                <!-- search bar right align -->
+                <div class="search">
+                    <form action="#">
+                        <input type="text" placeholder="Recherche" name="search">
+                        <button>
                     </button>
-                </form>
-            </div>
-        </nav>
-    </header>
+                    </form>
+                </div>
+            </nav>
+        </header>
 
-    <!--Début de là où on pourra mettre du texte-->
-    <article>
-        <!-- <<<<<<< HEAD -->
+        <!--Début de là où on pourra mettre du texte-->
+        <article>
+            <!-- <<<<<<< HEAD -->
 
-        <div classe="encadre">
             <h1 id="Staff">Staff</h1>
             <div class="Plateforme">
                 <div class="liste-équipe">
                     <p><b>PDG </b> : Axel </p>
-                    <p><b>Rédaction</b> : Maxime, Jason, Romane, Elouan, Ilyes</p>
-                    <p><b>Modos</b> : Timothée, Antoine</p>
-                    <p><b>Developpeur</b> : Titouan, Anyr, Lucas, Florian</p>
+                    <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
+                    <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
+                    <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
                 </div>
                 <div class="liens-sociaux">
                     <h3><i>Insta</i> :</h3>
-                    <p><a href="https://instagram.com/inflow_officiel?igshid">Rejoignez notre Instagram !</a></p>
+                    <p><a href="https://instagram.com/inflow_officiel?igshid" target="_blank">Rejoignez notre Instagram !</a></p>
                     <h3><i>Twitter</i> :</h3>
-                    <p><a href="https://twitter.com/Inflow66760289">Rejoignez-nous sur Twitter !</a></p>
+                    <p><a href="https://twitter.com/InflowOfficiel" target="_blank">Rejoignez-nous sur Twitter !</a></p>
                     <h3><i>Twitch</i> :</h3>
-                    <p><a href="https://www.twitch.tv/inflowofficiel">Suivez-nous sur Twitch !</a></p>
+                    <p><a href="https://www.twitch.tv/inflowofficiel" target="_blank">Suivez-nous sur Twitch !</a></p>
                     <h3><i>Discord</i> :</h3>
-                    <p><a href="https://discord.com/channels/826440352810139678/826491405856800788">Rejoignez le Discord !</a></p>
+                    <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" target="_blank">Rejoignez le Discord !</a></p>
                 </div>
             </div>
-        </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 
-        <!-- >>>>>>> main
-				<p>Début</p>
+            <!-- >>>>>>> main
+                <p>Début</p>
 
-		-->
-    </article>
+        -->
+        </article>
 
-    <!--Tout en bas de la page web, contient des infos-->
-    <footer>
-        <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" class="discord-link">Rejoignez le Discord !</a></p>
-    </footer>
+        <!--Tout en bas de la page web, contient des infos-->
+        <footer>
+            <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+            <button id="darkTrigger" class="btn">Thème sombre</button>
+        </footer>
 
 
-</body>
+    </body>
 
-</html>
+    </html>
