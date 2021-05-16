@@ -73,26 +73,26 @@ $commentaires->execute(array($get_id));
 
 
     <body>
-
-        <!--Titre de la page web où on se trouve-->
-        <img class="bannière" src="assets/banniere_twi.png" />
-
-        <!--Header, c'est-à-dire, le menu pour changer de page-->
-        <header class="header">
-            <nav class="menu">
-                <div class="menuElement"><a href="main.html">Menu</a></div>
-                <div class="dropdown menuElement"><a href="#">Article</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Article.html">Article</a></div>
-                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Poster.html">Poster</a>
-                            <?php } ?>
+        <div class="main container">
+            <!--Header, c'est-à-dire, le menu pour changer de page-->
+            <header class="header container">
+                <img class="bannière element" src="assets/banniere_twi.png" />
+                <nav class="menu container element">
+                    <div class="element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Article</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
+                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Poster.html">Poster</a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
-                <div class="dropdown menuElement"><a href="#">Espace Membre</a>
+                <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
                     <div class="dropdown-content">
                         <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                         <?php if(empty($_SESSION)) { ?>
@@ -106,61 +106,65 @@ $commentaires->execute(array($get_id));
                         <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
                             <a href="Admin.html">Admin</a>
-                            <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
-                <!-- search bar right align -->
-                <div class="search">
-                    <form action="#">
-                        <input type="text" placeholder="Recherche" name="search">
-                        <button>
-                    </button>
-                    </form>
-                </div>
-            </nav>
-        </header>
+                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <!-- search bar right align -->
+                    <div class="element search">
+                        <form action="#">
+                            <input type="text" placeholder="Recherche" name="search">
+                            <button>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+            </header>
 
-        <!--Début de là où on pourra mettre du texte-->
-        <article>
+            <div class="left"></div>
 
-            <!--Affiche les articles-->
-            <h1>
-                <?= $titre ?>
-            </h1>
-            <p>
-                <?= $contenu ?>
-            </p>
+            <!--Début de là où on pourra mettre du texte-->
+            <div class="middle">
+                <article>
 
-        </article>
-        <br/><br/>
-        <div class="Commentaires">
-            <h2>Commentaires :</h2>
-            <form method="POST">
-                <textarea name="commentaire" placeholder="Votre commentaire"></textarea> <br/>
-                <input type="submit" value="Poster" name="submit_commentaire" />
-            </form>
-            <br/>
-            <?php if(isset($msg)) { echo $msg; } ?>
-            <br/>
-            <?php while($c = $commentaires->fetch()) { ?>
-            <?php if(!empty($_SESSION['avatar'])) { ?>
-            <img src="membres/avatars/<?php echo $_SESSION['avatar']; ?>" width="50">
-            <?php } ?>
-            <b><?= $c['pseudo'] ?> :</b>
-            <?= $c['commentaire'] ?> <br/>
-                <?php } ?>
+                    <!--Affiche les articles-->
+                    <h1>
+                        <?= $titre ?>
+                    </h1>
+                    <p>
+                        <?= $contenu ?>
+                    </p>
+
+                </article></article>
+        				<br/><br/>
+        				<div class="Commentaires">
+            				<h2>Commentaires :</h2>
+            				<form method="POST">
+                				<textarea name="commentaire" placeholder="Votre commentaire"></textarea> <br/>
+                				<input type="submit" value="Poster" name="submit_commentaire" />
+            				</form>
+            				<br/>
+            				<?php if(isset($msg)) { echo $msg; } ?>
+            				<br/>
+            				<?php while($c = $commentaires->fetch()) { ?>
+            				<?php if(!empty($_SESSION['avatar'])) { ?>
+            				<img src="membres/avatars/<?php echo $_SESSION['avatar']; ?>" width="50">
+            				<?php } ?>
+            				<b><?= $c['pseudo'] ?> :</b>
+            				<?= $c['commentaire'] ?> <br/>
+            				    <?php } ?>
+        				</div>
+            </div>
+
+            <div class="right"></div>
+
+            <!--Tout en bas de la page web, contient des infos-->
+            <footer class="footer container">
+                <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+                <button id="darkTrigger" class="btn element">Thème sombre</button>
+            </footer>
+
         </div>
-
-        <!--Tout en bas de la page web, contient des infos-->
-        <footer>
-            <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-            <button id="darkTrigger" class="btn">Thème sombre</button>
-
-        </footer>
-
-
     </body>
 
     </html>

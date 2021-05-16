@@ -41,95 +41,103 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 
 
     <body>
-
-
-
-        <!--Titre de la page web où on se trouve-->
-        <img class="bannière" src="assets/banniere_twi.png" />
-
-        <!--Header, c'est-à-dire, le menu pour changer de page-->
-        <header class="header">
-            <nav class="menu">
-                <div class="menuElement"><a href="main.html">Menu</a></div>
-                <div class="dropdown menuElement"><a href="#">Article</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Article.html">Article</a></div>
-                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Poster.html">Poster</a>
-                            <?php } ?>
+        <div class="main container">
+            <!--Header, c'est-à-dire, le menu pour changer de page-->
+            <header class="header container">
+                <img class="bannière element" src="assets/banniere_twi.png" />
+                <nav class="menu container element">
+                    <div class="element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Article</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Article.html">Article</a></div>
+                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Poster.html">Poster</a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
-                <div class="dropdown menuElement"><a href="#">Espace Membre</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <?php if(empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Connexion.html">Connexion</a></div>
-                        <?php } ?>
-                        <?php if(!empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
-                        <?php } ?>
-                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Admin.html">Admin</a>
+                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Espace Membre</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Connexion.html">Connexion</a>
+                            </div>
                             <?php } ?>
+                            <?php if(!empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Profil.html?id=<?= $m['id'] ?>" class="selected">Profil</a>
+                            </div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Admin.html">Admin</a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
-                <!-- search bar right align -->
-                <div class="search">
-                    <form action="#">
-                        <input type="text" placeholder="Recherche" name="search">
-                        <button>
-                    </button>
-                    </form>
-                </div>
-            </nav>
-        </header>
+                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <!-- search bar right align -->
+                    <div class="element search">
+                        <form action="#">
+                            <input type="text" placeholder="Recherche" name="search">
+                            <button>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+            </header>
 
-        <!--Début de là où on pourra mettre du texte-->
-        <article>
-            <div align="center">
-                <h1>Profil de
-                    <?php echo $userinfos['pseudo']; ?>
-                </h1>
-                <br/>
-                <?php
-                if(!empty($userinfos['avatar'])) {
-                    ?>
-                    <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" width="150">
-                    <?php
-                }
-                ?>
-                        <br/><br/>Pseudo =
+            <div class="left"></div>
+
+            <!--Début de là où on pourra mettre du texte-->
+            <div class="middle">
+                <article>
+                    <div align="center">
+                        <h1>
+                            Profil de
+                            <?php echo $userinfos['pseudo']; ?>
+                        </h1>
+                        <br />
+                        <?php
+                        if(!empty($userinfos['avatar'])) {
+                        ?>
+                        <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" width="150">
+                        <?php
+                        }
+                        ?>
+                        <br /><br />Pseudo =
                         <?php echo $userinfos['pseudo']; ?>
-                        <br/> Email =
+                        <br /> Email =
                         <?php echo $userinfos['adresse_email']; ?>
-                        <br/>
+                        <br />
                         <?php
                         if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) {
                         ?>
-                            <a href="editionprofil.html">Editer mon profil</a><br/>
-                            <a href="Déconnexion.html">Se déconnecter</a>
-                            <?php } ?>
+                        <a href="editionprofil.html">Editer mon profil</a><br />
+                        <a href="Déconnexion.html">Se déconnecter</a>
+                        <?php } ?>
+
+                    </div>
 
 
+                </article>
             </div>
 
+            <div class="right"></div>
 
-        </article>
+            <!--Tout en bas de la page web, contient des infos-->
+            <footer class="footer container">
+                <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+                <button id="darkTrigger" class="btn element">Thème sombre</button>
 
-        <!--Tout en bas de la page web, contient des infos-->
-        <footer>
-            <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-            <button id="darkTrigger" class="btn">Thème sombre</button>
-        </footer>
+            </footer>
 
+        </div>
     </body>
 
     </html>
