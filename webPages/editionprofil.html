@@ -3,7 +3,6 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 if(isset($_SESSION['id'])) {
-
     $requeser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
     $requeser->execute(array($_SESSION['id']));
     $user = $requeser->fetch();
@@ -25,6 +24,7 @@ if(isset($_SESSION['id'])) {
         }
     }
     if(isset($_POST['newemail']) AND !empty($_POST['newemail']) AND $_POST['newemail'] != $user['adresse_email']) {
+        $newemail = htmlspecialchars($_POST['newemail']);
         if(filter_var($newemail, FILTER_VALIDATE_EMAIL)) {
             $reqemail = $bdd->prepare('SELECT * FROM membres WHERE adresse_email = ?');
             $reqemail->execute(array($newemail));
@@ -52,7 +52,7 @@ if(isset($_SESSION['id'])) {
     }
 
     if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
-        $tailleMax = 2097152;
+        $tailleMax = 5242880;
         $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
         if($_FILES['avatar']['size'] <= $tailleMax) {
             $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));

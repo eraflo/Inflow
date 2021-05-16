@@ -22,6 +22,7 @@ if(isset($_POST["formconnexion"])) {
                 $_SESSION['adresse_email'] = $userinfos['adresse_email'];
                 $_SESSION['confirmer'] = $userinfos['confirmer'];
                 $_SESSION['admin'] = $userinfos['admin'];
+                $_SESSION['avatar'] = $userinfos['avatar'];
                 header("Location: Profil.html?id=".$_SESSION['id']);
             } else {
                 $erreur = "Vous êtes déjà connecté";
