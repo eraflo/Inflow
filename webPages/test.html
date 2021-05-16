@@ -22,11 +22,11 @@
 
 
     <body>
-
-        <div class="main"><!--Header, c'est-à-dire, le menu pour changer de page-->
-            <header class="header">
-                <img class="bannière" src="assets/banniere_twi.png" />
-                <nav class="menu container">
+        <div class="main container">
+            <!--Header, c'est-à-dire, le menu pour changer de page-->
+            <header class="header container">
+                <img class="bannière element" src="assets/banniere_twi.png" />
+                <nav class="menu container element">
                     <div class="element menuElement"><a href="main.html" class="selected">Menu</a></div>
                     <div class="element dropdown menuElement">
                         <a href="#">Article</a>
@@ -73,20 +73,27 @@
                 </nav>
             </header>
 
-            <!--Début de là où on pourra mettre du texte-->
-            <article>
-                <a href="Profil.html?id=6">Jason</a>
-                <a href="Profil.html?id=2">Anyr</a>
-                <a href="Profil.html?id=3">Titouan</a>
-                <a href="Profil.html?id=4">Axel</a>
-                <a href="Profil.html?id=5">Ilyes</a>
-            </article>
+            <div class="left"></div>
 
+            <!--Début de là où on pourra mettre du texte-->
+            <div class="middle">
+                <article class="container">
+                    <p class="element">
+                        <a href="Profil.html?id=6">Jason</a>
+                        <a href="Profil.html?id=2">Anyr</a>
+                        <a href="Profil.html?id=3">Titouan</a>
+                        <a href="Profil.html?id=4">Axel</a>
+                        <a href="Profil.html?id=5">Ilyes</a>
+                    </p>
+                </article>
+            </div>
+
+            <div class="right"></div>
 
             <!--Tout en bas de la page web, contient des infos-->
-            <footer>
-                <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-                <button id="darkTrigger" class="btn">Thème sombre</button>
+            <footer class="footer container">
+                <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+                <button id="darkTrigger" class="btn element">Thème sombre</button>
 
             </footer>
 
