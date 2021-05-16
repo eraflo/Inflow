@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
     $("#darkTrigger").click(dark_mode_button_on_click);
@@ -36,7 +35,7 @@ function activate_dark_mode() {
 }
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
     if (!window.localStorage["dark_mode"]) {
         window.localStorage["dark_mode"] = "hour";
@@ -61,7 +60,6 @@ $(document).ready(function() {
 window.onscroll = function () {
     scrollFunction()
 };
-
 function scrollFunction() {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         document.getElementsByClassName("bannière")[0].style.height = "0px";
