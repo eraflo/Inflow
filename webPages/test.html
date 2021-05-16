@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html>
+
+    <head>
+        <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
+        <meta charset="UTF-8">
+        <!-- Paramètre d'affichage mobile -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- Gestion du navigateur IE -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Test Inflow</title>
+        <!--Appliquer le style css et importer l'icone-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
+        <script src="jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+
+
+
+    <body>
+
+        <div class="main"><!--Header, c'est-à-dire, le menu pour changer de page-->
+            <header class="header">
+                <img class="bannière" src="assets/banniere_twi.png" />
+                <nav class="menu container">
+                    <div class="element menuElement"><a href="main.html" class="selected">Menu</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Article</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Article.html">Article</a></div>
+                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Poster.html">Poster</a>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Espace Membre</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Connexion.html">Connexion</a>
+                            </div>
+                            <?php } ?>
+                            <?php if(!empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a>
+                            </div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Admin.html">Admin</a>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <!-- search bar right align -->
+                    <div class="element search">
+                        <form action="#">
+                            <input type="text" placeholder="Recherche" name="search">
+                            <button>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+            </header>
+
+            <!--Début de là où on pourra mettre du texte-->
+            <article>
+                <a href="Profil.html?id=6">Jason</a>
+                <a href="Profil.html?id=2">Anyr</a>
+                <a href="Profil.html?id=3">Titouan</a>
+                <a href="Profil.html?id=4">Axel</a>
+                <a href="Profil.html?id=5">Ilyes</a>
+            </article>
+
+
+            <!--Tout en bas de la page web, contient des infos-->
+            <footer>
+                <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+                <button id="darkTrigger" class="btn">Thème sombre</button>
+
+            </footer>
+
+        </div>
+    </body>
+
+    </html>

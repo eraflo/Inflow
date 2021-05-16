@@ -1,3 +1,30 @@
+/* TESTS !!!!*/
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    height: max-content;
+}
+
+.element {
+    flex-basis: auto;
+    min-width: min-content;
+    text-align: center;
+}
+
+
+/* !!!! FIN DES TESTS */
+
+
+
+
+
+
 /*--Fichier style css principal--*/
 
 
@@ -95,7 +122,7 @@ article {
     top: 130px;
     left: 0;
     right: 0;
-    height: 80px;
+    min-height: 80px;
     line-height: 80px;
     background-color: var(--color-main-theme);
     width: 100%;
@@ -337,17 +364,20 @@ footer {
 /* styling search bar */
 
 .search input[type=text] {
-    width: 300px;
+    max-width: 300px;
     height: 25px;
     border-radius: 25px;
     border: none;
     outline: none;
+    width: max-content;
+    flex: 5 1 auto;
 }
 
 .search {
     float: right;
     margin: 7px;
     background: none;
+    flex: auto;
 }
 
 .search button {
