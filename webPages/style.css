@@ -23,6 +23,8 @@
     --color-underline: dodgerblue;
     --color-navbar-background: var(--color-main-theme);
 }
+
+
 /*mode nuit*/
 
 :root[user-color-mode=user_forced] {
@@ -42,6 +44,8 @@
     --color-underline: rgb(143, 143, 33);
     --color-navbar-background: rgba(0, 0, 0, 0.6);
 }
+
+
 /*--Selection du texte--*/
 
 ::selection {
@@ -225,11 +229,6 @@ article {
 .menu a.selected:any-link {
     color: var(--color-selected);
     text-shadow: var(--color-text-shadow-active);
-}
-
-.menu a.selected.darkbody:any-link {
-    color: #808080;
-    text-shadow: 0px 0px 4px black, 0px 0px 8px white;
 }
 
 
@@ -430,6 +429,7 @@ footer {
 .hidden {
     visibility: hidden;
 }
+
 
 /*--ENLEVER LES TRANSITIONS D'UN ELEMENT--*/
 

@@ -22,9 +22,6 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
     }
 }
 
-$membres = $bdd2->query('SELECT * FROM membres');
-$m = $membres->fetch();
-
 ?>
 
     <!DOCTYPE html>
@@ -68,25 +65,22 @@ $m = $membres->fetch();
                             </div>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="element dropdown menuElement">
-                        <a href="#">Espace Membre</a>
-                        <div class="dropdown-content">
-                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                            <?php if(empty($_SESSION)) { ?>
-                            <div class="menuElement">
-                                <a href="Connexion.html">Connexion</a>
-                            </div>
-                            <?php } ?>
-                            <?php if(!empty($_SESSION)) { ?>
-                            <div class="menuElement">
-                                <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a>
-                            </div>
-                            <?php } ?>
-                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="menuElement">
-                                <a href="Admin.html">Admin</a>
-                                <?php } ?>
+                </div>
+                <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="dropdown-content">
+                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                        <?php if(empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Connexion.html">Connexion</a></div>
+                        <?php } ?>
+                        <?php if(!empty($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
+                        <?php } ?>
+                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="menuElement">
+                            <a href="Admin.html">Admin</a>
                             </div>
                         </div>
                     </div>
@@ -109,9 +103,7 @@ $m = $membres->fetch();
                 <article>
                     <a href="Profil.html?id=6">Jason</a>
                     <a href="Profil.html?id=2">Anyr</a>
-                    <a href="Profil.html?id=3">Titouan</a>
                     <a href="Profil.html?id=4">Axel</a>
-                    <a href="Profil.html?id=5">Ilyes</a>
                 </article>
             </div>
 
@@ -121,7 +113,6 @@ $m = $membres->fetch();
             <footer class="footer container">
                 <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
                 <button id="darkTrigger" class="btn element">Thème sombre</button>
-
             </footer>
 
         </div>
