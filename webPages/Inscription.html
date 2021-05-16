@@ -112,7 +112,7 @@ if(isset($_POST["forminscription"])) {
                         <?php } ?>
                         <?php if(!empty($_SESSION)) { ?>
                         <div class="menuElement">
-                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
+                            <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
                         <?php } ?>
                         <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="menuElement">
