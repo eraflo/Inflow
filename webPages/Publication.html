@@ -20,14 +20,17 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     } else {
         die('Cette article n\'existe pas !!!');
     }
+    
     if(!empty($_SESSION)) {
         if(isset($_POST['submit_commentaire'])) {
             if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])) {
-                    $pseudo = htmlspecialchars($_SESSION['pseudo']);
-                    $commentaire = htmlspecialchars($_POST['commentaire']);
-                    $ins = $bdd->prepare("INSERT INTO commentaires (pseudo, commentaire, id_article) VALUES (?, ?, ?)");
-                    $ins->execute(array($pseudo, $commentaire, $get_id));
-                    $msg = "Votre commentaire a été posté.";
+                $pseudo = htmlspecialchars($_SESSION['pseudo']);
+                $commentaire = htmlspecialchars($_POST['commentaire']);
+                $ins = $bdd->prepare("INSERT INTO commentaires (pseudo, commentaire, id_article) VALUES (?, ?, ?)");
+                $ins->execute(array($pseudo, $commentaire, $get_id));
+                $msg = "Votre commentaire a été posté.";
+                $lastcom = $commentaire;
+                header("Location: Publication.html?id=".$get_id);
             } else {
                 $msg = "Le champ est vide, remplissez le pour poster votre commentaire";
             }
@@ -35,13 +38,14 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     } else {
         $msg = "Vous n'êtes pas membre, vous ne pouvez pas poster de commentaires, inscrivez-vous !!!";
     }
-    $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
-    $commentaires->execute(array($get_id));
 
 } else {
     die('Erreur');
 }
 
+
+$commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
+$commentaires->execute(array($get_id));
 
 
 $membres2 = $bdd2->query('SELECT * FROM membres');
