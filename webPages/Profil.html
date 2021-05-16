@@ -3,22 +3,11 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
-    header("Location: main.html");
-}
-
-
-
 if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $getid = intval($_GET['id']);
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($getid));
     $userinfos = $requser->fetch();
-    if(isset($_SESSION['id']) AND $userinfos['id'] != $_SESSION['id']) {
-        header("Location: Connexion.html");
-    }
-
-    
 
 
 
@@ -106,18 +95,25 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                 <h1>Profil de
                     <?php echo $userinfos['pseudo']; ?>
                 </h1>
-                <br/><br/> Pseudo =
-                <?php echo $userinfos['pseudo']; ?>
-                <br/> Email =
-                <?php echo $userinfos['adresse_email']; ?>
                 <br/>
-
                 <?php
+                if(!empty($userinfos['avatar'])) {
+                    ?>
+                    <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" width="150">
+                    <?php
+                }
+                ?>
+                        <br/><br/>Pseudo =
+                        <?php echo $userinfos['pseudo']; ?>
+                        <br/> Email =
+                        <?php echo $userinfos['adresse_email']; ?>
+                        <br/>
+                        <?php
                 if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) {
                     ?>
-                    <a href="#">Editer mon profil</a><br/>
-                    <a href="Déconnexion.html">Se déconnecter</a>
-                    <?php } ?>
+                            <a href="editionprofil.html">Editer mon profil</a><br/>
+                            <a href="Déconnexion.html">Se déconnecter</a>
+                            <?php } ?>
 
 
             </div>

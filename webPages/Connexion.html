@@ -5,34 +5,35 @@
 <?php
 
 session_start();
-    $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
     
-    if(isset($_POST["formconnexion"])) {
-        $pseudoconnect = htmlspecialchars($_POST["pseudoconnect"]);
-        $passconnect = sha1($_POST['passconnect']);
-        if(!empty($pseudoconnect) AND !empty($passconnect)) {
-            $requser = $bdd->prepare('SELECT * FROM membres WHERE pseudo = ? AND mot_de_passe = ?');
-            $requser->execute(array($pseudoconnect, $passconnect));
-            $userexist = $requser->rowCount();
-            if($userexist == 1) {
-                if(empty($_SESSION)) {
-                    $userinfos = $requser->fetch();
-                    $_SESSION['id'] = $userinfos['id'];
-                    $_SESSION['pseudo'] = $userinfos['pseudo'];
-                    $_SESSION['adresse_email'] = $userinfos['adresse_email'];
-                    $_SESSION['confirmer'] = $userinfos['confirmer'];
-                    $_SESSION['admin'] = $userinfos['admin'];
-                    header("Location: Profil.html?id=".$_SESSION['id']);
-                } else {
-                    $erreur = "Vous êtes déjà connecté";
-                }
+if(isset($_POST["formconnexion"])) {
+    $pseudoconnect = htmlspecialchars($_POST["pseudoconnect"]);
+    $passconnect = sha1($_POST['passconnect']);
+    if(!empty($pseudoconnect) AND !empty($passconnect)) {
+        $requser = $bdd->prepare('SELECT * FROM membres WHERE pseudo = ? AND mot_de_passe = ?');
+        $requser->execute(array($pseudoconnect, $passconnect));
+        $userexist = $requser->rowCount();
+        if($userexist == 1) {
+            if(empty($_SESSION)) {
+                $userinfos = $requser->fetch();
+                $_SESSION['id'] = $userinfos['id'];
+                $_SESSION['pseudo'] = $userinfos['pseudo'];
+                $_SESSION['adresse_email'] = $userinfos['adresse_email'];
+                $_SESSION['confirmer'] = $userinfos['confirmer'];
+                $_SESSION['admin'] = $userinfos['admin'];
+                header("Location: Profil.html?id=".$_SESSION['id']);
             } else {
-                $erreur = "Identifiant ou mot de passe erroné";
+                $erreur = "Vous êtes déjà connecté";
             }
         } else {
-            $erreur = "Tous les champs ne sont pas remplis.";
+            $erreur = "Identifiant ou mot de passe erroné";
         }
+    } else {
+        $erreur = "Tous les champs ne sont pas remplis.";
     }
+}
 
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();

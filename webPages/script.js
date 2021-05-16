@@ -1,4 +1,5 @@
-$(document).ready(function() {
+
+$(document).ready(function () {
     // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
     $("#darkTrigger").click(dark_mode_button_on_click);
 })
@@ -28,10 +29,10 @@ function activate_dark_mode() {
         document.documentElement.setAttribute("user-color-mode", "user_forced");
 
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
-    setTimeout(function() {
+    setTimeout(function () {
         $("*").removeClass("noTransition");
     }, 10);
-
+    
 }
 
 
@@ -57,7 +58,7 @@ $(document).ready(function() {
 
 
 // Change la taille de la bannière fixe lors du scroll down/up
-window.onscroll = function() {
+window.onscroll = function () {
     scrollFunction()
 };
 

@@ -4,9 +4,12 @@
 /*--Stockage de variables principalement pour les couleurs du site--*/
 
 :root {
-    --image-background: url("assets/background.png");
     --color-main-theme: royalblue;
+    --image-background: url("assets/background.png");
+    --color-background: royalblue;
     --color-text: black;
+    --color-text-shadow-selected: 0px 0px 20px white;
+    --color-text-shadow-active: 0px 0px 12px #62bcda;
     --color-text-hover: #62bcda;
     --color-links: black;
     --color-unselected-links: white;
@@ -14,15 +17,36 @@
     --color-active: black;
     --color-selection-text: inherit;
     /*couleur du texte lors de la selection*/
-    --color-selection-bg: red;
+    --color-selection-bg: rgb(16, 137, 237, 0.45);
     /*couleur du surlignage lors de la sélection*/
     --color-underline: dodgerblue;
+    --color-navbar-background: var(--color-main-theme);
 }
-
-
 /*mode nuit*/
 
-:root[user-color-mode=night] {}
+:root[user-color-mode=user_forced] {
+    --color-main-theme: inherit;
+    --image-background: url("assets/backgrounddark.jpg");
+    --color-background: white;
+    --color-text: white;
+    --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
+    --color-text-shadow-active: inherit;
+    --color-text-hover: #C0C0C0;
+    --color-links: white;
+    --color-unselected-links: white;
+    --color-selected: #808080;
+    --color-active: black;
+    --color-selection-text: inherit;
+    --color-selection-bg: rgb(218, 167, 55, 0.6);
+    --color-underline: rgb(143, 143, 33);
+    --color-navbar-background: rgba(0, 0, 0, 0.6);
+}
+/*--Selection du texte--*/
+
+::selection {
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text)
+}
 
 
 /*--Affecte toute la page HTML--*/
@@ -131,7 +155,7 @@ article {
 
 .menu a:any-link:active {
     color: var(--color-active);
-    text-shadow: 0px 0px 20px white;
+    text-shadow: var(--color-text-shadow-selected);
 }
 
 
@@ -139,7 +163,7 @@ article {
 
 .menu a.selected:any-link {
     color: var(--color-selected);
-    text-shadow: 0px 0px 12px #62bcda;
+    text-shadow: var(--color-text-shadow-active);
 }
 
 .menu a.selected.darkbody:any-link {
@@ -272,7 +296,7 @@ footer {
     display: none;
     position: absolute;
     text-align: center;
-    background-color: var(--color-main-theme);
+    background-color: var(--color-navbar-background);
     width: 100%;
     box-shadow: 12px 16px 8px 0px rgba(0, 0, 0, 0.2);
     transition: 1s;
@@ -292,38 +316,6 @@ footer {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-
-/** Les différentes fonctions pour assombrir les élements*/
-
-body.darkbody {
-    background: url("assets/backgrounddark.jpg");
-    background-size: 100%;
-    background-repeat: repeat-y;
-    color: #ffffff;
-}
-
-.darkbody {
-    color: #ffffff;
-}
-
-.darkfoncé {
-    background-color: inherit;
-    color: #ffffff;
-}
-
-.menuElement.darkfoncé {
-    background: none;
-}
-
-.dropdown-content.darkfoncé {
-    box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-nav.menu.darkbody {
-    background: rgba(0, 0, 0, 0.6);
 }
 
 
@@ -375,7 +367,6 @@ nav.menu.darkbody {
     visibility: hidden;
 }
 
-
 /*--ENLEVER LES TRANSITIONS D'UN ELEMENT--*/
 
 .noTransition {
@@ -399,52 +390,29 @@ nav.menu.darkbody {
     animation: none !important;
 }
 
-
-/* Les différentes fonctions pour assombrir les élements*/
-
-
-/*--VA ÉTRE SUPPRIMÉ POUR ÉTRE REMPLACÉ PAR LES VARIABLES GLOBALES--*/
-
-body.darkbody {
-    background: url("assets/backgrounddark.jpg");
+body {
+    background: var(--image-background);
+    background-color: var(--color-background);
     background-size: 100%;
     background-repeat: repeat-y;
     color: #ffffff;
 }
 
-.darkbody {
-    color: #ffffff;
+article {
+    color: var(--color-text);
 }
 
-a:any-link.darkbody {
-    color: white;
+.dropdown-content {
+    background-color: var(--color-navbar-background);
 }
 
-.darkfoncé {
-    background-color: inherit;
-    color: #ffffff;
+nav.menu {
+    background: var(--color-navbar-background);
 }
 
-.menuElement.darkfoncé {
-    background: none;
-}
-
-.dropdown-content.darkfoncé {
-    box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-nav.menu.darkbody {
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.menu a.selected.darkbody {
-    color: #808080;
-    text-shadow: 0px 0px 4px black, 0px 0px 8px white;
-}
-
-.menu a.darkbody:hover {
-    color: #C0C0C0;
+.menu a.selected:any-link {
+    color: var(--color-selected);
+    text-shadow: var(--color-text-shadow-selected);
 }
 
 
