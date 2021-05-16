@@ -1,18 +1,4 @@
-<!--Page recensant tout les articles -> quand clique sur titre article, rediriger sur article dans Publication.html-->
-
-<?php
-session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5'); 
-
-
-$membres2 = $bdd2->query('SELECT * FROM membres');
-$m = $membres2->fetch();
-?>
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
 
     <head>
@@ -22,8 +8,7 @@ $m = $membres2->fetch();
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Articles Inflow</title>
-        <!--Relié le script html au script css correspondant-->
+        <title>Test Inflow</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -31,9 +16,10 @@ $m = $membres2->fetch();
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <script src="jquery-3.6.0.min.js"></script>
-        <script src="script.js"></script>
-
+        <script type="text/javascript" src="script.js"></script>
     </head>
+
+
 
     <body>
         <div class="main container">
@@ -41,11 +27,11 @@ $m = $membres2->fetch();
             <header class="header container">
                 <img class="bannière element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="element menuElement"><a href="main.html" class="selected">Menu</a></div>
                     <div class="element dropdown menuElement">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
-                            <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
+                            <div class="menuElement"><a href="Article.html">Article</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
@@ -91,19 +77,14 @@ $m = $membres2->fetch();
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
-                <article>
-
-                    <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
-                    <ul>
-                        <?php while($a = $articles->fetch()) { ?>
-                        <li>
-                            <a href="Publication.html?id=<?= $a['id'] ?>">
-                                <?= $a['titre'] ?>
-                            </a>
-                        </li>
-                        <?php } ?>
-                    </ul>
-
+                <article class="container">
+                    <p class="element">
+                        <a href="Profil.html?id=6">Jason</a>
+                        <a href="Profil.html?id=2">Anyr</a>
+                        <a href="Profil.html?id=3">Titouan</a>
+                        <a href="Profil.html?id=4">Axel</a>
+                        <a href="Profil.html?id=5">Ilyes</a>
+                    </p>
                 </article>
             </div>
 

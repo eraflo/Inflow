@@ -1,3 +1,4 @@
+
 /*--Fichier style css principal--*/
 
 
@@ -76,6 +77,66 @@ body {
     background: var(--image-background);
 }
 
+/*--Boite parent--*/
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    height: max-content;
+}
+
+/*--Boite enfant--*/
+
+.element {
+    flex-basis: auto;
+    min-width: min-content;
+    text-align: center;
+}
+
+/*--Grande boite regroupant le header, et le corps de la page
+    à l'intérieur de <body> mais en dehors de la navbar et de <article>--*/
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
+    /* note : minimum (400px) et maximum (5 unité fractionnelle de width 100%) */
+}
+
+/*--haut de la page (bannière et navbar)--*/
+.header {
+    grid-column: 1/4;
+    min-height: 50px;
+    place-content: center;
+}
+
+/*--Parties gauche, milieu et droite de la page--*/
+.left {
+    grid-column: 1/2;
+    min-width: min-content;
+}
+.middle {
+    grid-column: 2/3;
+    min-width: min-content;
+    place-content: center;
+}
+.right {
+    grid-column: 3/4;
+    min-width: min-content;
+}
+
+/*--Bas de la page--*/
+.footer {
+    grid-column: 1/4;
+    min-height: 50px;
+    width: 100%;
+    place-content: center;
+}
 
 /*--tout ce qui ce trouve là où on met du texte, espacement en haut et en bas--*/
 
@@ -95,7 +156,7 @@ article {
     top: 130px;
     left: 0;
     right: 0;
-    height: 80px;
+    min-height: 80px;
     line-height: 80px;
     background-color: var(--color-main-theme);
     width: 100%;
@@ -337,17 +398,20 @@ footer {
 /* styling search bar */
 
 .search input[type=text] {
-    width: 300px;
+    max-width: 300px;
     height: 25px;
     border-radius: 25px;
     border: none;
     outline: none;
+    width: max-content;
+    flex: 5 1 auto;
 }
 
 .search {
     float: right;
     margin: 7px;
     background: none;
+    flex: auto;
 }
 
 .search button {

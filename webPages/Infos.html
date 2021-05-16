@@ -31,96 +31,102 @@ $m = $membres2->fetch();
 
 
     <body>
-
-
-
-
-        <!--Titre de la page web où on se trouve-->
-        <img class="bannière" src="assets/banniere_twi.png" />
-
-        <!--Header, c'est-à-dire, le menu pour changer de page-->
-        <header class="header">
-            <nav class="menu">
-                <div class="menuElement"><a href="main.html">Menu</a></div>
-                <div class="dropdown menuElement"><a href="#">Article</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Article.html">Article</a></div>
-                        <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Poster.html">Poster</a>
-                            <?php } ?>
+        <div class="main container">
+            <!--Header, c'est-à-dire, le menu pour changer de page-->
+            <header class="header container">
+                <img class="bannière element" src="assets/banniere_twi.png" />
+                <nav class="menu container element">
+                    <div class="element menuElement"><a href="main.html" class="selected">Menu</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Article</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Article.html">Article</a></div>
+                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Poster.html">Poster</a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="menuElement"><a href="Playlist.html">Playlist</a></div>
-                <div class="dropdown menuElement"><a href="#">Espace Membre</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <?php if(empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Connexion.html">Connexion</a></div>
-                        <?php } ?>
-                        <?php if(!empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a></div>
-                        <?php } ?>
-                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Admin.html">Admin</a>
+                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="element dropdown menuElement">
+                        <a href="#">Espace Membre</a>
+                        <div class="dropdown-content">
+                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Connexion.html">Connexion</a>
+                            </div>
                             <?php } ?>
+                            <?php if(!empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Profil.html?id=<?= $m['id'] ?>">Profil</a>
+                            </div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Admin.html">Admin</a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="menuElement"><a href="Infos.html" id="Infos" class="selected">Infos</a></div>
-                <!-- search bar right align -->
-                <div class="search">
-                    <form action="#">
-                        <input type="text" placeholder="Recherche" name="search">
-                        <button>
-                    </button>
-                    </form>
-                </div>
-            </nav>
-        </header>
+                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <!-- search bar right align -->
+                    <div class="element search">
+                        <form action="#">
+                            <input type="text" placeholder="Recherche" name="search">
+                            <button>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+            </header>
 
-        <!--Début de là où on pourra mettre du texte-->
-        <article>
-            <!-- <<<<<<< HEAD -->
+            <div class="left"></div>
 
-            <h1 id="Staff">Staff</h1>
-            <div class="Plateforme">
-                <div class="liste-équipe">
-                    <p><b>PDG </b> : Axel </p>
-                    <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
-                    <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
-                    <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
-                </div>
-                <div class="liens-sociaux">
-                    <h3><i>Insta</i> :</h3>
-                    <p><a href="https://instagram.com/inflow_officiel?igshid" target="_blank">Rejoignez notre Instagram !</a></p>
-                    <h3><i>Twitter</i> :</h3>
-                    <p><a href="https://twitter.com/InflowOfficiel" target="_blank">Rejoignez-nous sur Twitter !</a></p>
-                    <h3><i>Twitch</i> :</h3>
-                    <p><a href="https://www.twitch.tv/inflowofficiel" target="_blank">Suivez-nous sur Twitch !</a></p>
-                    <h3><i>Discord</i> :</h3>
-                    <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" target="_blank">Rejoignez le Discord !</a></p>
-                </div>
+            <!--Début de là où on pourra mettre du texte-->
+            <div class="middle">
+                <article>
+                    <!-- <<<<<<< HEAD -->
+
+                    <h1 id="Staff">Staff</h1>
+                    <div class="Plateforme">
+                        <div class="liste-équipe">
+                            <p><b>PDG </b> : Axel </p>
+                            <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
+                            <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
+                            <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
+                        </div>
+                        <div class="liens-sociaux">
+                            <h3><i>Insta</i> :</h3>
+                            <p><a href="https://instagram.com/inflow_officiel?igshid" target="_blank">Rejoignez notre Instagram !</a></p>
+                            <h3><i>Twitter</i> :</h3>
+                            <p><a href="https://twitter.com/InflowOfficiel" target="_blank">Rejoignez-nous sur Twitter !</a></p>
+                            <h3><i>Twitch</i> :</h3>
+                            <p><a href="https://www.twitch.tv/inflowofficiel" target="_blank">Suivez-nous sur Twitch !</a></p>
+                            <h3><i>Discord</i> :</h3>
+                            <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" target="_blank">Rejoignez le Discord !</a></p>
+                        </div>
+                    </div>
+
+
+                    <!-- >>>>>>> main
+                        <p>Début</p>
+
+                -->
+                </article>
             </div>
 
+            <div class="right"></div>
 
-            <!-- >>>>>>> main
-                <p>Début</p>
+            <!--Tout en bas de la page web, contient des infos-->
+            <footer class="footer container">
+                <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
+                <button id="darkTrigger" class="btn element">Thème sombre</button>
 
-        -->
-        </article>
+            </footer>
 
-        <!--Tout en bas de la page web, contient des infos-->
-        <footer>
-            <p> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-            <button id="darkTrigger" class="btn">Thème sombre</button>
-        </footer>
-
-
+        </div>
     </body>
 
-    </html>
+</html>
