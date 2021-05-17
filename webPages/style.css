@@ -110,6 +110,7 @@ body {
     display: grid;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
     /* note : minimum (400px) et maximum (5 unité fractionnelle de width 100%) */
+    color: var(--color-text);
 }
 
 /*--haut de la page (bannière et navbar)--*/
