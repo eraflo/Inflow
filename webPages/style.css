@@ -142,6 +142,10 @@ body {
     place-content: center;
 }
 
+body, article, .footer, .main, .left, .right, .middle {
+    color: var(--color-text);
+}
+
 /*--tout ce qui ce trouve là où on met du texte, espacement en haut et en bas--*/
 
 article {
@@ -149,7 +153,6 @@ article {
     padding-bottom: 5em;
     margin-left: 15px;
     margin-right: 15px;
-    color: var(--color-text);
 }
 
 
@@ -325,7 +328,6 @@ form {
 footer {
     background-color: var(--color-main-theme);
     text-align: center;
-    color: var(--color-text);
     padding: 0.5em;
     margin-bottom: 0;
     position: absolute;
@@ -461,10 +463,6 @@ body {
     background-size: 100%;
     background-repeat: repeat-y;
     color: #ffffff;
-}
-
-article {
-    color: var(--color-text);
 }
 
 .dropdown-content {
