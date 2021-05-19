@@ -142,7 +142,7 @@ body {
     place-content: center;
 }
 
-body article .footer .main .left .right .middle {
+body, article, .footer, .main, .left, .right, .middle {
     color: var(--color-text);
 }
 
