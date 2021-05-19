@@ -1,4 +1,3 @@
-
 /*--Fichier style css principal--*/
 
 
@@ -81,6 +80,7 @@ body {
     background: var(--image-background);
 }
 
+
 /*--Boite parent--*/
 
 .container {
@@ -93,6 +93,7 @@ body {
     height: max-content;
 }
 
+
 /*--Boite enfant--*/
 
 .element {
@@ -100,6 +101,7 @@ body {
     min-width: min-content;
     text-align: center;
 }
+
 
 /*--Grande boite regroupant le header, et le corps de la page
     à l'intérieur de <body> mais en dehors de la navbar et de <article>--*/
@@ -112,35 +114,45 @@ body {
     /* note : minimum (400px) et maximum (5 unité fractionnelle de width 100%) */
 }
 
+
 /*--haut de la page (bannière et navbar)--*/
+
 .header {
     grid-column: 1/4;
     min-height: 50px;
     place-content: center;
 }
 
+
 /*--Parties gauche, milieu et droite de la page--*/
+
 .left {
     grid-column: 1/2;
     min-width: min-content;
+    padding-left: 25px;
 }
+
 .middle {
     grid-column: 2/3;
     min-width: min-content;
     place-content: center;
 }
+
 .right {
     grid-column: 3/4;
     min-width: min-content;
 }
 
+
 /*--Bas de la page--*/
+
 .footer {
     grid-column: 1/4;
     min-height: 50px;
     width: 100%;
     place-content: center;
 }
+
 
 /*--tout ce qui ce trouve là où on met du texte, espacement en haut et en bas--*/
 
@@ -281,6 +293,7 @@ a:any-link:hover:after {
 form {
     margin-top: 20px;
     display: flex;
+    justify-content: right;
 }
 
 

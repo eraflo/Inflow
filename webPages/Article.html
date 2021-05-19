@@ -5,11 +5,23 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5'); 
 
+$articlesParPage = 5;
+$articlesTotalReq = $bdd->query('SELECT id FROM articles');
+$articlesTotal = $articlesTotalReq->rowCount();
 
-$membres2 = $bdd2->query('SELECT * FROM membres');
-$m = $membres2->fetch();
+$pagesTotales = ceil($articlesTotal/$articlesParPage);
+
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+    $_GET['page'] = intval($_GET['page']);
+    $pageCourante = $_GET['page'];
+
+} else {
+    $pageCourante = 1;
+}
+
+$depart = ($pageCourante-1)*$articlesParPage;
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.''); 
 ?>
 
     <!DOCTYPE html>
@@ -49,31 +61,32 @@ $m = $membres2->fetch();
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
-                                <?php } ?>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
-                </div>
-                <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <?php if(empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Connexion.html">Connexion</a></div>
-                        <?php } ?>
-                        <?php if(!empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
-                        <?php } ?>
-                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Admin.html">Admin</a>
+                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                        <div class="dropdown-content">
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Connexion.html">Connexion</a></div>
+                            <?php } ?>
+                            <?php if(!empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Admin.html">Admin</a>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
-                    <!-- search bar right align -->
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
@@ -99,6 +112,15 @@ $m = $membres2->fetch();
                             </a>
                         </li>
                         <?php } ?>
+                        <?php
+                        for($i=1;$i<=$pagesTotales;$i++) {
+                            if($i == $pageCourante) {
+                                echo '<a class="selected">'.$i.' </a>';
+                            } else {
+                                echo '<a href="Article.html?page='.$i.'">'.$i.'</a>';
+                            }
+                        }
+                        ?>
                     </ul>
 
                 </article>

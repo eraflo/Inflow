@@ -79,31 +79,32 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
-                                <?php } ?>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
-                </div>
-                <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
-                    <div class="dropdown-content">
-                        <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                        <?php if(empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Connexion.html">Connexion</a></div>
-                        <?php } ?>
-                        <?php if(!empty($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
-                        <?php } ?>
-                        <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                        <div class="menuElement">
-                            <a href="Admin.html" class="selected">Admin</a>
+                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                        <div class="dropdown-content">
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
+                            <?php if(empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Connexion.html">Connexion</a></div>
+                            <?php } ?>
+                            <?php if(!empty($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                            <div class="menuElement">
+                                <a href="Admin.html" class="selected">Admin</a>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
-                    <!-- search bar right align -->
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
@@ -122,13 +123,13 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
                     <?php while($m = $membres->fetch()) { ?>
                     <li>
                         <?= $m['id'] ?> :
-                        <?= $m['pseudo'] ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
-                        <?php } ?>
-                        <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
-                        <?php } ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
-                        <?php } ?>
+                            <?= $m['pseudo'] ?>
+                                <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
+                                <?php } ?>
+                                <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
+                                <?php } ?>
+                                <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
+                                <?php } ?>
                     </li>
                     <?php } ?>
                 </ul>
