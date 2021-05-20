@@ -115,8 +115,18 @@ body {
 /*--haut de la page (bannière et navbar)--*/
 .header {
     grid-column: 1/4;
-    min-height: 50px;
     place-content: center;
+    position: sticky;
+    top: 130px;
+    min-height: 80px;
+    line-height: 80px;
+    background-color: var(--color-main-theme);
+    width: 100%;
+    transition: 1s;
+    z-index: 100000;
+}
+.header div:last-child {
+    margin-left: auto;
 }
 
 /*--Parties gauche, milieu et droite de la page--*/
@@ -154,23 +164,6 @@ article {
     margin-left: 15px;
     margin-right: 15px;
 }
-
-
-/*--affecte tout ce qui est dans le header, notamment l'arrière plan du header (en gris sur la page web)--*/
-
-.header {
-    position: sticky;
-    top: 130px;
-    left: 0;
-    right: 0;
-    min-height: 80px;
-    line-height: 80px;
-    background-color: var(--color-main-theme);
-    width: 100%;
-    transition: 1s;
-    z-index: 100000;
-}
-
 
 /*--Affecte les différents éléments contenus dans header, mais pas le header en lui même--*/
 
@@ -282,9 +275,7 @@ a:any-link:hover:after {
 /*--Dans Inscription.html, gère les différentes zones où l'on peut écrire--*/
 
 form {
-    margin-top: 20px;
-    display: flex;
-    justify-content: right;
+    width: 100%;
 }
 
 
@@ -400,32 +391,17 @@ footer {
 /* styling search bar */
 
 .search input[type=text] {
+    min-width: max-content;
+    width: 100%;
     max-width: 300px;
     height: 25px;
     border-radius: 25px;
     border: none;
     outline: none;
-    width: max-content;
-    flex: 5 1 auto;
 }
 
 .search {
-    float: right;
-    margin: 7px;
-    background: none;
-    flex: auto;
 }
-
-.search button {
-    float: right;
-    padding: 5px 10px;
-    margin-right: 16px;
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-    visibility: hidden;
-}
-
 
 /*--NE PAS AFFICHER UN ELEMENT--*/
 
