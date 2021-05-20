@@ -86,6 +86,6 @@ $(document).ready(function () {
         $(this).fadeOut(0);
     });
     $(".headerElement").each(function (index) {
-        $(this).delay(150 * index).fadeIn(500);
+        $(this).delay(100 * index).fadeIn(1000);
     });
 });
