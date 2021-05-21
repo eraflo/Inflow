@@ -78,3 +78,14 @@ function scrollFunction() {
         document.getElementsByClassName("header")[0].style.top = "130px";
     }
 }
+
+// Affiche les éléments du header petit à petit
+
+$(document).ready(function () {
+    $(".headerElement").each(function (index) {
+        $(this).fadeOut(0);
+    });
+    $(".headerElement").each(function (index) {
+        $(this).delay(100 * index).fadeIn(1000);
+    });
+});

@@ -78,8 +78,8 @@ $commentaires->execute(array($get_id));
             <header class="header container">
                 <img class="bannière element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="element menuElement"><a href="main.html">Menu</a></div>
-                    <div class="element dropdown menuElement">
+                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="headerElement element menuElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
@@ -90,8 +90,8 @@ $commentaires->execute(array($get_id));
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                             <?php if(empty($_SESSION)) { ?>
@@ -109,12 +109,10 @@ $commentaires->execute(array($get_id));
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <div class="headerElement element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
-                            <button>
-                            </button>
                         </form>
                     </div>
                 </nav>
