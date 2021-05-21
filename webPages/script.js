@@ -70,21 +70,15 @@ window.onscroll = function () {
     scrollFunction()
 };
 function scrollFunction() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
         document.getElementsByClassName("bannière")[0].style.height = "0px";
         document.getElementsByClassName("bannière")[0].style.opacity = "0%";
-        document.documentElement.style.marginTop = "0px";
-        document.getElementsByClassName("header")[0].style.top = "0px";
-    } else if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    } else if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         document.getElementsByClassName("bannière")[0].style.height = "70px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
-        document.documentElement.style.marginTop = "70px";
-        document.getElementsByClassName("header")[0].style.top = "70px";
     } else {
         document.getElementsByClassName("bannière")[0].style.height = "130px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
-        document.documentElement.style.marginTop = "130px";
-        document.getElementsByClassName("header")[0].style.top = "130px";
     }
 }
 
