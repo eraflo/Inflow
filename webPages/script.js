@@ -17,7 +17,12 @@ function dark_mode_button_on_click() {
 
 
 function activate_dark_mode() {
-    // Toggle dark mode -- À CHANGER / LA VARIABLE window.localStorage["dark_mode"] STOCKE L'ÉTAT DU DARK MODE, PLUS BESOIN DE CHECK POUR CHAQUE DIV/CLASS
+    // Toggle dark mode
+
+    $(".headerElement").each(function (index) {
+        $(this).fadeOut(0);
+    });
+
     $("*").addClass("noTransition");
 
     if (document.documentElement.getAttribute("user-color-mode") == "user_forced")
@@ -31,7 +36,10 @@ function activate_dark_mode() {
     setTimeout(function () {
         $("*").removeClass("noTransition");
     }, 10);
-    
+
+    $(".headerElement").each(function (index) {
+        $(this).delay(150 * index).fadeIn(400);
+    });
 }
 
 
@@ -57,6 +65,7 @@ $(document).ready(function () {
 
 
 // Change la taille de la bannière fixe lors du scroll down/up
+
 window.onscroll = function () {
     scrollFunction()
 };
@@ -82,10 +91,13 @@ function scrollFunction() {
 // Affiche les éléments du header petit à petit
 
 $(document).ready(function () {
-    $(".headerElement").each(function (index) {
-        $(this).fadeOut(0);
-    });
-    $(".headerElement").each(function (index) {
-        $(this).delay(100 * index).fadeIn(1000);
-    });
+
+    if (!document.documentElement.getAttribute("user-color-mode") == "user_forced") {
+        $(".headerElement").each(function (index) {
+            $(this).fadeOut(0);
+        });
+        $(".headerElement").each(function (index) {
+            $(this).delay(100 * index).fadeIn(1000);
+        });
+    }
 });
