@@ -125,7 +125,7 @@ body {
     transition: 1s;
     z-index: 100000;
 }
-.header div:last-child {
+.header nav .search {
     margin-left: auto;
     margin-right: 30px;
 }
@@ -399,9 +399,6 @@ footer {
     border-radius: 25px;
     border: none;
     outline: none;
-}
-
-.search {
 }
 
 /*--NE PAS AFFICHER UN ELEMENT--*/
