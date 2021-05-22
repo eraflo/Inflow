@@ -19,6 +19,3 @@ def traitement(fichier):
     texte = text.decode(encoding="utf-8",errors="strict")
     # on renvoie le texte decode
     return texte
-
-
-print(traitement(lien))
