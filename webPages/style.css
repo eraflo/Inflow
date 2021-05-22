@@ -436,7 +436,7 @@ body {
     background-size: 100%;
     background-repeat: repeat-y;
     color: var(--color-text);
-    height: 100%;
+    height: fit-content;
 }
 
 .dropdown-content {
