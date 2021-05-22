@@ -107,7 +107,7 @@ body {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: max-content auto;
+    grid-template-rows: auto auto 100px;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
     /* note : minimum (400px) et maximum (5 unité fractionnelle de width 100%) */
 }
@@ -133,21 +133,30 @@ body {
 /*--Parties gauche, milieu et droite de la page--*/
 .left {
     grid-column: 1/2;
+    grid-row: 2/3;
     min-width: min-content;
 }
 .middle {
     grid-column: 2/3;
-    min-width: min-content;
+    grid-row: 2/3;
+    max-width: max-content;
+
+    /*effets sur le texte (et images du .middle)*/
     place-content: center;
+    overflow-wrap: break-word;
+    text-align: justify;
+    text-justify: inter-word;
 }
 .right {
     grid-column: 3/4;
+    grid-row: 2/3;
     min-width: min-content;
 }
 
 /*--Bas de la page--*/
 .footer {
     grid-column: 1/4;
+    grid-row: 3/4;
     min-height: 50px;
     width: 100%;
     place-content: center;

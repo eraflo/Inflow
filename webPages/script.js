@@ -73,7 +73,7 @@ function scrollFunction() {
     if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
         document.getElementsByClassName("bannière")[0].style.height = "0px";
         document.getElementsByClassName("bannière")[0].style.opacity = "0%";
-    } else if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         document.getElementsByClassName("bannière")[0].style.height = "70px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
     } else {
