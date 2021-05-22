@@ -5,7 +5,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5'); 
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5');
 
 
 $membres2 = $bdd2->query('SELECT * FROM membres');
@@ -46,6 +46,9 @@ $m = $membres2->fetch();
                         <a href="#">Article</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
+                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
+                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>

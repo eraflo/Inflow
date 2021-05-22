@@ -1,12 +1,12 @@
 <!--Page d'inscription en tant que membre-->
 
-<!--Partie php = atteindre base de donnée + récupère infos formulaire, vérifie si tout est bien rempli, si pseudo et email existe pas 
+<!--Partie php = atteindre base de donnée + récupère infos formulaire, vérifie si tout est bien rempli, si pseudo et email existe pas
     déjà et transmet à base de donnée-->
 <?php
 
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-    
+
 if(isset($_POST["formconnexion"])) {
     $pseudoconnect = htmlspecialchars($_POST["pseudoconnect"]);
     $passconnect = sha1($_POST['passconnect']);
@@ -72,6 +72,9 @@ if(isset($_POST["formconnexion"])) {
                         <a href="#">Article</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Article.html">Article</a></div>
+                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
+                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
