@@ -17,7 +17,12 @@ function dark_mode_button_on_click() {
 
 
 function activate_dark_mode() {
-    // Toggle dark mode -- À CHANGER / LA VARIABLE window.localStorage["dark_mode"] STOCKE L'ÉTAT DU DARK MODE, PLUS BESOIN DE CHECK POUR CHAQUE DIV/CLASS
+    // Toggle dark mode
+
+    $(".headerElement").each(function (index) {
+        $(this).fadeOut(0);
+    });
+
     $("*").addClass("noTransition");
 
     if (document.documentElement.getAttribute("user-color-mode") == "user_forced")
@@ -31,7 +36,10 @@ function activate_dark_mode() {
     setTimeout(function () {
         $("*").removeClass("noTransition");
     }, 10);
-    
+
+    $(".headerElement").each(function (index) {
+        $(this).delay(150 * index).fadeIn(400);
+    });
 }
 
 
@@ -57,35 +65,33 @@ $(document).ready(function () {
 
 
 // Change la taille de la bannière fixe lors du scroll down/up
+
 window.onscroll = function () {
     scrollFunction()
 };
 function scrollFunction() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
         document.getElementsByClassName("bannière")[0].style.height = "0px";
         document.getElementsByClassName("bannière")[0].style.opacity = "0%";
-        document.documentElement.style.marginTop = "0px";
-        document.getElementsByClassName("header")[0].style.top = "0px";
-    } else if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    } else if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
         document.getElementsByClassName("bannière")[0].style.height = "70px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
-        document.documentElement.style.marginTop = "70px";
-        document.getElementsByClassName("header")[0].style.top = "70px";
     } else {
         document.getElementsByClassName("bannière")[0].style.height = "130px";
         document.getElementsByClassName("bannière")[0].style.opacity = "100%";
-        document.documentElement.style.marginTop = "130px";
-        document.getElementsByClassName("header")[0].style.top = "130px";
     }
 }
 
 // Affiche les éléments du header petit à petit
 
 $(document).ready(function () {
-    $(".headerElement").each(function (index) {
-        $(this).fadeOut(0);
-    });
-    $(".headerElement").each(function (index) {
-        $(this).delay(100 * index).fadeIn(1000);
-    });
+
+    if (!document.documentElement.getAttribute("user-color-mode") == "user_forced") {
+        $(".headerElement").each(function (index) {
+            $(this).fadeOut(0);
+        });
+        $(".headerElement").each(function (index) {
+            $(this).delay(100 * index).fadeIn(1000);
+        });
+    }
 });
