@@ -96,7 +96,9 @@ $commentaires->execute(array($get_id));
                     <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
                     <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
-                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php if(empty($_SESSION)) { ?>
+                                <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -121,7 +123,26 @@ $commentaires->execute(array($get_id));
                 </nav>
             </header>
 
-            <div class="left"></div>
+            <div class="left">
+                <br/><br/>
+                <div class="Commentaires">
+                    <h2>Commentaires :</h2>
+                    <form method="POST">
+                        <textarea name="commentaire" placeholder="Votre commentaire"></textarea> <br/>
+                        <input type="submit" value="Poster" name="submit_commentaire" />
+                    </form>
+                    <br/>
+                    <?php if(isset($msg)) { echo $msg; } ?>
+                    <br/>
+                    <?php while($c = $commentaires->fetch()) { ?>
+                    <?php if(!empty($_SESSION['avatar'])) { ?>
+                    <img src="membres/avatars/<?php echo $_SESSION['avatar']; ?>" width="50">
+                    <?php } ?>
+                    <b><?= $c['pseudo'] ?> :</b>
+                    <?= $c['commentaire'] ?> <br/>
+                        <?php } ?>
+                </div>
+            </div>
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
@@ -135,25 +156,8 @@ $commentaires->execute(array($get_id));
                         <?= $contenu ?>
                     </p>
 
-                </article></article>
-        				<br/><br/>
-        				<div class="Commentaires">
-            				<h2>Commentaires :</h2>
-            				<form method="POST">
-                				<textarea name="commentaire" placeholder="Votre commentaire"></textarea> <br/>
-                				<input type="submit" value="Poster" name="submit_commentaire" />
-            				</form>
-            				<br/>
-            				<?php if(isset($msg)) { echo $msg; } ?>
-            				<br/>
-            				<?php while($c = $commentaires->fetch()) { ?>
-            				<?php if(!empty($_SESSION['avatar'])) { ?>
-            				<img src="membres/avatars/<?php echo $_SESSION['avatar']; ?>" width="50">
-            				<?php } ?>
-            				<b><?= $c['pseudo'] ?> :</b>
-            				<?= $c['commentaire'] ?> <br/>
-            				    <?php } ?>
-        				</div>
+                </article>
+                </article>
             </div>
 
             <div class="right"></div>
