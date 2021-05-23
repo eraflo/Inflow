@@ -14,8 +14,17 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
 
     if($article->rowCount() == 1) {
         $article = $article->fetch();
+        $id = $article['id'];
         $titre = $article['titre'];
         $contenu = $article['contenu'];
+
+        $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?');
+        $likes->execute(array($id));
+        $likes = $likes->rowCount();
+
+        $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ?');
+        $dislikes->execute(array($id));
+        $dislikes = $dislikes->rowCount();
 
     } else {
         die('Cette article n\'existe pas !!!');
@@ -97,7 +106,7 @@ $commentaires->execute(array($get_id));
                     <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
-                                <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                             <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
@@ -110,7 +119,7 @@ $commentaires->execute(array($get_id));
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Admin.html">Admin</a>
-                                </div>
+                            </div>
                             <?php } ?>
                         </div>
                     </div>
@@ -155,8 +164,11 @@ $commentaires->execute(array($get_id));
                     <p>
                         <?= $contenu ?>
                     </p>
+                    <a href="php/Action.php?t=1&id=<?= $id>">Like</a> (
+                    <?= $likes ?>)
+                        <a href="php/Action.php?t=2&id=<?= $id>">Dislike</a> (
+                        <?= $dislikes ?>)
 
-                </article>
                 </article>
             </div>
 
