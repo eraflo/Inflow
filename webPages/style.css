@@ -19,7 +19,7 @@
     --color-selection-text: inherit;
     /*couleur du texte lors de la selection*/
     --color-selection-bg: rgb(16, 137, 237, 0.45);
-    /*couleur du surlignage lors de la sélection*/
+    /*couleur du surlignage lors de la sÃ©lection*/
     --color-underline: dodgerblue;
     --color-navbar-background: var(--color-main-theme);
 }
@@ -101,7 +101,7 @@ body {
 }
 
 /*--Grande boite regroupant le header, et le corps de la page
-    à l'intérieur de <body> mais en dehors de la navbar et de <article>--*/
+    Ã  l'intÃ©rieur de <body> mais en dehors de la navbar et de <article>--*/
 
 .main {
     height: 100%;
@@ -109,10 +109,10 @@ body {
     display: grid;
     grid-template-rows: auto auto 100px;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
-    /* note : minimum (400px) et maximum (5 unité fractionnelle de width 100%) */
+    /* note : minimum (400px) et maximum (5 unitÃ© fractionnelle de width 100%) */
 }
 
-/*--haut de la page (bannière et navbar)--*/
+/*--haut de la page (banniÃ¨re et navbar)--*/
 .header {
     grid-column: 1/4;
     place-content: center;
@@ -166,7 +166,7 @@ body, article, .footer, .main, .left, .right, .middle {
     color: var(--color-text);
 }
 
-/*--tout ce qui ce trouve là où on met du texte, espacement en haut et en bas--*/
+/*--tout ce qui ce trouve lÃ  oÃ¹ on met du texte, espacement en haut et en bas--*/
 
 article {
     font-family: Helvetica;
@@ -175,7 +175,7 @@ article {
     margin-right: 15px;
 }
 
-/*--Affecte les différents éléments contenus dans header, mais pas le header en lui même--*/
+/*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
 
 .menu {
     padding: 0 10px;
@@ -187,15 +187,16 @@ article {
 }
 
 
-/*--Éléments dans la navbar--*/
+/*--Ã‰lÃ©ments dans la navbar--*/
 
 .menuElement {
     display: inline-block;
     background: none;
+    width: max-content;
 }
 
 
-/*--Affecte chaque partie du header où on peut cliquer (Menu, Article, Playlist...)
+/*--Affecte chaque partie du header oÃ¹ on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
 
 .menu a:any-link {
@@ -205,10 +206,11 @@ article {
     padding: 0 10px;
     color: var(--color-unselected-links);
     transition: all 0.5s ease-in-out;
+    /* min-width: max-content; */
 }
 
 
-/*--Affecte les transitions lorsque l'on a la souris sur un élément du header(Menu, Article...)--*/
+/*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
 
 .menu a:any-link:hover {
     color: var(--color-text-hover);
@@ -221,7 +223,7 @@ article {
 }
 
 
-/*--Change de couleur lorsque l'utilisateur clique sur l'élément
+/*--Change de couleur lorsque l'utilisateur clique sur l'Ã©lÃ©ment
 	(Seulement avant le changement de page)--*/
 
 .menu a:any-link:active {
@@ -230,7 +232,7 @@ article {
 }
 
 
-/*--Page actuelle sélectionnée dans la navbar--*/
+/*--Page actuelle sÃ©lectionnÃ©e dans la navbar--*/
 
 .menu a.selected:any-link {
     color: var(--color-selected);
@@ -238,9 +240,9 @@ article {
 }
 
 
-/*--Affecte la bannière en haut de la page--*/
+/*--Affecte la banniÃ¨re en haut de la page--*/
 
-.bannière {
+.banniere {
     width: 100%;
     height: 130px;
     top: 0;
@@ -281,21 +283,21 @@ a:any-link:hover:after {
 }
 
 
-/*--Dans Inscription.html, gère les différentes zones où l'on peut écrire--*/
+/*--Dans Inscription.html, gÃ¨re les diffÃ©rentes zones oÃ¹ l'on peut Ã©crire--*/
 
 form {
     width: 100%;
 }
 
 
-/*--Gère les liens des réseaux sociaux--*/
+/*--GÃ¨re les liens des rÃ©seaux sociaux--*/
 
 .lien-sociaux {
     color: var(--color-links);
 }
 
 
-/*--Classe gérant dans Infos.html la mise en page du texte. Va de ici --*/
+/*--Classe gÃ©rant dans Infos.html la mise en page du texte. Va de ici --*/
 
 .Plateforme {
     display: grid;
@@ -314,7 +316,7 @@ form {
 /*--A ici--*/
 
 
-/*--Gère le sous-titre dans Infos.html--*/
+/*--GÃ¨re le sous-titre dans Infos.html--*/
 
 #Staff {
     font-size: 50px;
@@ -338,10 +340,10 @@ footer {
 }
 
 
-/*  Menu déroulant Espace Membre  */
+/*  Menu dÃ©roulant Espace Membre  */
 
 
-/* Le conteneur <div> - nécessaire pour positionner le contenu de la liste déroulante */
+/* Le conteneur <div> - nÃ©cessaire pour positionner le contenu de la liste dÃ©roulante */
 
 .dropdown {
     position: relative;
@@ -353,7 +355,7 @@ footer {
 }
 
 
-/* Contenu déroulant (masqué par défaut) */
+/* Contenu dÃ©roulant (masquÃ© par dÃ©faut) */
 
 .dropdown-content {
     display: none;
@@ -366,7 +368,7 @@ footer {
 }
 
 
-/* Liens dans la liste déroulante */
+/* Liens dans la liste dÃ©roulante */
 
 .dropdown-content a {
     color: var(--color-text);
@@ -375,14 +377,14 @@ footer {
 }
 
 
-/* Afficher le menu déroulant en survol */
+/* Afficher le menu dÃ©roulant en survol */
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: flex;
 }
 
 
-/*--Bouton dark mode - à changer de nom de classe--*/
+/*--Bouton dark mode - Ã  changer de nom de classe--*/
 
 .footer btn {
     margin-left: 1700px;
@@ -450,6 +452,11 @@ body {
 
 .dropdown-content {
     background-color: var(--color-navbar-background);
+    background: linear-gradient(180deg, rgba(65,105,225,1) 15%, rgba(42,68,143,0.9) 85%);
+    width: auto;
+    flex-direction: column;
+    display: none;
+    align-items: center;
 }
 
 nav.menu {
@@ -462,7 +469,7 @@ nav.menu {
 }
 
 
-/*--À quoi ça sert ? Peut-être suppr--*/
+/*--Ã€ quoi Ã§a sert ? Peut-Ãªtre suppr--*/
 
 .dark button {
     background: inherit;
@@ -470,7 +477,7 @@ nav.menu {
 }
 
 
-/*--Code en 2 fois : à vérifier si erreur ou pas. En progression.--*/
+/*--Code en 2 fois : Ã  vÃ©rifier si erreur ou pas. En progression.--*/
 
 a.selected {
     color: var(--color-selected);
