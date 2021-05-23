@@ -1,35 +1,4 @@
-<!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
-<?php
-session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-
-<<<<<<< Updated upstream
-
-if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
-=======
-if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_auteur'])) {
->>>>>>> Stashed changes
-    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu'])) {
-
-        $article_titre = htmlspecialchars($_POST['article_titre']);
-        $article_contenu = htmlspecialchars($_POST['article_contenu']);
-		$article_auteur = htmlspecialchars($_POST['article_auteur']);
-
-        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, date_time_publication)
-            VALUES (?, ?, ?, NOW())');
-        $ins->execute(array($article_titre, $article_contenu, $article_auteur));
-
-        $message = 'Votre article a bien été posté';
-
-    } else {
-        $message = 'Veuillez remplir tous les champs';
-    }
-}
-
-?>
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
 
     <head>
@@ -39,7 +8,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_aut
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Poster</title>
+        <title>Test Inflow</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -58,7 +27,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_aut
             <header class="header container">
                 <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="headerElement element menuElement"><a href="main.html" class="selected">Menu</a></div>
                     <div class="headerElement element menuElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
@@ -68,17 +37,15 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_aut
                             <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
-                                <a href="Poster.html" class="selected">Poster</a>
-                                <?php } ?>
+                                <a href="Poster.html">Poster</a>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
-                            <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -107,19 +74,14 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_aut
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
-                <article>
-                    <!--Formulaire pour postez des articles-->
-                    <form method="POST">
-                        <input type="text" name="article_titre" placeholder="Titre" /> <br/>
-                        <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
-						<input type="text" name="article_auteur" placeholder="Auteur" /> <br/>
-                        <input type="submit" value="Envoyer l'article" /><br />
-                    </form>
-                    <br />
-                    <!--Affiche message en lien avec le transfert des données du formulaire.
-                Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
-                    <?php if(isset($message)) { echo $message; } ?>
-                    <br />
+                <article class="container">
+                    <p class="element">
+                        <a href="Profil.html?id=6">Jason</a>
+                        <a href="Profil.html?id=2">Anyr</a>
+                        <a href="Profil.html?id=3">Titouan</a>
+                        <a href="Profil.html?id=4">Axel</a>
+                        <a href="Profil.html?id=5">Ilyes</a>
+                    </p>
                 </article>
             </div>
 

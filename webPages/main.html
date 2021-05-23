@@ -51,13 +51,16 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
         <div class="main container">
             <!--Header, c'est-à-dire, le menu pour changer de page-->
             <header class="header container">
-                <img class="bannière element" src="assets/banniere_twi.png" />
+                <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="element menuElement"><a href="main.html" class="selected">Menu</a></div>
-                    <div class="element dropdown menuElement">
+                    <div class="headerElement element menuElement"><a href="main.html" class="selected">Menu</a></div>
+                    <div class="headerElement element menuElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Article.html">Article</a></div>
+                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
+                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
@@ -65,8 +68,8 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
@@ -82,16 +85,14 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Admin.html">Admin</a>
-                            </div>
+                                </div>
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <div class="headerElement element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
-                            <button>
-                            </button>
                         </form>
                     </div>
                 </nav>
