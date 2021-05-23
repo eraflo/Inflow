@@ -461,9 +461,53 @@ nav.menu {
     background: var(--color-navbar-background);
 }
 
-/*--Ã€ quoi Ã§a sert ? Peut-Ãªtre suppr--*/
 
-.dark button {
-    background: inherit;
-    color: #fff;
+/*--Bouton mode sombre--*/
+
+.BoutonTransition {
+    position: absolute;
+    top:15%;
+    left:90%;
+}
+
+input[type="checkbox"]
+{
+    border: none;
+    background-color: lightgrey;
+    text-align: left;
+    padding: 0.4rem;
+    color:white;
+    display: inline-block;
+    border-radius: 2rem;
+    outline:none;
+    transition:0.5s;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    width: 80px;
+    height: 40px;
+    -webkit-appearance: none
+}
+
+input:checked[type="checkbox"]
+{
+    background-color: #03a9f4;
+}
+
+input[type="checkbox"]:before
+{
+    content: '';
+    position: absolute;
+    width:40px;
+    height: 40px;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform:scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    transition:0.4s;
+}
+
+input:checked[type="checkbox"]:before
+{
+    left: 40px;
 }

@@ -50,6 +50,7 @@ $(document).ready(function () {
     }
     if (window.localStorage["dark_mode"] == "user_forced") {
         activate_dark_mode();
+        document.querySelector('input[type="checkbox"]').checked = true;
     } else if (window.localStorage["dark_mode"] == "user_desactivated") {
         null;
     } else if (window.localStorage["dark_mode"] == "hour") {
