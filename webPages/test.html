@@ -1,13 +1,4 @@
-<?php
-session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-
-$membres2 = $bdd->query('SELECT * FROM membres');
-$m = $membres2->fetch();
-?>
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
 
     <head>
@@ -17,18 +8,18 @@ $m = $membres2->fetch();
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!--Nom De la page-->
-        <title>Playlist Inflow</title>
-        <!--Relié le script html au script css correspondant-->
+        <title>Test Inflow</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <script src="jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-
     </head>
+
+
 
     <body>
         <div class="main container">
@@ -36,7 +27,7 @@ $m = $membres2->fetch();
             <header class="header container">
                 <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="headerElement element menuElement"><a href="main.html" class="selected">Menu</a></div>
                     <div class="headerElement element menuElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
@@ -51,12 +42,10 @@ $m = $membres2->fetch();
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerElement element menuElement"><a href="Playlist.html" class="selected">Playlist</a></div>
-                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
-                            <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
-                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -85,14 +74,14 @@ $m = $membres2->fetch();
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
-                <article>
-
-                    <h3>Playlist 1</h3>
-
-
-
-                    <p>Début</p>
-
+                <article class="container">
+                    <p class="element">
+                        <a href="Profil.html?id=6">Jason</a>
+                        <a href="Profil.html?id=2">Anyr</a>
+                        <a href="Profil.html?id=3">Titouan</a>
+                        <a href="Profil.html?id=4">Axel</a>
+                        <a href="Profil.html?id=5">Ilyes</a>
+                    </p>
                 </article>
             </div>
 

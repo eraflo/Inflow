@@ -5,6 +5,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5');
 
 $articlesParPage = 5;
 $articlesTotalReq = $bdd->query('SELECT id FROM articles');
@@ -51,13 +52,16 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
         <div class="main container">
             <!--Header, c'est-à-dire, le menu pour changer de page-->
             <header class="header container">
-                <img class="bannière element" src="assets/banniere_twi.png" />
+                <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="element menuElement"><a href="main.html">Menu</a></div>
-                    <div class="element dropdown menuElement">
+                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="headerElement element menuElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
+                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
+                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
@@ -65,8 +69,8 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
@@ -86,12 +90,10 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <div class="headerElement element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
-                            <button>
-                            </button>
                         </form>
                     </div>
                 </nav>
