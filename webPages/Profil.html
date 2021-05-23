@@ -2,6 +2,7 @@
 
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
 if(empty($_SESSION['id'])) {
     header("Location: Connexion.html");
@@ -66,11 +67,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                             <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
-                                <a href="Connexion.html">Connexion</a></div>
+                                <a href="Connexion.html" class="selected">Connexion</a></div>
                             <?php } ?>
                             <?php if(!empty($_SESSION)) { ?>
                             <div class="menuElement">
-                                <a href="Profil.html?id=<?= $_SESSION['id'] ?>" class="selected">Profil</a></div>
+                                <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">

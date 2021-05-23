@@ -5,7 +5,8 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-
+<<<<<<< Updated upstream
+=======
 $articlesParPage = 5;
 $articlesTotalReq = $bdd->query('SELECT id FROM articles');
 $articlesTotal = $articlesTotalReq->rowCount();
@@ -21,7 +22,28 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 }
 
 $depart = ($pageCourante-1)*$articlesParPage;
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
+>>>>>>> Stashed changes
+
+$articlesParPage = 5;
+$articlesTotalReq = $bdd->query('SELECT id FROM articles');
+$articlesTotal = $articlesTotalReq->rowCount();
+
+<<<<<<< Updated upstream
+$pagesTotales = ceil($articlesTotal/$articlesParPage);
+
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+    $_GET['page'] = intval($_GET['page']);
+    $pageCourante = $_GET['page'];
+
+} else {
+    $pageCourante = 1;
+}
+
+$depart = ($pageCourante-1)*$articlesParPage;
 $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.''); 
+=======
+>>>>>>> Stashed changes
 ?>
 
     <!DOCTYPE html>
@@ -105,12 +127,16 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
 
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
                     <ul>
-                        <?php while($a = $articles->fetch()) { ?>
+                        <?php if($articles->RowCount() > 0) {
+                            while($a = $articles->fetch()) { ?>
                         <li>
                             <a href="Publication.html?id=<?= $a['id'] ?>">
-                                <?= $a['titre'] ?>
+                                <?= $a['titre'];
+                                if(!empty($a['auteur'])) {echo ",";}?>
+                                    <?= $a['auteur']; ?>
                             </a>
                         </li>
+<<<<<<< Updated upstream
                         <?php } ?>
                         <?php
                         for($i=1;$i<=$pagesTotales;$i++) {
@@ -121,6 +147,17 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                             }
                         }
                         ?>
+=======
+                        <?php } 
+                            for($i=1;$i<=$pagesTotales;$i++) {
+                                if($i == $pageCourante) {
+                                    echo '<a class="selected">'.$i.' </a>';
+                                } else {
+                                    echo '<a href="Article.html?page='.$i.'">'.$i.'</a>';
+                                }
+                            }
+                        } ?>
+>>>>>>> Stashed changes
                     </ul>
 
                 </article>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
 if(isset($_SESSION['id'])) {
     $requeser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
@@ -52,7 +53,7 @@ if(isset($_SESSION['id'])) {
     }
 
     if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
-        $tailleMax = 5242880;
+        $tailleMax = 10485760;
         $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
         if($_FILES['avatar']['size'] <= $tailleMax) {
             $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
