@@ -465,7 +465,7 @@ nav.menu {
 /*--Bouton mode sombre--*/
 
 .BoutonTransition {
-    position: absolute;
+    position: sticky;
     top:15%;
     left:90%;
 }

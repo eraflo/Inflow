@@ -1,3 +1,7 @@
+// global vars
+last_height_scroll = 0;
+
+
 $(document).ready(function () {
     // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
     $("#darkTrigger").click(dark_mode_button_on_click);
@@ -71,15 +75,24 @@ window.onscroll = function () {
     scrollFunction()
 };
 function scrollFunction() {
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-        document.getElementsByClassName("banniere")[0].style.height = "0px";
-        document.getElementsByClassName("banniere")[0].style.opacity = "0%";
-    } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.getElementsByClassName("banniere")[0].style.height = "70px";
-        document.getElementsByClassName("banniere")[0].style.opacity = "100%";
+    banniere = document.getElementsByClassName("banniere")[0];
+    actual_scroll = document.documentElement.scrollTop
+    check_position = (Math.abs(actual_scroll - last_height_scroll) > 80);
+    if (!check_position)
+        return;
+
+    if (actual_scroll > 2000) {
+        banniere.style.height = "0px";
+        banniere.style.opacity = "0%";
+        last_height_scroll = actual_scroll;
+    } else if (actual_scroll > 500) {
+        banniere.style.height = "70px";
+        banniere.style.opacity = "100%";
+        last_height_scroll = actual_scroll;
     } else {
-        document.getElementsByClassName("banniere")[0].style.height = "130px";
-        document.getElementsByClassName("banniere")[0].style.opacity = "100%";
+        banniere.style.height = "130px";
+        banniere.style.opacity = "100%";
+        last_height_scroll = actual_scroll;
     }
 }
 
