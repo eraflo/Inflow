@@ -69,9 +69,11 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
                         </div>
                     </div>
                     <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
+                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
+                            <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -96,16 +98,15 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
                 </nav>
             </header>
 
-        <div class="left"></div>
+            <div class="left"></div>
             <!--Début de là où on pourra mettre du texte-->
-        <div class="middle">
-            <article>
-                <a href="Profil.html?id=6">Jason</a>
-                <a href="Profil.html?id=2">Anyr</a>
-                <a href="Profil.html?id=4">Axel</a>
-            </article>
-        </div>
-        <div class="right"></div>
+            <div class="middle">
+                <article>
+                    <a href="Profil.html?id=6">Jason</a>
+                    <a href="Profil.html?id=4">Axel</a>
+                </article>
+            </div>
+            <div class="right"></div>
             <!--Tout en bas de la page web, contient des infos-->
             <footer class="footer container">
                 <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>

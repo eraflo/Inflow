@@ -52,9 +52,11 @@ $m = $membres2->fetch();
                         </div>
                     </div>
                     <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
+                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
+                            <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -126,4 +128,4 @@ $m = $membres2->fetch();
         </div>
     </body>
 
-</html>
+    </html>

@@ -87,9 +87,11 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
                         </div>
                     </div>
                     <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
+                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
+                            <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -100,8 +102,7 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
-                                <a href="Admin.html" class="selected">Admin</a>
-                                </div>
+                                <a href="Admin.html" class="selected">Admin</a></div>
                             <?php } ?>
                         </div>
                     </div>
@@ -122,13 +123,13 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
                     <?php while($m = $membres->fetch()) { ?>
                     <li>
                         <?= $m['id'] ?> :
-                        <?= $m['pseudo'] ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
-                        <?php } ?>
-                        <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
-                        <?php } ?>
-                        <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
-                        <?php } ?>
+                            <?= $m['pseudo'] ?>
+                                <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&admin=<?= $m['id'] ?>">Admin</a>
+                                <?php } ?>
+                                <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.html?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
+                                <?php } ?>
+                                <?php if($m['admin'] == 0) { ?> - <a href="Admin.html?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
+                                <?php } ?>
                     </li>
                     <?php } ?>
                 </ul>

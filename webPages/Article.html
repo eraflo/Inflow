@@ -7,9 +7,22 @@ $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root"
 
 $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5');
 
+$articlesParPage = 5;
+$articlesTotalReq = $bdd->query('SELECT id FROM articles');
+$articlesTotal = $articlesTotalReq->rowCount();
 
-$membres2 = $bdd2->query('SELECT * FROM membres');
-$m = $membres2->fetch();
+$pagesTotales = ceil($articlesTotal/$articlesParPage);
+
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+    $_GET['page'] = intval($_GET['page']);
+    $pageCourante = $_GET['page'];
+
+} else {
+    $pageCourante = 1;
+}
+
+$depart = ($pageCourante-1)*$articlesParPage;
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.''); 
 ?>
 
     <!DOCTYPE html>
@@ -57,9 +70,11 @@ $m = $membres2->fetch();
                         </div>
                     </div>
                     <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
+                    <div class="headerElement element dropdown menuElement"><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
+                            <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                            <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Connexion.html">Connexion</a></div>
@@ -71,7 +86,7 @@ $m = $membres2->fetch();
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Admin.html">Admin</a>
-                                </div>
+                            </div>
                             <?php } ?>
                         </div>
                     </div>
@@ -99,6 +114,15 @@ $m = $membres2->fetch();
                             </a>
                         </li>
                         <?php } ?>
+                        <?php
+                        for($i=1;$i<=$pagesTotales;$i++) {
+                            if($i == $pageCourante) {
+                                echo '<a class="selected">'.$i.' </a>';
+                            } else {
+                                echo '<a href="Article.html?page='.$i.'">'.$i.'</a>';
+                            }
+                        }
+                        ?>
                     </ul>
 
                 </article>
