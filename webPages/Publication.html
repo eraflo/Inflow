@@ -20,7 +20,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     } else {
         die('Cette article n\'existe pas !!!');
     }
-    
+
     if(!empty($_SESSION)) {
         if(isset($_POST['submit_commentaire'])) {
             if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])) {
@@ -76,13 +76,16 @@ $commentaires->execute(array($get_id));
         <div class="main container">
             <!--Header, c'est-à-dire, le menu pour changer de page-->
             <header class="header container">
-                <img class="bannière element" src="assets/banniere_twi.png" />
+                <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="menu container element">
-                    <div class="element menuElement"><a href="main.html">Menu</a></div>
-                    <div class="element dropdown menuElement">
+                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
+                    <div class="headerElement element menuElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
                             <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
+                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
+                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Poster.html">Poster</a>
@@ -90,11 +93,11 @@ $commentaires->execute(array($get_id));
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="element dropdown menuElement"><a href="#">Espace Membre</a>
+                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
-                            <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                                <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
                             <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
                             <div class="menuElement">
@@ -107,16 +110,14 @@ $commentaires->execute(array($get_id));
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="menuElement">
                                 <a href="Admin.html">Admin</a>
-                            </div>
+                                </div>
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <div class="headerElement element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
-                            <button>
-                            </button>
                         </form>
                     </div>
                 </nav>
