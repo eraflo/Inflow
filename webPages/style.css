@@ -162,7 +162,6 @@ body, article, .footer, .main, .left, .right, .middle {
     width: 100%;
     grid-column: 2/3;
     grid-row: 2/3;
-    min-width: max-content;
     /*effets sur le texte (et images du .middle)*/
     place-content: center;
     overflow-wrap: break-word;
@@ -197,14 +196,13 @@ body, article, .footer, .main, .left, .right, .middle {
 
 article {
     font-family: Helvetica;
-    padding-bottom: 5em;
     margin-left: 15px;
     margin-right: 15px;
 }
 
 /*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
 
-.menu {
+.navBarHeader {
     padding: 0 10px;
     font-family: 'Oswald', sans-serif;
     font-size: 1.1em;
@@ -216,7 +214,7 @@ article {
 
 /*--Ã‰lÃ©ments dans la navbar--*/
 
-.menuElement {
+.headerFirstElement {
     display: inline-block;
     background: none;
     width: max-content;
@@ -226,7 +224,7 @@ article {
 /*--Affecte chaque partie du header oÃ¹ on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
 
-.menu a:any-link {
+.navBarHeader a:any-link {
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -237,31 +235,30 @@ article {
 }
 
 
-    /*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
+/*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
+.navBarHeader a:any-link:hover {
+    color: var(--color-text-hover);
+    transition: all 0.3s ease 0.2s;
+    text-shadow: 0px 0px 18px white;
+    -webkit-transition: all 0.3s ease 0.2s;
+    -moz-transition: all 0.3s ease 0.2s;
+    -ms-transition: all 0.3s ease 0.2s;
+    -o-transition: all 0.3s ease 0.2s;
+}
 
-    .menu a:any-link:hover {
-        color: var(--color-text-hover);
-        transition: all 0.3s ease 0.2s;
-        text-shadow: 0px 0px 18px white;
-        -webkit-transition: all 0.3s ease 0.2s;
-        -moz-transition: all 0.3s ease 0.2s;
-        -ms-transition: all 0.3s ease 0.2s;
-        -o-transition: all 0.3s ease 0.2s;
-    }
 
+/*--Change de couleur lorsque l'utilisateur clique sur l'Ã©lÃ©ment
+    (Seulement avant le changement de page)--*/
 
-    /*--Change de couleur lorsque l'utilisateur clique sur l'Ã©lÃ©ment
-	(Seulement avant le changement de page)--*/
-
-    .menu a:any-link:active {
-        color: var(--color-active);
-        text-shadow: var(--color-text-shadow-selected);
-    }
+.navBarHeader a:any-link:active {
+    color: var(--color-active);
+    text-shadow: var(--color-text-shadow-selected);
+}
 
 
 /*--Page actuelle sÃ©lectionnÃ©e dans la navbar--*/
 
-.menu a.selected:any-link {
+.navBarHeader a.selected:any-link {
     color: var(--color-selected);
     text-shadow: var(--color-text-shadow-selected);
 }
@@ -335,9 +332,9 @@ form {
     font-family: 'Oswald', sans-serif;
 }
 
-    .Plateforme :first-child {
-        align-self: center;
-    }
+.Plateforme :first-child {
+    align-self: center;
+}
 
 
 /*--A ici--*/
@@ -455,7 +452,7 @@ form {
 }
 
 
-nav.menu {
+nav.navBarHeader {
     background: var(--color-navbar-background);
 }
 

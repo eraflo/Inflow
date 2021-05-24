@@ -53,44 +53,41 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
             <!--Header, c'est-à-dire, le menu pour changer de page-->
             <header class="header container">
                 <img class="banniere element" src="assets/banniere_twi.png" />
-                <nav class="menu container element">
-                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
-                    <div class="headerElement element menuElement dropdown ">
+                <nav class="navBarHeader container element">
+                    <div class="headerFirstElement element navBarHeaderElement"><a href="main.html">Menu</a></div>
+                    <div class="headerFirstElement element navBarHeaderElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
-                            <div class="menuElement"><a href="Article.html" class="selected">Article</a></div>
-                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
-                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
-                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
+                            <div class="navBarHeaderElement"><a href="Article.html" class="selected">Article</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Poster.html">Poster</a>
                             </div>
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
+                    <div class="headerFirstElement element navBarHeaderElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
-                                <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                                <div class="navBarHeaderElement"><a href="Inscription.html">Inscription</a></div>
                             <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Connexion.html">Connexion</a></div>
                             <?php } ?>
                             <?php if(!empty($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Admin.html">Admin</a>
                                 </div>
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerElement element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <div class="headerFirstElement element navBarHeaderElement"><a href="Infos.html" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
@@ -99,7 +96,11 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                 </nav>
             </header>
 
-            <div class="left"></div>
+            <div class="left">
+                <div class="navElement"><a href="Rap.html">Rap</a></div>
+                <div class="navElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                <div class="navElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
+            </div>
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">

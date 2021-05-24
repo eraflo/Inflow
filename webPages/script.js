@@ -23,7 +23,7 @@ function dark_mode_button_on_click() {
 function activate_dark_mode() {
     // Toggle dark mode
 
-    $(".headerElement").each(function (index) {
+    $(".headerFirstElement").each(function (index) {
         $(this).fadeOut(0);
     });
 
@@ -41,7 +41,7 @@ function activate_dark_mode() {
         $("*").removeClass("noTransition");
     }, 10);
 
-    $(".headerElement").each(function (index) {
+    $(".headerFirstElement").each(function (index) {
         $(this).delay(150 * index).fadeIn(400);
     });
 }
@@ -101,10 +101,10 @@ function scrollFunction() {
 $(document).ready(function () {
 
     if (!document.documentElement.getAttribute("user-color-mode") == "user_forced") {
-        $(".headerElement").each(function (index) {
+        $(".headerFirstElement").each(function (index) {
             $(this).fadeOut(0);
         });
-        $(".headerElement").each(function (index) {
+        $(".headerFirstElement").each(function (index) {
             $(this).delay(100 * index).fadeIn(1000);
         });
     }
