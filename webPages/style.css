@@ -162,7 +162,6 @@ body, article, .footer, .main, .left, .right, .middle {
     width: 100%;
     grid-column: 2/3;
     grid-row: 2/3;
-    min-width: max-content;
     /*effets sur le texte (et images du .middle)*/
     place-content: center;
     overflow-wrap: break-word;
