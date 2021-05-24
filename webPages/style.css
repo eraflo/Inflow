@@ -25,25 +25,25 @@
 }
 
 
-/*mode nuit*/
+    /*mode nuit*/
 
-:root[user-color-mode=user_forced] {
-    --color-main-theme: inherit;
-    --image-background: url("assets/backgrounddark.jpg");
-    --color-background: white;
-    --color-text: white;
-    --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
-    --color-text-shadow-active: inherit;
-    --color-text-hover: #C0C0C0;
-    --color-links: white;
-    --color-unselected-links: white;
-    --color-selected: #808080;
-    --color-active: black;
-    --color-selection-text: inherit;
-    --color-selection-bg: rgb(218, 167, 55, 0.6);
-    --color-underline: rgb(143, 143, 33);
-    --color-navbar-background: rgba(0, 0, 0, 0.6);
-}
+    :root[user-color-mode=user_forced] {
+        --color-main-theme: inherit;
+        --image-background: url("assets/backgrounddark.jpg");
+        --color-background: white;
+        --color-text: white;
+        --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
+        --color-text-shadow-active: inherit;
+        --color-text-hover: #C0C0C0;
+        --color-links: white;
+        --color-unselected-links: white;
+        --color-selected: #808080;
+        --color-active: black;
+        --color-selection-text: inherit;
+        --color-selection-bg: rgb(218, 167, 55, 0.6);
+        --color-underline: rgb(143, 143, 33);
+        --color-navbar-background: rgba(0, 0, 0, 0.6);
+    }
 
 
 /*--Selection du texte--*/
@@ -74,7 +74,7 @@ body {
     overflow-x: hidden;
     /* Hide scrollbars */
     position: relative;
-    min-height: 100%;
+    min-height: fit-content;
     margin: 0 auto;
     background-size: cover;
     background: var(--image-background);
@@ -82,21 +82,14 @@ body {
     background-size: 100%;
     background-repeat: repeat-y;
     color: var(--color-text);
-    height: fit-content;
+    height: 100%;
 }
 
-/*--Affecte le footer et ce qui s'y trouve--*/
 
-footer {
-    background-color: var(--color-main-theme);
-    text-align: center;
-    padding: 0.5em;
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-family: 'Open Sans', sans-serif;
+/*--Couleur du texte sur les différents éléments de la page pouvant contenir du texte--*/
+
+body, article, .footer, .main, .left, .right, .middle {
+    color: var(--color-text);
 }
 
 
@@ -123,18 +116,20 @@ footer {
 
 
 /*--Grande boite regroupant le header, et le corps de la page
-    Ã  l'intÃ©rieur de <body> mais en dehors de la navbar et de <article>--*/
+    Ã  l'intérieur de <body> mais en dehors de la navbar et de <article>--*/
 
 .main {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: auto auto 100px;
+    grid-template-rows: max-content auto max-content;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
-    /* note : minimum (400px) et maximum (5 unitÃ© fractionnelle de width 100%) */
+    /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
 }
 
-/*--haut de la page (banniÃ¨re et navbar)--*/
+
+/*--haut de la page (banniere et navbar)--*/
+
 .header {
     grid-column: 1/4;
     place-content: center;
@@ -147,6 +142,7 @@ footer {
     transition: 1s;
     z-index: 100000;
 }
+
 .header nav .search {
     margin-left: auto;
     margin-right: 30px;
@@ -163,15 +159,15 @@ footer {
 }
 
 .middle {
+    width: 100%;
     grid-column: 2/3;
     grid-row: 2/3;
-    max-width: max-content;
-
+    min-width: max-content;
     /*effets sur le texte (et images du .middle)*/
     place-content: center;
     overflow-wrap: break-word;
     text-align: justify;
-    text-justify: inter-word;
+    height: 100%;
 }
 
 .right {
@@ -181,19 +177,21 @@ footer {
 }
 
 
-/*--Bas de la page--*/
+/*--Affecte le footer et ce qui s'y trouve--*/
 
 .footer {
+    position: sticky;
+    background-color: var(--color-main-theme);
     grid-column: 1/4;
     grid-row: 3/4;
     min-height: 50px;
     width: 100%;
+    padding: 0.5em;
     place-content: center;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
-body, article, .footer, .main, .left, .right, .middle {
-    color: var(--color-text);
-}
 
 /*--tout ce qui ce trouve lÃ  oÃ¹ on met du texte, espacement en haut et en bas--*/
 
@@ -239,26 +237,26 @@ article {
 }
 
 
-/*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
+    /*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
 
-.menu a:any-link:hover {
-    color: var(--color-text-hover);
-    transition: all 0.3s ease 0.2s;
-    text-shadow: 0px 0px 18px white;
-    -webkit-transition: all 0.3s ease 0.2s;
-    -moz-transition: all 0.3s ease 0.2s;
-    -ms-transition: all 0.3s ease 0.2s;
-    -o-transition: all 0.3s ease 0.2s;
-}
+    .menu a:any-link:hover {
+        color: var(--color-text-hover);
+        transition: all 0.3s ease 0.2s;
+        text-shadow: 0px 0px 18px white;
+        -webkit-transition: all 0.3s ease 0.2s;
+        -moz-transition: all 0.3s ease 0.2s;
+        -ms-transition: all 0.3s ease 0.2s;
+        -o-transition: all 0.3s ease 0.2s;
+    }
 
 
-/*--Change de couleur lorsque l'utilisateur clique sur l'Ã©lÃ©ment
+    /*--Change de couleur lorsque l'utilisateur clique sur l'Ã©lÃ©ment
 	(Seulement avant le changement de page)--*/
 
-.menu a:any-link:active {
-    color: var(--color-active);
-    text-shadow: var(--color-text-shadow-selected);
-}
+    .menu a:any-link:active {
+        color: var(--color-active);
+        text-shadow: var(--color-text-shadow-selected);
+    }
 
 
 /*--Page actuelle sÃ©lectionnÃ©e dans la navbar--*/
@@ -289,27 +287,27 @@ a {
     text-decoration: none;
 }
 
-a:any-link {
-    color: var(--color-links);
-}
+    a:any-link {
+        color: var(--color-links);
+    }
 
-a:any-link:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--color-underline);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
+        a:any-link:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-underline);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
 
-a:any-link:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
+        a:any-link:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
 
 
 /*--Dans Inscription.html, gÃ¨re les diffÃ©rentes zones oÃ¹ l'on peut Ã©crire--*/
@@ -337,9 +335,9 @@ form {
     font-family: 'Oswald', sans-serif;
 }
 
-.Plateforme :first-child {
-    align-self: center;
-}
+    .Plateforme :first-child {
+        align-self: center;
+    }
 
 
 /*--A ici--*/
@@ -362,10 +360,10 @@ form {
     position: relative;
 }
 
-.dropdown:hover {
-    transition: all 0.5s ease-in-out;
-    width: auto;
-}
+    .dropdown:hover {
+        transition: all 0.5s ease-in-out;
+        width: auto;
+    }
 
 
 /* Contenu dÃ©roulant (masquÃ© par dÃ©faut) */
@@ -383,13 +381,13 @@ form {
     transition: 1s;
 }
 
-/* Liens dans la liste dÃ©roulante */
+    /* Liens dans la liste dÃ©roulante */
 
-.dropdown-content a {
-    color: var(--color-text);
-    text-decoration: none;
-    padding: 10px;
-}
+    .dropdown-content a {
+        color: var(--color-text);
+        text-decoration: none;
+        padding: 10px;
+    }
 
 
 /* Afficher le menu dÃ©roulant en survol */
@@ -465,49 +463,59 @@ nav.menu {
 /*--Bouton mode sombre--*/
 
 .BoutonTransition {
-    position: sticky;
-    top:15%;
-    left:90%;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    /* Note pour Lucô : on évite d'utiliser la position absolue (par rapport à la page)
+        et les "left, right, top, bottom" lorsqu'on est dans une grille (grid, définie dans .main )
+        sinon ça casse la grille et ça dépasse du footer ^^ (::before utilise toujours une position
+        absolue, mais je ne sais pas trop pourquoi ça fonctionne donc je laisse)
+       position sticky permet de rester dans la boite et de donner des positions par rapport à la boite
+       margin-top et margin-bottom en "auto" permettent de centrer horizontalement l'élément
+
+    Tu peux supprimer cette note lorsque tu la verras
+    
+    position: absolute;
+    top: 15%;
+    left: 90%;
+    */
 }
 
-input[type="checkbox"]
-{
+input[type="checkbox"] {
     border: none;
     background-color: lightgrey;
     text-align: left;
     padding: 0.4rem;
-    color:white;
+    color: white;
     display: inline-block;
     border-radius: 2rem;
-    outline:none;
-    transition:0.5s;
+    outline: none;
+    transition: 0.5s;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
     width: 80px;
     height: 40px;
     -webkit-appearance: none
 }
 
-input:checked[type="checkbox"]
-{
+input:checked[type="checkbox"] {
     background-color: #03a9f4;
 }
 
-input[type="checkbox"]:before
-{
+input[type="checkbox"]:before {
     content: '';
     position: absolute;
-    width:40px;
+    width: 40px;
     height: 40px;
     border-radius: 20px;
     top: 0;
     left: 0;
     background: #fff;
-    transform:scale(1.1);
+    transform: scale(1.1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.8);
-    transition:0.4s;
+    transition: 0.4s;
 }
 
-input:checked[type="checkbox"]:before
-{
+input:checked[type="checkbox"]:before {
     left: 40px;
 }
