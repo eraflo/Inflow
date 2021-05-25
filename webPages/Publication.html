@@ -134,9 +134,12 @@ $commentaires->execute(array($get_id));
                     <br/>
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
-                    <?php while($c = $commentaires->fetch()) { ?>
-                    <?php if(!empty($_SESSION['avatar'])) { ?>
-                    <img src="membres/avatars/<?php echo $_SESSION['avatar']; ?>" width="50">
+                    <?php while($c = $commentaires->fetch()) {
+                    $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE pseudo = ? ORDER BY id DESC");
+                    $pseudoAvatar->execute(array($c['pseudo']));
+                    $avatarInfos = $pseudoAvatar->fetch(); ?>
+                    <?php if(!empty($avatarInfos)) { ?>
+                    <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50">
                     <?php } ?>
                     <b><?= $c['pseudo'] ?> :</b>
                     <?= $c['commentaire'] ?> <br/>
@@ -164,8 +167,15 @@ $commentaires->execute(array($get_id));
 
             <!--Tout en bas de la page web, contient des infos-->
             <footer class="footer container">
+<<<<<<< Updated upstream
                 <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
                 <button id="darkTrigger" class="btn element">Thème sombre</button>
+=======
+                <div style="flex:0.9;">
+                    <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788">Rejoignez le Discord !</a></p>
+                </div>
+                <div class="BoutonTransition"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
+>>>>>>> Stashed changes
             </footer>
 
         </div>
