@@ -47,6 +47,8 @@ function activate_dark_mode() {
 
 
 $(document).ready(function () {
+    boutonDarkMode = document.querySelector('input[type="checkbox"]');
+
     // On vérifie que l'attribut existe, puis on force l'application de l'attribut à la page
     if (!window.localStorage["user-color-mode"]) {
         window.localStorage["user-color-mode"] = "hour";
@@ -55,16 +57,17 @@ $(document).ready(function () {
     // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
     if (window.localStorage["user-color-mode"] == "dark") {
         activate_dark_mode();
-        document.querySelector('input[type="checkbox"]').checked = true;
+        boutonDarkMode.checked = true;
     } else if (window.localStorage["user-color-mode"] == "light") {
-        null;
+        boutonDarkMode.checked = false;
     } else if (window.localStorage["user-color-mode"] == "hour") {
         var d = new Date();
         var h = d.getHours();
         if (h > 18 || h < 8) {
             activate_dark_mode();
+            boutonDarkMode.checked = true;
         } else {
-            null;
+            boutonDarkMode.checked = false;
         }
     }
 });
