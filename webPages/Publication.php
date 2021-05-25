@@ -34,9 +34,10 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         if(isset($_POST['submit_commentaire'])) {
             if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])) {
                 $pseudo = htmlspecialchars($_SESSION['pseudo']);
+                $id_pseudo = intval($_SESSION['id']);
                 $commentaire = htmlspecialchars($_POST['commentaire']);
-                $ins = $bdd->prepare("INSERT INTO commentaires (pseudo, commentaire, id_article) VALUES (?, ?, ?)");
-                $ins->execute(array($pseudo, $commentaire, $get_id));
+                $ins = $bdd->prepare("INSERT INTO commentaires (pseudo, commentaire, id_article, id_pseudo) VALUES (?, ?, ?, ?)");
+                $ins->execute(array($pseudo, $commentaire, $get_id, $id_pseudo));
                 $msg = "Votre commentaire a été posté.";
                 $lastcom = $commentaire;
                 header("Location: Publication.php?id=".$get_id);
@@ -95,8 +96,8 @@ $commentaires->execute(array($get_id));
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
                     <?php while($c = $commentaires->fetch()) {
-                    $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE pseudo = ? ORDER BY id DESC");
-                    $pseudoAvatar->execute(array($c['pseudo']));
+                    $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
+                    $pseudoAvatar->execute(array($c['id_pseudo']));
                     $avatarInfos = $pseudoAvatar->fetch(); ?>
                     <?php if(!empty($avatarInfos)) { ?>
                     <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50">
