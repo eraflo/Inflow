@@ -5,7 +5,7 @@ last_height_scroll = 0;
 $(document).ready(function () {
     // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
     $("#darkTrigger").click(dark_mode_button_on_click);
-})
+});
 
 function dark_mode_button_on_click() {
     activate_dark_mode()
@@ -15,13 +15,7 @@ function dark_mode_button_on_click() {
 
 function activate_dark_mode() {
     // Toggle dark mode
-
-    $(".headerFirstElement").each(function (index) {
-        $(this).fadeOut(0);
-    });
-
     $("*").addClass("noTransition");
-
     // Changer les variables locales du client et changer l'attribut de la page
     if (window.localStorage["user-color-mode"] == "dark") {
         window.localStorage["user-color-mode"] = "light";
@@ -33,16 +27,12 @@ function activate_dark_mode() {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
     }
-    
-
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {
         $("*").removeClass("noTransition");
-    }, 10);
+    }, 30);
 
-    $(".headerFirstElement").each(function (index) {
-        $(this).delay(150 * index).fadeIn(400);
-    });
+    smoothHeaderAppear();
 }
 
 
@@ -73,6 +63,21 @@ $(document).ready(function () {
 });
 
 
+// Affiche les éléments du header petit à petit
+$(document).ready(function () {
+    smoothHeaderAppear();
+});
+function smoothHeaderAppear() {
+    $(".headerFirstElement").each(function (index) {
+        $(this).finish();
+        $(this).fadeOut(0);
+    });
+    $(".headerFirstElement").each(function (index) {
+        $(this).delay(100 * index).fadeIn(1000);
+    });
+}
+
+
 // Change la taille de la banniere fixe lors du scroll down/up
 
 window.onscroll = function () {
@@ -99,17 +104,3 @@ function scrollFunction() {
         last_height_scroll = actual_scroll;
     }
 }
-
-// Affiche les éléments du header petit à petit
-
-$(document).ready(function () {
-
-    if (!document.documentElement.getAttribute("user-color-mode") == "dark") {
-        $(".headerFirstElement").each(function (index) {
-            $(this).fadeOut(0);
-        });
-        $(".headerFirstElement").each(function (index) {
-            $(this).delay(100 * index).fadeIn(1000);
-        });
-    }
-});
