@@ -28,8 +28,9 @@
 
 /*mode nuit*/
 
-:root[user-color-mode=user_forced] {
+:root[user-color-mode=dark] {
     --color-main-theme: inherit;
+    --color-main-theme-alt: inherit;
     --image-background: url("assets/backgrounddark.jpg");
     --color-background: white;
     --color-text: white;

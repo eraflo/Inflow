@@ -9,13 +9,6 @@ $(document).ready(function () {
 
 function dark_mode_button_on_click() {
     activate_dark_mode()
-
-    // Changer les variables locales du client
-    if (window.localStorage["dark_mode"] == "user_forced") {
-        window.localStorage["dark_mode"] = "user_desactivated";
-    } else if ((window.localStorage["dark_mode"] == "user_desactivated") || (window.localStorage["dark_mode"] == "hour")) {
-        window.localStorage["dark_mode"] = "user_forced";
-    }
 }
 
 
@@ -29,12 +22,18 @@ function activate_dark_mode() {
 
     $("*").addClass("noTransition");
 
-    if (document.documentElement.getAttribute("user-color-mode") == "user_forced")
-        document.documentElement.setAttribute("user-color-mode", "user_desactivated");
-    else if (document.documentElement.getAttribute("user-color-mode") == "user_desactivated")
-        document.documentElement.setAttribute("user-color-mode", "user_forced");
-    else
-        document.documentElement.setAttribute("user-color-mode", "user_forced");
+    // Changer les variables locales du client et changer l'attribut de la page
+    if (window.localStorage["user-color-mode"] == "dark") {
+        window.localStorage["user-color-mode"] = "light";
+        document.documentElement.setAttribute("user-color-mode", "light");
+    } else if ((window.localStorage["user-color-mode"] == "light") || (window.localStorage["user-color-mode"] == "hour")) {
+        window.localStorage["user-color-mode"] = "dark";
+        document.documentElement.setAttribute("user-color-mode", "dark");
+    } else {
+        window.localStorage["user-color-mode"] = "light";
+        document.documentElement.setAttribute("user-color-mode", "light");
+    }
+    
 
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {
@@ -48,16 +47,18 @@ function activate_dark_mode() {
 
 
 $(document).ready(function () {
-    // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
-    if (!window.localStorage["dark_mode"]) {
-        window.localStorage["dark_mode"] = "hour";
+    // On vérifie que l'attribut existe, puis on force l'application de l'attribut à la page
+    if (!window.localStorage["user-color-mode"]) {
+        window.localStorage["user-color-mode"] = "hour";
     }
-    if (window.localStorage["dark_mode"] == "user_forced") {
+    document.documentElement.setAttribute("user-color-mode", window.localStorage["user-color-mode"]);
+    // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
+    if (window.localStorage["user-color-mode"] == "dark") {
         activate_dark_mode();
         document.querySelector('input[type="checkbox"]').checked = true;
-    } else if (window.localStorage["dark_mode"] == "user_desactivated") {
+    } else if (window.localStorage["user-color-mode"] == "light") {
         null;
-    } else if (window.localStorage["dark_mode"] == "hour") {
+    } else if (window.localStorage["user-color-mode"] == "hour") {
         var d = new Date();
         var h = d.getHours();
         if (h > 18 || h < 8) {
@@ -100,7 +101,7 @@ function scrollFunction() {
 
 $(document).ready(function () {
 
-    if (!document.documentElement.getAttribute("user-color-mode") == "user_forced") {
+    if (!document.documentElement.getAttribute("user-color-mode") == "dark") {
         $(".headerFirstElement").each(function (index) {
             $(this).fadeOut(0);
         });
