@@ -3,7 +3,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
-    header("Location: main.html");
+    header("Location: main.php");
 }
 ?>
 
@@ -12,7 +12,7 @@ if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
 
     <head>
         <title>Redirection vers le site</title>
-        <meta http-equiv="refresh" content="0; URL=main.html">
+        <meta http-equiv="refresh" content="0; URL=main.php">
     </head>
 
     </html>
