@@ -166,17 +166,19 @@ $commentaires->execute(array($get_id));
                     <br/>
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
-                    <?php while($c = $commentaires->fetch()) {
-                    $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE pseudo = ? ORDER BY id DESC");
-                    $pseudoAvatar->execute(array($c['pseudo']));
-                    $avatarInfos = $pseudoAvatar->fetch(); ?>
-                    <?php if(!empty($avatarInfos)) { ?>
-                    <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50">
-                    <?php } ?>
-                    <b><?= $c['pseudo'] ?> :</b>
-                    <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
-                    <?= $c['commentaire'] ?> <br/>
+                    <?php while($c = $commentaires->fetch()) { ?>
+                        <div class="commentaire">
+                        <?php $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE pseudo = ? ORDER BY id DESC");
+                        $pseudoAvatar->execute(array($c['pseudo']));
+                        $avatarInfos = $pseudoAvatar->fetch(); ?>
+                        <?php if(!empty($avatarInfos)) { ?>
+                        <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50">
                         <?php } ?>
+                        <b><?= $c['pseudo'] ?> :</b>
+                        <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
+                        <?= $c['commentaire'] ?> <br/>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
 
