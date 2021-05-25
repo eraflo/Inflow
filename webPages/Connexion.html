@@ -66,44 +66,41 @@ if(isset($_POST["formconnexion"])) {
             <!--Header, c'est-à-dire, le menu pour changer de page-->
             <header class="header container">
                 <img class="banniere element" src="assets/banniere_twi.png" />
-                <nav class="menu container element">
-                    <div class="headerElement element menuElement"><a href="main.html">Menu</a></div>
-                    <div class="headerElement element menuElement dropdown ">
+                <nav class="navBarHeader container element">
+                    <div class="headerFirstElement element navBarHeaderElement"><a href="main.html">Menu</a></div>
+                    <div class="headerFirstElement element navBarHeaderElement dropdown ">
                         <a href="#">Article</a>
                         <div class="dropdown-content">
-                            <div class="menuElement"><a href="Article.html">Article</a></div>
-                            <div class="menuElement"><a href="Rap.html">Rap</a></div>
-                            <div class="menuElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
-                            <div class="menuElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
+                            <div class="navBarHeaderElement"><a href="Article.html">Article</a></div>
                             <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Poster.html">Poster</a>
                             </div>
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerElement element menuElement"><a href="Playlist.html">Playlist</a></div>
-                    <div class="headerElement element menuElement dropdown "><a href="#">Espace Membre</a>
+                    <div class="headerFirstElement element navBarHeaderElement"><a href="Playlist.html">Playlist</a></div>
+                    <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
-                                <div class="menuElement"><a href="Inscription.html">Inscription</a></div>
+                                <div class="navBarHeaderElement"><a href="Inscription.html">Inscription</a></div>
                             <?php } ?>
                             <?php if(empty($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Connexion.html" class="selected">Connexion</a></div>
                             <?php } ?>
                             <?php if(!empty($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Profil.html?id=<?= $_SESSION['id'] ?>">Profil</a></div>
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="menuElement">
+                            <div class="navBarHeaderElement">
                                 <a href="Admin.html">Admin</a>
                                 </div>
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerElement element menuElement"><a href="Infos.html" id="Infos">Infos</a></div>
+                    <div class="headerFirstElement element navBarHeaderElement"><a href="Infos.html" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
                             <input type="text" placeholder="Recherche" name="search">
@@ -112,7 +109,11 @@ if(isset($_POST["formconnexion"])) {
                 </nav>
             </header>
 
-            <div class="left"></div>
+            <div class="left">
+                <div class="navElement"><a href="Rap.html">Rap</a></div>
+                <div class="navElement"><a href="MusiqueUrbaine.html">Musique Urbaine</a></div>
+                <div class="navElement"><a href="ChroniquesJason.html">Les Chroniques de Jason</a></div>
+            </div>
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
@@ -142,11 +143,9 @@ if(isset($_POST["formconnexion"])) {
 
             <!--Tout en bas de la page web, contient des infos-->
             <footer class="footer container">
-                <p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788" style="color: white">Rejoignez le Discord !</a></p>
-                <button id="darkTrigger" class="btn element">Thème sombre</button>
-
+                <div style="flex:0.9;"><p class="element"> Articles et actus sur le rap - <i>Axelito à l'origine</i> - <a href="https://discord.com/channels/826440352810139678/826491405856800788">Rejoignez le Discord !</a></p></div>
+                <div class="BoutonTransition"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
             </footer>
-
         </div>
     </body>
 

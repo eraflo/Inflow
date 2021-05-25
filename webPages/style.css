@@ -5,7 +5,7 @@
 
 :root {
     --color-main-theme: royalblue;
-    --color-main-theme-darkened: midnightblue;
+    --color-main-theme-alt: DodgerBlue;
     --image-background: url("assets/background.png");
     --color-background: royalblue;
     --color-text: black;
@@ -22,13 +22,15 @@
     /*couleur du surlignage lors de la sÃ©lection*/
     --color-underline: dodgerblue;
     --color-navbar-background: var(--color-main-theme);
+    --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-main-theme) 10%, var(--color-main-theme-alt) 90%);
 }
 
 
 /*mode nuit*/
 
-:root[user-color-mode=user_forced] {
+:root[user-color-mode=dark] {
     --color-main-theme: inherit;
+    --color-main-theme-alt: inherit;
     --image-background: url("assets/backgrounddark.jpg");
     --color-background: white;
     --color-text: white;
@@ -42,7 +44,8 @@
     --color-selection-text: inherit;
     --color-selection-bg: rgb(218, 167, 55, 0.6);
     --color-underline: rgb(143, 143, 33);
-    --color-navbar-background: rgba(0, 0, 0, 0.6);
+    --color-navbar-background: rgba(0, 0, 0, 0.8);
+    --color-navbar-dropdown-background: var(--color-navbar-background);
 }
 
 
@@ -57,7 +60,7 @@
 /*--Affecte toute la page HTML--*/
 
 html {
-    height: 100%;
+    min-height: 100%;
     background-position: center;
     background-color: white;
     background-size: cover;
@@ -74,7 +77,7 @@ body {
     overflow-x: hidden;
     /* Hide scrollbars */
     position: relative;
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     background-size: cover;
     background: var(--image-background);
@@ -82,21 +85,17 @@ body {
     background-size: 100%;
     background-repeat: repeat-y;
     color: var(--color-text);
-    height: fit-content;
 }
 
-/*--Affecte le footer et ce qui s'y trouve--*/
 
-footer {
-    background-color: var(--color-main-theme);
-    text-align: center;
-    padding: 0.5em;
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-family: 'Open Sans', sans-serif;
+/*--Couleur du texte sur les différents éléments de la page pouvant contenir du texte--*/
+
+body, article, .footer, .main, .left, .right, .middle {
+    color: var(--color-text);
+}
+
+.left, .right, .middle {
+    margin: 20px;
 }
 
 
@@ -123,18 +122,20 @@ footer {
 
 
 /*--Grande boite regroupant le header, et le corps de la page
-    Ã  l'intÃ©rieur de <body> mais en dehors de la navbar et de <article>--*/
+    Ã  l'intérieur de <body> mais en dehors de la navbar et de <article>--*/
 
 .main {
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     display: grid;
-    grid-template-rows: auto auto 100px;
+    grid-template-rows: max-content auto max-content;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
-    /* note : minimum (400px) et maximum (5 unitÃ© fractionnelle de width 100%) */
+    /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
 }
 
-/*--haut de la page (banniÃ¨re et navbar)--*/
+
+/*--haut de la page (banniere et navbar)--*/
+
 .header {
     grid-column: 1/4;
     place-content: center;
@@ -145,8 +146,9 @@ footer {
     background-color: var(--color-main-theme);
     width: 100%;
     transition: 1s;
-    z-index: 100000;
+    z-index: 100;
 }
+
 .header nav .search {
     margin-left: auto;
     margin-right: 30px;
@@ -159,19 +161,17 @@ footer {
     grid-column: 1/2;
     grid-row: 2/3;
     min-width: min-content;
-    padding-left: 25px;
 }
 
 .middle {
+    width: 100%;
     grid-column: 2/3;
     grid-row: 2/3;
-    max-width: max-content;
-
     /*effets sur le texte (et images du .middle)*/
     place-content: center;
     overflow-wrap: break-word;
     text-align: justify;
-    text-justify: inter-word;
+    height: 100%;
 }
 
 .right {
@@ -181,44 +181,43 @@ footer {
 }
 
 
-/*--Bas de la page--*/
+/*--Affecte le footer et ce qui s'y trouve--*/
 
 .footer {
+    position: sticky;
+    background-color: var(--color-main-theme);
     grid-column: 1/4;
     grid-row: 3/4;
-    min-height: 50px;
+    min-height: 80px;
     width: 100%;
     place-content: center;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
-body, article, .footer, .main, .left, .right, .middle {
-    color: var(--color-text);
-}
 
 /*--tout ce qui ce trouve lÃ  oÃ¹ on met du texte, espacement en haut et en bas--*/
 
 article {
     font-family: Helvetica;
-    padding-bottom: 5em;
-    margin-left: 15px;
-    margin-right: 15px;
 }
 
 /*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
 
-.menu {
+.navBarHeader {
     padding: 0 10px;
     font-family: 'Oswald', sans-serif;
     font-size: 1.1em;
     width: 100%;
     height: inherit;
     transition: 1s;
+    background: var(--color-navbar-background);
 }
 
 
 /*--Ã‰lÃ©ments dans la navbar--*/
 
-.menuElement {
+.headerFirstElement {
     display: inline-block;
     background: none;
     width: max-content;
@@ -228,7 +227,7 @@ article {
 /*--Affecte chaque partie du header oÃ¹ on peut cliquer (Menu, Article, Playlist...)
 	transition du noir/blanc vers bleu en 0.5s en utilisant la courbe ease-in-out--*/
 
-.menu a:any-link {
+.navBarHeader a:any-link {
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -240,8 +239,7 @@ article {
 
 
 /*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
-
-.menu a:any-link:hover {
+.navBarHeader a:any-link:hover {
     color: var(--color-text-hover);
     transition: all 0.3s ease 0.2s;
     text-shadow: 0px 0px 18px white;
@@ -253,9 +251,9 @@ article {
 
 
 /*--Change de couleur lorsque l'utilisateur clique sur l'Ã©lÃ©ment
-	(Seulement avant le changement de page)--*/
+    (Seulement avant le changement de page)--*/
 
-.menu a:any-link:active {
+.navBarHeader a:any-link:active {
     color: var(--color-active);
     text-shadow: var(--color-text-shadow-selected);
 }
@@ -263,7 +261,7 @@ article {
 
 /*--Page actuelle sÃ©lectionnÃ©e dans la navbar--*/
 
-.menu a.selected:any-link {
+.navBarHeader a.selected:any-link {
     color: var(--color-selected);
     text-shadow: var(--color-text-shadow-selected);
 }
@@ -373,14 +371,15 @@ form {
 .dropdown-content {
     display: none;
     width: auto;
+    min-width: 100%;
     flex-direction: column;
     align-items: center;
     position: absolute;
     text-align: center;
-    background-color: var(--color-navbar-background);
-    background: linear-gradient(180deg, var(--color-main-theme) 10%, var(--color-main-theme-darkened) 90%);
+    background: var(--color-navbar-dropdown-background);
     box-shadow: 12px 16px 8px 0px rgba(0, 0, 0, 0.2);
     transition: 1s;
+    z-index: 100;
 }
 
 /* Liens dans la liste dÃ©roulante */
@@ -457,13 +456,70 @@ form {
 }
 
 
-nav.menu {
-    background: var(--color-navbar-background);
+/*--Bouton mode sombre--*/
+
+.BoutonTransition {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    /* Note pour Lucô : on évite d'utiliser la position absolue (par rapport à la page)
+        et les "left, right, top, bottom" lorsqu'on est dans une grille (grid, définie dans .main )
+        sinon ça casse la grille et ça dépasse du footer ^^ (::before utilise toujours une position
+        absolue, mais je ne sais pas trop pourquoi ça fonctionne donc je laisse)
+       position sticky permet de rester dans la boite et de donner des positions par rapport à la boite
+       margin-top et margin-bottom en "auto" permettent de centrer horizontalement l'élément
+
+    Tu peux supprimer cette note lorsque tu la verras
+    
+    position: absolute;
+    top: 15%;
+    left: 90%;
+    */
 }
 
-/*--Ã€ quoi Ã§a sert ? Peut-Ãªtre suppr--*/
-
-.dark button {
-    background: inherit;
-    color: #fff;
+input[type="checkbox"] {
+    border: none;
+    background-color: lightgrey;
+    text-align: left;
+    padding: 0.4rem;
+    color: white;
+    display: inline-block;
+    border-radius: 2rem;
+    outline: none;
+    transition: 0.5s;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    width: 80px;
+    height: 40px;
+    -webkit-appearance: none
 }
+
+input:checked[type="checkbox"] {
+    background-color: #03a9f4;
+}
+
+input[type="checkbox"]:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    transition: 0.4s;
+}
+
+input:checked[type="checkbox"]:before {
+    left: 40px;
+}
+
+
+/*--À appliquer à la fin, pour les petits écrans*/
+@media (max-width: 700px) {
+    .main {
+        display: flex;
+    }
+} 
