@@ -52,11 +52,11 @@ $(document).ready(function () {
     // On vérifie que l'attribut existe, puis on force l'application de l'attribut à la page
     if (!window.localStorage["user-color-mode"]) {
         window.localStorage["user-color-mode"] = "hour";
+    } else {
+        document.documentElement.setAttribute("user-color-mode", window.localStorage["user-color-mode"]);
     }
-    document.documentElement.setAttribute("user-color-mode", window.localStorage["user-color-mode"]);
     // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
     if (window.localStorage["user-color-mode"] == "dark") {
-        activate_dark_mode();
         boutonDarkMode.checked = true;
     } else if (window.localStorage["user-color-mode"] == "light") {
         boutonDarkMode.checked = false;
