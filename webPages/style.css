@@ -131,6 +131,7 @@ body, article, .footer, .main, .left, .right, .middle {
     grid-template-rows: max-content auto max-content;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
     /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
+    column-gap: 3%;
 }
 
 
@@ -522,4 +523,8 @@ input:checked[type="checkbox"]:before {
     .main {
         display: flex;
     }
+    .footer {
+        align-self: flex-end;
+    }
+    ]
 } 
