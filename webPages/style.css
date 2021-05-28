@@ -90,11 +90,19 @@ body {
 
 /*--Couleur du texte sur les différents éléments de la page pouvant contenir du texte--*/
 
-body, article, .footer, .main, .left, .right, .middle {
+body,
+article,
+.footer,
+.main,
+.left,
+.right,
+.middle {
     color: var(--color-text);
 }
 
-.left, .right, .middle {
+.left,
+.right,
+.middle {
     margin: 20px;
 }
 
@@ -203,6 +211,7 @@ article {
     font-family: Helvetica;
 }
 
+
 /*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
 
 .navBarHeader {
@@ -240,6 +249,7 @@ article {
 
 
 /*--Affecte les transitions lorsque l'on a la souris sur un Ã©lÃ©ment du header(Menu, Article...)--*/
+
 .navBarHeader a:any-link:hover {
     color: var(--color-text-hover);
     transition: all 0.3s ease 0.2s;
@@ -355,6 +365,7 @@ form {
 
 /*  Menu dÃ©roulant  */
 
+
 /* Le conteneur <div> - nÃ©cessaire pour positionner le contenu de la liste dÃ©roulante */
 
 .dropdown {
@@ -382,6 +393,7 @@ form {
     transition: 1s;
     z-index: 100;
 }
+
 
 /* Liens dans la liste dÃ©roulante */
 
@@ -426,6 +438,7 @@ form {
     outline: none;
 }
 
+
 /*--NE PAS AFFICHER UN ELEMENT--*/
 
 .hidden {
@@ -463,7 +476,6 @@ form {
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-
     /* Note pour Lucô : on évite d'utiliser la position absolue (par rapport à la page)
         et les "left, right, top, bottom" lorsqu'on est dans une grille (grid, définie dans .main )
         sinon ça casse la grille et ça dépasse du footer ^^ (::before utilise toujours une position
@@ -489,7 +501,7 @@ input[type="checkbox"] {
     border-radius: 2rem;
     outline: none;
     transition: 0.5s;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
     width: 80px;
     height: 40px;
     -webkit-appearance: none
@@ -509,7 +521,7 @@ input[type="checkbox"]:before {
     left: 0;
     background: #fff;
     transform: scale(1.1);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
     transition: 0.4s;
 }
 
@@ -519,6 +531,7 @@ input:checked[type="checkbox"]:before {
 
 
 /*--À appliquer à la fin, pour les petits écrans*/
+
 @media (max-width: 700px) {
     .main {
         display: flex;
@@ -526,4 +539,4 @@ input:checked[type="checkbox"]:before {
     .footer {
         align-self: flex-end;
     }
-} 
+}

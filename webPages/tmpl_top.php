@@ -1,6 +1,8 @@
 <!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
 session_start();
+//appel parser.php
+require_once "JBBCode/Parser.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,10 +20,24 @@ session_start();
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="icon" href="assets/Inflow_logo_64px.png" />
-        <script src="jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script src="JS/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="JS/script.js"></script>
+        <!--Charger ressources pour éditeur de texte-->
+        <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" > </script>
+        <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" > </script> 
+        <link rel = "stylesheet" href = "http://cdn.wysibb.com/css/default/wbbtheme.css" />
+        <script src="JS/fr.js"></script>
+        <!--Script pour customiser éditeur de texte pour articles-->
+        <script> 
+            $ (function() { 
+                var Options = {
+                    buttons: "bold,italic,underline,strike,|,sup,sub,|,img,video,link,|,bullist,numlist,|,fontcolor,fontsize,fontfamily,|,justifyleft,justifycenter,justifyright,|,quote,code,table,removeFormat",
+                    lang: "fr",
+                }
+                $("#editor").wysibb(Options); 
+            }) 
+        </script>
     </head>
-
 
 
     <body>

@@ -10,6 +10,10 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
 
         $article_titre = htmlspecialchars($_POST['article_titre']);
         $article_contenu = htmlspecialchars($_POST['article_contenu']);
+        //éviter erreurs d'encodage
+        $article_contenu = utf8_encode($article_contenu);
+        $article_contenu = str_replace('ï>>¿', '', $article_contenu);
+        $article_contenu = utf8_decode($article_contenu);
 
         $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, date_time_publication)
             VALUES (?, ?, NOW())');
@@ -36,7 +40,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
             <!--Formulaire pour postez des articles-->
             <form method="POST" enctype="multipart/form-data">
                 <input type="text" name="article_titre" placeholder="Titre" /> <br/>
-                <textarea name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
+                <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
                 <input type="submit" value="Envoyer l'article" /><br />
             </form>
             <br />

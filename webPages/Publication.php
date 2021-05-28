@@ -11,6 +11,10 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
     $article->execute(array($get_id));
 
+    //Changer code BBCode en html
+    $parser = new JBBCode\Parser();
+    $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
+    $parser->addBBCode("quote", '<div class="quote">{param}</div>');
 
     if($article->rowCount() == 1) {
         $article = $article->fetch();
@@ -76,7 +80,10 @@ $emoji_new = array('<img src="assets/Inflow_logo_64px.png" />', '<img src="asset
                         <?= $titre ?>
                     </h1>
                     <p>
-                        <?= $contenu ?>
+                        <?php //affiche ici le contenu en html reçu de l'éditeur de texte
+                        $parser->parse($contenu);
+                        echo $parser->getAsHtml();
+                        ?>
                     </p>
                     <a href="Action.php?t=1&id=<?= $id ?>">Like</a> (
                     <?= $likes ?>)
