@@ -56,6 +56,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
 
 $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
 $commentaires->execute(array($get_id));
+$emoji_replace = array(':I', ':o', ':I-', ']:}');
+$emoji_new = array('<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />');
 
 ?>
 
@@ -103,6 +105,7 @@ $commentaires->execute(array($get_id));
                     <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50">
                     <?php } ?>
                     <b><?= $c['pseudo'] ?> :</b>
+                    <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
                     <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
                     <?= $c['commentaire'] ?> <br/>
                         <?php } ?>
