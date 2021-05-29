@@ -35,7 +35,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                         <?php
                         if(!empty($userinfos['avatar'])) {
                         ?>
-                            <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" width="150">
+                            <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
                             <?php
                         }
                         ?>

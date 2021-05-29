@@ -185,7 +185,7 @@ article,
     /*effets sur le texte (et images du .middle)*/
     place-content: center;
     overflow-wrap: break-word;
-    text-align: justify;
+    text-align: inherit;
     height: 100%;
 }
 
@@ -295,6 +295,14 @@ article {
     transition: 1s;
 }
 
+.avatar {
+    border-radius: 50%;
+}
+
+
+img {
+    max-width: 100%;
+}
 
 /*--Souligner les liens (c bo ptn)--*/
 
