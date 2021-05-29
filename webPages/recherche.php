@@ -6,13 +6,13 @@ $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root"
 if(isset($_GET['user'])) {
     $research = (String) trim($_GET['user']);
 
-    $req = $bdd->query('SELECT * FROM articles WHERE titre LIKE "%'.$research.'%" LIMIT 10');
+    $req = $bdd->query('SELECT * FROM articles WHERE titre LIKE "%'.$research.'%" LIMIT 3');
     $req = $req->fetchAll();
 
-    $req1 = $bdd->query('SELECT * FROM articles WHERE contenu LIKE "%'.$research.'%" LIMIT 10');
+    $req1 = $bdd->query('SELECT * FROM articles WHERE contenu LIKE "%'.$research.'%" LIMIT 3');
     $req1 = $req1->fetchAll();
 
-    $req2 = $bdd2->query('SELECT * FROM membres WHERE pseudo LIKE "%'.$research.'%" LIMIT 10');
+    $req2 = $bdd2->query('SELECT * FROM membres WHERE pseudo LIKE "%'.$research.'%" LIMIT 3');
     $req2 = $req2->fetchAll();
 
     if(!empty($req)) {
