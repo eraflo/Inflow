@@ -111,7 +111,7 @@ include 'tmpl_top.php';
                     $pseudoAvatar->execute(array($c['id_pseudo']));
                     $avatarInfos = $pseudoAvatar->fetch(); ?>
                     <?php if(!empty($avatarInfos)) { ?>
-                    <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50">
+                    <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" class="avatar" width="50">
                     <?php } ?>
                     <b><?= $c['pseudo'] ?> :</b>
                     <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
