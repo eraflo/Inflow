@@ -5,20 +5,21 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 
-if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_auteur'])) {
-    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu']) AND !empty($_POST['article_auteur'])) {
+if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_auteur'], $_POST['article_comment'])) {
+    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu']) AND !empty($_POST['article_auteur']) AND !empty($_POST['article_comment'])) {
 
         $article_titre = htmlspecialchars($_POST['article_titre']);
         $article_contenu = htmlspecialchars($_POST['article_contenu']);
         $article_auteur = htmlspecialchars($_POST['article_auteur']);
+        $article_comment = htmlspecialchars($_POST['article_comment']);
         //éviter erreurs d'encodage
         $article_contenu = utf8_encode($article_contenu);
         $article_contenu = str_replace('ï>>¿', '', $article_contenu);
         $article_contenu = utf8_decode($article_contenu);
 
-        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, date_time_publication)
-            VALUES (?, ?, ?, NOW())');
-        $ins->execute(array($article_titre, $article_contenu, $article_auteur));
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, descriptions, date_time_publication)
+            VALUES (?, ?, ?, ?, NOW())');
+        $ins->execute(array($article_titre, $article_contenu, $article_auteur, $article_comment));
 
         $lastid = $bdd->LastInsertId();
 
@@ -58,6 +59,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_aut
             <form method="POST" enctype="multipart/form-data">
                 <input type="text" name="article_titre" placeholder="Titre" /> <br/>
                 <input type="text" name="article_auteur" placeholder="Auteur" /> <br/>
+                <input type="text" name="article_comment" placeholder="Description" /> <br/>
                 <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
                 <input type="file" name="miniature"/><br/>
                 <input type="submit" value="Envoyer l'article" /><br />
