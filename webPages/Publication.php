@@ -60,8 +60,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
 
 $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
 $commentaires->execute(array($get_id));
-$emoji_replace = array(':I', ':o', ':I-', ']:}');
-$emoji_new = array('<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />');
+$emoji_replace = array(':leflow:', ':surprise:', ':revolutiooooon:', ':fumer:', ':axelitoutou:', ':revolutiooooontoutou:', 'revolutiooooon2:');
+$emoji_new = array('<img src="assets/les_logos_pour_les_widgets.png" />', '<img src="assets/les_logos_pour_les_widgets_1.png" />', '<img src="assets/les_logos_pour_les_widgets_3.png" />', '<img src="assets/les_logos_pour_les_widgets_2.png" />', '<img src="assets/les_logos_pour_les_widgets_5.png" />', '<img src="assets/les_logos_pour_les_widgets_6.png" />', '<img src="assets/les_logos_pour_les_widgets_4.png" />');
 include 'tmpl_top.php'; 
 ?>
 
