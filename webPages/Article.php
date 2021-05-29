@@ -35,11 +35,13 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                     <div class="articleGallery hcenter">
                         <?php while($a = $articles->fetch()) { ?>
                             <a href="Publication.php?id=<?= $a['id'] ?>" class="cardArticleLink cardArticleElement">
-                                <img src="assets/Inflow_logo_dark.png" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%"><!--Image test-->
+                            <?php if(!empty($a['avatar_article'])) { ?>
+                                <img src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%">
+                            <?php } ?>
                                 <div class="cardArticleContent">
                                     <p class="cardArticleTitle"><?= $a['titre'] ?></p>
                                     <p class="cardArticleDesc">Description Rapide de l'article à mettre ici :)</p>
-                                    <p class="cardArticleAuthor">Auteur de l'article</p>
+                                    <p class="cardArticleAuthor"><?= $a['auteur'] ?></p>
                                 </div>
                             </a>
                         <?php } ?>
