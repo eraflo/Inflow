@@ -3,7 +3,6 @@
 <!--Partie php = atteindre base de donnée + récupère infos formulaire, vérifie si tout est bien rempli, si pseudo et email existe pas
     déjà et transmet à base de donnée-->
 <?php
-include 'tmpl_top.php'; 
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
@@ -48,13 +47,11 @@ if(isset($_POST["forminscription"])) {
         } else {
             $erreur = "Votre identifiant est trop long !";
         }
-        } else {
-            $erreur = "Remplissez tous les champs !!!";
-        }
+    } else {
+        $erreur = "Remplissez tous les champs !!!";
     }
-
-
-
+}
+include 'tmpl_top.php'; 
 ?>
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">

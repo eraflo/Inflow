@@ -1,6 +1,6 @@
 <!--Page recensant tout les articles -> quand clique sur titre article, rediriger sur article dans Publication.html-->
 <?php
-include 'tmpl_top.php'; 
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
@@ -19,7 +19,8 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 }
 
 $depart = ($pageCourante-1)*$articlesParPage;
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.''); 
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
+include 'tmpl_top.php'; 
 ?>
             <div class="left">
                 <div class="navElement"><a href="Rap.php">Rap</a></div>
@@ -66,3 +67,4 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 
 ?>
+

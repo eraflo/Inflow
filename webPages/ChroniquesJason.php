@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'tmpl_top.php'; 
 ?>
 <?php 
