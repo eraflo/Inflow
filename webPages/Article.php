@@ -34,13 +34,11 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                 <article>
 
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
-                    <ul>
+                    <div class="Article_new">
                         <?php while($a = $articles->fetch()) { ?>
-                        <li>
                             <a href="Publication.php?id=<?= $a['id'] ?>">
                                 <?= $a['titre'] ?>
                             </a>
-                        </li>
                         <?php } ?>
                         <?php
                         for($i=1;$i<=$pagesTotales;$i++) {
@@ -51,7 +49,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                             }
                         }
                         ?>
-                    </ul>
+                    </div>
 
                 </article>
             </div>
