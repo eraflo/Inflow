@@ -1,6 +1,6 @@
 <!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
-include 'tmpl_top.php'; 
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
@@ -43,7 +43,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_aut
         $message = 'Veuillez remplir tous les champs';
     }
 }
-
+include 'tmpl_top.php'; 
 ?>
 
     <div class="left">

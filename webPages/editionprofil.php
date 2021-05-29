@@ -1,5 +1,5 @@
 <?php
-include 'tmpl_top.php'; 
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 if(isset($_SESSION['id'])) {
@@ -81,6 +81,7 @@ if(isset($_SESSION['id'])) {
         header("Location: Profil.php?id=".$_SESSION['id']);
     }
 
+    include 'tmpl_top.php'; 
 ?>
             <div class="left">
                 <div class="navElement"><a href="Rap.php">Rap</a></div>

@@ -1,7 +1,7 @@
 <!--Page où apparaissent les publications; Reste à améliorer le style et la mise en page mais opérationnel-->
 <!--Connecte à base de données + gère affiche des articles-->
 <?php
-include 'tmpl_top.php'; 
+session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 include('filtre.php');
@@ -62,7 +62,7 @@ $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? O
 $commentaires->execute(array($get_id));
 $emoji_replace = array(':I', ':o', ':I-', ']:}');
 $emoji_new = array('<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />', '<img src="assets/Inflow_logo_64px.png" />');
-
+include 'tmpl_top.php'; 
 ?>
 
             <div class="left">

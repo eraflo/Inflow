@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 // Le haut de l'interface est ajouté avant le contenu
 include 'tmpl_top.php'; 
 ?>
