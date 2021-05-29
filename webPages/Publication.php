@@ -14,7 +14,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     //Changer code BBCode en html
     $parser = new JBBCode\Parser();
     $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-    $parser->addBBCode("quote", '<div class="quote">{param}</div>');
+    $parser->addBBCode("quote", '<blockquote>{param}</blockquote>');
 
     if($article->rowCount() == 1) {
         $article = $article->fetch();

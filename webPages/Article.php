@@ -40,7 +40,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                             <?php } ?>
                                 <div class="cardArticleContent">
                                     <p class="cardArticleTitle"><?= $a['titre'] ?></p>
-                                    <p class="cardArticleDesc">Description Rapide de l'article à mettre ici :)</p>
+                                    <p class="cardArticleDesc"><?= $a['descriptions'] ?></p>
                                     <p class="cardArticleAuthor"><?= $a['auteur'] ?></p>
                                 </div>
                             </a>
