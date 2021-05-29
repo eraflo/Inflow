@@ -50,20 +50,26 @@ include 'tmpl_top.php';
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
-                <ul>
+                <div class="articleGallery articleGalleryProfiles hcenter" style="">
                     <?php while($m = $membres->fetch()) { ?>
-                    <li>
-                        <?= $m['id'] ?> :
-                            <?= $m['pseudo'] ?>
-                                <?php if($m['admin'] == 0) { ?> - <a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a>
-                                <?php } ?>
-                                <?php if($m['confirmer'] == 0) { ?> - <a href="Admin.php?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a>
-                                <?php } ?>
-                                <?php if($m['admin'] == 0) { ?> - <a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a>
-                                <?php } ?>
-                    </li>
+                    <div class="cardArticleElement cardArticleElementProfiles">
+                        <?php if($m['avatar'] != NULL) { ?><a href="Profil.php?id=<?= $m['id'] ?>"><img class="cardArticleImageProfiles" src="membres/avatars/<?php echo $m['avatar']; ?>"><?php } ?></a>
+                        <div class="cardArticleContent cardArticleContentProfiles">
+                            <a href="Profil.php?id=<?= $m['id'] ?>"><div>
+                                <p class="cardArticleTitle">ID <?= $m['id'] ?></p>
+                                <p class="cardArticleTitle">PSEUDO <?= $m['pseudo'] ?></p>
+                            </div></a>
+                            <?php if(($m['admin'] == 0)&&($m['confirmer'] == 0)) { ?>
+                            <div class="cardArticleContent cardArticleContentProfiles">
+                                <p>COMMANDS </p> 
+                                <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a></p><?php } ?>
+                                <?php if($m['confirmer'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a></p><?php } ?>
+                                <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></p><?php } ?>
+                            </div><?php } ?>
+                        </div>
+                    </div>
                     <?php } ?>
-                </ul>
+                </div>
             </div>
 
             <div class="right"></div>
