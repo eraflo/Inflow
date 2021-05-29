@@ -62,7 +62,12 @@ require_once "JBBCode/Parser.php";
                 }
             });
         });
-
+        </script>
+        <script>
+            setInterval('load_page()', 2000);
+            function load_page() {
+                $('#actualisation').load('actualisation_page.php');
+            }
         </script>
     </head>
 
