@@ -4,9 +4,7 @@ include 'tmpl_top.php';
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5');
-
-$articlesParPage = 5;
+$articlesParPage = 6;
 $articlesTotalReq = $bdd->query('SELECT id FROM articles');
 $articlesTotal = $articlesTotalReq->rowCount();
 
@@ -34,7 +32,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                 <article>
 
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
-                    <ul>
+                    <div class="articleGallery hcenter">
                         <?php while($a = $articles->fetch()) { ?>
                             <a href="Publication.php?id=<?= $a['id'] ?>" class="cardArticleLink cardArticleElement">
                             <?php if(!empty($a['avatar_article'])) { ?>
@@ -46,18 +44,19 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                                     <p class="cardArticleAuthor"><?= $a['auteur'] ?></p>
                                 </div>
                             </a>
-                        </li>
                         <?php } ?>
+                        <div class="articleGalleryPageContainer hcenter vcenter">
                         <?php
                         for($i=1;$i<=$pagesTotales;$i++) {
                             if($i == $pageCourante) {
-                                echo '<a class="selected">'.$i.' </a>';
+                                echo '<a class="selected articleGalleryPageElement">'.$i.' </a>';
                             } else {
-                                echo '<a href="Article.php?page='.$i.'">'.$i.'</a>';
+                                echo '<a class="articleGalleryPageElement" href="Article.php?page='.$i.'">'.$i.'</a>';
                             }
                         }
                         ?>
-                    </ul>
+                        </div>
+                    </div>
 
                 </article>
             </div>
