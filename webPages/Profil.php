@@ -49,6 +49,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                                 <?php while($u = $req_articles->fetch()) {
                                     if($u['auteur'] == $userinfos['pseudo']) { ?>
                                         <a href="Publication.php?id=<?= $u['id'] ?>" ><?= $u['titre'] ?></a>
+                                        <br/>
                                     <?php }
                                 } ?>
                                 <?php
