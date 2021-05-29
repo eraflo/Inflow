@@ -16,16 +16,27 @@ if(isset($_GET['user'])) {
     $req2 = $req2->fetchAll();
 
     if(!empty($req)) {
-        foreach($req as $r) {
-        ?>
-            <div>
-            <a href="Publication.php?id=<?= $r['id'] ?>">
-                <?= $r['titre'] ?>
-            </a>
-            </div>
-        <?php
+            foreach($req as $r) {
+                ?>
+                    <div>
+                    <a href="Publication.php?id=<?= $r['id'] ?>">
+                        <?= $r['titre'] ?>
+                    </a>
+                    </div>
+                <?php
+            }
+        } elseif(!empty($req1)) {
+            foreach($req1 as $r) {
+                ?>
+                    <div>
+                        <a href="Publication.php?id=<?= $r['id'] ?>">
+                            <?= $r['titre'] ?>
+                        </a>
+                    </div>
+                <?php
         }
-    } elseif(!empty($req2)) {
+    } 
+    if(!empty($req2)) {
         foreach($req2 as $r) {
             ?>
                 <div>
@@ -35,16 +46,6 @@ if(isset($_GET['user'])) {
                 </div>
             <?php
         }
-    } elseif(!empty($req1)) {
-        foreach($req1 as $r) {
-            ?>
-                <div>
-                    <a href="Publication.php?id=<?= $r['id'] ?>">
-                        <?= $r['titre'] ?>
-                    </a>
-                </div>
-            <?php
-        }
-    }
+    }      
 }
 ?>
