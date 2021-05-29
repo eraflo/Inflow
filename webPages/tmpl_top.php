@@ -1,7 +1,5 @@
 <!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
-//appel parser.php
-require_once "JBBCode/Parser.php";
 ?>
 <!DOCTYPE html>
 <html>
