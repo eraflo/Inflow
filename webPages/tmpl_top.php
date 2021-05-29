@@ -22,6 +22,7 @@ require_once "JBBCode/Parser.php";
         <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <script src="JS/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="JS/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!--Charger ressources pour éditeur de texte-->
         <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" > </script>
         <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" > </script> 
@@ -29,13 +30,39 @@ require_once "JBBCode/Parser.php";
         <script src="JS/fr.js"></script>
         <!--Script pour customiser éditeur de texte pour articles-->
         <script> 
-            $ (function() { 
+            $(function() { 
                 var Options = {
                     buttons: "bold,italic,underline,strike,|,sup,sub,|,img,video,link,|,bullist,numlist,|,fontcolor,fontsize,fontfamily,|,justifyleft,justifycenter,justifyright,|,quote,code,table,removeFormat",
                     lang: "fr",
                 }
                 $("#editor").wysibb(Options); 
             }) 
+        </script>
+        <!--Script pour la barre de recherche-->
+        <script>
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                $('#result-research').html('');
+
+                var research = $(this).val();
+
+                if(research != "") {
+                    $.ajax({
+                        type: 'GET',
+                        url: "recherche.php",
+                        data: 'user=' + encodeURIComponent(research),
+                        success: function(data) {
+                            if(data != "") {
+                                $('#result-research').append(data);
+                            } else {
+                                document.getElementById('result-research').innerHTML = "<div>Aucune correspondance</div>"
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
         </script>
     </head>
 
@@ -82,8 +109,9 @@ require_once "JBBCode/Parser.php";
                     <div class="headerFirstElement element navBarHeaderElement"><a href="Infos.php" id="Infos">Infos</a></div>
                     <div class="element search">
                         <form action="#">
-                            <input type="text" placeholder="Recherche" name="search">
+                            <input type="text" placeholder="Recherche" id="search" name="search" value="" />
                         </form>
+                        <div id="result-research"></div>
                     </div>
                 </nav>
             </header>
