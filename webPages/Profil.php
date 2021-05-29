@@ -1,6 +1,7 @@
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
 if(empty($_SESSION['id'])) {
     header("Location: Connexion.php");
@@ -12,6 +13,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($getid));
     $userinfos = $requser->fetch();
+    $req_articles = $bdd2->query('SELECT * FROM articles');
     include 'tmpl_top.php'; 
 
 
@@ -44,6 +46,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                                 <br /> Email =
                                 <?php echo $userinfos['adresse_email']; ?>
                                 <br />
+                                <?php while($u = $req_articles->fetch()) {
+                                    if($u['auteur'] == $userinfos['pseudo']) { ?>
+                                        <a href="Publication.php?id=<?= $u['id'] ?>" ><?= $u['titre'] ?></a>
+                                    <?php }
+                                } ?>
                                 <?php
                         if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) {
                         ?>
