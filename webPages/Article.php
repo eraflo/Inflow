@@ -4,9 +4,7 @@ include 'tmpl_top.php';
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT 0,5');
-
-$articlesParPage = 5;
+$articlesParPage = 6;
 $articlesTotalReq = $bdd->query('SELECT id FROM articles');
 $articlesTotal = $articlesTotalReq->rowCount();
 
@@ -34,21 +32,28 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication D
                 <article>
 
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
-                    <div class="Article_new">
+                    <div class="articleGallery hcenter">
                         <?php while($a = $articles->fetch()) { ?>
-                            <a href="Publication.php?id=<?= $a['id'] ?>">
-                                <?= $a['titre'] ?>
+                            <a href="Publication.php?id=<?= $a['id'] ?>" class="cardArticleLink cardArticleElement">
+                                <img src="assets/Inflow_logo_dark.png" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%"><!--Image test-->
+                                <div class="cardArticleContent">
+                                    <p class="cardArticleTitle"><?= $a['titre'] ?></p>
+                                    <p class="cardArticleDesc">Description Rapide de l'article à mettre ici :)</p>
+                                    <p class="cardArticleAuthor">Auteur de l'article</p>
+                                </div>
                             </a>
                         <?php } ?>
+                        <div class="articleGalleryPageContainer hcenter vcenter">
                         <?php
                         for($i=1;$i<=$pagesTotales;$i++) {
                             if($i == $pageCourante) {
-                                echo '<a class="selected">'.$i.' </a>';
+                                echo '<a class="selected articleGalleryPageElement">'.$i.' </a>';
                             } else {
-                                echo '<a href="Article.php?page='.$i.'">'.$i.'</a>';
+                                echo '<a class="articleGalleryPageElement" href="Article.php?page='.$i.'">'.$i.'</a>';
                             }
                         }
                         ?>
+                        </div>
                     </div>
 
                 </article>
