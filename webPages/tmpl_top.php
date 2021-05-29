@@ -76,17 +76,16 @@
                 <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="navBarHeader container element">
                     <div class="headerFirstElement element navBarHeaderElement"><a href="main.php">Menu</a></div>
-                    <div class="headerFirstElement element navBarHeaderElement dropdown ">
-                        <a href="#">Article</a>
-                        <div class="dropdown-content">
-                            <div class="navBarHeaderElement"><a href="Article.php">Article</a></div>
-                            <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="navBarHeaderElement">
-                                <a href="Poster.php">Poster</a>
+                    <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="headerFirstElement element navBarHeaderElement dropdown ">
+                            <a href="Article.php">Article</a>
+                            <div class="dropdown-content">
+                                <div class="navBarHeaderElement"><a href="Poster.php">Poster</a></div>
                             </div>
-                            <?php } ?>
                         </div>
-                    </div>
+                    <?php } else { ?>
+                        <div class="navBarHeaderElement headerFirstElement"><a href="Article.php">Article</a></div>
+                    <?php } ?>                    
                     <div class="headerFirstElement element navBarHeaderElement"><a href="Playlist.php">Playlist</a></div>
                     <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Espace Membre</a>
                         <div class="dropdown-content">
