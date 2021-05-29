@@ -5,19 +5,37 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 
-if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
-    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu'])) {
+if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_auteur'])) {
+    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu']) AND !empty($_POST['article_auteur'])) {
 
         $article_titre = htmlspecialchars($_POST['article_titre']);
         $article_contenu = htmlspecialchars($_POST['article_contenu']);
+        $article_auteur = htmlspecialchars($_POST['article_auteur']);
         //éviter erreurs d'encodage
         $article_contenu = utf8_encode($article_contenu);
         $article_contenu = str_replace('ï>>¿', '', $article_contenu);
         $article_contenu = utf8_decode($article_contenu);
 
-        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, date_time_publication)
-            VALUES (?, ?, NOW())');
-        $ins->execute(array($article_titre, $article_contenu));
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, date_time_publication)
+            VALUES (?, ?, ?, NOW())');
+        $ins->execute(array($article_titre, $article_contenu, $article_auteur));
+
+        $lastid = $bdd->LastInsertId();
+
+        $tailleMax = 5242880;
+        $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
+        if($_FILES['miniature']['size'] <= $tailleMax) {
+            $extensionUpload = strtolower(substr(strrchr($_FILES['miniature']['name'], '.'), 1));
+            if(in_array($extensionUpload, $extensionValides)) {
+                $chemin = "membres/avatars_article/".$lastid.".".$extensionUpload;
+                move_uploaded_file($_FILES['miniature']['tmp_name'], $chemin);
+                $ins2 = $bdd->prepare("UPDATE articles SET avatar_article = :avatar WHERE id = :id");
+                $ins2->execute(array(
+                    'avatar' => $lastid.".".$extensionUpload,
+                    'id' => $lastid
+                    ));
+            }
+        }
 
         $message = 'Votre article a bien été posté';
 
@@ -40,7 +58,9 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'])) {
             <!--Formulaire pour postez des articles-->
             <form method="POST" enctype="multipart/form-data">
                 <input type="text" name="article_titre" placeholder="Titre" /> <br/>
+                <input type="text" name="article_auteur" placeholder="Auteur" /> <br/>
                 <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
+                <input type="file" name="miniature"/><br/>
                 <input type="submit" value="Envoyer l'article" /><br />
             </form>
             <br />
