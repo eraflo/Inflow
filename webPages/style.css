@@ -14,15 +14,18 @@
     --color-text-hover: #62bcda;
     --color-links: black;
     --color-unselected-links: white;
-    --color-selected: black;
+    --color-selected: #404040;
     --color-active: black;
     --color-selection-text: inherit;
     /*couleur du texte lors de la selection*/
     --color-selection-bg: rgb(16, 137, 237, 0.45);
     /*couleur du surlignage lors de la sÃ©lection*/
     --color-underline: dodgerblue;
-    --color-navbar-background: var(--color-main-theme);
+    --color-background: var(--color-main-theme);
     --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-main-theme) 10%, var(--color-main-theme-alt) 90%);
+    --color-text-article-title: bold var(--color-text);
+    --color-text-article-desc: var(--color-text);
+    --color-text-article-author: var(--color-text);
 }
 
 
@@ -44,8 +47,11 @@
     --color-selection-text: inherit;
     --color-selection-bg: rgb(218, 167, 55, 0.6);
     --color-underline: rgb(143, 143, 33);
-    --color-navbar-background: rgba(0, 0, 0, 0.8);
-    --color-navbar-dropdown-background: var(--color-navbar-background);
+    --color-background: rgba(0, 0, 0, 0.8);
+    --color-navbar-dropdown-background: var(--color-background);
+    --color-text-article-title: bold var(--color-text);
+    --color-text-article-desc: var(--color-text);
+    --color-text-article-author: var(--color-text);
 }
 
 
@@ -65,7 +71,7 @@ html {
     background-color: white;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
-    transition: 1s;
+    transition: ease 1s;
 }
 
 
@@ -221,7 +227,7 @@ article {
     width: 100%;
     height: inherit;
     transition: 1s;
-    background: var(--color-navbar-background);
+    background: var(--color-background);
 }
 
 
@@ -320,11 +326,68 @@ a:any-link:hover:after {
     transform-origin: bottom left;
 }
 
+a.selected {
+    color: var(--color-selected);
+}
+
 
 /*--Dans Inscription.html, gÃ¨re les diffÃ©rentes zones oÃ¹ l'on peut Ã©crire--*/
 
 form {
     width: 100%;
+}
+
+/*--Gallerie des articles, affiche comme des cartes--*/
+
+.articleGallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+.cardArticleElement {
+    min-width: 100px;
+    width: 25%;
+    max-width: 300px;
+    margin: 6px 10px;
+    background-color: var(--color-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: ease 0.5s;
+}
+.cardArticleElement:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+.cardArticleContent {
+    padding: 2px 10px;
+}
+.cardArticleTitle {
+    font-weight: bold;
+    color: var(--color-text-article-title);
+}
+.cardArticleDesc {
+    color: var(--color-text-article-desc);
+}
+.cardArticleAuthor {
+    opacity: 0.8;
+    color: var(--color-text-article-author);
+}
+.cardArticleLink {
+    color: inherit;
+}
+/*--Ne pas afficher la barre des liens (cf a:any-link:after)--*/
+a.cardArticleLink:after {
+    display: none;
+}
+.articleGalleryPageContainer {
+    display: flex;
+    font-size: x-large;
+    width: 100%;
+    height: 2em;
+}
+.articleGalleryPageElement {
+    margin: 0.5em;
+    padding: 0.1em 0.3em;
 }
 
 
@@ -469,6 +532,19 @@ form {
     animation: none !important;
 }
 
+/*--CENTRER L'ELEMENT--*/
+/*VERTICAL*/
+.vcenter{
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+/*HORIZONTAL*/
+.hcenter{
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
 
 /*--Bouton mode sombre--*/
 
