@@ -565,6 +565,11 @@ form {
     animation: none !important;
 }
 
+.lowTransition {
+    transition-duration: 1s;
+    animation-duration: 1s;
+}
+
 /*--CENTRER L'ELEMENT--*/
 /*VERTICAL*/
 .vcenter{
