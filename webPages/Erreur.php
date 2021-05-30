@@ -13,9 +13,7 @@ include 'tmpl_top.php';
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
     <article>
-        <a href="Profil.php?id=6">Jason</a>
-        <a href="Profil.php?id=2">Anyr</a>
-        <a href="Profil.php?id=4">Axel</a>
+        <h1>Erreur 404 : page not found</h1>
     </article>
 </div>
 <div class="right"></div>
