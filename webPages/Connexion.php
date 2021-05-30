@@ -19,7 +19,7 @@ if(isset($_POST["formconnexion"])) {
                 $_SESSION['id'] = $userinfos['id'];
                 $_SESSION['pseudo'] = $userinfos['pseudo'];
                 $_SESSION['adresse_email'] = $userinfos['adresse_email'];
-                $_SESSION['confirmer'] = $userinfos['confirmer'];
+                $_SESSION['redacteur'] = $userinfos['redacteur'];
                 $_SESSION['admin'] = $userinfos['admin'];
                 $_SESSION['avatar'] = $userinfos['avatar'];
                 header("Location: Profil.php?id=".$_SESSION['id']);

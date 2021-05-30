@@ -22,14 +22,14 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
 }
 
 if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
-    if(isset($_GET['confirmer']) AND !empty($_GET['confirmer'])) {
+    if(isset($_GET['redacteur']) AND !empty($_GET['redacteur'])) {
 
-        $confirmer = (int) $_GET['confirmer'];
-        $req = $bdd->prepare('UPDATE membres SET confirmer = 1 WHERE id = ?');
-        $req->execute(array($confirmer));
+        $redacteur = (int) $_GET['redacteur'];
+        $req = $bdd->prepare('UPDATE membres SET redacteur = 1 WHERE id = ?');
+        $req->execute(array($redacteur));
         $nconf = $bdd->query('SELECT * FROM membres');
         $newconf = $nconf->fetch();
-        $_SESSION['confirmer'] = $newconf['confirmer'];
+        $_SESSION['redacteur'] = $newconf['redacteur'];
     }
 }
 
@@ -59,11 +59,11 @@ include 'tmpl_top.php';
                                 <p class="cardArticleTitle">ID <?= $m['id'] ?></p>
                                 <p class="cardArticleTitle">PSEUDO <?= $m['pseudo'] ?></p>
                             </div></a>
-                            <?php if(($m['admin'] == 0)&&($m['confirmer'] == 0)) { ?>
+                            <?php if(($m['admin'] == 0)&&($m['redacteur'] == 0)) { ?>
                             <div class="cardArticleContent cardArticleContentProfiles">
                                 <p>COMMANDS </p> 
                                 <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a></p><?php } ?>
-                                <?php if($m['confirmer'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&confirmer=<?= $m['id'] ?>">Rédacteur</a></p><?php } ?>
+                                <?php if($m['redacteur'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>">Rédacteur</a></p><?php } ?>
                                 <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></p><?php } ?>
                             </div><?php } ?>
                         </div>
