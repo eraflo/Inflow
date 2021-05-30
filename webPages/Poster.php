@@ -5,6 +5,8 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
 $auteurs = $bdd2->query('SELECT * FROM `membres` WHERE redacteur = 1');
+$categories = $bdd->query('SELECT * FROM categories');
+
 
 if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_auteur'], $_POST['article_comment'])) {
     if (empty($_POST['article_id_auteur'])) {
@@ -19,6 +21,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $article_contenu = htmlspecialchars($_POST['article_contenu']);
         $article_id_auteur = htmlspecialchars($_POST['article_id_auteur']);
         $article_comment = htmlspecialchars($_POST['article_comment']);
+        $article_id_categorie = htmlspecialchars($_POST['article_id_categorie']);
         //éviter erreurs d'encodage
         $article_contenu = utf8_encode($article_contenu);
         $article_contenu = str_replace('ï>>¿', '', $article_contenu);
@@ -27,9 +30,9 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $getAuteur = $bdd2->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
         $article_auteur = $getAuteur->fetch();
 
-        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication)
-            VALUES (?, ?, ?, ?, ?, NOW())');
-        $ins->execute(array($article_titre, $article_contenu, $article_auteur['pseudo'], $article_id_auteur, $article_comment));
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication, id_categorie)
+            VALUES (?, ?, ?, ?, ?, NOW(), ?)');
+        $ins->execute(array($article_titre, $article_contenu, $article_auteur['pseudo'], $article_id_auteur, $article_comment, $article_id_categorie));
 
         $lastid = $bdd->LastInsertId();
 
@@ -72,6 +75,12 @@ include 'tmpl_top.php';
                     <option value=""><i>Auteur</i></option>
                     <?php while($a = $auteurs->fetch()) { ?>
                         <option value="<?= $a['id'] ?>"><?= $a['pseudo'] ?></option>
+                    <?php } ?>
+                </select><br/>
+                <select type="text" name="article_id_categorie">
+                    <option value=""><i>Aucune catégorie</i></option>
+                    <?php while($c = $categories->fetch()) { ?>
+                        <option value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
                     <?php } ?>
                 </select><br/>
                 <input type="text" name="article_comment" placeholder="Description" /> <br/>
