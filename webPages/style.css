@@ -135,7 +135,7 @@ body, article, .footer, .main, .left, .right, .middle {
     min-height: 100vh;
     width: 100%;
     display: grid;
-    grid-template-rows: max-content auto max-content;
+    grid-template-rows: 210px auto max-content; /*note : 210px = 130px (bannière) + 80px (navbar); permet scroll smooth*/
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
     /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
     column-gap: 3%;
@@ -147,7 +147,7 @@ body, article, .footer, .main, .left, .right, .middle {
 .header {
     grid-column: 1/4;
     place-content: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     min-height: 80px;
     line-height: 80px;
@@ -206,6 +206,7 @@ body, article, .footer, .main, .left, .right, .middle {
     place-content: center;
     text-align: center;
     font-family: var(--font-header);
+    font-weight: 500;
 }
 
 /*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
@@ -281,7 +282,7 @@ body, article, .footer, .main, .left, .right, .middle {
     top: 0;
     z-index: 1000;
     object-fit: cover;
-    transition: 1s;
+    transition: 0.4s;
 }
 
 .avatar {
@@ -520,6 +521,14 @@ form {
     border: none;
     outline: none;
 }
+
+.likeButton {
+    filter: invert(0);
+}
+.dislikeButton {
+    filter: invert(0);
+}
+
 
 
 /*--NE PAS AFFICHER UN ELEMENT--*/
