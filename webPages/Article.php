@@ -20,6 +20,8 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 
 $depart = ($pageCourante-1)*$articlesParPage;
 $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
+$categories = $bdd->query('SELECT * FROM categories');
+
 include 'tmpl_top.php'; 
 ?>
             <div class="left">
@@ -31,6 +33,20 @@ include 'tmpl_top.php';
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
                 <article>
+                    <!--Affiche des recommendations d'articles à lire-->
+                    <div class="articleRecommendationGallery articleGallery hcenter"></div>
+
+                    <!--Affiche les catégories des articles-->
+                    <div class="articleCategoryGallery articleGallery hcenter">
+                        <?php while($c = $categories->fetch()) { ?>
+                            <a href="Categories.php?id=<?= $c['id'] ?>" class="cardArticleLink cardArticleElement">
+                                <p class="cardArticleTitle"><?= $c['nom'] ?></p>
+                                <p class="cardArticleMainText"><?= $c['description'] ?></p>
+                                <p class="cardArticleSecondaryText"><?= $c['auteur'] ?></p>
+                            </a>
+                        <?php } ?>
+                    </div>
+
 
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
                     <div class="articleGallery hcenter" id="actualisation">
