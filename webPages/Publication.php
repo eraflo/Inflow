@@ -99,7 +99,7 @@ include 'tmpl_top.php';
                 <div class="Commentaires">
                     <h2>Commentaires :</h2>
                     <form method="POST">
-                        <textarea name="commentaire" placeholder="Votre commentaire"></textarea> <br/>
+                        <textarea name="commentaire" placeholder="Votre commentaire" style="resize:vertical;width:99%"></textarea> <br/>
                         <input type="submit" value="Poster" name="submit_commentaire" />
                     </form>
                     <br/>
