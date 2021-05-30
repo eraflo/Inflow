@@ -19,19 +19,19 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $articles->execute(array($get_id));
 
     } else {
-        die('Cette catégorie n\'existe pas !!!');
+        header('Location: Erreur.php');
     }
 } else {
-    die('Erreur');
+    header('Location: Erreur.php');
 }
 
 include 'tmpl_top.php'; 
 ?>
 
             <div class="left">
-                <div class="navElement"><a href="Rap.php">Rap</a></div>
-                <div class="navElement"><a href="MusiqueUrbaine.php">Musique Urbaine</a></div>
-                <div class="navElement"><a href="ChroniquesJason.php">Les Chroniques de Jason</a></div>
+                <div class="navElement"><a href="tmpl_catégories.php?id=3">Rap</a></div>
+                <div class="navElement"><a href="tmpl_catégories.php?id=2">Musique Urbaine</a></div>
+                <div class="navElement"><a href="tmpl_catégories.php?id=1">Les Chroniques de Jason</a></div>
             </div>
 
             <!--Début de là où on pourra mettre du texte-->

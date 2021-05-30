@@ -16,9 +16,9 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 ?>
 
             <div class="left">
-                <div class="navElement"><a href="Rap.php">Rap</a></div>
-                <div class="navElement"><a href="MusiqueUrbaine.php">Musique Urbaine</a></div>
-                <div class="navElement"><a href="ChroniquesJason.php">Les Chroniques de Jason</a></div>
+                <div class="navElement"><a href="tmpl_catégories.php?id=3">Rap</a></div>
+                <div class="navElement"><a href="tmpl_catégories.php?id=2">Musique Urbaine</a></div>
+                <div class="navElement"><a href="tmpl_catégories.php?id=1">Les Chroniques de Jason</a></div>
             </div>
 
             <!--Début de là où on pourra mettre du texte-->
@@ -29,7 +29,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                             Profil de
                             <?php echo $userinfos['pseudo']; ?>
                         </h1>
-                        <br />
                         <?php
                         if(!empty($userinfos['avatar'])) {
                         ?>
@@ -42,18 +41,19 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                                 <br /> Email =
                                 <?php echo $userinfos['adresse_email']; ?>
                                 <br />
-                                <?php while($u = $req_articles->fetch()) {
+                        <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
+                            <a href="editionprofil.php">Editer mon profil</a><br />
+                            <a href="Déconnexion.php">Se déconnecter</a>
+                        <?php } ?>
+                        <br/>
+                        <br/>
+                        <h2><b>Articles écris</b></h2>
+                        <?php while($u = $req_articles->fetch()) {
                                     if($u['auteur'] == $userinfos['pseudo']) { ?>
                                         <a href="Publication.php?id=<?= $u['id'] ?>" ><?= $u['titre'] ?></a>
                                         <br/>
                                     <?php }
                                 } ?>
-                                <?php
-                        if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) {
-                        ?>
-                                    <a href="editionprofil.php">Editer mon profil</a><br />
-                                    <a href="Déconnexion.php">Se déconnecter</a>
-                                    <?php } ?>
 
                     </div>
 

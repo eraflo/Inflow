@@ -3,6 +3,7 @@
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
 if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION) OR empty($_SESSION)) {
     header("Location: main.php");
@@ -43,9 +44,9 @@ $membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
 include 'tmpl_top.php'; 
 ?>
             <div class="left">
-                <div class="navElement"><a href="Rap.php">Rap</a></div>
-                <div class="navElement"><a href="MusiqueUrbaine.php">Musique Urbaine</a></div>
-                <div class="navElement"><a href="ChroniquesJason.php">Les Chroniques de Jason</a></div>
+                    <div class="navElement"><a href="tmpl_catégories.php?id=3">Rap</a></div>
+                    <div class="navElement"><a href="tmpl_catégories.php?id=2">Musique Urbaine</a></div>
+                    <div class="navElement"><a href="tmpl_catégories.php?id=1">Les Chroniques de Jason</a></div>
             </div>
 
             <!--Début de là où on pourra mettre du texte-->
