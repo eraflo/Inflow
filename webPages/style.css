@@ -4,10 +4,9 @@
 /*--Stockage de variables principalement pour les couleurs du site--*/
 
 :root {
-    --color-main-theme: royalblue;
-    --color-main-theme-alt: DodgerBlue;
-    --image-background: url("assets/background.png");
-    --color-background: royalblue;
+    --color-main-theme: rgba(200, 209, 219,0.5);
+    --color-main-theme-alt: dodgerblue;
+    --color-body-background: #3e86d6;
     --color-text: black;
     --color-text-shadow-selected: 0px 0px 20px white;
     --color-text-shadow-active: 0px 0px 12px #62bcda;
@@ -21,11 +20,15 @@
     --color-selection-bg: rgb(16, 137, 237, 0.45);
     /*couleur du surlignage lors de la sÃ©lection*/
     --color-underline: dodgerblue;
-    --color-background: var(--color-main-theme);
+    --color-background: rgba(200, 209, 219,0.5);
     --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-main-theme) 10%, var(--color-main-theme-alt) 90%);
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
+    
+    --font-base: 'Roboto', sans-serif, system-ui;
+    --font-article: 'Kalam', sans-serif, system-ui;
+    --font-header: 'Montserrat', sans-serif, system-ui;
 }
 
 
@@ -34,8 +37,7 @@
 :root[user-color-mode=dark] {
     --color-main-theme: inherit;
     --color-main-theme-alt: inherit;
-    --image-background: url("assets/backgrounddark.jpg");
-    --color-background: white;
+    --color-body-background: #20222b;
     --color-text: white;
     --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
     --color-text-shadow-active: inherit;
@@ -70,7 +72,7 @@ html {
     background-position: center;
     background-color: white;
     background-size: cover;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-base);
     transition: ease 1s;
 }
 
@@ -85,10 +87,7 @@ body {
     position: relative;
     min-height: 100vh;
     margin: 0 auto;
-    background-size: cover;
-    background: var(--image-background);
-    background-color: var(--color-background);
-    background-size: 100%;
+    background-color: var(--color-body-background);
     background-repeat: repeat-y;
     color: var(--color-text);
 }
@@ -96,13 +95,7 @@ body {
 
 /*--Couleur du texte sur les différents éléments de la page pouvant contenir du texte--*/
 
-body,
-article,
-.footer,
-.main,
-.left,
-.right,
-.middle {
+body, article, .footer, .main, .left, .right, .middle {
     color: var(--color-text);
 }
 
@@ -162,6 +155,7 @@ article,
     width: 100%;
     transition: 1s;
     z-index: 100;
+    font-family: var(--font-header);
 }
 
 .header nav .search {
@@ -176,6 +170,7 @@ article,
     grid-column: 1/2;
     grid-row: 2/3;
     min-width: min-content;
+    font-family: var(--font-header);
 }
 
 .middle {
@@ -187,12 +182,15 @@ article,
     overflow-wrap: break-word;
     text-align: inherit;
     height: 100%;
+    font-family: var(--font-article);
+    font-size: large;
 }
 
 .right {
     grid-column: 3/4;
     grid-row: 2/3;
     min-width: min-content;
+    font-family: var(--font-header);
 }
 
 
@@ -200,29 +198,20 @@ article,
 
 .footer {
     position: sticky;
-    background-color: var(--color-main-theme);
+    background-color: var(--color-background);
     grid-column: 1/4;
     grid-row: 3/4;
     min-height: 80px;
     width: 100%;
     place-content: center;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-header);
 }
-
-
-/*--tout ce qui ce trouve lÃ  oÃ¹ on met du texte, espacement en haut et en bas--*/
-
-article {
-    font-family: Helvetica;
-}
-
 
 /*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
 
 .navBarHeader {
     padding: 0 10px;
-    font-family: 'Oswald', sans-serif;
     font-size: 1.1em;
     width: 100%;
     height: inherit;
@@ -439,7 +428,6 @@ form {
     grid-gap: 10px 10em;
     text-align: center;
     padding-bottom: 2em;
-    font-family: 'Oswald', sans-serif;
 }
 
 .Plateforme :first-child {
@@ -454,7 +442,6 @@ form {
 
 #Staff {
     font-size: 50px;
-    font-family: 'Open Sans', sans-serif;
     text-align: center;
 }
 
@@ -563,6 +550,11 @@ form {
     -o-animation: none !important;
     -ms-animation: none !important;
     animation: none !important;
+}
+
+.lowTransition {
+    transition-duration: 1s;
+    animation-duration: 1s;
 }
 
 /*--CENTRER L'ELEMENT--*/

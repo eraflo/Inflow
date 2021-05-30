@@ -15,7 +15,10 @@ function dark_mode_button_on_click() {
 
 function activate_dark_mode() {
     // Toggle dark mode
-    $("*").addClass("noTransition");
+    $("*").addClass("lowTransition");
+    // Exception
+    $(".headerFirstElement").removeClass("lowTransition");
+
     // Changer les variables locales du client et changer l'attribut de la page
     if (window.localStorage["user-color-mode"] == "dark") {
         window.localStorage["user-color-mode"] = "light";
@@ -29,8 +32,8 @@ function activate_dark_mode() {
     }
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {
-        $("*").removeClass("noTransition");
-    }, 30);
+        $("*").removeClass("lowTransition");
+    }, 3000);
 
     smoothHeaderAppear();
 }
