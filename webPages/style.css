@@ -334,6 +334,14 @@ a:any-link:hover:after {
     transform-origin: bottom left;
 }
 
+/*--Ne pas afficher la barre des liens (cf a:any-link:after)--*/
+.noUnderline {
+    color: inherit;
+}
+a.noUnderline:after {
+    display: none;
+}
+
 a.selected {
     color: var(--color-selected);
 }
@@ -384,13 +392,6 @@ form {
 .cardArticleSecondaryText {
     opacity: 0.8;
     color: var(--color-text-article-author);
-}
-.cardArticleLink {
-    color: inherit;
-}
-/*--Ne pas afficher la barre des liens (cf a:any-link:after)--*/
-a.cardArticleLink:after {
-    display: none;
 }
 /*--Gestion des pages lorsqu'il existe plusieurs pages--*/
 .articleGalleryPageContainer {
