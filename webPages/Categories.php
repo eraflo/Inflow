@@ -22,6 +22,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     } else {
         die('Cette catégorie n\'existe pas !!!');
     }
+} else {
+    die('Erreur');
 }
 
 include 'tmpl_top.php'; 
