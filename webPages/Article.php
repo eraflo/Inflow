@@ -47,7 +47,6 @@ include 'tmpl_top.php';
                         <?php } ?>
                     </div>
 
-
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
                     <div class="articleGallery hcenter" id="actualisation">
                         <?php while($a = $articles->fetch()) { ?>

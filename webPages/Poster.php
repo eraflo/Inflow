@@ -4,22 +4,32 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 
+$auteurs = $bdd2->query('SELECT * FROM `membres` WHERE redacteur = 1');
 
-if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_auteur'], $_POST['article_comment'])) {
-    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu']) AND !empty($_POST['article_auteur']) AND !empty($_POST['article_comment'])) {
-
+if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_auteur'], $_POST['article_comment'])) {
+    if (empty($_POST['article_id_auteur'])) {
+        if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) {
+            $_POST['article_id_auteur'] = $_SESSION['id'];
+        } else {
+            $_POST['article_id_auteur'] = NULL;
+        }
+    }
+    if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu']) AND !empty($_POST['article_id_auteur']) AND !empty($_POST['article_comment'])) {
         $article_titre = htmlspecialchars($_POST['article_titre']);
         $article_contenu = htmlspecialchars($_POST['article_contenu']);
-        $article_auteur = htmlspecialchars($_POST['article_auteur']);
+        $article_id_auteur = htmlspecialchars($_POST['article_id_auteur']);
         $article_comment = htmlspecialchars($_POST['article_comment']);
         //éviter erreurs d'encodage
         $article_contenu = utf8_encode($article_contenu);
         $article_contenu = str_replace('ï>>¿', '', $article_contenu);
         $article_contenu = utf8_decode($article_contenu);
+        //obtenir le pseudo de l'auteur
+        $getAuteur = $bdd2->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
+        $article_auteur = $getAuteur->fetch();
 
-        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, descriptions, date_time_publication)
-            VALUES (?, ?, ?, ?, NOW())');
-        $ins->execute(array($article_titre, $article_contenu, $article_auteur, $article_comment));
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication)
+            VALUES (?, ?, ?, ?, ?, NOW())');
+        $ins->execute(array($article_titre, $article_contenu, $article_auteur['pseudo'], $article_id_auteur, $article_comment));
 
         $lastid = $bdd->LastInsertId();
 
@@ -58,7 +68,12 @@ include 'tmpl_top.php';
             <!--Formulaire pour postez des articles-->
             <form method="POST" enctype="multipart/form-data">
                 <input type="text" name="article_titre" placeholder="Titre" /> <br/>
-                <input type="text" name="article_auteur" placeholder="Auteur" /> <br/>
+                <select type="text" name="article_id_auteur" placeholder="Auteur">
+                    <option value=""><i>Auteur</i></option>
+                    <?php while($a = $auteurs->fetch()) { ?>
+                        <option value="<?= $a['id'] ?>"><?= $a['pseudo'] ?></option>
+                    <?php } ?>
+                </select><br/>
                 <input type="text" name="article_comment" placeholder="Description" /> <br/>
                 <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
                 <input type="file" name="miniature"/><br/>
