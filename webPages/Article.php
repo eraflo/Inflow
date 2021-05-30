@@ -21,6 +21,7 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 $depart = ($pageCourante-1)*$articlesParPage;
 $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
 $categories = $bdd->query('SELECT * FROM categories');
+$search_auteur = $bdd2->prepare('SELECT * FROM membres WHERE id = ?');
 
 include 'tmpl_top.php'; 
 ?>
@@ -57,7 +58,14 @@ include 'tmpl_top.php';
                                 <div class="cardArticleContent">
                                     <p class="cardArticleTitle"><?= $a['titre'] ?></p>
                                     <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
-                                    <p class="cardArticleSecondaryText"><?= $a['auteur'] ?></p>
+                                    <?php 
+                                    if(isset($a['id_auteur'])) {
+                                        $search_auteur->execute(array($a['id_auteur'])); 
+                                        $sa = $search_auteur->fetch();?>
+                                        <p class="cardArticleSecondaryText"><?= $sa['pseudo'] ?></p>
+                                        <?php } else { ?>
+                                            <p class="cardArticleSecondaryText"><?= $a['auteur'] ?></p>
+                                        <?php } ?>
                                 </div>
                             </a>
                         <?php } ?>
