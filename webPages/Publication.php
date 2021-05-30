@@ -86,10 +86,10 @@ include 'tmpl_top.php';
                         echo $parser->getAsHtml();
                         ?>
                     </p>
-                    <a href="Action.php?t=1&id=<?= $id ?>">Like</a> (
-                    <?= $likes ?>)
-                        <a href="Action.php?t=2&id=<?= $id ?>">Dislike</a> (
-                        <?= $dislikes ?>)
+                    <a href="Action.php?t=1&id=<?= $id ?>"><img src="assets/Like.PNG"></a>
+                    <?= $likes ?>
+                    <a href="Action.php?t=2&id=<?= $id ?>"><img src="assets/Dislike.PNG"></a> 
+                    <?= $dislikes ?>
 
                 </article>
             </div>
