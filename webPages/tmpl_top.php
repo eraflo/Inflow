@@ -76,7 +76,7 @@
                 <img class="banniere element" src="assets/banniere_twi.png" />
                 <nav class="navBarHeader container element">
                     <div class="headerFirstElement element navBarHeaderElement"><a href="main.php">Menu</a></div>
-                    <?php if(isset($_SESSION['confirmer']) AND $_SESSION['confirmer'] == 1 AND isset($_SESSION)) { ?>
+                    <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown ">
                             <a href="Article.php">Article</a>
                             <div class="dropdown-content">

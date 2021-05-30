@@ -40,7 +40,7 @@ if(isset($_GET['user'])) {
         foreach($req2 as $r) {
             ?>
                 <div>
-                    <?php if($r['confirmer'] == 1) { ?>
+                    <?php if($r['redacteur'] == 1) { ?>
                     <a href="Profil.php?id=<?= $r['id'] ?>">
                         <?= $r['pseudo'] ?>
                     </a>
