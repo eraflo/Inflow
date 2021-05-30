@@ -106,17 +106,17 @@ include 'tmpl_top.php';
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
                     <?php while($c = $commentaires->fetch()) {
-                    $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
-                    $pseudoAvatar->execute(array($c['id_pseudo']));
-                    $avatarInfos = $pseudoAvatar->fetch(); ?>
-                    <?php if(!empty($avatarInfos)) { ?>
-                    <img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" class="avatar" width="50">
-                    <?php } ?>
-                    <b><?= $c['pseudo'] ?> :</b>
-                    <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
-                    <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
-                    <?= $c['commentaire'] ?> <br/>
+                        $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
+                        $pseudoAvatar->execute(array($c['id_pseudo']));
+                        $avatarInfos = $pseudoAvatar->fetch(); ?>
+                        <?php if(!empty($avatarInfos)) { ?>
+                            <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" class="avatar" width="50"></a>
                         <?php } ?>
+                        <b><a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><?= $c['pseudo'] ?></a> :</b>
+                        <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
+                        <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
+                        <?= $c['commentaire'] ?> <br/>
+                    <?php } ?>
                 </div>
             </div>
 <?php 
