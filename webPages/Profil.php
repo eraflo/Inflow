@@ -3,10 +3,6 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
 $bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 
-if(empty($_SESSION['id'])) {
-    header("Location: Connexion.php");
-}
-
 
 if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $getid = intval($_GET['id']);
