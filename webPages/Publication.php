@@ -96,7 +96,6 @@ include 'tmpl_top.php';
             </div>
 
             <div class="right">
-                <br/><br/>
                 <div class="Commentaires">
                     <h2>Commentaires :</h2>
                     <form method="POST">
