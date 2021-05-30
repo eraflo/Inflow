@@ -1,5 +1,4 @@
-<!--Page où apparaissent les publications; Reste à améliorer le style et la mise en page mais opérationnel-->
-<!--Connecte à base de données + gère affiche des articles-->
+<!--Page où apparaissent les publications-->
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
