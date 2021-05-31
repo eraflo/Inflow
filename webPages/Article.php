@@ -4,7 +4,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 $articlesParPage = 12;
-$articlesTotalReq = $bdd->query('SELECT id FROM articles');
+$articlesTotalReq = $bdd->query('SELECT id FROM `articles`');
 $articlesTotal = $articlesTotalReq->rowCount();
 
 $pagesTotales = ceil($articlesTotal/$articlesParPage);
@@ -18,10 +18,10 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 }
 
 $depart = ($pageCourante-1)*$articlesParPage;
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
-$recom = $bdd->query('SELECT * FROM articles ORDER BY nombre_like DESC LIMIT 6');
-$categories = $bdd->query('SELECT * FROM categories');
-$search_auteur = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+$articles = $bdd->query('SELECT * FROM `articles` ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
+$recom = $bdd->query('SELECT * FROM `articles` ORDER BY nombre_like DESC LIMIT 6');
+$categories = $bdd->query('SELECT * FROM `categories`');
+$search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 
 include 'tmpl_top.php';
 ?>
@@ -30,7 +30,6 @@ include 'tmpl_top.php';
             include 'LEFT/categories.php';
             include 'LEFT/end.php';
             ?>
-            
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
