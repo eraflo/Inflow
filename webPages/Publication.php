@@ -64,15 +64,14 @@ $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? O
 $commentaires->execute(array($get_id));
 $emoji_replace = array(':leflow:', ':surprise:', ':revolutiooooon:', ':fumer:', ':axelitoutou:', ':revolutiooooontoutou:', 'revolutiooooon2:');
 $emoji_new = array('<img src="assets/les_logos_pour_les_widgets.png" />', '<img src="assets/les_logos_pour_les_widgets_1.png" />', '<img src="assets/les_logos_pour_les_widgets_3.png" />', '<img src="assets/les_logos_pour_les_widgets_2.png" />', '<img src="assets/les_logos_pour_les_widgets_5.png" />', '<img src="assets/les_logos_pour_les_widgets_6.png" />', '<img src="assets/les_logos_pour_les_widgets_4.png" />');
-include 'tmpl_top.php'; 
+include 'tmpl_top.php';
 ?>
 
-            <div class="left">
-                <div class="navElement"><a href="tmpl_catégories.php?id=3">Rap</a></div>
-                <div class="navElement"><a href="tmpl_catégories.php?id=2">Musique Urbaine</a></div>
-                <div class="navElement"><a href="tmpl_catégories.php?id=1">Les Chroniques de Jason</a></div>
-            </div>
-
+            <?php
+            include 'LEFT/begin.php';
+            include 'LEFT/categories.php';
+            include 'LEFT/end.php';
+            ?>
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
                 <article>

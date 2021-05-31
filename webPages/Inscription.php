@@ -51,8 +51,13 @@ if(isset($_POST["forminscription"])) {
         $erreur = "Remplissez tous les champs !!!";
     }
 }
-include 'tmpl_top.php'; 
+include 'tmpl_top.php';
 ?>
+            <?php
+            include 'LEFT/begin.php';
+            include 'LEFT/categories.php';
+            include 'LEFT/end.php';
+            ?>
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
                 <article>
