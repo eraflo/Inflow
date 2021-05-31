@@ -1,4 +1,3 @@
-<!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
 ?>
 <!DOCTYPE html>
@@ -40,7 +39,6 @@
         $(document).ready(function() {
             $('#search').keyup(function() {
                 $('#result-research').html('');
-
                 var research = $(this).val();
 
                 if(research != "") {
@@ -115,4 +113,10 @@
                         <div id="result-research"></div>
                     </div>
                 </nav>
+                <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
+                    <div class="element cookie-alert">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
+                        proposez des contenus et services adaptés à vos centres d'interêt.<br/>
+                        <a class="cookie-alert-ok-button" href="accept_cookie.php">OK</a>
+                    </div>
+                <?php } ?>
             </header>

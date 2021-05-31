@@ -448,6 +448,15 @@ form {
     font-family: 'Montserrat';
 }
 
+.cookie-alert {
+    width: 100%;
+    margin: 20px 0px;
+    line-height: normal;
+}
+.cookie-alert-ok-button {
+    margin-top: 5px;
+    padding: 2px 5px;
+}
 
 /*  Menu dÃ©roulant  */
 /* Le conteneur <div> - nÃ©cessaire pour positionner le contenu de la liste dÃ©roulante */
@@ -501,7 +510,7 @@ form {
     text-align: right;
     padding: 0.4rem;
     color: white;
-    display: inline-block;
+    display: flex;
     border-radius: 2rem;
     outline: none;
 }
