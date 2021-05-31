@@ -1,7 +1,6 @@
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 if(isset($_GET['t'], $_GET['id'], $_SESSION['id'], $_SESSION) AND !empty($_GET['t']) AND !empty($_GET['id']) AND !empty($_SESSION['id'])) {
     $getid = (int) $_GET['id'];

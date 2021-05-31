@@ -1,8 +1,7 @@
 <!--Page où apparaissent les publications-->
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 include('filtre.php');
 //appel parser.php
 require_once "JBBCode/Parser.php";
@@ -107,7 +106,7 @@ include 'tmpl_top.php';
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
                     <?php while($c = $commentaires->fetch()) {
-                        $pseudoAvatar = $bdd2->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
+                        $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
                         $pseudoAvatar->execute(array($c['id_pseudo']));
                         $avatarInfos = $pseudoAvatar->fetch(); ?>
                         <?php if(!empty($avatarInfos)) { ?>

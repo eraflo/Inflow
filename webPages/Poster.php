@@ -1,10 +1,9 @@
 <!--Charger base de donnée + Lorsque formulaire remplie pour poster un article, rentre les infos dans la base de donnée-->
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
-$auteurs = $bdd2->query('SELECT * FROM `membres` WHERE redacteur = 1');
+$auteurs = $bdd->query('SELECT * FROM `membres` WHERE redacteur = 1');
 $categories = $bdd->query('SELECT * FROM categories');
 
 
@@ -27,7 +26,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $article_contenu = str_replace('ï>>¿', '', $article_contenu);
         $article_contenu = utf8_decode($article_contenu);
         //obtenir le pseudo de l'auteur
-        $getAuteur = $bdd2->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
+        $getAuteur = $bdd->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
         $article_auteur = $getAuteur->fetch();
 
         $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication, id_categorie)

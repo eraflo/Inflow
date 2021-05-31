@@ -1,7 +1,6 @@
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 
 if(isset($_GET['id']) AND $_GET['id'] > 0) {
@@ -9,7 +8,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($getid));
     $userinfos = $requser->fetch();
-    $req_articles = $bdd2->query('SELECT * FROM articles');
+    $req_articles = $bdd->prepare('SELECT * FROM articles WHERE id_auteur = ?');
+    $req_articles->execute(array($userinfos['id']));
     include 'tmpl_top.php'; 
 
 
@@ -47,13 +47,13 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                         <?php } ?>
                         <br/>
                         <br/>
-                        <h2><b>Articles écris</b></h2>
-                        <?php while($u = $req_articles->fetch()) {
-                                    if($u['auteur'] == $userinfos['pseudo']) { ?>
-                                        <a href="Publication.php?id=<?= $u['id'] ?>" ><?= $u['titre'] ?></a>
-                                        <br/>
-                                    <?php }
-                                } ?>
+                        <?php if ($req_articles->rowCount() > 0) { ?>
+                            <h2><b>Articles écris</b></h2>
+                            <?php while($u = $req_articles->fetch()) { ?>
+                                <a href="Publication.php?id=<?= $u['id'] ?>" ><?= $u['titre'] ?></a>
+                                <br/>
+                            <?php }
+                        } ?>
 
                     </div>
 

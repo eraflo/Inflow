@@ -4,28 +4,27 @@
 /*--Stockage de variables principalement pour les couleurs du site--*/
 
 :root {
-    --color-main-theme: rgba(200, 209, 219,0.5);
-    --color-main-theme-alt: dodgerblue;
-    --color-body-background: #007fff;
+    --color-body-background: white;
+    --color-background: rgba(142, 185, 230, 0.9);
+    --color-background-alt: rgba(69, 156, 247, 0.6);
+    --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-background) 10%, var(--color-background-alt) 90%);
+
     --color-text: black;
     --color-text-shadow-selected: 0px 0px 20px white;
     --color-text-shadow-active: 0px 0px 12px #62bcda;
-    --color-text-hover: #62bcda;
+    --color-text-hover: #007dff;
     --color-links: black;
     --color-unselected-links: white;
-    --color-selected: #404040;
-    --color-active: black;
+    --color-selected-text: #404040;
+    --color-active-text: black;
     --color-selection-text: inherit;
-    /*couleur du texte lors de la selection*/
     --color-selection-bg: rgb(16, 137, 237, 0.45);
-    /*couleur du surlignage lors de la sÃ©lection*/
     --color-underline: dodgerblue;
-    --color-background: rgba(200, 209, 219,0.5);
-    --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-main-theme) 10%, var(--color-main-theme-alt) 90%);
+
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-    
+
     --font-base: 'Roboto', sans-serif, system-ui;
     --font-article: 'Kalam', sans-serif, system-ui;
     --font-header: 'Montserrat', sans-serif, system-ui;
@@ -35,25 +34,28 @@
 /*mode nuit*/
 
 :root[user-color-mode=dark] {
-    --color-main-theme: inherit;
-    --color-main-theme-alt: inherit;
     --color-body-background: #20222b;
+    --color-background: rgba(0, 0, 0, 0.8);
+    --color-background-alt: rgba(0, 0, 0, 0.8);
+    --color-navbar-dropdown-background: var(--color-background);
+
     --color-text: white;
     --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
     --color-text-shadow-active: inherit;
     --color-text-hover: #C0C0C0;
     --color-links: white;
     --color-unselected-links: white;
-    --color-selected: #808080;
-    --color-active: black;
+    --color-selected-text: #808080;
+    --color-active-text: black;
     --color-selection-text: inherit;
     --color-selection-bg: rgb(218, 167, 55, 0.6);
     --color-underline: rgb(143, 143, 33);
-    --color-background: rgba(0, 0, 0, 0.8);
-    --color-navbar-dropdown-background: var(--color-background);
+    
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
+
+    /*Les polices ne doivent pas changer en fonction de la préférence de couleurs*/
 }
 
 
@@ -151,7 +153,7 @@ body, article, .footer, .main, .left, .right, .middle {
     top: 0;
     min-height: 80px;
     line-height: 80px;
-    background-color: var(--color-main-theme);
+    background-color: var(--color-background);
     width: 100%;
     transition: 1s;
     z-index: 100;
@@ -261,7 +263,7 @@ body, article, .footer, .main, .left, .right, .middle {
     (Seulement avant le changement de page)--*/
 
 .navBarHeader a:any-link:active {
-    color: var(--color-active);
+    color: var(--color-active-text);
     text-shadow: var(--color-text-shadow-selected);
 }
 
@@ -269,7 +271,7 @@ body, article, .footer, .main, .left, .right, .middle {
 /*--Page actuelle sÃ©lectionnÃ©e dans la navbar--*/
 
 .navBarHeader a.selected:any-link {
-    color: var(--color-selected);
+    color: var(--color-selected-text);
     text-shadow: var(--color-text-shadow-selected);
 }
 
@@ -287,6 +289,7 @@ body, article, .footer, .main, .left, .right, .middle {
 
 .avatar {
     border-radius: 50%;
+    border: outset 1px rgba(0,0,0,0.1);
 }
 
 
@@ -333,7 +336,7 @@ a.noUnderline:after {
 }
 
 a.selected {
-    color: var(--color-selected);
+    color: var(--color-selected-text);
 }
 
 

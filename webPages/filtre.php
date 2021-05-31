@@ -1,6 +1,6 @@
 <?php
 function Filtre($texte) {
-    $bdd = new PDO("mysql:host=127.0.0.1;dbname=filtre;charset=utf8", "root", "");
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
     
     $commentaire = $texte;
 

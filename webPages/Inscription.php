@@ -3,8 +3,7 @@
 <!--Partie php = atteindre base de donnée + récupère infos formulaire, vérifie si tout est bien rempli, si pseudo et email existe pas
     déjà et transmet à base de donnée-->
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
 
@@ -31,7 +30,7 @@ if(isset($_POST["forminscription"])) {
                     if($pseudoexist == 0) {
                         if($pass == $cpass) {
                             $insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, mot_de_passe, adresse_email, avatar) VALUES(?, ?, ?, ?)");
-                            $insertmbr->execute(array($pseudo, $pass, $email, "assets/Inflow_logo.png"));
+                            $insertmbr->execute(array($pseudo, $pass, $email, "global/Inflow_logo.png"));
                             $erreur = "Votre compte a été créé !!!";
                         } else {
                             $erreur = "Les mots de passe sont différents";
