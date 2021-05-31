@@ -41,13 +41,14 @@ include 'tmpl_top.php';
                     <div class="articleCategoryGallery articleGallery hcenter">
                         <?php while($c = $categories->fetch()) { ?>
                             <a href="Categories.php?id=<?= $c['id'] ?>" class="noUnderline cardArticleElement">
-                                <p class="cardArticleTitle"><?= $c['nom'] ?></p>
-                                <p class="cardArticleMainText"><?= $c['description'] ?></p>
-                                <p class="cardArticleSecondaryText"><?= $c['auteur'] ?></p>
+                                <p class="cardArticleTitle"> <?= $c['nom'] ?></p>
+                                <p class="cardArticleMainText"> <?= $c['description'] ?></p>
+                                <p class="cardArticleSecondaryText"> <?= $c['auteur'] ?></p>
                             </a>
                         <?php } ?>
                     </div>
-
+                    <br/>
+                    <h1>News :</h1>
                     <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
                     <div class="articleGallery hcenter" id="actualisation">
                         <?php while($a = $articles->fetch()) { ?>
@@ -62,9 +63,9 @@ include 'tmpl_top.php';
                                     if(isset($a['id_auteur'])) {
                                         $search_auteur->execute(array($a['id_auteur'])); 
                                         $sa = $search_auteur->fetch();?>
-                                        <p class="cardArticleSecondaryText"><?= $sa['pseudo'] ?></p>
+                                        <p class="cardArticleSecondaryText"> <?= $sa['pseudo'] ?></p>
                                         <?php } else { ?>
-                                            <p class="cardArticleSecondaryText"><?= $a['auteur'] ?></p>
+                                            <p class="cardArticleSecondaryText"> <?= $a['auteur'] ?></p>
                                         <?php } ?>
                                 </div>
                             </a>
