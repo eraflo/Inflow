@@ -31,6 +31,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $dislikes->execute(array($id));
         $dislikes = $dislikes->rowCount();
 
+        $vues = 0; // pas encore implémenté
+
     } else {
         die('Cette article n\'existe pas !!!');
     }
@@ -86,11 +88,11 @@ include 'tmpl_top.php';
                         echo $parser->getAsHtml();
                         ?>
                     </p>
-                    <a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like_white.png" class="likeButton"></a>
-                    <?= $likes ?>
-                    <a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline"><img src="assets/dislike_white.png"class="dislikeButton"></a> 
-                    <?= $dislikes ?>
-
+                    <div class="articleMenuButtonContainer">
+                        <div class="articleMenuButtonElement"><a href="#" class="noUnderline"><img src="assets/visibility_white.png" class="visitsButton"><p><?= $vues ?></p></a></div>
+                        <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like_white.png" class="likeButton"><p><?= $likes ?></p></a></div>
+                        <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline"><img src="assets/dislike_white.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
+                    </div>
                 </article>
             </div>
 
