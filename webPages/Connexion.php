@@ -4,8 +4,7 @@
     déjà et transmet à base de donnée-->
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 if(isset($_POST["formconnexion"])) {
     $pseudoconnect = htmlspecialchars($_POST["pseudoconnect"]);

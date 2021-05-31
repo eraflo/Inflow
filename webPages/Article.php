@@ -1,8 +1,7 @@
 <!--Page recensant tout les articles -> quand clique sur titre article, rediriger sur article dans Publication.html-->
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 $articlesParPage = 12;
 $articlesTotalReq = $bdd->query('SELECT id FROM articles');
@@ -21,7 +20,7 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 $depart = ($pageCourante-1)*$articlesParPage;
 $articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
 $categories = $bdd->query('SELECT * FROM categories');
-$search_auteur = $bdd2->prepare('SELECT * FROM membres WHERE id = ?');
+$search_auteur = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
 
 include 'tmpl_top.php'; 
 ?>
@@ -40,7 +39,7 @@ include 'tmpl_top.php';
                     <!--Affiche les catégories des articles-->
                     <div class="articleCategoryGallery articleGallery hcenter">
                         <?php while($c = $categories->fetch()) { ?>
-                            <a href="Categories.php?id=<?= $c['id'] ?>" class="noUnderline cardArticleElement">
+                            <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="noUnderline cardArticleElement">
                                 <p class="cardArticleTitle"> <?= $c['nom'] ?></p>
                                 <p class="cardArticleMainText"> <?= $c['description'] ?></p>
                                 <p class="cardArticleSecondaryText"> <?= $c['auteur'] ?></p>

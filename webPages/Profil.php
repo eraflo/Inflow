@@ -1,7 +1,6 @@
 <?php
 session_start();
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=espace_membre;charset=utf8", "root", "");
-$bdd2 = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 
 if(isset($_GET['id']) AND $_GET['id'] > 0) {
@@ -9,7 +8,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($getid));
     $userinfos = $requser->fetch();
-    $req_articles = $bdd2->query('SELECT * FROM articles');
+    $req_articles = $bdd->query('SELECT * FROM articles');
     include 'tmpl_top.php'; 
 
 
