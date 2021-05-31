@@ -63,7 +63,7 @@ include 'tmpl_top.php';
                     <!--Affiche les catégories des articles-->
                     <div class="articleCategoryGallery articleGallery hcenter">
                         <?php while($c = $categories->fetch()) { ?>
-                            <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="noUnderline cardArticleElement">
+                            <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="noUnderline cardArticleElement cardArticleContent">
                                 <p class="cardArticleTitle"> <?= $c['nom'] ?></p>
                                 <p class="cardArticleMainText"> <?= $c['description'] ?></p>
                                 <p class="cardArticleSecondaryText"> <?= $c['auteur'] ?></p>
