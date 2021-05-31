@@ -6,7 +6,7 @@
 :root {
     --color-main-theme: rgba(200, 209, 219,0.5);
     --color-main-theme-alt: dodgerblue;
-    --color-body-background: #3e86d6;
+    --color-body-background: #007fff;
     --color-text: black;
     --color-text-shadow-selected: 0px 0px 20px white;
     --color-text-shadow-active: 0px 0px 12px #62bcda;
@@ -135,7 +135,7 @@ body, article, .footer, .main, .left, .right, .middle {
     min-height: 100vh;
     width: 100%;
     display: grid;
-    grid-template-rows: 210px auto max-content; /*note : 210px = 130px (bannière) + 80px (navbar); permet scroll smooth*/
+    grid-template-rows: max-content auto max-content;
     grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
     /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
     column-gap: 3%;
@@ -147,7 +147,7 @@ body, article, .footer, .main, .left, .right, .middle {
 .header {
     grid-column: 1/4;
     place-content: center;
-    position: fixed;
+    position: sticky;
     top: 0;
     min-height: 80px;
     line-height: 80px;
@@ -290,7 +290,7 @@ body, article, .footer, .main, .left, .right, .middle {
 }
 
 
-img {
+article img {
     max-width: 100%;
 }
 
@@ -420,36 +420,33 @@ form {
     color: var(--color-links);
 }
 
+/*--Boutons après l'article--*/
 
-/*--Classe gÃ©rant dans Infos.html la mise en page du texte. Va de ici --*/
-
-.Plateforme {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px 10em;
-    text-align: center;
-    padding-bottom: 2em;
+.articleMenuButtonContainer {
+    display: flex;
+    width: auto;
+    height: inherit;
 }
 
-.Plateforme :first-child {
-    align-self: center;
+.articleMenuButtonElement {
+    margin: 4px 15px;
 }
 
+.articleMenuButtonElement a {
+    display: flex;
+}
 
-/*--A ici--*/
+.articleMenuButtonElement img {
+    height: 100%;
+}
 
-
-/*--GÃ¨re le sous-titre dans Infos.html--*/
-
-#Staff {
-    font-size: 50px;
-    text-align: center;
+.articleMenuButtonElement p {
+    margin: 0px 5px;
+    font-family: 'Montserrat';
 }
 
 
 /*  Menu dÃ©roulant  */
-
-
 /* Le conteneur <div> - nÃ©cessaire pour positionner le contenu de la liste dÃ©roulante */
 
 .dropdown {
@@ -460,7 +457,6 @@ form {
     transition: all 0.5s ease-in-out;
     width: auto;
 }
-
 
 /* Contenu dÃ©roulant (masquÃ© par dÃ©faut) */
 
@@ -478,7 +474,6 @@ form {
     z-index: 100;
 }
 
-
 /* Liens dans la liste dÃ©roulante */
 
 .dropdown-content a {
@@ -486,7 +481,6 @@ form {
     text-decoration: none;
     padding: 10px;
 }
-
 
 /* Afficher le menu dÃ©roulant en survol */
 
@@ -637,6 +631,25 @@ input[type="checkbox"]:before {
 
 input:checked[type="checkbox"]:before {
     left: 40px;
+}
+
+
+/*--Classe gÃ©rant dans Infos.html la mise en page du texte. Va de ici --*/
+.Plateforme {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 10em;
+    text-align: center;
+    padding-bottom: 2em;
+}
+.Plateforme :first-child {
+    align-self: center;
+}
+/*--A ici--*/
+/*--GÃ¨re le sous-titre dans Infos.html--*/
+#Staff {
+    font-size: 50px;
+    text-align: center;
 }
 
 
