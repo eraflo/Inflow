@@ -8,18 +8,17 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($getid));
     $userinfos = $requser->fetch();
-    $req_articles = $bdd->prepare('SELECT * FROM articles WHERE id_auteur = ?');
+    $req_articles = $bdd->prepare('SELECT * FROM articles WHERE id_auteur = ? ORDER BY date_time_publication DESC');
     $req_articles->execute(array($userinfos['id']));
-    include 'tmpl_top.php'; 
+    include 'tmpl_top.php';
+    ?>
+            <?php
+            include 'LEFT/begin.php';
+            include 'LEFT/categories.php';
+            include 'LEFT/end.php';
+            ?>
 
-
-?>
-
-            <div class="left">
-                <div class="navElement"><a href="tmpl_catégories.php?id=3">Rap</a></div>
-                <div class="navElement"><a href="tmpl_catégories.php?id=2">Musique Urbaine</a></div>
-                <div class="navElement"><a href="tmpl_catégories.php?id=1">Les Chroniques de Jason</a></div>
-            </div>
+            
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">

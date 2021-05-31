@@ -14,26 +14,32 @@ function dark_mode_button_on_click() {
 
 
 function activate_dark_mode() {
+    boutonDarkMode = document.querySelector('input[type="checkbox"]');
+    // Utilisé en tant que  fallback en cas de desync entre le mode et le bouton
+
     // Toggle dark mode
     $("*").addClass("lowTransition");
-    // Exception
+    // Exceptions
     $(".headerFirstElement").removeClass("lowTransition");
 
     // Changer les variables locales du client et changer l'attribut de la page
     if (window.localStorage["user-color-mode"] == "dark") {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
+        boutonDarkMode.checked = false;
     } else if ((window.localStorage["user-color-mode"] == "light") || (window.localStorage["user-color-mode"] == "hour")) {
         window.localStorage["user-color-mode"] = "dark";
         document.documentElement.setAttribute("user-color-mode", "dark");
+        boutonDarkMode.checked = true;
     } else {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
+        boutonDarkMode.checked = false;
     }
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {
         $("*").removeClass("lowTransition");
-    }, 3000);
+    }, 1000);
 
     smoothHeaderAppear();
 }
@@ -57,7 +63,7 @@ $(document).ready(function () {
         var d = new Date();
         var h = d.getHours();
         if (h > 18 || h < 8) {
-            activate_dark_mode();
+            document.documentElement.setAttribute("user-color-mode", "dark");
             boutonDarkMode.checked = true;
         } else {
             boutonDarkMode.checked = false;

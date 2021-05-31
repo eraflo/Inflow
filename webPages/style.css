@@ -353,7 +353,7 @@ form {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 .cardArticleElement {
-    height: 10em;
+    height: 14em;
     margin: 6px 10px;
     background-color: var(--color-background);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -381,10 +381,12 @@ form {
 }
 .cardArticleMainText {
     color: var(--color-text-article-desc);
+    font-size: small;
 }
 .cardArticleSecondaryText {
     opacity: 0.8;
     color: var(--color-text-article-author);
+    align-self: flex-end;
 }
 /*--Gestion des pages lorsqu'il existe plusieurs pages--*/
 .articleGalleryPageContainer {
@@ -448,6 +450,15 @@ form {
     font-family: 'Montserrat';
 }
 
+.cookie-alert {
+    width: 100%;
+    margin: 20px 0px;
+    line-height: normal;
+}
+.cookie-alert-ok-button {
+    margin-top: 5px;
+    padding: 2px 5px;
+}
 
 /*  Menu dÃ©roulant  */
 /* Le conteneur <div> - nÃ©cessaire pour positionner le contenu de la liste dÃ©roulante */
@@ -501,7 +512,7 @@ form {
     text-align: right;
     padding: 0.4rem;
     color: white;
-    display: inline-block;
+    display: flex;
     border-radius: 2rem;
     outline: none;
 }
@@ -559,8 +570,8 @@ form {
 }
 
 .lowTransition {
-    transition-duration: 1s;
-    animation-duration: 1s;
+    transition-duration: 0.3s;
+    animation-duration: 0.3s;
 }
 
 /*--CENTRER L'ELEMENT--*/
