@@ -559,8 +559,8 @@ form {
 }
 
 .lowTransition {
-    transition-duration: 1s;
-    animation-duration: 1s;
+    transition-duration: 0.3s;
+    animation-duration: 0.3s;
 }
 
 /*--CENTRER L'ELEMENT--*/

@@ -8,7 +8,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($getid));
     $userinfos = $requser->fetch();
-    $req_articles = $bdd->prepare('SELECT * FROM articles WHERE id_auteur = ?');
+    $req_articles = $bdd->prepare('SELECT * FROM articles WHERE id_auteur = ? ORDER BY date_time_publication DESC');
     $req_articles->execute(array($userinfos['id']));
     include 'tmpl_top.php'; 
 
