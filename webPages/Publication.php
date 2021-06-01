@@ -87,9 +87,9 @@ include 'tmpl_top.php';
                         ?>
                     </p>
                     <div class="articleMenuButtonContainer">
-                        <div class="articleMenuButtonElement"><a href="#" class="noUnderline"><img src="assets/visibility_white.png" class="visitsButton"><p><?= $vues ?></p></a></div>
-                        <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like_white.png" class="likeButton"><p><?= $likes ?></p></a></div>
-                        <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline"><img src="assets/dislike_white.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
+                        <div class="articleMenuButtonElement"><a href="#" class="noUnderline"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
+                        <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>
+                        <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline"><img src="assets/dislike.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
                     </div>
                 </article>
             </div>
