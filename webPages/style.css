@@ -26,7 +26,7 @@
     --color-text-article-author: var(--color-text);
 
     --font-base: 'Roboto', sans-serif, system-ui;
-    --font-article: 'Kalam', sans-serif, system-ui;
+    --font-article: 'Lato', sans-serif, system-ui;
     --font-header: 'Montserrat', sans-serif, system-ui;
 }
 
@@ -101,10 +101,16 @@ body, article, .footer, .main, .left, .right, .middle {
     color: var(--color-text);
 }
 
-.left,
-.right,
-.middle {
+.left, .right, .middle {
     margin: 20px;
+}
+
+h1 {
+    font-variant: small-caps;
+}
+
+.middle article p {
+    word-spacing: 10px;
 }
 
 
@@ -186,6 +192,7 @@ body, article, .footer, .main, .left, .right, .middle {
     height: 100%;
     font-family: var(--font-article);
     font-size: large;
+    line-height: 1.5em;
 }
 
 .right {
