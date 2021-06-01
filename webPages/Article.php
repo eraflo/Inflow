@@ -19,7 +19,6 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 
 $depart = ($pageCourante-1)*$articlesParPage;
 $articles = $bdd->query('SELECT * FROM `articles` ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
-$recom = $bdd->query('SELECT * FROM `articles` ORDER BY nombre_like DESC LIMIT 6');
 $categories = $bdd->query('SELECT * FROM `categories`');
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 
@@ -34,31 +33,6 @@ include 'tmpl_top.php';
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
                 <article>
-                    <h1>Recommandations :</h1>
-                    <!--Affiche des recommendations d'articles à lire-->
-                    <div class="articleRecommendationGallery articleGallery hcenter">
-                        <?php while($a_r = $recom->fetch()) { 
-                            ?>
-                            <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline cardArticleElement">
-                            <?php if(!empty($a_r['avatar_article'])) { ?>
-                                <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%">
-                            <?php } ?>
-                                <div class="cardArticleContent">
-                                    <p class="cardArticleTitle"><?= $a_r['titre'] ?></p>
-                                    <p class="cardArticleMainText"><?= $a_r['descriptions'] ?></p>
-                                    <?php 
-                                    if(isset($a_r['id_auteur']) AND $a_r['id_auteur'] != NULL) {
-                                        $search_auteur->execute(array($a_r['id_auteur'])); 
-                                        $sa1 = $search_auteur->fetch();?>
-                                        <p class="cardArticleSecondaryText"> <?= $sa1['pseudo'] ?></p>
-                                        <?php } else { ?>
-                                            <p class="cardArticleSecondaryText"> <?= $a_r['auteur'] ?></p>
-                                        <?php } ?>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <br/>
                     <h1>Catégories :</h1>
                     <!--Affiche les catégories des articles-->
                     <div class="articleCategoryGallery articleGallery hcenter">
