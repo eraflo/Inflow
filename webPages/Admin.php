@@ -51,19 +51,16 @@ include 'tmpl_top.php';
             <div class="middle">
                 <div class="articleGallery articleGalleryProfiles hcenter" style="">
                     <?php while($m = $membres->fetch()) { ?>
-                    <div class="cardArticleElement cardArticleElementProfiles">
+                    <div class="cardArticleContainer cardArticleContainerProfiles">
                         <?php if($m['avatar'] != NULL) { ?><a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline"><img class="cardArticleImageProfiles avatar" src="membres/avatars/<?php echo $m['avatar']; ?>"><?php } ?></a>
                         <div class="cardArticleContent cardArticleContentProfiles">
-                            <a href="Profil.php?id=<?= $m['id'] ?>"><div>
-                                <p class="cardArticleTitle">ID <?= $m['id'] ?></p>
-                                <p class="cardArticleTitle">PSEUDO <?= $m['pseudo'] ?></p>
-                            </div></a>
-                            <?php if(($m['admin'] == 0)&&($m['redacteur'] == 0)) { ?>
-                            <div class="cardArticleContent cardArticleContentProfiles">
-                                <p>COMMANDS </p> 
-                                <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a></p><?php } ?>
-                                <?php if($m['redacteur'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>">Rédacteur</a></p><?php } ?>
-                                <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></p><?php } ?>
+                            <span class="cardArticleTitle">ID <?= $m['id'] ?></span>
+                            <a class="cardArticleTitle" href="Profil.php?id=<?= $m['id'] ?>">PSEUDO <?= $m['pseudo'] ?></a>
+                            <?php if(($m['admin'] == 0)&&($m['redacteur'] == 0)) { ?><div class="">
+                                <span>COMMANDS </span> 
+                                <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a></span><?php } ?>
+                                <?php if($m['redacteur'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>">Rédacteur</a></span><?php } ?>
+                                <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></span><?php } ?>
                             </div><?php } ?>
                         </div>
                     </div>
