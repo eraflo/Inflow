@@ -359,7 +359,7 @@ form {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-.cardArticleElement {
+.cardArticleContainer {
     height: 14em;
     margin: 6px 10px;
     background-color: var(--color-background);
@@ -370,7 +370,7 @@ form {
     display: flex;
     flex-wrap: wrap;
 }
-.cardArticleElement:hover {
+.cardArticleContainer:hover {
     transform: scale(1.1);
     z-index: 10;
 }
@@ -408,14 +408,17 @@ form {
 }
 /*--Spécifique à la page admin--*/
 .articleGalleryProfiles {
-    grid-template-columns: repeat(auto-fill, 600px);
+    grid-template-columns: repeat(auto-fill, 450px);
 }
-.cardArticleElementProfiles {
+.cardArticleContainerProfiles {
     flex-wrap: nowrap;
+    height: 4em;
 }
 .cardArticleContentProfiles {
-    display: flex;
-    gap: 10px;
+    display: inline;
+}
+.cardArticleContentProfiles span, .cardArticleContentProfiles a {
+    font-size: small;
 }
 .cardArticleImageProfiles {
     max-width: 160px;
