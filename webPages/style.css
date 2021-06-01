@@ -530,11 +530,17 @@ form {
     outline: none;
 }
 
-.likeButton {
-    filter: invert(0);
+
+/*--Affiche les boutons vues, likes et dislikes en blanc lorsqu'on est en mode nuit--*/
+
+:root[user-color-mode=dark] .visitsButton {
+    filter: invert(1);
 }
-.dislikeButton {
-    filter: invert(0);
+:root[user-color-mode=dark] .likeButton {
+    filter: invert(1);
+}
+:root[user-color-mode=dark] .dislikeButton {
+    filter: invert(1);
 }
 
 
