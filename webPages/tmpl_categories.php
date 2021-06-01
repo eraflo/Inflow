@@ -40,7 +40,7 @@ include 'tmpl_top.php';
                     
                     <div class="articleCategoryGallery articleGallery hcenter">
                         <?php while($a = $articles->fetch()) { ?>
-                            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleElement">
+                            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
                             <?php if(!empty($a['avatar_article'])) { ?>
                                 <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" style="width:100%">
                             <?php } ?>

@@ -20,7 +20,7 @@ include 'tmpl_top.php';
                     <div class="articleRecommendationGallery articleGallery hcenter">
                         <?php while($a_r = $recom->fetch()) { 
                             ?>
-                            <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline cardArticleElement">
+                            <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline cardArticleContainer">
                             <?php if(!empty($a_r['avatar_article'])) { ?>
                                 <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%">
                             <?php } ?>
