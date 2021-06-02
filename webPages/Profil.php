@@ -23,6 +23,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
                 <article>
+<<<<<<< Updated upstream
                     <div align="center">
                         <h1>
                             Profil de
@@ -56,6 +57,52 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 
                     </div>
 
+=======
+                    <div class="PName">
+                        <h1><g>
+                            Profil de
+                            <?php echo $userinfos['pseudo']; ?>
+                        </g>
+                        </h1>
+                    </div>
+
+                    <div class="PTitle">
+                        <br /><u>Informations Utilisateur</u>
+                    </div>
+
+                    <?php
+                    if(!empty($userinfos['avatar'])) {
+                    ?>
+                        <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
+                        <?php
+                    }
+                    ?>
+                            <br /><g>Pseudonyme:</g><br />
+                            <div class="PCapsule">
+                                <?php echo $userinfos['pseudo']; ?>
+                            </div>
+                            <br /><g>Adresse Email:</g>
+                            <div class="PCapsule">
+                                <?php echo $userinfos['adresse_email']; ?>
+                            </div>
+                            <br />
+                            <div class="PTitle">
+                                <br /><u>Actions Utilisateur<br /></u>
+                            </div>
+                    <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
+                        <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
+                        <a href="Déconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
+                    <?php } ?>
+                    <br/>
+                    <br/>
+                    <?php if ($req_articles->rowCount() > 0) { ?>
+                        <div class="PTitle"><u>Articles écris</u></div>
+                        <?php while($u = $req_articles->fetch()) { ?>
+                            <a href="Publication.php?id=<?= $u['id'] ?>"> <div class="PActions"><i>-  <?= $u['titre'] ?></i></div></a>
+                            <br/>
+                        <?php }
+                    } ?>
+>>>>>>> Stashed changes
 
                 </article>
             </div>
