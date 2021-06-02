@@ -32,6 +32,9 @@ include 'LEFT/end.php';
         </select><br/><br/>
         <input type="submit" value="Modifier"/>
     </form>
+    <br/>
+    <h1 align="center">Dark Mode :</h1>
+    <div class="element BoutonTransition"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
 </div>
 <div class="right"></div>
 
