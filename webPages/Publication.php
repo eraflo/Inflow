@@ -104,18 +104,25 @@ include 'tmpl_top.php';
                     <br/>
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
-                    <?php while($c = $commentaires->fetch()) {
-                        $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
-                        $pseudoAvatar->execute(array($c['id_pseudo']));
-                        $avatarInfos = $pseudoAvatar->fetch(); ?>
-                        <?php if(!empty($avatarInfos)) { ?>
-                            <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" class="avatar" width="50"></a>
-                        <?php } ?>
-                        <b><a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><?= $c['pseudo'] ?></a> :</b>
-                        <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
-                        <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
-                        <?= $c['commentaire'] ?> <br/>
-                    <?php } ?>
+                    <div class="panel-wrapper">
+                        <a href="#show" class="show btn" id="show">Afficher commentaires</a> 
+                        <a href="#hide" class="hide btn" id="hide">Réduire commentaires</a>
+                        <div class="panel">
+                            <?php while($c = $commentaires->fetch()) {
+                                $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
+                                $pseudoAvatar->execute(array($c['id_pseudo']));
+                                $avatarInfos = $pseudoAvatar->fetch(); ?>
+                                <?php if(!empty($avatarInfos)) { ?>
+                                    <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" class="avatar" width="50"></a>
+                                <?php } ?>
+                                <b><a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><?= $c['pseudo'] ?></a> :</b>
+                                <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
+                                <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
+                                <?= $c['commentaire'] ?> <br/>
+                            <?php } ?>
+                        </div>
+                        <div class="fade"></div>
+                    </div>
                 </div>
             </div>
 <?php 
