@@ -39,15 +39,21 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                     <?php
                 }
                 ?>
-                        <br /><g>Pseudonyme:</g><br />
+                        <br /><b>Pseudonyme:</b><br />
                         <div class="PCapsule">
                             <?php echo $userinfos['pseudo']; ?>
                         </div>
-                        <br /><g>Adresse Email:</g>
+                        <br /><b>Adresse Email:</b>
                         <div class="PCapsule">
                             <?php echo $userinfos['adresse_email']; ?>
                         </div>
-                        <br />
+                        <?php if(isset($userinfos['biographie']) AND !empty($userinfos['biographie'])) { ?>
+                            <br /><b>Bio:</b>
+                            <div class="PCapsule">
+                                <?php echo $userinfos['biographie']; ?>
+                            </div>
+                            <br />
+                        <?php } ?>
                 <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
                     <div class="PTitle">
                             <br /><u>Actions Utilisateur<br /></u>
