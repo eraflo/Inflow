@@ -8,8 +8,8 @@ echo '<script src="JS/parametres.js"></script>';
 
 if(isset($_POST['police'])) {
     echo '<script type="text/javascript">',
-         'change_font("'.$_POST['police'].'");',
-         '</script>';
+        'change_font("'.$_POST['police'].'");',
+        '</script>';
 }
 
 include 'tmpl_top.php';
