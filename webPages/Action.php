@@ -52,10 +52,11 @@ if(isset($_GET['t'], $_GET['id'], $_SESSION['id'], $_SESSION) AND !empty($_GET['
         }
         header('Location: Publication.php?id='.$getid);
     } else {
-        header('Location: main.php');
+        echo '<script>alert("Vous devez vous identifiez!" );window.location.href = "main.php";</script>'; 
+        exit();
     }
 } else {
-    header('Location: main.php');
+    echo '<script>alert("Vous devez vous identifiez!" );window.location.href = "main.php";</script>'; 
+    exit();
 }
-
 ?>
