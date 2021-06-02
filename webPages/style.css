@@ -190,7 +190,7 @@ h1 {
     overflow-wrap: break-word;
     text-align: inherit;
     height: 100%;
-    font-family: var(--font-article);
+    font-family: var(--font-base);
     font-size: large;
     line-height: 1.5em;
 }
@@ -427,7 +427,9 @@ form {
     border-radius: 10px;
 }
 
-
+.article {
+    font-family: var(--font-article);
+}
 
 /*--GÃ¨re les liens des rÃ©seaux sociaux--*/
 

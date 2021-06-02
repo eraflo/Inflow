@@ -80,7 +80,7 @@ include 'tmpl_top.php';
                     <h1>
                         <?= $titre ?>
                     </h1>
-                    <p>
+                    <p class="article">
                         <?php //affiche ici le contenu en html reçu de l'éditeur de texte
                         $parser->parse($contenu);
                         echo $parser->getAsHtml();

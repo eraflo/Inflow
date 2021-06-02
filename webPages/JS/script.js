@@ -113,3 +113,15 @@ function scrollFunction() {
         last_height_scroll = actual_scroll;
     }
 }
+
+
+// Applique les paramètres personnalisés à la page
+$(document).ready(function () {
+    apply_settings();
+});
+function apply_settings() {
+    articles_font = window.localStorage["articles_font"];
+    if (articles_font) {
+        document.documentElement.style.setProperty('--font-article', articles_font);
+    }
+}
