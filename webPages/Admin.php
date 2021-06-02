@@ -39,7 +39,22 @@ if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
     $req->execute(array($supprime));
 }
 
-$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
+$articlesParPage = 5;
+$articlesTotalReq = $bdd->query('SELECT id FROM `membres`');
+$articlesTotal = $articlesTotalReq->rowCount();
+
+$pagesTotales = ceil($articlesTotal/$articlesParPage);
+
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+    $_GET['page'] = intval($_GET['page']);
+    $pageCourante = $_GET['page'];
+
+} else {
+    $pageCourante = 1;
+}
+
+$depart = ($pageCourante-1)*$articlesParPage;
+$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT '.$depart.','.$articlesParPage.'');
 include 'tmpl_top.php';
 ?>
             <?php
@@ -66,6 +81,16 @@ include 'tmpl_top.php';
                     </div>
                     <?php } ?>
                 </div>
+
+                <div class="articleGalleryPageContainer hcenter vcenter">
+                        <?php for($i=1;$i<=$pagesTotales;$i++) {
+                            if($i == $pageCourante) {
+                                echo '<a class="selected articleGalleryPageElement">'.$i.' </a>';
+                            } else {
+                                echo '<a class="articleGalleryPageElement" href="Admin.php?page='.$i.'">'.$i.'</a>';
+                            }
+                        }?>
+                    </div>
             </div>
 
             <div class="right"></div>
