@@ -8,7 +8,6 @@
     --color-background: rgba(142, 185, 230, 0.9);
     --color-background-alt: rgba(69, 156, 247, 0.6);
     --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-background) 10%, var(--color-background-alt) 90%);
-
     --color-text: black;
     --color-text-shadow-selected: 0px 0px 20px white;
     --color-text-shadow-active: 0px 0px 12px #62bcda;
@@ -20,17 +19,14 @@
     --color-selection-text: inherit;
     --color-selection-bg: rgb(16, 137, 237, 0.45);
     --color-underline: dodgerblue;
-
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-
     --color-profil-title: #4072fcd0;
     --color-profil-line: rgba(54, 131, 247, 0.514);
     --color-profil-background: rgb(255, 255, 255);
-
     --font-base: 'Roboto', sans-serif, system-ui;
-    --font-article: 'Kalam', sans-serif, system-ui;
+    --font-article: 'Lato', sans-serif, system-ui;
     --font-header: 'Montserrat', sans-serif, system-ui;
 }
 
@@ -42,7 +38,6 @@
     --color-background: rgba(0, 0, 0, 0.8);
     --color-background-alt: rgba(0, 0, 0, 0.8);
     --color-navbar-dropdown-background: var(--color-background);
-
     --color-text: white;
     --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
     --color-text-shadow-active: inherit;
@@ -53,8 +48,7 @@
     --color-active-text: black;
     --color-selection-text: inherit;
     --color-selection-bg: rgb(218, 167, 55, 0.6);
-    --color-underline: rgb(143, 143, 33);
-    
+    --color-underline: rgb(143, 143, 33);    
     --color-profil-title: rgba(240, 192, 89, 0.719);
     --color-profil-line: rgba(240, 192, 89, 0.719);
     --color-profil-background: rgb(34, 33, 33);
@@ -62,7 +56,6 @@
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-
     /*Les polices ne doivent pas changer en fonction de la préférence de couleurs*/
 }
 
@@ -105,7 +98,13 @@ body {
 
 /*--Couleur du texte sur les différents éléments de la page pouvant contenir du texte--*/
 
-body, article, .footer, .main, .left, .right, .middle {
+body,
+article,
+.footer,
+.main,
+.left,
+.right,
+.middle {
     color: var(--color-text);
 }
 
@@ -113,6 +112,14 @@ body, article, .footer, .main, .left, .right, .middle {
 .right,
 .middle {
     margin: 20px;
+}
+
+h1 {
+    font-variant: small-caps;
+}
+
+.middle article p {
+    word-spacing: 10px;
 }
 
 
@@ -192,8 +199,9 @@ body, article, .footer, .main, .left, .right, .middle {
     overflow-wrap: break-word;
     text-align: inherit;
     height: 100%;
-    font-family: var(--font-article);
+    font-family: var(--font-base);
     font-size: large;
+    line-height: 1.5em;
 }
 
 .right {
@@ -219,7 +227,8 @@ body, article, .footer, .main, .left, .right, .middle {
     font-weight: 500;
 }
 
-/*--Affecte les diffÃ©rents Ã©lÃ©ments contenus dans header, mais pas le header en lui mÃªme--*/
+
+/*--Affecte les diffÃ©rents Eléments contenus dans header, mais pas le header en lui mÃªme--*/
 
 .navBarHeader {
     padding: 0 10px;
@@ -231,7 +240,7 @@ body, article, .footer, .main, .left, .right, .middle {
 }
 
 
-/*--Ã‰lÃ©ments dans la navbar--*/
+/*--Eléments dans la navbar--*/
 
 .headerFirstElement {
     display: inline-block;
@@ -297,13 +306,13 @@ body, article, .footer, .main, .left, .right, .middle {
 
 .avatar {
     border-radius: 50%;
-    border: outset 1px rgba(0,0,0,0.1);
+    border: outset 1px rgba(0, 0, 0, 0.1);
 }
-
 
 article img {
     max-width: 100%;
 }
+
 
 /*--Souligner les liens (c bo ptn)--*/
 
@@ -335,10 +344,13 @@ a:any-link:hover:after {
     transform-origin: bottom left;
 }
 
+
 /*--Ne pas afficher la barre des liens (cf a:any-link:after)--*/
+
 .noUnderline {
     color: inherit;
 }
+
 a.noUnderline:after {
     display: none;
 }
@@ -354,13 +366,15 @@ form {
     width: 100%;
 }
 
+
 /*--Gallerie d'éléments, affiche comme des cartes--*/
 
 .articleGallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-.cardArticleElement {
+
+.cardArticleContainer {
     height: 14em;
     margin: 6px 10px;
     background-color: var(--color-background);
@@ -371,53 +385,74 @@ form {
     display: flex;
     flex-wrap: wrap;
 }
-.cardArticleElement:hover {
+
+.cardArticleContainer:hover {
     transform: scale(1.1);
     z-index: 10;
 }
+
 .cardArticleImage {
     max-height: 5em;
     object-fit: cover;
 }
+
 .cardArticleContent {
     padding: 2px 10px;
     align-self: flex-end;
 }
+
 .cardArticleTitle {
     font-weight: bold;
     color: var(--color-text-article-title);
 }
+
 .cardArticleMainText {
     color: var(--color-text-article-desc);
     font-size: small;
 }
+
 .cardArticleSecondaryText {
     opacity: 0.8;
     color: var(--color-text-article-author);
     align-self: flex-end;
 }
+
+
 /*--Gestion des pages lorsqu'il existe plusieurs pages--*/
+
 .articleGalleryPageContainer {
     width: 100%;
     height: 2em;
     display: flex;
     font-size: x-large;
 }
+
 .articleGalleryPageElement {
     margin: 0.5em;
     padding: 0.1em 0.3em;
 }
+
+
 /*--Spécifique à la page admin--*/
+
 .articleGalleryProfiles {
-    grid-template-columns: repeat(auto-fill, 600px);
+    grid-template-columns: repeat(auto-fill, 450px);
 }
-.cardArticleElementProfiles {
+
+.cardArticleContainerProfiles {
     flex-wrap: nowrap;
+    height: 4em;
 }
+
 .cardArticleContentProfiles {
-    display: flex;
-    gap: 10px;
+    display: inline;
 }
+
+.cardArticleContentProfiles span,
+.cardArticleContentProfiles a {
+    font-size: small;
+}
+
 .cardArticleImageProfiles {
     max-width: 160px;
     height: 100%;
@@ -425,6 +460,9 @@ form {
     border-radius: 10px;
 }
 
+.article {
+    font-family: var(--font-article);
+}
 
 
 /*--GÃ¨re les liens des rÃ©seaux sociaux--*/
@@ -432,6 +470,7 @@ form {
 .lien-sociaux {
     color: var(--color-links);
 }
+
 
 /*--Boutons après l'article--*/
 
@@ -463,12 +502,16 @@ form {
     margin: 20px 0px;
     line-height: normal;
 }
+
 .cookie-alert-ok-button {
     margin-top: 5px;
     padding: 2px 5px;
 }
 
+
 /*  Menu dÃ©roulant  */
+
+
 /* Le conteneur <div> - nÃ©cessaire pour positionner le contenu de la liste dÃ©roulante */
 
 .dropdown {
@@ -479,6 +522,7 @@ form {
     transition: all 0.5s ease-in-out;
     width: auto;
 }
+
 
 /* Contenu dÃ©roulant (masquÃ© par dÃ©faut) */
 
@@ -496,6 +540,7 @@ form {
     z-index: 100;
 }
 
+
 /* Liens dans la liste dÃ©roulante */
 
 .dropdown-content a {
@@ -503,6 +548,7 @@ form {
     text-decoration: none;
     padding: 10px;
 }
+
 
 /* Afficher le menu dÃ©roulant en survol */
 
@@ -544,13 +590,14 @@ form {
 :root[user-color-mode=dark] .visitsButton {
     filter: invert(1);
 }
+
 :root[user-color-mode=dark] .likeButton {
     filter: invert(1);
 }
+
 :root[user-color-mode=dark] .dislikeButton {
     filter: invert(1);
 }
-
 
 
 /*--NE PAS AFFICHER UN ELEMENT--*/
@@ -588,19 +635,27 @@ form {
     animation-duration: 0.3s;
 }
 
+
 /*--CENTRER L'ELEMENT--*/
+
+
 /*VERTICAL*/
-.vcenter{
+
+.vcenter {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
 }
+
+
 /*HORIZONTAL*/
-.hcenter{
+
+.hcenter {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
 }
+
 
 /*--Bouton mode sombre--*/
 
@@ -663,6 +718,7 @@ input:checked[type="checkbox"]:before {
 
 
 /*--Classe gÃ©rant dans Infos.html la mise en page du texte. Va de ici --*/
+
 .Plateforme {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -670,11 +726,17 @@ input:checked[type="checkbox"]:before {
     text-align: center;
     padding-bottom: 2em;
 }
+
 .Plateforme :first-child {
     align-self: center;
 }
+
+
 /*--A ici--*/
+
+
 /*--GÃ¨re le sous-titre dans Infos.html--*/
+
 #Staff {
     font-size: 50px;
     text-align: center;
@@ -690,8 +752,6 @@ input:checked[type="checkbox"]:before {
     .footer {
         align-self: flex-end;
     }
-<<<<<<< Updated upstream
-=======
 }
 
 /*-- CSS pour l texte du profil, l'avatar est plus haut, il y avait déjà des modifications.*/
@@ -727,5 +787,70 @@ input:checked[type="checkbox"]:before {
 .PName {
     font-family: Times; 
     font-weight: 600;
->>>>>>> Stashed changes
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.panel-wrapper {
+    position: relative;
+}
+
+.btn {
+    color: #fff;
+    background: rgb(100, 100, 100);
+    border-radius: 1em;
+    left: 20%;
+    padding: 0.5em;
+    text-decoration: none;
+    width: 60%;
+    -webkit-border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    -ms-border-radius: 1.5em;
+    -o-border-radius: 1.5em;
+}
+
+.show,
+.hide {
+    position: absolute;
+    bottom: -1em;
+    z-index: 100;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.show:target {
+    display: none;
+}
+
+.show:target~.hide {
+    display: block;
+}
+
+.show:target~.panel {
+    max-height: 2000px;
+}
+
+.show:target~.fade {
+    margin-top: 0;
+}
+
+.panel {
+    position: relative;
+    margin: 2em auto;
+    width: 70%;
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height .5s ease;
+}
+
+.fade {
+    background: linear-gradient(to bottom, rgba((100, 100, 100), 0) 0%, rgba((100, 100, 100), 1) 75%);
+    height: 100px;
+    margin-top: -100px;
+    position: relative;
 }

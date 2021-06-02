@@ -39,7 +39,22 @@ if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
     $req->execute(array($supprime));
 }
 
-$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC');
+$articlesParPage = 5;
+$articlesTotalReq = $bdd->query('SELECT id FROM `membres`');
+$articlesTotal = $articlesTotalReq->rowCount();
+
+$pagesTotales = ceil($articlesTotal/$articlesParPage);
+
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+    $_GET['page'] = intval($_GET['page']);
+    $pageCourante = $_GET['page'];
+
+} else {
+    $pageCourante = 1;
+}
+
+$depart = ($pageCourante-1)*$articlesParPage;
+$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT '.$depart.','.$articlesParPage.'');
 include 'tmpl_top.php';
 ?>
             <?php
@@ -51,24 +66,31 @@ include 'tmpl_top.php';
             <div class="middle">
                 <div class="articleGallery articleGalleryProfiles hcenter" style="">
                     <?php while($m = $membres->fetch()) { ?>
-                    <div class="cardArticleElement cardArticleElementProfiles">
+                    <div class="cardArticleContainer cardArticleContainerProfiles">
                         <?php if($m['avatar'] != NULL) { ?><a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline"><img class="cardArticleImageProfiles avatar" src="membres/avatars/<?php echo $m['avatar']; ?>"><?php } ?></a>
                         <div class="cardArticleContent cardArticleContentProfiles">
-                            <a href="Profil.php?id=<?= $m['id'] ?>"><div>
-                                <p class="cardArticleTitle">ID <?= $m['id'] ?></p>
-                                <p class="cardArticleTitle">PSEUDO <?= $m['pseudo'] ?></p>
-                            </div></a>
-                            <?php if(($m['admin'] == 0)&&($m['redacteur'] == 0)) { ?>
-                            <div class="cardArticleContent cardArticleContentProfiles">
-                                <p>COMMANDS </p> 
-                                <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a></p><?php } ?>
-                                <?php if($m['redacteur'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>">Rédacteur</a></p><?php } ?>
-                                <?php if($m['admin'] == 0) { ?><p class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></p><?php } ?>
+                            <span class="cardArticleTitle">ID <?= $m['id'] ?></span>
+                            <a class="cardArticleTitle" href="Profil.php?id=<?= $m['id'] ?>">PSEUDO <?= $m['pseudo'] ?></a>
+                            <?php if(($m['admin'] == 0)&&($m['redacteur'] == 0)) { ?><div class="">
+                                <span>COMMANDS </span> 
+                                <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>">Admin</a></span><?php } ?>
+                                <?php if($m['redacteur'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>">Rédacteur</a></span><?php } ?>
+                                <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></span><?php } ?>
                             </div><?php } ?>
                         </div>
                     </div>
                     <?php } ?>
                 </div>
+
+                <div class="articleGalleryPageContainer hcenter vcenter">
+                        <?php for($i=1;$i<=$pagesTotales;$i++) {
+                            if($i == $pageCourante) {
+                                echo '<a class="selected articleGalleryPageElement">'.$i.' </a>';
+                            } else {
+                                echo '<a class="articleGalleryPageElement" href="Admin.php?page='.$i.'">'.$i.'</a>';
+                            }
+                        }?>
+                    </div>
             </div>
 
             <div class="right"></div>

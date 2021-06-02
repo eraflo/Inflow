@@ -1,0 +1,6 @@
+Polices utilisées :
+- PT Serif
+- Lato
+- Kalam
+- Montserrat
+- Roboto

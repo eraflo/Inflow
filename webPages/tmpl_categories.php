@@ -14,8 +14,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $nom = $categorie['nom'];
         $description = $categorie['description'];
 
-        $articles = $bdd->prepare('SELECT * FROM `articles` JOIN `categories` ON categories.id = id_categories WHERE id_categories = ? ORDER BY articles.date_time_publication DESC');
-        $articles->execute(array($get_id));
+        $articles = $bdd->prepare('SELECT * FROM `articles` WHERE id_categories = ? ORDER BY articles.date_time_publication DESC');
+        $articles->execute(array($id));
 
     } else {
         header('Location: Erreur.php');
@@ -40,7 +40,7 @@ include 'tmpl_top.php';
                     
                     <div class="articleCategoryGallery articleGallery hcenter">
                         <?php while($a = $articles->fetch()) { ?>
-                            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleElement">
+                            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
                             <?php if(!empty($a['avatar_article'])) { ?>
                                 <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" style="width:100%">
                             <?php } ?>

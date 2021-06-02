@@ -12,7 +12,7 @@
         <title>Inflow</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="icon" href="assets/Inflow_logo_64px.png" />
         <!--Importer les scripts-->
@@ -89,14 +89,11 @@
                         <div class="dropdown-content">
                             <?php if(empty($_SESSION)) { ?>
                             <div class="navBarHeaderElement"><a href="Inscription.php">Inscription</a></div>
-                            <?php } ?>
-                            <?php if(empty($_SESSION)) { ?>
-                            <div class="navBarHeaderElement">
-                                <a href="Connexion.php">Connexion</a></div>
+                            <div class="navBarHeaderElement"><a href="Connexion.php">Connexion</a></div>
                             <?php } ?>
                             <?php if(!empty($_SESSION)) { ?>
-                            <div class="navBarHeaderElement">
-                                <a href="Profil.php?id=<?= $_SESSION['id'] ?>">Profil</a></div>
+                            <div class="navBarHeaderElement"><a href="Profil.php?id=<?= $_SESSION['id'] ?>">Profil</a></div>
+                            <div class="navBarHeaderElement"><a href="Parametres.php">Paramètres</a></div>
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                             <div class="navBarHeaderElement">
