@@ -23,7 +23,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
                 <article>
-<<<<<<< Updated upstream
                     <div align="center">
                         <h1>
                             Profil de
@@ -54,10 +53,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                                 <br/>
                             <?php }
                         } ?>
-
                     </div>
 
-=======
                     <div class="PName">
                         <h1><g>
                             Profil de
@@ -86,10 +83,10 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                                 <?php echo $userinfos['adresse_email']; ?>
                             </div>
                             <br />
-                            <div class="PTitle">
-                                <br /><u>Actions Utilisateur<br /></u>
-                            </div>
                     <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
+                        <div class="PTitle">
+                                <br /><u>Actions Utilisateur<br /></u>
+                        </div>
                         <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
                         <a href="Déconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
                     <?php } ?>
@@ -102,8 +99,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                             <br/>
                         <?php }
                     } ?>
->>>>>>> Stashed changes
-
                 </article>
             </div>
 

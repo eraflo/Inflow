@@ -48,11 +48,10 @@
     --color-active-text: black;
     --color-selection-text: inherit;
     --color-selection-bg: rgb(218, 167, 55, 0.6);
-    --color-underline: rgb(143, 143, 33);    
+    --color-underline: rgb(143, 143, 33);
     --color-profil-title: rgba(240, 192, 89, 0.719);
     --color-profil-line: rgba(240, 192, 89, 0.719);
     --color-profil-background: rgb(34, 33, 33);
-
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
@@ -754,7 +753,9 @@ input:checked[type="checkbox"]:before {
     }
 }
 
+
 /*-- CSS pour l texte du profil, l'avatar est plus haut, il y avait déjà des modifications.*/
+
 .ProfilTxt {
     padding: 30px;
     background: var(--color-body-background);
@@ -769,15 +770,16 @@ input:checked[type="checkbox"]:before {
     font-size: 23px;
     font-weight: 500;
 }
+
 .PCapsule {
     font-family: sans-serif;
     font-weight: 200;
     font-style: italic;
     width: 450px;
-    background-color : var(--color-body-background);
+    background-color: var(--color-body-background);
     box-shadow: 0 2px 0 var(--color-profil-line);
     display: table-cell;
-    }
+}
 
 .PActions {
     font-family: sans-serif;
@@ -785,9 +787,12 @@ input:checked[type="checkbox"]:before {
 }
 
 .PName {
-    font-family: Times; 
+    font-family: Times;
     font-weight: 600;
 }
+
+
+/*--Partie pour Afiicher Plus dans commentaires--*/
 
 * {
     box-sizing: border-box;
