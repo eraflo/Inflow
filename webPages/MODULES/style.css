@@ -1,0 +1,11 @@
+.module {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 3em;
+}
+
+.module > * {
+    width: fit-content;
+    line-height: 1.6em;
+}

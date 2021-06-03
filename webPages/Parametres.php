@@ -18,8 +18,9 @@ include 'tmpl_top.php';
 <script src="JS/parametres.js"></script>
 
 <?php
-include 'LEFT/begin.php';
-include 'LEFT/end.php';
+include 'MODULES/begin_left.php';
+include 'MODULES/profil.php';
+include 'MODULES/end.php';
 ?>
 
 <div class="middle">
