@@ -7,6 +7,7 @@
     --color-body-background: white;
     --color-background: rgba(142, 185, 230, 0.9);
     --color-background-alt: rgba(69, 156, 247, 0.6);
+    --color-separation-line: rgba(69, 156, 247, 0.6);
     --color-navbar-dropdown-background: linear-gradient(180deg, var(--color-background) 10%, var(--color-background-alt) 90%);
     --color-text: black;
     --color-text-shadow-selected: 0px 0px 20px white;
@@ -37,6 +38,7 @@
     --color-body-background: #20222b;
     --color-background: rgba(0, 0, 0, 0.8);
     --color-background-alt: rgba(0, 0, 0, 0.8);
+    --color-separation-line: rgba(245, 190, 38, 0.904);
     --color-navbar-dropdown-background: var(--color-background);
     --color-text: white;
     --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
@@ -152,7 +154,7 @@ h1 {
     width: 100%;
     display: grid;
     grid-template-rows: max-content auto max-content;
-    grid-template-columns: 1fr minmax(400px, 3fr) 1fr;
+    grid-template-columns: 1fr minmax(400px, 3fr) 1.12fr;
     /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
     column-gap: 3%;
 }
@@ -318,7 +320,7 @@ h1 {
     border-radius: 50%;
     border: outset 1px rgba(0, 0, 0, 0.1);
     float: left;
-    margin: 30px;
+    margin: 5px;
 }
 
 article img {
@@ -800,6 +802,7 @@ input:checked[type="checkbox"]:before {
 
 .panel-wrapper {
     position: relative;
+    margin: -10px;
 }
 
 .btn {
@@ -858,4 +861,36 @@ input:checked[type="checkbox"]:before {
     height: 100px;
     margin-top: -100px;
     position: relative;
+}
+
+/*-- CSS pour le texte des commentaires: C... (c'est de commentaire) */
+.NCapsule {
+    font-family: sans-serif;
+    font-weight: 400;
+    box-shadow: 0 2px 0 var(--color-underline);
+    text-align: left;
+    float: left;
+    width: 175px;
+    display: table-cell;
+}
+.CText {
+    word-break: break-word;
+    width: 230px;
+}
+.CBlock {
+    background: var(--color-body-background);
+    box-sizing: border-box;
+    /*border: solid;*/
+    box-shadow: 0 1px 3px var(--color-text-hover);
+    border-color: var(--color-text-shadow-selected);
+    padding: 8px;
+    margin: 10px;
+    border-width: 2px;
+    width: 250px;
+}
+
+.Commentaires {
+    border-left: solid;
+    border-left-color: var(--color-separation-line);
+    border-left-width: 2px;
 }
