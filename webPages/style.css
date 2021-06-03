@@ -768,7 +768,7 @@ input:checked[type="checkbox"]:before {
 
 .PTitle {
     color: var(--color-profil-title);
-    font-family: sans-serif;
+    font-family: Times;
     font-size: 23px;
     font-weight: 500;
 }
