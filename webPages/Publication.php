@@ -96,29 +96,32 @@ include 'tmpl_top.php';
 
             <div class="right">
                 <div class="Commentaires">
-                    <h2>Commentaires :</h2>
                     <form method="POST">
-                        <textarea name="commentaire" placeholder="Votre commentaire" style="resize:vertical;width:99%"></textarea> <br/>
-                        <input type="submit" value="Poster" name="submit_commentaire" />
+                        <h2 style="margin:15px">Commentaires :</h2>
+                        <textarea name="commentaire" placeholder="Votre commentaire" style="resize:vertical;width:98%;margin:15px;"></textarea> <br/>
+                        <input type="submit" value="Poster" name="submit_commentaire", style="margin:15px;" />
                     </form>
                     <br/>
                     <?php if(isset($msg)) { echo $msg; } ?>
                     <br/>
                     <div class="panel-wrapper">
                         <a href="#show" class="show btn" id="show">Afficher commentaires</a> 
-                        <a href="#hide" class="hide btn" id="hide">Réduire commentaires</a>
+                        <a href="#hide" class="hide btn" id="hide">RÃ©duire commentaires</a>
                         <div class="panel">
                             <?php while($c = $commentaires->fetch()) {
                                 $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
                                 $pseudoAvatar->execute(array($c['id_pseudo']));
                                 $avatarInfos = $pseudoAvatar->fetch(); ?>
+                            <div class="CBlock">
                                 <?php if(!empty($avatarInfos)) { ?>
-                                    <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" class="avatar" width="50"></a>
+                                    <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50"></a>
                                 <?php } ?>
-                                <b><a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><?= $c['pseudo'] ?></a> :</b>
+                                
+                                <a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><div class=NCapsule><b><?= $c['pseudo'] ?><br /></b></div></a>
                                 <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
                                 <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
-                                <?= $c['commentaire'] ?> <br/>
+                                <div class="CText"><br /><?= $c['commentaire'] ?><br/></div>
+                            </div>
                             <?php } ?>
                         </div>
                         <div class="fade"></div>
