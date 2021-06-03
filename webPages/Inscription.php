@@ -4,6 +4,7 @@
     déjà et transmet à base de donnée-->
 <?php
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
+include('filtre.php');
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
 
@@ -11,6 +12,7 @@ if(isset($_POST["forminscription"])) {
 
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $email = htmlspecialchars($_POST['email']);
+    $biographie = htmlspecialchars($_POST['biographie']);
     $pass = sha1($_POST['pass']);
     $cpass = sha1($_POST['cpass']);
 
@@ -29,8 +31,8 @@ if(isset($_POST["forminscription"])) {
                     $pseudoexist = $reqpseudo->rowCount();
                     if($pseudoexist == 0) {
                         if($pass == $cpass) {
-                            $insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, mot_de_passe, adresse_email, avatar) VALUES(?, ?, ?, ?)");
-                            $insertmbr->execute(array($pseudo, $pass, $email, "global/Inflow_logo.png"));
+                            $insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, mot_de_passe, adresse_email, biographie, avatar) VALUES(?, ?, ?, ?, ?)");
+                            $insertmbr->execute(array($pseudo, $pass, $email, Filtre($biographie), "global/Inflow_logo.png"));
                             $erreur = "Votre compte a été créé !!!";
                         } else {
                             $erreur = "Les mots de passe sont différents";
@@ -97,6 +99,14 @@ include 'tmpl_top.php';
                                     </td>
                                     <td>
                                         <input type="email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <label for="biographie"> Petite bio sur vous : :</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="biographie" name="biographie" required />
                                     </td>
                                 </tr>
                                 <tr>
