@@ -29,11 +29,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                 </h1>
 
                 <div class="PTitle">
-                    <br /><u>Informations Utilisateur</u>
+                    <br />Informations Utilisateur
                 </div>
 
                 <?php if(!empty($userinfos['avatar'])) { ?>
-                    <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
+                    <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150", style="margin:5px;">
                 <?php } ?>
                         <br /><b>Pseudonyme:</b><br />
                         <div class="PCapsule">
@@ -43,8 +43,9 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                         <div class="PCapsule">
                             <?php echo $userinfos['adresse_email']; ?>
                         </div>
+                        
                         <?php if(isset($userinfos['biographie']) AND !empty($userinfos['biographie'])) { ?>
-                            <br /><b>Bio:</b>
+                            <br /><b>Biographie:</b>
                             <div class="PCapsule">
                                 <?php echo $userinfos['biographie']; ?>
                             </div>
@@ -52,7 +53,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                         <?php } ?>
                 <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
                     <div class="PTitle">
-                            <br /><u>Actions Utilisateur<br /></u>
+                            <br />Actions Utilisateur<br />
                     </div>
                     <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
                     <a href="Déconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
@@ -60,7 +61,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                 <br/>
                 <br/>
                 <?php if ($req_articles->rowCount() > 0) { ?>
-                    <div class="PTitle"><u>Articles écris</u></div>
+                    <div class="PTitle">Articles écris</div>
                     <?php while($u = $req_articles->fetch()) { ?>
                         <a href="Publication.php?id=<?= $u['id'] ?>"> <div class="PActions"><i>-  <?= $u['titre'] ?></i></div></a>
                         <br/>
