@@ -33,6 +33,8 @@ if(isset($_POST['police'])) {
     header("Location: Parametres.php");
 }
 
+include 'tmpl_top.php';
+
 if (isset($font) && !empty($font)){
     echo '<script>font = "'.$font[0].'";</script>';
 } else {
@@ -44,7 +46,6 @@ if (isset($theme) && !empty($theme)){
     echo '<script>theme = 0;</script>';
 }
 
-include 'tmpl_top.php';
 ?>
 <script src="JS/parametres.js"></script>
 
