@@ -2,6 +2,8 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+include 'stats_visites.php';
+
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 $recom = $bdd->query('SELECT * FROM `articles` ORDER BY nombre_like DESC LIMIT 6');
 // Le haut de l'interface est ajouté avant le contenu
@@ -10,6 +12,11 @@ include 'tmpl_top.php';
             <?php
             include 'MODULES/begin_left.php';
             include 'MODULES/categories.php';
+            ?>
+            <p><?php
+                echo '<strong>'.$compte.'</strong> visites.';
+            ?></p>
+            <?php
             include 'MODULES/end.php';
             ?>
 <!--Début de là où on pourra mettre du texte-->
