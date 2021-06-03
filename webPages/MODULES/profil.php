@@ -2,13 +2,10 @@
 // M_ = MODULE
 // NÉCESSAIRE POUR LE BON FONCTIONNEMENT DU RESTE DE LA PAGE
 // A METTRE A CHAQUE DEBUT DE VARIABLE UTILISE DANS LES MODULES
-if(isset($_SESSION['id']) && ($_SESSION['id'] > 0)){
+if(isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
     $M_requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $M_requser->execute(array($_SESSION['id']));
     $M_userinfos = $M_requser->fetch();
-} else {
-    exit;
-}
 ?>
 <div class="module">
     <?php if(!empty($M_userinfos['avatar'])) { ?>
@@ -18,3 +15,4 @@ if(isset($_SESSION['id']) && ($_SESSION['id'] > 0)){
     <i><span><?php echo $M_userinfos['biographie']; ?></span></i><br/>
     <a href="Déconnexion.php"><div class="PActions">Se déconnecter</div></a>
 </div>
+<?php } ?>
