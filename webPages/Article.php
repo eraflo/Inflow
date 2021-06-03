@@ -26,7 +26,6 @@ include 'tmpl_top.php';
 ?>
             <?php
             include 'MODULES/begin_left.php';
-            include 'MODULES/profil.php';
             include 'MODULES/categories.php';
             include 'MODULES/end.php';
             ?>

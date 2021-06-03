@@ -14,7 +14,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     ?>
             <?php
             include 'MODULES/begin_left.php';
-            include 'MODULES/profil.php';
             include 'MODULES/categories.php';
             include 'MODULES/end.php';
             ?>
