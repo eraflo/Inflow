@@ -23,6 +23,12 @@ if(isset($_SESSION['id'])) {
             }
         }
     }
+    if(isset($_POST['newbio']) AND !empty($_POST['newbio']) AND $_POST['newbio'] != $user['biographie']) {
+        $newbio = htmlspecialchars($_POST['newbio']);
+        $insertbio = $bdd->prepare("UPDATE membres SET biographie = ? WHERE id = ?");
+        $insertbio->execute(array($newbio, $_SESSION['id']));
+        header("Location: Profil.php?id=".$_SESSION['id']);
+    }
     if(isset($_POST['newemail']) AND !empty($_POST['newemail']) AND $_POST['newemail'] != $user['adresse_email']) {
         $newemail = htmlspecialchars($_POST['newemail']);
         if(filter_var($newemail, FILTER_VALIDATE_EMAIL)) {
@@ -95,7 +101,7 @@ if(isset($_SESSION['id'])) {
                                         <label for="newpseudo">Identifiant :</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Mot de passe" value="<?php echo $user['pseudo']; ?>" />
+                                        <input type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -128,6 +134,14 @@ if(isset($_SESSION['id'])) {
                                     </td>
                                     <td>
                                         <input type="file" name="avatar" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <label>Bio :</label>
+                                    </td>
+                                    <td>
+                                    <input type="text" name="newbio" id="newbio" placeholder="Bio"/>
                                     </td>
                                 </tr>
                                 <tr>
