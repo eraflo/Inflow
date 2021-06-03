@@ -68,9 +68,10 @@ include 'tmpl_top.php';
 ?>
 
             <?php
-            include 'LEFT/begin.php';
-            include 'LEFT/categories.php';
-            include 'LEFT/end.php';
+            include 'MODULES/begin_left.php';
+            include 'MODULES/profil.php';
+            include 'MODULES/categories.php';
+            include 'MODULES/end.php';
             ?>
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">

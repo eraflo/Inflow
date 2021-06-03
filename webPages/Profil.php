@@ -13,9 +13,10 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     include 'tmpl_top.php';
     ?>
             <?php
-            include 'LEFT/begin.php';
-            include 'LEFT/categories.php';
-            include 'LEFT/end.php';
+            include 'MODULES/begin_left.php';
+            include 'MODULES/profil.php';
+            include 'MODULES/categories.php';
+            include 'MODULES/end.php';
             ?>
 
             
@@ -32,13 +33,9 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                     <br /><u>Informations Utilisateur</u>
                 </div>
 
-                <?php
-                if(!empty($userinfos['avatar'])) {
-                ?>
+                <?php if(!empty($userinfos['avatar'])) { ?>
                     <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
-                    <?php
-                }
-                ?>
+                <?php } ?>
                         <br /><b>Pseudonyme:</b><br />
                         <div class="PCapsule">
                             <?php echo $userinfos['pseudo']; ?>
