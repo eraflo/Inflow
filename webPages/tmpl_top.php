@@ -109,6 +109,15 @@
                         </form>
                         <div id="result-research"></div>
                     </div>
+                    <?php if(!empty($_SESSION)) { ?>
+                        <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Compte</a>
+                            <div class="dropdown-content">
+                                <?php
+                                    include 'MODULES/profil.php';
+                                ?>
+                            </div>
+                        </div>
+                        <?php } ?>
                 </nav>
                 <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
                     <div class="element cookie-alert">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
