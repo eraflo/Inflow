@@ -823,7 +823,7 @@ input:checked[type="checkbox"]:before {
 .hide {
     position: absolute;
     bottom: -1em;
-    z-index: 100;
+    z-index: 5;
     text-align: center;
 }
 
