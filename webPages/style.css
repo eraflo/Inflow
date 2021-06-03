@@ -226,6 +226,17 @@ h1 {
     font-weight: 500;
 }
 
+/*--Pour les petits écrans--*/
+
+@media (max-width: 700px) {
+    .main {
+        display: flex;
+    }
+    .footer {
+        align-self: flex-end;
+    }
+}
+
 
 /*--Affecte les diffÃ©rents Eléments contenus dans header, mais pas le header en lui mÃªme--*/
 
@@ -742,19 +753,6 @@ input:checked[type="checkbox"]:before {
     font-size: 50px;
     text-align: center;
 }
-
-
-/*--À appliquer à la fin, pour les petits écrans*/
-
-@media (max-width: 700px) {
-    .main {
-        display: flex;
-    }
-    .footer {
-        align-self: flex-end;
-    }
-}
-
 
 /*-- CSS pour l texte du profil, l'avatar est plus haut, il y avait déjà des modifications.*/
 

@@ -3,10 +3,11 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
-// Importer le script avant de l'excecuter
-echo '<script src="JS/parametres.js"></script>';
+
 
 if(isset($_POST['police'])) {
+    // Importer le script avant de l'excecuter
+    echo '<script src="JS/parametres.js"></script>';
     echo '<script type="text/javascript">',
         'change_font("'.$_POST['police'].'");',
         '</script>';
