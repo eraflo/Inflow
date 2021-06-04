@@ -12,6 +12,6 @@ if(isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
         <img src="membres/avatars/<?php echo $M_userinfos['avatar']; ?>" class="avatar" style="max-width:7em;">
     <?php } ?>
     <b><a href="Profil.php?id=<?= $M_userinfos['id'] ?>"><?php echo $M_userinfos['pseudo']; ?></a></b>
-    <a href="Déconnexion.php"><div class="PActions">Se déconnecter</div></a>
+    <a href="deconnexion.php"><div class="PActions">Se déconnecter</div></a>
 </div>
 <?php } ?>

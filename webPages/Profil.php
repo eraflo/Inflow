@@ -12,13 +12,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     $req_articles->execute(array($userinfos['id']));
     include 'tmpl_top.php';
     ?>
-            <?php
-            include 'MODULES/begin_left.php';
-            include 'MODULES/categories.php';
-            include 'MODULES/end.php';
-            ?>
-
-            
+    <?php
+    include 'MODULES/begin_left.php';
+    include 'MODULES/categories.php';
+    include 'MODULES/end.php';
+    ?>
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle ProfilTxt">
@@ -56,7 +54,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                             <br />Actions Utilisateur<br />
                     </div>
                     <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
-                    <a href="Déconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
+                    <a href="deconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
                 <?php } ?>
                 <br/>
                 <br/>
