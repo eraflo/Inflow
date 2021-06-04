@@ -36,7 +36,7 @@ $(document).ready(function() {
 });
 
 // Actualisation des articles (#actualisation ET actualisation_page.php À CHANGER DE NOM IMPÉRATIVEMENT)
-setInterval('load_page()', 10000);
+// setInterval('load_page()', 10000);
 function load_page() {
     $('#actualisation').load('actualisation_page.php');
 }
