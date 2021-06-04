@@ -91,14 +91,14 @@
                             <div class="navBarHeaderElement"><a href="Inscription.php">Inscription</a></div>
                             <div class="navBarHeaderElement"><a href="Connexion.php">Connexion</a></div>
                             <?php } ?>
-                            <?php if(!empty($_SESSION)) { ?>
-                            <div class="navBarHeaderElement"><a href="Profil.php?id=<?= $_SESSION['id'] ?>">Profil</a></div>
-                            <div class="navBarHeaderElement"><a href="Parametres.php">Paramètres</a></div>
+                            <?php if(isset($_SESSION) AND !empty($_SESSION)) { ?>
+                                <div class="navBarHeaderElement"><a href="Profil.php?id=<?= $_SESSION['id'] ?>">Profil</a></div>
+                                <div class="navBarHeaderElement"><a href="Parametres.php">Paramètres</a></div>
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                            <div class="navBarHeaderElement">
-                                <a href="Admin.php">Admin</a>
-                            </div>
+                                <div class="navBarHeaderElement">
+                                    <a href="Admin.php">Admin</a>
+                                </div>
                             <?php } ?>
                         </div>
                     </div>

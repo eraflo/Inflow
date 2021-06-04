@@ -3,34 +3,38 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
-$requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-$requser->execute(array($_SESSION['id']));
-$userinfos = $requser->fetch();
-
-// Rechercher les informations de la base de données
-$reqsettings = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-$reqsettings->execute(array($_SESSION['id']));
-$settings = $reqsettings->fetch();
-
-$reqfont = $bdd->prepare('SELECT nom_police FROM police_ecriture WHERE id_police = ?');
-$reqfont->execute(array($settings['font']));
-$font = $reqfont->fetch();
-
-$reqtheme = $bdd->prepare('SELECT nom_theme FROM themes_couleurs WHERE id_theme = ?');
-$reqtheme->execute(array($settings['user_color_mode']));
-$theme = $reqtheme->fetch();
-
 $CHANGE_JS = false;
-if(isset($_POST['police'])) {
-    $CHANGE_JS = true;
-    // Insérer dans la base de données
-    $reqfontname = $bdd->prepare('SELECT id_police FROM police_ecriture WHERE nom_police = ?');
-    $reqfontname->execute(array($_POST['polices']));
-    $fontname = $reqfontname->fetch();
-    $insertPolice = $bdd->prepare("UPDATE membres SET font = ? WHERE id = ?");
-    $insertPolice->execute(array($fontname[0], $_SESSION['id']));
 
-    header("Location: Parametres.php");
+if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
+    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+    $requser->execute(array($_SESSION['id']));
+    $userinfos = $requser->fetch();
+
+    // Rechercher les informations de la base de données
+    $reqsettings = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+    $reqsettings->execute(array($_SESSION['id']));
+    $settings = $reqsettings->fetch();
+
+    $reqfont = $bdd->prepare('SELECT nom_police FROM police_ecriture WHERE id_police = ?');
+    $reqfont->execute(array($settings['font']));
+    $font = $reqfont->fetch();
+
+    $reqtheme = $bdd->prepare('SELECT nom_theme FROM themes_couleurs WHERE id_theme = ?');
+    $reqtheme->execute(array($settings['user_color_mode']));
+    $theme = $reqtheme->fetch();
+
+    
+    if(isset($_POST['police'])) {
+        $CHANGE_JS = true;
+        // Insérer dans la base de données
+        $reqfontname = $bdd->prepare('SELECT id_police FROM police_ecriture WHERE nom_police = ?');
+        $reqfontname->execute(array($_POST['polices']));
+        $fontname = $reqfontname->fetch();
+        $insertPolice = $bdd->prepare("UPDATE membres SET font = ? WHERE id = ?");
+        $insertPolice->execute(array($fontname[0], $_SESSION['id']));
+
+        header("Location: Parametres.php");
+    }
 }
 
 include 'tmpl_top.php';
