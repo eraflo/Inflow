@@ -117,7 +117,7 @@
                                 ?>
                             </div>
                         </div>
-                        <?php } ?>
+                    <?php } ?>
                 </nav>
                 <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
                     <div class="element cookie-alert">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
