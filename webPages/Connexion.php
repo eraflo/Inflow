@@ -14,7 +14,7 @@ if(isset($_POST["formconnexion"])) {
         $requser->execute(array($pseudoconnect, $passconnect));
         $userexist = $requser->rowCount();
         if($userexist == 1) {
-            if(empty($_SESSION)) {
+            if(empty($_SESSION) || (!isset($_SESSION['id']))) {
                 $userinfos = $requser->fetch();
                 $_SESSION['id'] = $userinfos['id'];
                 $_SESSION['pseudo'] = $userinfos['pseudo'];

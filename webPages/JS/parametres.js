@@ -22,3 +22,68 @@ $(document).ready(function () {
         window.localStorage["user-color-mode"] = theme;
     }
 });
+
+
+// BOUTON DARK MODE
+
+$(document).ready(function () {
+    // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
+    $("#darkTrigger").click(activate_dark_mode);
+});
+
+function activate_dark_mode() {
+    // Utilisé en tant que  fallback en cas de desync entre le mode et le bouton
+    boutonDarkMode = document.getElementById("darkTrigger");
+
+    // Toggle dark mode
+    $("*").addClass("lowTransition");
+    // Exceptions
+    $(".headerFirstElement").removeClass("lowTransition");
+
+    // Changer les variables locales du client et changer l'attribut de la page
+    if (window.localStorage["user-color-mode"] == "dark") {
+        window.localStorage["user-color-mode"] = "light";
+        document.documentElement.setAttribute("user-color-mode", "light");
+        boutonDarkMode.checked = false;
+    } else if ((window.localStorage["user-color-mode"] == "light") || (window.localStorage["user-color-mode"] == "hour")) {
+        window.localStorage["user-color-mode"] = "dark";
+        document.documentElement.setAttribute("user-color-mode", "dark");
+        boutonDarkMode.checked = true;
+    } else {
+        window.localStorage["user-color-mode"] = "light";
+        document.documentElement.setAttribute("user-color-mode", "light");
+        boutonDarkMode.checked = false;
+    }
+    // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
+    setTimeout(function () {
+        $("*").removeClass("lowTransition");
+    }, 1000);
+
+    smoothHeaderAppear();
+}
+
+$(document).ready(function () {
+    boutonDarkMode = document.getElementById("darkTrigger");
+
+    // On vérifie que l'attribut existe, puis on force l'application de l'attribut à la page
+    if (!window.localStorage["user-color-mode"]) {
+        window.localStorage["user-color-mode"] = "hour";
+    } else {
+        document.documentElement.setAttribute("user-color-mode", window.localStorage["user-color-mode"]);
+    }
+    // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
+    if (window.localStorage["user-color-mode"] == "dark") {
+        boutonDarkMode.checked = true;
+    } else if (window.localStorage["user-color-mode"] == "light") {
+        boutonDarkMode.checked = false;
+    } else if (window.localStorage["user-color-mode"] == "hour") {
+        var d = new Date();
+        var h = d.getHours();
+        if (h > 18 || h < 8) {
+            document.documentElement.setAttribute("user-color-mode", "dark");
+            boutonDarkMode.checked = true;
+        } else {
+            boutonDarkMode.checked = false;
+        }
+    }
+});

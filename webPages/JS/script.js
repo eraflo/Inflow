@@ -2,74 +2,45 @@
 last_height_scroll = 0;
 
 
-$(document).ready(function () {
-    // ajout de la fonction 'activate_dark_mode' au bouton du darkTrigger
-    $("#darkTrigger").click(dark_mode_button_on_click);
-});
 
-function dark_mode_button_on_click() {
-    activate_dark_mode()
-}
-
-
-
-function activate_dark_mode() {
-    boutonDarkMode = document.querySelector('input[type="checkbox"]');
-    // Utilisé en tant que  fallback en cas de desync entre le mode et le bouton
-
-    // Toggle dark mode
-    $("*").addClass("lowTransition");
-    // Exceptions
-    $(".headerFirstElement").removeClass("lowTransition");
-
-    // Changer les variables locales du client et changer l'attribut de la page
-    if (window.localStorage["user-color-mode"] == "dark") {
-        window.localStorage["user-color-mode"] = "light";
-        document.documentElement.setAttribute("user-color-mode", "light");
-        boutonDarkMode.checked = false;
-    } else if ((window.localStorage["user-color-mode"] == "light") || (window.localStorage["user-color-mode"] == "hour")) {
-        window.localStorage["user-color-mode"] = "dark";
-        document.documentElement.setAttribute("user-color-mode", "dark");
-        boutonDarkMode.checked = true;
-    } else {
-        window.localStorage["user-color-mode"] = "light";
-        document.documentElement.setAttribute("user-color-mode", "light");
-        boutonDarkMode.checked = false;
-    }
-    // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
-    setTimeout(function () {
-        $("*").removeClass("lowTransition");
-    }, 1000);
-
-    smoothHeaderAppear();
-}
+// Script pour customiser éditeur de texte pour articles
+$(function() { var Options = {
+        buttons: "bold,italic,underline,strike,|,sup,sub,|,img,video,link,|,bullist,numlist,|,\fontcolor,\
+        fontsize,fontfamily,|,justifyleft,justifycenter,justifyright,|,quote,code,table,removeFormat",
+        lang: "fr" }
+    $("#editor").wysibb(Options); 
+})
 
 
-$(document).ready(function () {
-    boutonDarkMode = document.querySelector('input[type="checkbox"]');
+// Script pour la barre de recherche
+$(document).ready(function() {
+    $('#search').keyup(function() {
+        $('#result-research').html('');
+        var research = $(this).val();
 
-    // On vérifie que l'attribut existe, puis on force l'application de l'attribut à la page
-    if (!window.localStorage["user-color-mode"]) {
-        window.localStorage["user-color-mode"] = "hour";
-    } else {
-        document.documentElement.setAttribute("user-color-mode", window.localStorage["user-color-mode"]);
-    }
-    // Si darkmode à déjà été activé par l'utilisateur alors on le garde, sinon on le change en fonction de l'heure
-    if (window.localStorage["user-color-mode"] == "dark") {
-        boutonDarkMode.checked = true;
-    } else if (window.localStorage["user-color-mode"] == "light") {
-        boutonDarkMode.checked = false;
-    } else if (window.localStorage["user-color-mode"] == "hour") {
-        var d = new Date();
-        var h = d.getHours();
-        if (h > 18 || h < 8) {
-            document.documentElement.setAttribute("user-color-mode", "dark");
-            boutonDarkMode.checked = true;
-        } else {
-            boutonDarkMode.checked = false;
+        if(research != "") {
+            $.ajax({
+                type: 'GET',
+                url: "recherche.php",
+                data: 'user=' + encodeURIComponent(research),
+                success: function(data) {
+                    if(data != "") {
+                        $('#result-research').append(data);
+                    } else {
+                        document.getElementById('result-research').innerHTML = "<div>Aucune correspondance</div>"
+                    }
+                }
+            });
         }
-    }
+    });
 });
+
+// Actualisation des articles (#actualisation ET actualisation_page.php À CHANGER DE NOM IMPÉRATIVEMENT)
+setInterval('load_page()', 10000);
+function load_page() {
+    $('#actualisation').load('actualisation_page.php');
+}
+
 
 
 // Affiche les éléments du header petit à petit
