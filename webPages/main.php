@@ -2,17 +2,21 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 $recom = $bdd->query('SELECT * FROM `articles` ORDER BY nombre_like DESC LIMIT 6');
+
+// compteur de visites
+include 'stats_visites_site.php';
 // Le haut de l'interface est ajouté avant le contenu
 include 'tmpl_top.php';
 ?>
-            <?php
-            include 'MODULES/begin_left.php';
-            include 'MODULES/stats_visites_site.php';
-            include 'MODULES/categories.php';
-            include 'MODULES/end.php';
-            ?>
+<?php
+include 'MODULES/begin_left.php';
+include 'MODULES/stats_visites_site.php';
+include 'MODULES/categories.php';
+include 'MODULES/end.php';
+?>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
     <article>
