@@ -9,9 +9,7 @@ else
     $M_compteur_f = fopen('compteur_visites.txt', 'a+');
     $M_compte = 0;
 }
-echo $_COOKIE["last_visit"];
 if (!isset($_COOKIE["last_visit"])) {
-    echo "eeeeeeeeeeeeee";
     setcookie("last_visit", time(), time()+3600, '/', null, false, true); // expire en 1h
     $M_compte++;
     fseek($M_compteur_f, 0);
