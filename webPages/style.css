@@ -906,3 +906,11 @@ input:checked[type="checkbox"]:before {
 .MenuTxt {
     text-align: left;
 }
+
+.Visites {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--color-text);
+    border-width: 0.5px;
+    width: 300px;
+}
