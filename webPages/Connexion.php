@@ -16,13 +16,17 @@ if(isset($_POST["formconnexion"])) {
         if($userexist == 1) {
             if(empty($_SESSION) || (!isset($_SESSION['id']))) {
                 $userinfos = $requser->fetch();
-                $_SESSION['id'] = $userinfos['id'];
-                $_SESSION['pseudo'] = $userinfos['pseudo'];
-                $_SESSION['adresse_email'] = $userinfos['adresse_email'];
-                $_SESSION['redacteur'] = $userinfos['redacteur'];
-                $_SESSION['admin'] = $userinfos['admin'];
-                $_SESSION['avatar'] = $userinfos['avatar'];
-                header("Location: Profil.php?id=".$_SESSION['id']);
+                if($userinfos['actif'] == 0) {
+                    $_SESSION['id'] = $userinfos['id'];
+                    $_SESSION['pseudo'] = $userinfos['pseudo'];
+                    $_SESSION['adresse_email'] = $userinfos['adresse_email'];
+                    $_SESSION['redacteur'] = $userinfos['redacteur'];
+                    $_SESSION['admin'] = $userinfos['admin'];
+                    $_SESSION['avatar'] = $userinfos['avatar'];
+                    header("Location: Profil.php?id=".$_SESSION['id']);
+                } else {
+                    $erreur = "Vous êtes bannis, contactez les admins !";
+                }
             } else {
                 $erreur = "Vous êtes déjà connecté";
             }
