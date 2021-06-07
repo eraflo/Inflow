@@ -23,7 +23,7 @@
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-    --color-profil-title: #4072fcd0;
+    --color-profil-title: var(--color-text-hover);
     --color-profil-line: rgba(54, 131, 247, 0.514);
     --color-profil-background: rgb(255, 255, 255);
     --font-base: 'Roboto', sans-serif, system-ui;
@@ -883,6 +883,14 @@ input:checked[type="checkbox"]:before {
     text-align: left;
 }
 
+.Visites {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--color-text);
+    border-width: 0.5px;
+    width: 300px;
+}
+
 
 /*--À appliquer à la fin; Pour les petits écrans--*/
 /*  Il faut laisser cette partie en fin de css    */
@@ -906,3 +914,4 @@ input:checked[type="checkbox"]:before {
         transform: scale(1);
     }
 }
+
