@@ -9,6 +9,7 @@
         <link type="text/css" rel="stylesheet" href="critical.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="http://cdn.wysibb.com">
+        <link rel="preconnect" href="http://ajax.googleapis.com">
 
         <!--Informations sur la page et open graph-->
         <title>Inflow</title>
@@ -29,6 +30,7 @@
         <script src="JS/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
         <script type="text/javascript" src="JS/import-wysibb.js" defer></script>
+        <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
         <!--Charger ressources pour éditeur de texte-->
         <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" defer></script> 
         <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" media="none" onload="if(media!='all')media='all'">
