@@ -7,6 +7,6 @@ $M_categories = $bdd->query('SELECT * FROM categories');
 
 <div class="module">
     <?php while($c = $M_categories->fetch()) { ?>
-        <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class=""><?= $c['nom'] ?></a>
+        <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="" > <b class="PTitle"><br />Catégories:</b><br /><i><?= $c['nom'] ?></i></a>
     <?php } ?>
 </div>
