@@ -33,10 +33,26 @@ if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
     }
 }
 
-if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
-    $supprime = (int) $_GET['supprime'];
-    $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
-    $req->execute(array($supprime));
+if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
+    if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
+        $actif = (int) $_GET['supprime'];
+        $statut = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+        $statut->execute(array($actif));
+        $stat = $statut->fetch();
+        if($stat['actif'] == 0) {
+            $req = $bdd->prepare('UPDATE membres SET actif = 1 WHERE id = ?');
+            $req->execute(array($actif));
+            $nconf = $bdd->query('SELECT * FROM membres');
+            $newconf = $nconf->fetch();
+            $_SESSION['actif'] = $newconf['actif'];
+        } else {
+            $req2 = $bdd->prepare('UPDATE membres SET actif = 0 WHERE id = ?');
+            $req2->execute(array($actif));
+            $nconf = $bdd->query('SELECT * FROM membres');
+            $newconf = $nconf->fetch();
+            $_SESSION['actif'] = $newconf['actif'];
+        }
+    }
 }
 
 $articlesParPage = 5;
@@ -75,7 +91,13 @@ include 'tmpl_top.php';
                                 <span>COMMANDS </span> 
                                 <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre admin?')">Admin</a></span><?php } ?>
                                 <?php if($m['redacteur'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre rédacteur?')">Rédacteur</a></span><?php } ?>
-                                <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce compte?')">Supprimer</a></span><?php } ?>
+                                <?php if($m['admin'] == 0) { ?> 
+                                    <?php if($m['actif'] == 0) { ?> 
+                                        <span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment ban ce compte?')">Ban</a></span> 
+                                    <?php } else {?>
+                                        <span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment deban ce compte?')">Deban</a> </span> 
+                                    <?php } ?> 
+                                <?php } ?>
                             </div><?php } ?>
                         </div>
                     </div>
