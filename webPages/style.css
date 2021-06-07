@@ -897,3 +897,21 @@ input:checked[type="checkbox"]:before {
     border-left-width: 2px;
     width: 100%;
 }
+
+/*-- Obglet Menu */
+.ImageLien {
+    height: 117px;
+    width: 117px;
+}
+
+.MenuTxt {
+    text-align: left;
+}
+
+.Visites {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--color-text);
+    border-width: 0.5px;
+    width: 300px;
+}
