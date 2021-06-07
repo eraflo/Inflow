@@ -881,7 +881,6 @@ input:checked[type="checkbox"]:before {
 .CBlock {
     background: var(--color-body-background);
     box-sizing: border-box;
-    /*border: solid;*/
     box-shadow: 0 1px 3px var(--color-text-hover);
     border-color: var(--color-text-shadow-selected);
     padding: 8px;
