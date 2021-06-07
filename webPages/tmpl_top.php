@@ -9,17 +9,20 @@
         <link type="text/css" rel="stylesheet" href="critical.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="http://cdn.wysibb.com">
+        <link rel="preconnect" href="http://ajax.googleapis.com">
 
+        <!--Informations sur la page et open graph-->
+        <title>Inflow</title>
         <!-- Paramètre d'affichage mobile -->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="description" content="Inflow est un média musical entièrement géré par des lycéens dont le but est de faire découvrir la musique urbaine à nos lecteurs, qu'ils soient néophytes ou expérimentés.">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Inflow</title>
         <!--Appliquer le style css et importer l'icone-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" media="none" onload="if(media!='all')media='all'">
         <noscript><link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"></noscript>
         
+        <link type="text/css" href="style.css" rel="stylesheet"><!--À SUPPRIMER QUAND critical.css FINI-->
         <link type="text/css" rel="stylesheet" href="style.css" media="none" onload="if(media!='all')media='all'">
         <noscript><link type="text/css" href="style.css" rel="stylesheet"></noscript>
         
@@ -27,6 +30,7 @@
         <script src="JS/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
         <script type="text/javascript" src="JS/import-wysibb.js" defer></script>
+        <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
         <!--Charger ressources pour éditeur de texte-->
         <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" defer></script> 
         <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" media="none" onload="if(media!='all')media='all'">
