@@ -23,7 +23,7 @@
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-    --color-profil-title: #4072fcd0;
+    --color-profil-title: var(--color-text-hover);
     --color-profil-line: rgba(54, 131, 247, 0.514);
     --color-profil-background: rgb(255, 255, 255);
     --font-base: 'Roboto', sans-serif, system-ui;
