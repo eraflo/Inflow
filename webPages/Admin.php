@@ -39,7 +39,7 @@ if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
     $req->execute(array($supprime));
 }
 
-$articlesParPage = 5;
+$articlesParPage = 20;
 $articlesTotalReq = $bdd->query('SELECT id FROM `membres`');
 $articlesTotal = $articlesTotalReq->rowCount();
 
