@@ -228,17 +228,6 @@ h1 {
     font-weight: 500;
 }
 
-/*--Pour les petits écrans--*/
-
-@media (max-width: 700px) {
-    .main {
-        display: flex;
-    }
-    .footer {
-        align-self: flex-end;
-    }
-}
-
 
 /*--Affecte les diffÃ©rents Eléments contenus dans header, mais pas le header en lui mÃªme--*/
 
@@ -677,19 +666,6 @@ form {
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-    /* Note pour Lucô : on évite d'utiliser la position absolue (par rapport à la page)
-        et les "left, right, top, bottom" lorsqu'on est dans une grille (grid, définie dans .main )
-        sinon ça casse la grille et ça dépasse du footer ^^ (::before utilise toujours une position
-        absolue, mais je ne sais pas trop pourquoi ça fonctionne donc je laisse)
-       position sticky permet de rester dans la boite et de donner des positions par rapport à la boite
-       margin-top et margin-bottom en "auto" permettent de centrer horizontalement l'élément
-
-    Tu peux supprimer cette note lorsque tu la verras
-    
-    position: absolute;
-    top: 15%;
-    left: 90%;
-    */
 }
 
 input[type="checkbox"] {
@@ -914,3 +890,28 @@ input:checked[type="checkbox"]:before {
     border-width: 0.5px;
     width: 300px;
 }
+
+
+/*--À appliquer à la fin; Pour les petits écrans--*/
+/*  Il faut laisser cette partie en fin de css    */
+
+@media (max-width: 700px) {
+    /*Style à appliquer pour les mobiles*/
+
+    /*Éléments principaux de la page*/
+    .main {
+        display: flex;
+    }
+    .footer {
+        align-self: flex-end;
+    }
+    .left {
+        display: none;
+    }
+
+    /*Autres éléments divers*/
+    .cardArticleContainer:hover {
+        transform: scale(1);
+    }
+}
+
