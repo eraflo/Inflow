@@ -896,3 +896,13 @@ input:checked[type="checkbox"]:before {
     border-left-width: 2px;
     width: 100%;
 }
+
+/*-- Obglet Menu */
+.ImageLien {
+    height: 117px;
+    width: 117px;
+}
+
+.MenuTxt {
+    text-align: left;
+}
