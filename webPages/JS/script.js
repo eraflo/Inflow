@@ -72,4 +72,8 @@ function apply_settings() {
     if (articles_font) {
         document.documentElement.style.setProperty('--font-article', articles_font);
     }
+    user_color_mode = window.localStorage["user-color-mode"];
+    if (user_color_mode) {
+        document.documentElement.setAttribute("user-color-mode", user_color_mode);
+    }
 }

@@ -308,8 +308,6 @@ h1 {
 .avatar {
     border-radius: 50%;
     border: outset 1px rgba(0, 0, 0, 0.1);
-    float: left;
-    margin: 5px;
 }
 
 article img {
