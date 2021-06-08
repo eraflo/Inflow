@@ -547,16 +547,13 @@ form {
     align-items: center;
     position: absolute;
     text-align: center;
+    min-width: 100%;
     background: var(--color-navbar-dropdown-background);
     box-shadow: 12px 16px 8px 0px rgb(0 0 0 / 20%);
     transition: 1s;
-    z-index: 300;
+    z-index: 100;
     max-width: 30em;
-    height: 250px;
-    width: max-content;
-    transform: translate(-115px, 10px);
 }
-
 
 /* Liens dans la liste dÃ©roulante */
 
