@@ -29,6 +29,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $article_contenu = utf8_encode($article_contenu);
         $article_contenu = str_replace('ï>>¿', '', $article_contenu);
         $article_contenu = utf8_decode($article_contenu);
+        $article_contenu = nl2br($article_contenu);
         //obtenir le pseudo de l'auteur
         $getAuteur = $bdd->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
         $article_auteur = $getAuteur->fetch();

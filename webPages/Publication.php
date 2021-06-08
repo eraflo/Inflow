@@ -15,6 +15,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $parser = new JBBCode\Parser();
     $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
     $parser->addBBCode("quote", '<blockquote>{param}</blockquote>');
+    $parser->addBBCode("&nbsp;", '<br/>{param}');
 
     if($article->rowCount() == 1) {
         $article = $article->fetch();
@@ -106,7 +107,7 @@ include 'tmpl_top.php';
                     <br/>
                     <div class="panel-wrapper">
                         <a href="#show" class="show btn" id="show">Afficher commentaires</a> 
-                        <a href="#hide" class="hide btn" id="hide">RÃ©duire commentaires</a>
+                        <a href="#hide" class="hide btn" id="hide">Réduire commentaires</a>
                         <div class="panel">
                             <?php while($c = $commentaires->fetch()) {
                                 $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
