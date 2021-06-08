@@ -33,7 +33,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $getAuteur = $bdd->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
         $article_auteur = $getAuteur->fetch();
 
-        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication, id_categorie)
+        $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication, id_categories)
             VALUES (?, ?, ?, ?, ?, NOW(), ?)');
         $ins->execute(array($article_titre, $article_contenu, $article_auteur['pseudo'], $article_id_auteur, $article_comment, $article_id_categorie));
 
@@ -68,7 +68,7 @@ include 'tmpl_top.php';
             ?>
     <!--Début de là où on pourra mettre du texte-->
     <div class="middle">
-        <article>
+        <article style="color:black;">
             <!--Formulaire pour postez des articles-->
             <form method="POST" enctype="multipart/form-data">
                 <input type="text" name="article_titre" placeholder="Titre" /> <br/>
