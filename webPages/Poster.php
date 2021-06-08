@@ -3,6 +3,10 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+if(!isset($_SESSION['redacteur']) OR $_SESSION['redacteur'] != 1 OR !isset($_SESSION) OR empty($_SESSION)) {
+    header("Location: main.php");
+}
+
 $auteurs = $bdd->query('SELECT * FROM `membres` WHERE redacteur = 1');
 $categories = $bdd->query('SELECT * FROM categories');
 
