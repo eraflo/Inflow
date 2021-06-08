@@ -3,6 +3,10 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+if(!isset($_SESSION) OR empty($_SESSION)) {
+    header("Location: main.php");
+}
+
 $CHANGE_JS = false;
 
 if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
