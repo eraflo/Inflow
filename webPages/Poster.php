@@ -37,8 +37,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         if($article_id_categorie = "Nouvelle") {
             $article_nom_categorie = htmlspecialchars($_POST['article_nom_categorie']);
             $article_desc_categorie = htmlspecialchars($_POST['article_desc_categorie']);
-            $ins_cat = $bdd->prepare('INSERT INTO `categories` (nom, auteur, description, date_time_publication)
-                                  VALUES (?, ?, ?, NOW())');
+            $ins_cat = $bdd->prepare('INSERT INTO `categories` (nom, auteur, description, date_time_publication) VALUES (?, ?, ?, NOW())');
             $ins_cat->execute(array($article_nom_categorie, $article_auteur['pseudo'], $article_desc_categorie));
 
             $get_article_id_categorie = $bdd->query('SELECT id FROM `categories` WHERE nom = "'.$article_nom_categorie.'" LIMIT 1');
