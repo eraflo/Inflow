@@ -530,15 +530,18 @@ form {
 .dropdown-content {
     display: none;
     width: auto;
-    min-width: 100%;
     flex-direction: column;
     align-items: center;
     position: absolute;
     text-align: center;
     background: var(--color-navbar-dropdown-background);
-    box-shadow: 12px 16px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 12px 16px 8px 0px rgb(0 0 0 / 20%);
     transition: 1s;
-    z-index: 100;
+    z-index: 300;
+    max-width: 30em;
+    height: 250px;
+    width: max-content;
+    transform: translate(-115px, 10px);
 }
 
 
@@ -548,6 +551,8 @@ form {
     color: var(--color-text);
     text-decoration: none;
     padding: 10px;
+    align-items: center;
+    float: center;
 }
 
 
@@ -875,6 +880,14 @@ input:checked[type="checkbox"]:before {
 .ImageLien {
     height: 117px;
     width: 117px;
+    filter: grayscale();
+    border-radius: 50%;
+}
+
+.ImageLien:hover {
+    animation: ImageLienAnimation 0.8s;
+    -webkit-animation: ImageLienAnimation 0.8s;
+    animation-fill-mode: forwards
 }
 
 .MenuTxt {
@@ -887,6 +900,54 @@ input:checked[type="checkbox"]:before {
     border-color: var(--color-text);
     border-width: 0.5px;
     width: 300px;
+}
+
+@keyframes ImageLienAnimation {
+    0% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: rotation(50%);
+        height: 117px;
+        width: 117px;
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    35% {
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        transition: transform 0.4s ease-out;
+        transform: rotateZ(360deg);
+        filter: none;
+        border-radius: 0%;
+    }
+}
+
+@-webkit-keyframes ImageLienAnimation {
+    0% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: rotation(50%);
+        height: 117px;
+        width: 117px;
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    35% {
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        transition: transform 0.4s ease-out;
+        transform: rotateZ(360deg);
+        filter: none;
+        border-radius: 0%;
+    }
 }
 
 
@@ -912,4 +973,3 @@ input:checked[type="checkbox"]:before {
         transform: scale(1);
     }
 }
-
