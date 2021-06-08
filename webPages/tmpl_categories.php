@@ -26,37 +26,34 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
 
 include 'tmpl_top.php'; 
 ?>
+    <!--Début de là où on pourra mettre du texte-->
+    <div class="middle">
+        <article>
 
+            <!--Affiche les articles-->
+            <h1>
+                <?= $nom ?>
+            </h1>
             
-
-            <!--Début de là où on pourra mettre du texte-->
-            <div class="middle">
-                <article>
-
-                    <!--Affiche les articles-->
-                    <h1>
-                        <?= $nom ?>
-                    </h1>
-                    
-                    <div class="articleCategoryGallery articleGallery hcenter">
-                        <?php while($a = $articles->fetch()) { ?>
-                            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
-                            <?php if(!empty($a['avatar_article'])) { ?>
-                                <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" style="width:100%">
-                            <?php } ?>
-                                <div class="cardArticleContent">
-                                    <p class="cardArticleTitle"><?= $a['titre'] ?></p>
-                                    <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
-                                    <p class="cardArticleSecondaryText"><?= $a['auteur'] ?></p>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-
-                </article>
+            <div class="articleCategoryGallery articleGallery hcenter">
+                <?php while($a = $articles->fetch()) { ?>
+                    <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
+                    <?php if(!empty($a['avatar_article'])) { ?>
+                        <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" style="width:100%">
+                    <?php } ?>
+                        <div class="cardArticleContent">
+                            <p class="cardArticleTitle"><?= $a['titre'] ?></p>
+                            <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
+                            <p class="cardArticleSecondaryText"><?= $a['auteur'] ?></p>
+                        </div>
+                    </a>
+                <?php } ?>
             </div>
 
-            <div class="right"></div>
+        </article>
+    </div>
+
+    <div class="right"></div>
 <?php 
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 

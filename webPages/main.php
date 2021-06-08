@@ -13,8 +13,8 @@ include 'tmpl_top.php';
 ?>
 <?php
 include 'MODULES/begin_left.php';
-include 'MODULES/stats_visites_site.php';
 include 'MODULES/categories.php';
+include 'MODULES/stats_visites_site.php';
 include 'MODULES/end.php';
 ?>
 <!--Début de là où on pourra mettre du texte-->
