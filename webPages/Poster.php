@@ -33,6 +33,19 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $getAuteur = $bdd->query('SELECT * FROM `membres` WHERE id = '.$article_id_auteur.' ');
         $article_auteur = $getAuteur->fetch();
 
+        //création d'une nouvelle catégorie
+        if($article_id_categorie = "Nouvelle") {
+            $article_nom_categorie = htmlspecialchars($_POST['article_nom_categorie']);
+            $article_desc_categorie = htmlspecialchars($_POST['article_desc_categorie']);
+            $ins_cat = $bdd->prepare('INSERT INTO `categories` (nom, auteur, description, date_time_publication)
+                                  VALUES (?, ?, ?, NOW())');
+            $ins_cat->execute(array($article_nom_categorie, $article_auteur['pseudo'], $article_desc_categorie));
+
+            $get_article_id_categorie = $bdd->query('SELECT id FROM `categories` WHERE nom = "'.$article_nom_categorie.'" LIMIT 1');
+            $article_id_categorie = $get_article_id_categorie->fetch();
+            $article_id_categorie = $article_id_categorie[0];
+        }
+
         $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication, id_categories)
             VALUES (?, ?, ?, ?, ?, NOW(), ?)');
         $ins->execute(array($article_titre, $article_contenu, $article_auteur['pseudo'], $article_id_auteur, $article_comment, $article_id_categorie));
@@ -61,11 +74,12 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
 }
 include 'tmpl_top.php';
 ?>
-            <?php
-            include 'MODULES/begin_left.php';
-            include 'MODULES/categories.php';
-            include 'MODULES/end.php';
-            ?>
+<?php
+include 'MODULES/begin_left.php';
+include 'MODULES/categories.php';
+include 'MODULES/end.php';
+?>
+    <script src="JS/categories.js" async></script>
     <!--Début de là où on pourra mettre du texte-->
     <div class="middle">
         <article style="color:black;">
@@ -78,12 +92,15 @@ include 'tmpl_top.php';
                         <option value="<?= $a['id'] ?>"><?= $a['pseudo'] ?></option>
                     <?php } ?>
                 </select><br/>
-                <select type="text" name="article_id_categorie">
-                    <option value=""><i>Aucune catégorie</i></option>
+                <select id="categorie_selection" type="text" name="article_id_categorie">
+                    <option value="" style="font-style:italic;">Aucune catégorie</option>
+                    <option value="Nouvelle" style="font-weight:bold;">Nouvelle catégorie</option>
                     <?php while($c = $categories->fetch()) { ?>
                         <option value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
                     <?php } ?>
-                </select><br/>
+                </select>
+                <input id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
+                <input id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
                 <input type="text" name="article_comment" placeholder="Description" /> <br/>
                 <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
                 <input type="file" name="miniature"/><br/>
