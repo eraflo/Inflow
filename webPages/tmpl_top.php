@@ -87,7 +87,7 @@ include('stats_visites_site.php');
                     </div>
                     <?php if(!empty($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Compte</a>
-                            <div class="dropdown-content">
+                            <div class="dropdown-content" style="transform: translate(-85px); min-width: auto; width: max-content;">
                                 <?php
                                     include 'MODULES/profil.php';
                                 ?>
