@@ -31,8 +31,8 @@ include('stats_visites_site.php');
         <!--Importer les scripts-->
         <script src="JS/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
-        <script type="text/javascript" src="JS/import-wysibb.js" defer></script>
-        <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+        <script type="text/javascript" src="JS/import-search.js" defer></script>
+        <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" defer></script>
         <!--Charger ressources pour éditeur de texte-->
         <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" defer></script> 
         <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" media="none" onload="if(media!='all')media='all'">
@@ -55,6 +55,7 @@ include('stats_visites_site.php');
                             <a href="Article.php">Article</a>
                             <div class="dropdown-content">
                                 <div class="navBarHeaderElement"><a href="Poster.php">Poster</a></div>
+                                <div class="navBarHeaderElement"><a href="Gestion_Articles_Categories.php">Gestion articles</a></div>
                             </div>
                         </div>
                     <?php } else { ?>

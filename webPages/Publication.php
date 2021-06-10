@@ -71,67 +71,67 @@ $emoji_new = array('<img src="assets/les_logos_pour_les_widgets.png" />', '<img 
 include 'tmpl_top.php';
 ?>
 
-            <?php
-            include 'MODULES/begin_left.php';
-            include 'MODULES/categories.php';
-            include 'MODULES/end.php';
+<?php
+include 'MODULES/begin_left.php';
+include 'MODULES/categories.php';
+include 'MODULES/end.php';
+?>
+<!--Début de là où on pourra mettre du texte-->
+<div class="middle">
+    <article>
+
+        <!--Affiche les articles-->
+        <h1>
+            <?= $titre ?>
+        </h1>
+        <p class="article">
+            <?php //affiche ici le contenu en html reçu de l'éditeur de texte
+            $parser->parse($contenu);
+            echo $parser->getAsHtml();
             ?>
-            <!--Début de là où on pourra mettre du texte-->
-            <div class="middle">
-                <article>
+        </p>
+        <div class="articleMenuButtonContainer">
+            <div class="articleMenuButtonElement"><a href="#" class="noUnderline"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline"><img src="assets/dislike.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
+        </div>
+    </article>
+</div>
 
-                    <!--Affiche les articles-->
-                    <h1>
-                        <?= $titre ?>
-                    </h1>
-                    <p class="article">
-                        <?php //affiche ici le contenu en html reçu de l'éditeur de texte
-                        $parser->parse($contenu);
-                        echo $parser->getAsHtml();
-                        ?>
-                    </p>
-                    <div class="articleMenuButtonContainer">
-                        <div class="articleMenuButtonElement"><a href="#" class="noUnderline"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
-                        <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>
-                        <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline"><img src="assets/dislike.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="right">
-                <div class="Commentaires">
-                    <form method="POST">
-                        <h2 style="margin:15px">Commentaires :</h2>
-                        <textarea name="commentaire" placeholder="Votre commentaire" style="resize:vertical;width:98%;margin:15px;"></textarea> <br/>
-                        <input type="submit" value="Poster" name="submit_commentaire", style="margin:15px;" />
-                    </form>
-                    <br/>
-                    <?php if(isset($msg)) { echo $msg; } ?>
-                    <br/>
-                    <div class="panel-wrapper">
-                        <a href="#show" class="show btn" id="show">Afficher commentaires</a> 
-                        <a href="#hide" class="hide btn" id="hide">Réduire commentaires</a>
-                        <div class="panel">
-                            <?php while($c = $commentaires->fetch()) {
-                                $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
-                                $pseudoAvatar->execute(array($c['id_pseudo']));
-                                $avatarInfos = $pseudoAvatar->fetch(); ?>
-                            <div class="CBlock">
-                                <?php if(!empty($avatarInfos)) { ?>
-                                    <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50"></a>
-                                <?php } ?>
-                                
-                                <a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><div class=NCapsule><b><?= $c['pseudo'] ?><br /></b></div></a>
-                                <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
-                                <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
-                                <div class="CText"><br /><?= $c['commentaire'] ?><br/></div>
-                            </div>
-                            <?php } ?>
-                        </div>
-                        <div class="fade"></div>
-                    </div>
+<div class="right">
+    <div class="Commentaires">
+        <form method="POST">
+            <h2 style="margin:15px">Commentaires :</h2>
+            <textarea name="commentaire" placeholder="Votre commentaire" style="resize:vertical;width:98%;margin:15px;"></textarea> <br/>
+            <input type="submit" value="Poster" name="submit_commentaire", style="margin:15px;" />
+        </form>
+        <br/>
+        <?php if(isset($msg)) { echo $msg; } ?>
+        <br/>
+        <div class="panel-wrapper">
+            <a href="#show" class="show btn" id="show">Afficher commentaires</a> 
+            <a href="#hide" class="hide btn" id="hide">Réduire commentaires</a>
+            <div class="panel">
+                <?php while($c = $commentaires->fetch()) {
+                    $pseudoAvatar = $bdd->prepare("SELECT * FROM membres WHERE id = ? ORDER BY id DESC");
+                    $pseudoAvatar->execute(array($c['id_pseudo']));
+                    $avatarInfos = $pseudoAvatar->fetch(); ?>
+                <div class="CBlock">
+                    <?php if(!empty($avatarInfos)) { ?>
+                        <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50"></a>
+                    <?php } ?>
+                    
+                    <a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><div class=NCapsule><b><?= $c['pseudo'] ?><br /></b></div></a>
+                    <?php $c['commentaire'] = str_replace($emoji_replace, $emoji_new, $c['commentaire']); ?>
+                    <?php $c['commentaire'] = Filtre($c['commentaire']); ?>
+                    <div class="CText"><br /><?= $c['commentaire'] ?><br/></div>
                 </div>
+                <?php } ?>
             </div>
+            <div class="fade"></div>
+        </div>
+    </div>
+</div>
 <?php 
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 

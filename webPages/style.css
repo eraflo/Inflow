@@ -375,6 +375,11 @@ form {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
+.articleGalleryArticles {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .cardArticleContainer {
     height: 14em;
     margin: 6px 10px;
@@ -530,16 +535,16 @@ form {
 .dropdown-content {
     display: none;
     width: auto;
+    min-width: max-content;
+    max-width: 30em;
     flex-direction: column;
     align-items: center;
     position: absolute;
     text-align: center;
-    min-width: 100%;
     background: var(--color-navbar-dropdown-background);
     box-shadow: 12px 16px 8px 0px rgb(0 0 0 / 20%);
     transition: 1s;
     z-index: 100;
-    max-width: 30em;
 }
 
 /* Liens dans la liste dÃ©roulante */
@@ -657,6 +662,7 @@ form {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    align-self: center;
 }
 
 
