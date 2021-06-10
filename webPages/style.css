@@ -445,6 +445,12 @@ form {
     height: 4em;
 }
 
+.cardArticleContainerArticles {
+    flex-wrap: nowrap;
+    width: 100%;
+    min-height: 5em;
+}
+
 .cardArticleContentProfiles {
     display: inline;
 }
@@ -531,16 +537,15 @@ form {
     display: none;
     width: auto;
     min-width: max-content;
+    max-width: 30em;
     flex-direction: column;
     align-items: center;
     position: absolute;
     text-align: center;
-    min-width: 100%;
     background: var(--color-navbar-dropdown-background);
     box-shadow: 12px 16px 8px 0px rgb(0 0 0 / 20%);
     transition: 1s;
     z-index: 100;
-    max-width: 30em;
 }
 
 /* Liens dans la liste dÃ©roulante */
@@ -658,6 +663,7 @@ form {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    align-self: center;
 }
 
 
