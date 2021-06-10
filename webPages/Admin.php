@@ -7,6 +7,7 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION) OR empty($_SESSION)) {
     header("Location: main.php");
 }
+include 'stats_visites_site.php';
 
 if(isset($_GET['type']) AND $_GET['type'] == 'membre') {
     if(isset($_GET['admin']) AND !empty($_GET['admin'])) {

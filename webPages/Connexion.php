@@ -6,6 +6,8 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+include 'stats_visites_site.php';
+
 if(isset($_POST["formconnexion"])) {
     $pseudoconnect = htmlspecialchars($_POST["pseudoconnect"]);
     $passconnect = sha1($_POST['passconnect']);
