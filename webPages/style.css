@@ -375,6 +375,11 @@ form {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
+.articleGalleryArticles {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .cardArticleContainer {
     height: 14em;
     margin: 6px 10px;
@@ -443,12 +448,6 @@ form {
 .cardArticleContainerProfiles {
     flex-wrap: nowrap;
     height: 4em;
-}
-
-.cardArticleContainerArticles {
-    flex-wrap: nowrap;
-    width: 100%;
-    min-height: 5em;
 }
 
 .cardArticleContentProfiles {

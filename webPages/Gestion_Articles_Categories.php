@@ -83,6 +83,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $parser->addBBCode("quote", '<blockquote>{param}</blockquote>');
     $parser->addBBCode("&nbsp;", '<br/>{param}');
 
+    $articles = $bdd->query('SELECT * FROM articles');
     $auteurs = $bdd->query('SELECT * FROM `membres` WHERE redacteur = 1');
     $categories = $bdd->query('SELECT * FROM categories');
 

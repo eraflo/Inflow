@@ -5,7 +5,9 @@ include 'MODULES/begin_left.php';
 include 'MODULES/end.php';
 
 // Ajouter le contenu de l'article dans l'éditeur de texte Wysibb
-echo "<script>var bbdata = `".$article['contenu']."`;</script>";
+$parser->parse($article['contenu']);
+$contenu = $parser->getAsHtml();
+echo "<script>var bbdata = `".$contenu."`;</script>";
 ?>
 <script src="JS/categories.js" async></script>
 
