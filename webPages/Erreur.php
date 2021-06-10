@@ -1,6 +1,9 @@
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
+
+include 'stats_visites_site.php';
+
 // Le haut de l'interface est ajouté avant le contenu
 include 'tmpl_top.php'; 
 ?>

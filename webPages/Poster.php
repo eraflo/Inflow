@@ -3,6 +3,8 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+include 'stats_visites_site.php';
+
 if(!isset($_SESSION['redacteur']) OR $_SESSION['redacteur'] != 1 OR !isset($_SESSION) OR empty($_SESSION)) {
     header("Location: main.php");
 }

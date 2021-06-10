@@ -9,6 +9,8 @@ $articlesTotal = $articlesTotalReq->rowCount();
 
 $pagesTotales = ceil($articlesTotal/$articlesParPage);
 
+include 'stats_visites_site.php';
+
 if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
     $_GET['page'] = intval($_GET['page']);
     $pageCourante = $_GET['page'];

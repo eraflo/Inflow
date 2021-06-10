@@ -2,6 +2,8 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+include 'stats_visites_site.php';
+
 if(isset($_SESSION['id'])) {
     $requeser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
     $requeser->execute(array($_SESSION['id']));

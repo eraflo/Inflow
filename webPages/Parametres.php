@@ -7,6 +7,8 @@ if(!isset($_SESSION) OR empty($_SESSION)) {
     header("Location: main.php");
 }
 
+include 'stats_visites_site.php';
+
 $CHANGE_JS = false;
 
 if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {

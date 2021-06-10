@@ -1,6 +1,9 @@
 <?php
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
+
+include 'stats_visites_site.php';
+
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
 include 'tmpl_top.php';

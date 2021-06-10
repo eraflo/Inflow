@@ -8,6 +8,8 @@ include('filtre.php');
 $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
 
+include 'stats_visites_site.php';
+
 if(isset($_POST["forminscription"])) {
 
     $pseudo = htmlspecialchars($_POST['pseudo']);

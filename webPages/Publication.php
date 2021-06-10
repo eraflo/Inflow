@@ -3,6 +3,9 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 include('filtre.php');
+
+include 'stats_visites_site.php';
+
 //appel parser.php
 require_once "JBBCode/Parser.php";
 
