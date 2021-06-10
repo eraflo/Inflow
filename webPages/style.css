@@ -530,6 +530,7 @@ form {
 .dropdown-content {
     display: none;
     width: auto;
+    min-width: max-content;
     flex-direction: column;
     align-items: center;
     position: absolute;
