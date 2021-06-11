@@ -23,8 +23,8 @@ echo "<script>var bbdata = `".$contenu."`;</script>";
                 <?php } ?>
             </select><br/>
             <select id="categorie_selection" type="text" name="article_id_categorie">
-                <?php if($article_categorie) { ?><option value="<?= $article['id_categories'] ?>" style="font-style:italic;"><?= $article_categorie ?></option>
-                <?php } else { ?><option value="" style="font-style:italic;">Aucune catégorie</option><?php } ?>
+                <?php if($article_categorie) { ?><option value="<?= $article['id_categories'] ?>" style="font-style:italic;"><?= $article_categorie ?></option><?php } ?>
+                <option value="" style="font-style:italic;">Aucune catégorie</option>
                 <option value="Nouvelle" style="font-weight:bold;">Nouvelle catégorie</option>
                 <?php while($c = $categories->fetch()) { ?>
                     <option value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
