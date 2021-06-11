@@ -534,7 +534,7 @@ form {
 
 .dropdown-content {
     display: none;
-    width: auto;
+    width: 100%;
     min-width: max-content;
     max-width: 30em;
     flex-direction: column;
@@ -595,15 +595,10 @@ form {
 
 /*--Affiche les boutons vues, likes et dislikes en blanc lorsqu'on est en mode nuit--*/
 
-:root[user-color-mode=dark] .visitsButton {
-    filter: invert(1);
-}
-
-:root[user-color-mode=dark] .likeButton {
-    filter: invert(1);
-}
-
-:root[user-color-mode=dark] .dislikeButton {
+:root[user-color-mode=dark] .visitsButton,
+:root[user-color-mode=dark] .likeButton,
+:root[user-color-mode=dark] .dislikeButton,
+:root[user-color-mode=dark] .editButton {
     filter: invert(1);
 }
 
