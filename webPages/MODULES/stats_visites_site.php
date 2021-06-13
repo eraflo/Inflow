@@ -30,5 +30,5 @@
 ?>
 
 <div class="module Visites">
-    <p><b class="PTitle">Statistiques:</b><br /><b>Total:</b> <i></<?php echo '<strong>'.$M_compte.'</strong> visites.'; ?></i><br /><b>Aujourd'hui:</b> <?php echo $compt?><br /><b>En ce moment:</b> <?php echo $user_nbr ?> </p>
+    <p><b class="PTitle can_rainbow">Statistiques:</b><br /><b>Total:</b> <i></<?php echo '<strong>'.$M_compte.'</strong> visites.'; ?></i><br /><b>Aujourd'hui:</b> <?php echo $compt?><br /><b>En ce moment:</b> <?php echo $user_nbr ?> </p>
 </div>
