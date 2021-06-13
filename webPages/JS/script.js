@@ -22,6 +22,18 @@ function load_page() {
 }
 
 
+function activate_rainbow() {
+    // change la couleur des éléments en permanence (rainbow) au cours du temps
+    $(".can_rainbow").each(function (index) {
+        $(this).addClass("rainbow");
+    });
+}
+function desactivate_rainbow() {
+    $(".can_rainbow").each(function (index) {
+        $(this).removeClass("rainbow");
+    });
+}
+
 
 // Affiche les éléments du header petit à petit
 $(document).ready(function () {
@@ -78,5 +90,8 @@ function apply_settings() {
     user_color_mode = window.localStorage["user-color-mode"];
     if (user_color_mode) {
         document.documentElement.setAttribute("user-color-mode", user_color_mode);
+    }
+    if (user_color_mode == "rainbow") {
+        activate_rainbow();
     }
 }

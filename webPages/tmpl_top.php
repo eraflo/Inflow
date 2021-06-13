@@ -49,6 +49,7 @@ include('stats_visites_site.php');
             <header class="header container">
                 <img class="banniere element" src="assets/banniere_twi.webp" height="130px"/>
                 <nav class="navBarHeader container element">
+                    <div class="element navBarHeaderElement" style="min-height:80px"></div>
                     <div class="headerFirstElement element navBarHeaderElement"><a href="main.php">Menu</a></div>
                     <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown ">

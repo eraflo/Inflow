@@ -1,5 +1,11 @@
 // FICHIER APPLIQUANT LES PARAMETRES DE L'UTILISATEUR
 
+var clicks = 0;
+
+// Utilisé en tant que  fallback en cas de desync entre le mode et le bouton
+boutonDarkMode = document.getElementById("darkTrigger");
+
+
 function change_font(font) {
     if (font) {
         window.localStorage["articles_font"] = font;
@@ -41,8 +47,7 @@ $(document).ready(function () {
 });
 
 function activate_dark_mode() {
-    // Utilisé en tant que  fallback en cas de desync entre le mode et le bouton
-    boutonDarkMode = document.getElementById("darkTrigger");
+    clicks++;
 
     // Toggle dark mode
     $("*").addClass("lowTransition");
@@ -54,14 +59,25 @@ function activate_dark_mode() {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
         boutonDarkMode.checked = false;
+        $("#SecretSelector").value = "light";
     } else if ((window.localStorage["user-color-mode"] == "light") || (window.localStorage["user-color-mode"] == "hour")) {
         window.localStorage["user-color-mode"] = "dark";
         document.documentElement.setAttribute("user-color-mode", "dark");
         boutonDarkMode.checked = true;
+        $("#SecretSelector").value = "dark";
     } else {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
         boutonDarkMode.checked = false;
+        $("#SecretSelector").value = "light";
+    }
+    if ((clicks >= 10) && ((clicks % 10) == 0)) {
+        window.localStorage["user-color-mode"] = "rainbow";
+        document.documentElement.setAttribute("user-color-mode", "rainbow");
+        activate_rainbow();
+        $("#SecretSelector").value = "rainbow";
+    } else {
+        desactivate_rainbow();
     }
     // Timeout nécessaire car le navigateur actualise les changements de "noTransition" trop rapidement
     setTimeout(function () {

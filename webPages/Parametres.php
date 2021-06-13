@@ -43,6 +43,17 @@ if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
 
         header("Location: Parametres.php");
     }
+    if(isset($_POST['theme'])) {
+        $CHANGE_JS = true;
+        // Insérer dans la base de données
+        $reqfontname = $bdd->prepare('SELECT id_police FROM police_ecriture WHERE nom_police = ?');
+        $reqfontname->execute(array($_POST['polices']));
+        $fontname = $reqfontname->fetch();
+        $insertPolice = $bdd->prepare("UPDATE membres SET font = ? WHERE id = ?");
+        $insertPolice->execute(array($fontname[0], $_SESSION['id']));
+
+        header("Location: Parametres.php");
+    }
 }
 
 include 'tmpl_top.php';
@@ -84,10 +95,12 @@ include 'MODULES/end.php';
             <?php } ?>
         </select><br/><br/>
         <input type="submit" name="police" value="Modifier"/>
+        <br/>
+        <h1 align="center">Dark Mode :</h1>
+        <div class="element BoutonTransition"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
+        <input type="text" name="theme" class="hidden" id="SecretSelector" value=''/>
     </form>
-    <br/>
-    <h1 align="center">Dark Mode :</h1>
-    <div class="element BoutonTransition"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
+    
 </div>
 <div class="right"></div>
 
