@@ -61,6 +61,38 @@
 }
 
 
+/*mode rainbow*/
+
+:root[user-color-mode=rainbow] {
+    --rainbow: linear-gradient(90deg, rgba(255,0,0,0.7) 0%, rgba(255,154,0,0.7) 10%, rgba(208,222,33,0.7) 20%, rgba(79,220,74,0.7) 30%, rgba(63,218,216,0.7) 40%, rgba(47,201,226,0.7) 50%, rgba(28,127,238,0.7) 60%, rgba(95,21,242,0.7) 70%, rgba(186,12,248,0.7) 80%, rgba(251,7,217,0.7) 90%, rgba(255,0,0,0.7) 100%);
+    --pink: rgba(255,170,230,0.9);
+    --purple: rgba(75,0,130,0.4);
+    --color-body-background: var(--purple);
+    --color-background: var(--rainbow);
+    --color-background-alt: rgba(0, 0, 0, 0.8);
+    --color-separation-line: red;
+    --color-navbar-dropdown-background: lightskyblue;
+    --color-text: white;
+    --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
+    --color-text-shadow-active: inherit;
+    --color-text-hover: #C0C0C0;
+    --color-links: var(--pink);
+    --color-unselected-links: white;
+    --color-selected-text: #808080;
+    --color-active-text: black;
+    --color-selection-text: inherit;
+    --color-selection-bg: var(--pink);
+    --color-underline: var(--pink);
+    --color-profil-title: deepskyblue;
+    --color-profil-line: rgba(240, 192, 89, 0.719);
+    --color-profil-background: rgb(34, 33, 33);
+    --color-text-article-title: bold var(--color-text);
+    --color-text-article-desc: var(--color-text);
+    --color-text-article-author: var(--color-text);
+    /*Les polices ne doivent pas changer en fonction de la préférence de couleurs*/
+}
+
+
 /*--Selection du texte--*/
 
 ::selection {

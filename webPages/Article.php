@@ -34,7 +34,7 @@ include 'tmpl_top.php';
 
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
-                <article>
+                <article class="ProfilTxt">
                     <h1>Catégories :</h1>
                     <!--Affiche les catégories des articles-->
                     <div class="articleCategoryGallery articleGallery hcenter">

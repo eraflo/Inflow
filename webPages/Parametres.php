@@ -12,6 +12,8 @@ include 'stats_visites_site.php';
 $CHANGE_JS = false;
 
 if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
+    $fonts = $bdd->query('SELECT * FROM `police_ecriture`');
+
     $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
     $requser->execute(array($_SESSION['id']));
     $userinfos = $requser->fetch();
@@ -72,14 +74,14 @@ include 'MODULES/begin_left.php';
 include 'MODULES/end.php';
 ?>
 
-<div class="middle">
+<div class="middle ProfilTxt">
     <form method="POST" enctype="multipart/form-data">
         Police des articles : 
         <select type="text" name="polices" style="min-width:10em;max-height:fit-content;">
-            <option value="PT Serif" style="font-family:'Pt Serif';">PT Serif</option>
-            <option value="Lato" style="font-family:'Lato';">Lato</option>
-            <option value="Kalam" style="font-family:'Kalam';">Kalam</option>
-            <option value="Roboto" style="font-family:'Roboto';">Roboto</option>
+            <?php while($f = $fonts->fetch()) { 
+                $t = $f['nom_police']; ?>
+                <option value="<?= $t ?>" style="font-family:'<?= $t ?>';font-size: xx-large;"><?= $t ?></option>
+            <?php } ?>
         </select><br/><br/>
         <input type="submit" name="police" value="Modifier"/>
     </form>

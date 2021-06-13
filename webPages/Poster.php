@@ -84,7 +84,7 @@ include 'MODULES/end.php';
 <script src="JS/categories.js" async></script>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
-    <article style="color:black;">
+    <article class="ProfilTxt" style="color:black;">
         <!--Formulaire pour postez des articles-->
         <form method="POST" enctype="multipart/form-data">
             <input type="text" name="article_titre" placeholder="Titre" /> <br/>

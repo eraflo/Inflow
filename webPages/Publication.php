@@ -78,7 +78,7 @@ include 'MODULES/end.php';
 ?>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
-    <article>
+    <article class="ProfilTxt">
 
         <!--Affiche les articles-->
         <h1>

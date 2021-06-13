@@ -70,7 +70,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
             <?php }
         } ?>
         <br/>
-        <br/>
         <?php if ($req_liens->rowCount() > 0) { ?>
             <div class="PTitle">Liens</div>
             <?php while($l = $req_liens->fetch()) { ?>
