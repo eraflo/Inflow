@@ -25,7 +25,8 @@ if(isset($_POST["formconnexion"])) {
                     $_SESSION['redacteur'] = $userinfos['redacteur'];
                     $_SESSION['admin'] = $userinfos['admin'];
                     $_SESSION['avatar'] = $userinfos['avatar'];
-                    header("Location: Profil.php?id=".$_SESSION['id']);
+                    header("Location: Parametres.php"); // permet sycronisation des parametres
+                    // header("Location: Profil.php?id=".$_SESSION['id']);
                 } else {
                     $erreur = "Vous êtes bannis, contactez les admins !";
                 }

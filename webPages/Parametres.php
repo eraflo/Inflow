@@ -44,15 +44,12 @@ if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
         header("Location: Parametres.php");
     }
     if(isset($_POST['theme'])) {
-        $CHANGE_JS = true;
         // Insérer dans la base de données
-        $reqfontname = $bdd->prepare('SELECT id_police FROM police_ecriture WHERE nom_police = ?');
-        $reqfontname->execute(array($_POST['polices']));
-        $fontname = $reqfontname->fetch();
-        $insertPolice = $bdd->prepare("UPDATE membres SET font = ? WHERE id = ?");
-        $insertPolice->execute(array($fontname[0], $_SESSION['id']));
-
-        header("Location: Parametres.php");
+        $reqthemename = $bdd->prepare('SELECT id_theme FROM `themes_couleurs` WHERE nom_theme = ?');
+        $reqthemename->execute(array($_POST['theme']));
+        $themename = $reqthemename->fetch();
+        $insertTheme = $bdd->prepare("UPDATE membres SET user_color_mode = ? WHERE id = ?");
+        $insertTheme->execute(array($themename[0], $_SESSION['id']));
     }
 }
 
@@ -86,7 +83,7 @@ include 'MODULES/end.php';
 ?>
 
 <div class="middle ProfilTxt">
-    <form method="POST" enctype="multipart/form-data">
+    <form id="form1" method="POST" enctype="multipart/form-data">
         Police des articles : 
         <select type="text" name="polices" style="min-width:10em;max-height:fit-content;">
             <?php while($f = $fonts->fetch()) { 
@@ -97,10 +94,12 @@ include 'MODULES/end.php';
         <input type="submit" name="police" value="Modifier"/>
         <br/>
         <h1 align="center">Dark Mode :</h1>
-        <div class="element BoutonTransition"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
-        <input type="text" name="theme" class="hidden" id="SecretSelector" value=''/>
+        <div class="element BoutonTransition auto_submit_item"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
     </form>
-    
+    <form id="form2" method="POST" enctype="multipart/form-data">
+        <input type="text" name="theme" class="hidden" id="SecretSelector" style="height:0px;width:0px;"/>
+    </form>
+
 </div>
 <div class="right"></div>
 

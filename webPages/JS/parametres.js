@@ -39,6 +39,15 @@ $(document).ready(function () {
 });
 
 
+/* submit if elements of class=auto_submit_item in the form changes */
+$(function() {
+    $(".auto_submit_item").change(function() {
+        var $form = $('#form2');
+        var data = $form.serialize();
+        $.ajax($form.attr('action'), { data: data, type: 'POST' }).done();
+    });
+});
+
 // BOUTON DARK MODE
 
 $(document).ready(function () {
@@ -59,23 +68,23 @@ function activate_dark_mode() {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
         boutonDarkMode.checked = false;
-        $("#SecretSelector").value = "light";
+        document.getElementById("SecretSelector").setAttribute('value','light');
     } else if ((window.localStorage["user-color-mode"] == "light") || (window.localStorage["user-color-mode"] == "hour")) {
         window.localStorage["user-color-mode"] = "dark";
         document.documentElement.setAttribute("user-color-mode", "dark");
         boutonDarkMode.checked = true;
-        $("#SecretSelector").value = "dark";
+        document.getElementById("SecretSelector").setAttribute('value','dark');
     } else {
         window.localStorage["user-color-mode"] = "light";
         document.documentElement.setAttribute("user-color-mode", "light");
         boutonDarkMode.checked = false;
-        $("#SecretSelector").value = "light";
+        document.getElementById("SecretSelector").setAttribute('value','light');
     }
-    if ((clicks >= 10) && ((clicks % 10) == 0)) {
+    if ((clicks > 10) && ((clicks % 10) == 0)) {
         window.localStorage["user-color-mode"] = "rainbow";
         document.documentElement.setAttribute("user-color-mode", "rainbow");
         activate_rainbow();
-        $("#SecretSelector").value = "rainbow";
+        document.getElementById("SecretSelector").setAttribute('value','rainbow');
     } else {
         desactivate_rainbow();
     }
@@ -101,6 +110,8 @@ $(document).ready(function () {
         boutonDarkMode.checked = true;
     } else if (window.localStorage["user-color-mode"] == "light") {
         boutonDarkMode.checked = false;
+    } else if (window.localStorage["user-color-mode"] == "rainbow") {
+        boutonDarkMode.checked = true;
     } else if (window.localStorage["user-color-mode"] == "hour") {
         var d = new Date();
         var h = d.getHours();
