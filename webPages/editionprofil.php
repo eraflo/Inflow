@@ -85,6 +85,18 @@ if(isset($_SESSION['id'])) {
         }
     }
 
+    if(isset($_POST['social_link'])) {
+        $social_link = htmlspecialchars($_POST['social_link']);
+        
+        if (filter_var($social_link, FILTER_VALIDATE_URL)) {
+            $social_name = parse_url($social_link, PHP_URL_HOST);
+            $insertlink = $bdd->prepare("INSERT INTO `liens_sociaux` (id_membre, nom, url) VALUES(?, ?, ?)");
+            $insertlink->execute(array($user['id'], $social_name, $social_link));
+        } else {
+            $erreur = "Le lien entré ne fonctionne pas";
+        }
+    }
+
     if(isset($_POST['newpseudo']) AND $_POST['newpseudo'] == $user['pseudo']) {
         header("Location: Profil.php?id=".$_SESSION['id']);
     }
@@ -103,7 +115,7 @@ if(isset($_SESSION['id'])) {
                                         <label for="newpseudo">Identifiant :</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" />
+                                        <input type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" placeholder="<?php echo $user['pseudo']; ?>" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -111,7 +123,7 @@ if(isset($_SESSION['id'])) {
                                         <label for="newpass"> Mot de passe :</label>
                                     </td>
                                     <td>
-                                        <input type="password" name="newpass" id="newpass" />
+                                        <input type="password" name="newpass" id="newpass" placeholder="•••••••••••" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -119,7 +131,7 @@ if(isset($_SESSION['id'])) {
                                         <label for="newpass2"> Confirmer Mot de passe :</label>
                                     </td>
                                     <td>
-                                        <input type="password" name="newpass2" id="newpass2" />
+                                        <input type="password" name="newpass2" id="newpass2" placeholder="•••••••••••" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,7 +139,7 @@ if(isset($_SESSION['id'])) {
                                         <label for="newemail"> Adresse Email :</label>
                                     </td>
                                     <td>
-                                        <input type="email" id="newemail" name="newemail" value="<?php echo $user['adresse_email']; ?>" />
+                                        <input type="email" id="newemail" name="newemail" placeholder="<?php echo $user['adresse_email']; ?>" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -143,13 +155,21 @@ if(isset($_SESSION['id'])) {
                                         <label>Bio :</label>
                                     </td>
                                     <td>
-                                    <input type="text" name="newbio" id="newbio" placeholder="Bio"/>
+                                    <input type="text" name="newbio" id="newbio" placeholder="Bio" style="resize:vertical;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <label>Nouveau lien</label>
+                                    </td>
+                                    <td>
+                                    <input type="text" name="social_link" id="social_link" placeholder="https://twitter.com/Inflow"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                     </td>
-                                    <td align="center">
+                                    <td align="left">
                                         <br />
                                         <input type="submit" value="Mise à jour" />
                                     </td>
