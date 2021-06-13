@@ -4,3 +4,4 @@ Polices utilisées :
 - Kalam
 - Montserrat
 - Roboto
+- Lovers Quarrel
