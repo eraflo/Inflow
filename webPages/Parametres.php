@@ -74,7 +74,7 @@ include 'MODULES/begin_left.php';
 include 'MODULES/end.php';
 ?>
 
-<div class="middle">
+<div class="middle ProfilTxt">
     <form method="POST" enctype="multipart/form-data">
         Police des articles : 
         <select type="text" name="polices" style="min-width:10em;max-height:fit-content;">
