@@ -84,11 +84,13 @@ include 'MODULES/end.php';
         <h1>
             <?= $titre ?>
         </h1>
-        <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
+        
         <div>
+            <span>Publié le <?= $article['date_time_publication'] ?> par <?= $article['auteur'] ?></span>
+            <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
             <a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="noUnderline"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
+            <?php } ?>
         </div>
-        <?php } ?>
         <p class="article">
             <?php //affiche ici le contenu en html reçu de l'éditeur de texte
             $parser->parse($contenu);
