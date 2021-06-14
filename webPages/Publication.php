@@ -25,6 +25,15 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $id = $article['id'];
         $titre = $article['titre'];
         $contenu = $article['contenu'];
+        $auteur = $article['auteur'];
+        $req_categorie = $bdd->prepare('SELECT * FROM `categories` WHERE id = ?');
+        $req_categorie->execute(array($article['id_categories']));
+        $categorie = $req_categorie->fetch();
+        if(!empty($categorie)) {
+            $categorie = $categorie['nom'];
+        } else {
+            $categorie = "";
+        }
 
         $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?');
         $likes->execute(array($id));
@@ -70,6 +79,17 @@ $emoji_replace = array(':leflow:', ':surprise:', ':revolutiooooon:', ':fumer:', 
 $emoji_new = array('<img src="assets/les_logos_pour_les_widgets.png" />', '<img src="assets/les_logos_pour_les_widgets_1.png" />', '<img src="assets/les_logos_pour_les_widgets_3.png" />', '<img src="assets/les_logos_pour_les_widgets_2.png" />', '<img src="assets/les_logos_pour_les_widgets_5.png" />', '<img src="assets/les_logos_pour_les_widgets_6.png" />', '<img src="assets/les_logos_pour_les_widgets_4.png" />');
 include 'tmpl_top.php';
 ?>
+<head>
+    <meta property="og:url" content="http://inflow.fr.nf/Publication.php?id=<?= $get_id ?>" />
+    <meta property="og:site_name" content="InflowOfficiel<?php if(!empty($categorie)){echo ' - '.$categorie;} ?>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<?= $auteur.' - '.$titre ?>" />
+    <meta property="og:description" content="<?php if(!empty($article['descriptions'])){echo $article['descriptions'];} ?>" />
+    <meta property="og:image" content="<?php if(!empty($article['avatar_article'])){echo 'http://inflow.fr.nf/membres/avatars_article/'.$article['avatar_article'];}else{echo 'http://inflow.fr.nf/membres/avatars_article/assets/banniere_twi.webp';} ?>" />
+    <meta property="og:image:alt" content="Inflow" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+</head>
 
 <?php
 include 'MODULES/begin_left.php';
@@ -84,11 +104,13 @@ include 'MODULES/end.php';
         <h1>
             <?= $titre ?>
         </h1>
-        <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
+        
         <div>
+            <span>Publié le <?= $article['date_time_publication'] ?> par <?= $article['auteur'] ?></span>
+            <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
             <a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="noUnderline"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
+            <?php } ?>
         </div>
-        <?php } ?>
         <p class="article">
             <?php //affiche ici le contenu en html reçu de l'éditeur de texte
             $parser->parse($contenu);
