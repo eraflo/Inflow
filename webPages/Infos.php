@@ -28,13 +28,13 @@ include 'tmpl_top.php';
                     </div>
                     <div class="liens-sociaux">
                         <h3><i>Insta</i> :</h3>
-                        <p><a href="https://instagram.com/inflow_officiel?igshid" target="_blank">Rejoignez notre Instagram !</a></p>
+                        <p><a href="https://instagram.com/inflow_officiel?igshid" rel="noreferrer noopener">Rejoignez notre Instagram !</a></p>
                         <h3><i>Twitter</i> :</h3>
-                        <p><a href="https://twitter.com/InflowOfficiel" target="_blank">Rejoignez-nous sur Twitter !</a></p>
+                        <p><a href="https://twitter.com/InflowOfficiel" rel="noreferrer noopener">Rejoignez-nous sur Twitter !</a></p>
                         <h3><i>Twitch</i> :</h3>
-                        <p><a href="https://www.twitch.tv/inflowofficiel" target="_blank">Suivez-nous sur Twitch !</a></p>
+                        <p><a href="https://www.twitch.tv/inflowofficiel" rel="noreferrer noopener">Suivez-nous sur Twitch !</a></p>
                         <h3><i>Discord</i> :</h3>
-                        <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" target="_blank">Rejoignez le Discord !</a></p>
+                        <p><a href="https://discord.com/channels/826440352810139678/826491405856800788" rel="noreferrer noopener">Rejoignez le Discord !</a></p>
                     </div>
                 </div>
             </article>
