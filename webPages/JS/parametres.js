@@ -80,7 +80,7 @@ function activate_dark_mode() {
         boutonDarkMode.checked = false;
         document.getElementById("SecretSelector").setAttribute('value','light');
     }
-    if ((clicks > 10) && ((clicks % 10) == 0)) {
+    if ((clicks >= 10) && ((clicks % 10) == 0)) {
         window.localStorage["user-color-mode"] = "rainbow";
         document.documentElement.setAttribute("user-color-mode", "rainbow");
         activate_rainbow();

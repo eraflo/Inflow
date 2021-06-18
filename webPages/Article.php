@@ -53,7 +53,7 @@ include 'tmpl_top.php';
                         <?php while($a = $articles->fetch()) { ?>
                             <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
                             <?php if(!empty($a['avatar_article'])) { ?>
-                                <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%">
+                                <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%;" loading="lazy" />
                             <?php } ?>
                                 <div class="cardArticleContent">
                                     <p class="cardArticleTitle"><?= $a['titre'] ?></p>

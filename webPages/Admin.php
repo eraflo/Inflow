@@ -84,7 +84,7 @@ include 'tmpl_top.php';
                 <div class="articleGallery articleGalleryProfiles hcenter" style="">
                     <?php while($m = $membres->fetch()) { ?>
                     <div class="cardArticleContainer cardArticleContainerProfiles">
-                        <?php if($m['avatar'] != NULL) { ?><a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline"><img class="cardArticleImageProfiles avatar" src="membres/avatars/<?php echo $m['avatar']; ?>"><?php } ?></a>
+                        <?php if($m['avatar'] != NULL) { ?><a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline"><img class="cardArticleImageProfiles avatar" src="membres/avatars/<?php echo $m['avatar']; ?>" loading="lazy" /><?php } ?></a>
                         <div class="cardArticleContent cardArticleContentProfiles">
                             <span class="cardArticleTitle">ID <?= $m['id'] ?></span>
                             <a class="cardArticleTitle" href="Profil.php?id=<?= $m['id'] ?>">PSEUDO <?= $m['pseudo'] ?></a>
