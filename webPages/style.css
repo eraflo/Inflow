@@ -217,7 +217,7 @@ h1 {
     grid-template-rows: max-content auto max-content;
     grid-template-columns: 1.12fr minmax(400px, 3fr) 1.12fr;
     /* note : minimum (400px) et maximum (5.24 unités fractionnelle de width 100%) */
-    column-gap: 3%;
+    gap: 5px 3%;
 }
 
 
@@ -253,7 +253,6 @@ h1 {
 }
 
 .middle {
-    width: 100%;
     grid-column: 2/3;
     grid-row: 2/3;
     /*effets sur le texte (et images du .middle)*/
