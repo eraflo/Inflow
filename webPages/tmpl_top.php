@@ -1,4 +1,4 @@
-<?
+<?php
 // compteur de visites
 include('stats_visites_site.php');
 ?>
