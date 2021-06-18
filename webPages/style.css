@@ -216,7 +216,7 @@ h1 {
     display: grid;
     grid-template-rows: max-content auto max-content;
     grid-template-columns: 1.12fr minmax(400px, 3fr) 1.12fr;
-    /* note : minimum (400px) et maximum (5 unités fractionnelle de width 100%) */
+    /* note : minimum (400px) et maximum (5.24 unités fractionnelle de width 100%) */
     column-gap: 3%;
 }
 
