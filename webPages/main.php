@@ -52,25 +52,25 @@ include 'MODULES/end.php';
         </div>
                     
         <br/><p> Pour nous suivre sur tous nos réseaux: </p>
-        <a href="https://twitter.com/InflowOfficiel" target="_blank">
+        <a href="https://twitter.com/InflowOfficiel" rel="noreferrer noopener">
             <img src="https://cdn.discordapp.com/attachments/821777182790647869/851523241100050493/unknown.png"
-            class= "ImageLien noUnderline" loading="lazy" rel="noreferrer noopener" />
+            class= "ImageLien noUnderline" loading="lazy" alt="twitter" />
         </a>
-        <a href="https://www.instagram.com/inflow_officiel/?igshid=1642d7pjo8yi1" target="_blank">
+        <a href="https://www.instagram.com/inflow_officiel/?igshid=1642d7pjo8yi1" rel="noreferrer noopener">
             <img src="https://cdn.discordapp.com/attachments/821777182790647869/851526078144184330/unknown.png"
-            class= "ImageLien noUnderline" loading="lazy" rel="noreferrer noopener" />
+            class= "ImageLien noUnderline" loading="lazy" alt="instagram" />
         </a>
-        <a href="https://www.facebook.com/Inflow-100173238898216/" target="_blank">
+        <a href="https://www.facebook.com/Inflow-100173238898216/" rel="noreferrer noopener">
             <img src="https://cdn.discordapp.com/attachments/821777182790647869/851522746550059018/unknown.png"
-            class= "ImageLien noUnderline" loading="lazy" rel="noreferrer noopener" />
+            class= "ImageLien noUnderline" loading="lazy" alt="facebook" />
         </a>
-        <a href="https://www.twitch.tv/inflowofficiel" target="_blank">
+        <a href="https://www.twitch.tv/inflowofficiel" rel="noreferrer noopener">
             <img src="https://cdn.discordapp.com/attachments/821777182790647869/851522214628294746/unknown.png"
-            class= "ImageLien noUnderline" loading="lazy" rel="noreferrer noopener" />
+            class= "ImageLien noUnderline" loading="lazy" alt="twitch" />
         </a>
-        <a href="https://www.youtube.com/channel/UC7cUqgADmD2xV9VDlt6NOXg" target="_blank">
+        <a href="https://www.youtube.com/channel/UC7cUqgADmD2xV9VDlt6NOXg" rel="noreferrer noopener">
             <img src="https://th.bing.com/th/id/Re452148fe022416aa3ef036f26036222?rik=g055Rpswucg8jA&riu=http%3a%2f%2fgetdrawings.com%2fvectors%2fyoutube-logo-square-vector-36.png&ehk=N9REe%2bS92%2bYUxfCg8a0FNrCgmB96y1GyNtPDYNU5ldE%3d&risl=&pid=ImgRaw"
-            class= "ImageLien noUnderline" loading="lazy" rel="noreferrer noopener" />
+            class= "ImageLien noUnderline" loading="lazy" alt="youtube" />
         </a>
     </article>
 </div>

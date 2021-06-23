@@ -81,7 +81,17 @@ include 'MODULES/begin_left.php';
 include 'MODULES/categories.php';
 include 'MODULES/end.php';
 ?>
-<script src="JS/categories.js" async></script>
+<head>
+<!--Charger ressources pour éditeur de texte-->
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" defer></script>
+    <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" defer></script>
+    <script src = "JS/import-wysibb-options.js" defer></script>
+    <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link href="http://cdn.wysibb.com/css/default/wbbtheme.css" rel="stylesheet"></noscript>
+    <script src="JS/fr.js" defer></script>
+
+    <script src="JS/categories.js" defer></script>
+</head>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
     <article class="ProfilTxt" style="color:black;">

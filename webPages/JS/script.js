@@ -3,18 +3,6 @@ last_height_scroll = 0;
 
 
 
-// Script pour customiser éditeur de texte pour articles
-$(function() { var Options = {
-        buttons: "bold,italic,underline,strike,|,sup,sub,|,img,video,link,|,bullist,numlist,|,\fontcolor,\
-        fontsize,fontfamily,|,justifyleft,justifycenter,justifyright,|,quote,code,table,removeFormat",
-        lang: "fr" }
-    $("#editor").wysibb(Options);
-    if (typeof(bbdata) != "undefined") {
-        $("#editor").insertAtCursor(bbdata);
-    }
-})
-
-
 // Actualisation des articles (#actualisation ET actualisation_page.php À CHANGER DE NOM IMPÉRATIVEMENT)
 // setInterval('load_page()', 10000);
 function load_page() {
@@ -40,13 +28,15 @@ $(document).ready(function () {
     smoothHeaderAppear();
 });
 function smoothHeaderAppear() {
-    $(".headerFirstElement").each(function (index) {
-        $(this).finish();
-        $(this).fadeOut(0);
-    });
-    $(".headerFirstElement").each(function (index) {
-        $(this).delay(100 * index).fadeIn(1000);
-    });
+    if ($( window ).width() > 800) {
+        $(".headerFirstElement").each(function (index) {
+            $(this).finish();
+            $(this).fadeOut(0);
+        });
+        $(".headerFirstElement").each(function (index) {
+            $(this).delay(100 * index).fadeIn(1000);
+        });
+    }
 }
 
 
