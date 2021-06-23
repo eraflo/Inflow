@@ -28,7 +28,7 @@ include('stats_visites_site.php');
         <noscript><link type="text/css" href="style.css" rel="stylesheet"></noscript>
         
         <!--Importer les scripts-->
-        <script src="JS/jquery-3.6.0.min.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
         <script type="text/javascript" src="JS/import-search.js" defer></script>
         
