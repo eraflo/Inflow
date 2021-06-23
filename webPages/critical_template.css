@@ -86,7 +86,7 @@ body {
     grid-template-rows: max-content auto max-content;
     grid-template-columns: 1.12fr minmax(400px, 3fr) 1.12fr;
     /* note : minimum (400px) et maximum (5.24 unités fractionnelle de width 100%) */
-    gap: 5% 20px;
+    gap: 5px 3%;
 }
 /*--haut, gauche, mileu, droit et bas de la page--*/
 .header {
@@ -108,7 +108,6 @@ body {
     margin-left: 5%;
 }
 .middle {
-    width: 100%;
     grid-column: 2/3;
     grid-row: 2/3;
     place-content: center;
