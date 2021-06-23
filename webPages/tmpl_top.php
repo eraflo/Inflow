@@ -16,7 +16,7 @@ include('stats_visites_site.php');
         <!--Informations sur la page et open graph-->
         <title>Inflow</title>
         <!-- Paramètre d'affichage mobile -->
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
         <meta name="description" content="Inflow est un média musical entièrement géré par des lycéens dont le but est de faire découvrir la musique urbaine à nos lecteurs, qu'ils soient néophytes ou expérimentés.">
         <!-- Gestion du navigateur IE -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -28,7 +28,7 @@ include('stats_visites_site.php');
         <noscript><link type="text/css" href="style.css" rel="stylesheet"></noscript>
         
         <!--Importer les scripts-->
-        <script src="JS/jquery-3.6.0.min.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
         <script type="text/javascript" src="JS/import-search.js" defer></script>
         
