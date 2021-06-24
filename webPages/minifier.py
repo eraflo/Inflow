@@ -105,6 +105,8 @@ def remove_spaces(text):
     return text
 
 def rename_vars(text):
+    exclude = ["--font-article"]
+
     import string
     alphabet = list(string.ascii_letters) # 52 possible variables
     
@@ -128,6 +130,11 @@ def rename_vars(text):
                     if new_var not in alphabet:
                         alphabet.append(alphabet[i]+alphabet[j])
         return alphabet
+
+    # remove excluded vars
+    for var in exclude:
+        if var in list_found:
+            list_found.remove(var)
 
     var_giver = 0
     for var in list_found:
