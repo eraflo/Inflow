@@ -67,7 +67,7 @@ if (isset($theme) && !empty($theme)){
 }
 
 ?>
-<script src="JS/parametres.js"></script>
+<script src="JS/parametres.js" defer></script>
 
 <?php 
 if ($CHANGE_JS) {
