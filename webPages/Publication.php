@@ -26,6 +26,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $titre = $article['titre'];
         $contenu = $article['contenu'];
         $auteur = $article['auteur'];
+        $cat = $article['id_categories'];
         $req_categorie = $bdd->prepare('SELECT * FROM `categories` WHERE id = ?');
         $req_categorie->execute(array($article['id_categories']));
         $categorie = $req_categorie->fetch();
@@ -75,7 +76,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
 
 $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
 $commentaires->execute(array($get_id));
-$reco_article = $bdd->query("SELECT * FROM articles");
+$reco_article = $bdd->prepare("SELECT * FROM articles WHERE id_categories = ? LIMIT 3");
+$reco_article->execute(array($cat));
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 $emoji_replace = array(':leflow:', ':surprise:', ':revolutiooooon:', ':fumer:', ':axelitoutou:', ':revolutiooooontoutou:', 'revolutiooooon2:');
 $emoji_new = array('<img src="assets/les_logos_pour_les_widgets.png" />', '<img src="assets/les_logos_pour_les_widgets_1.png" />', '<img src="assets/les_logos_pour_les_widgets_3.png" />', '<img src="assets/les_logos_pour_les_widgets_2.png" />', '<img src="assets/les_logos_pour_les_widgets_5.png" />', '<img src="assets/les_logos_pour_les_widgets_6.png" />', '<img src="assets/les_logos_pour_les_widgets_4.png" />');
@@ -127,28 +129,32 @@ include 'MODULES/end.php';
     </article>
 
     <article class="RecommendationArticle">
-        <h1>Recommandations en lien avec cet article :</h1>
-        <?php while($a = $reco_article->fetch()) { 
-            if(isset($a['id_categories']) AND $a['id_categories'] != NULL AND $a['id_categories'] == $article['id_categories'] AND $a['id'] != $article['id']) {?>
-                <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
-                <?php if(!empty($a['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%;" loading="lazy" />
-                <?php } ?>
-                    <div class="cardArticleContent">
-                        <p class="cardArticleTitle"><?= $a['titre'] ?></p>
-                        <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
-                        <?php 
-                        if(isset($a['id_auteur'])) {
-                            $search_auteur->execute(array($a['id_auteur'])); 
-                            $sa = $search_auteur->fetch();?>
-                            <p class="cardArticleSecondaryText"> <?= $sa['pseudo'] ?></p>
+        <?php if($reco_article->rowCount() > 0) { ?>
+            <h1>Recommandations en lien avec cet article :</h1>
+            <?php while($a = $reco_article->fetch()) { 
+                if(isset($a['id_categories']) AND $a['id_categories'] != NULL AND $a['id_categories'] == $article['id_categories'] AND $a['id'] != $article['id']) {?>
+                    <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
+                    <?php if(!empty($a['avatar_article'])) { ?>
+                        <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" href="Publication.php?id=<?= $a['id'] ?>" style="width:100%;" loading="lazy" />
+                    <?php } ?>
+                        <div class="cardArticleContent">
+                            <p class="cardArticleTitle"><?= $a['titre'] ?></p>
+                            <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
+                            <?php 
+                            if(isset($a['id_auteur'])) {
+                                $search_auteur->execute(array($a['id_auteur'])); 
+                                $sa = $search_auteur->fetch();?>
+                                <p class="cardArticleSecondaryText"> <?= $sa['pseudo'] ?></p>
                             <?php } else { ?>
                                 <p class="cardArticleSecondaryText"> <?= $a['auteur'] ?></p>
                             <?php } ?>
                         </div>
                     </a>
-                <?php } ?>
+                <?php } else { ?>
+                    <p>Aucune Recommendation</p>
             <?php } ?>
+        <?php } 
+        } ?>
     </article>
 </div>
 
