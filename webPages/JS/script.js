@@ -15,10 +15,16 @@ function activate_rainbow() {
     $(".can_rainbow").each(function (index) {
         $(this).addClass("rainbow");
     });
+    $(".can_rainbow2").each(function (index) {
+        $(this).addClass("rainbow2");
+    });
 }
 function desactivate_rainbow() {
     $(".can_rainbow").each(function (index) {
         $(this).removeClass("rainbow");
+    });
+    $(".can_rainbow2").each(function (index) {
+        $(this).removeClass("rainbow2");
     });
 }
 

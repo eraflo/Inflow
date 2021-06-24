@@ -47,7 +47,7 @@ include('stats_visites_site.php');
                     <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown ">
                             <a href="Article.php">Article</a>
-                            <div class="dropdown-content">
+                            <div class="dropdown-content can_rainbow2">
                                 <div class="navBarHeaderElement"><a href="Poster.php">Poster</a></div>
                                 <div class="navBarHeaderElement"><a href="Gestion_Articles_Categories.php">Gestion articles</a></div>
                             </div>
@@ -57,7 +57,7 @@ include('stats_visites_site.php');
                     <?php } ?>                    
                     <div class="headerFirstElement element navBarHeaderElement"><a href="Playlist.php">Playlist</a></div>
                     <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="<?php if(isset($_SESSION) AND !empty($_SESSION)){echo 'Profil.php?id='.$_SESSION['id'];}else{echo 'Connexion.php';}?>">Espace Membre</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content can_rainbow2">
                             <?php if(empty($_SESSION)) { ?>
                             <div class="navBarHeaderElement"><a href="Inscription.php">Inscription</a></div>
                             <div class="navBarHeaderElement"><a href="Connexion.php">Connexion</a></div>
@@ -73,15 +73,15 @@ include('stats_visites_site.php');
                         </div>
                     </div>
                     <div class="headerFirstElement element navBarHeaderElement"><a href="Infos.php" id="Infos">Infos</a></div>
-                    <div class="headerFirstElement element search">
+                    <div class="headerFirstElement element search" id="search_form">
                         <form action="#">
                             <input type="text" placeholder="Recherche" id="search" name="search" value="" />
                         </form>
                         <div id="result-research"></div>
                     </div>
                     <?php if(!empty($_SESSION)) { ?>
-                        <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Compte</a>
-                            <div class="dropdown-content" style="transform: translate(-85px); min-width: auto; width: max-content;">
+                        <div class="headerFirstElement element navBarHeaderElement dropdown" id="account_preview"><a href="#">Compte</a>
+                            <div class="dropdown-content can_rainbow2" style="transform: translate(-85px); min-width: auto; width: max-content;">
                                 <?php
                                     include 'MODULES/profil.php';
                                 ?>

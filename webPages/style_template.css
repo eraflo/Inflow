@@ -1012,9 +1012,7 @@ input:checked[type="checkbox"]:before {
 /*--À appliquer à la fin; Pour les petits écrans--*/
 /*  Il faut laisser cette partie en fin de css    */
 
-@media (max-width: 700px) {
-    /*Style à appliquer pour les mobiles*/
-
+@media (max-width: 800px) {
     /*Éléments principaux de la page*/
     .main {
         display: flex;
@@ -1024,10 +1022,12 @@ input:checked[type="checkbox"]:before {
     }
     .left {
         display: none;
+        margin: initial;
     }
-
-    /*Autres éléments divers*/
-    .cardArticleContainer:hover {
-        transform: scale(1);
+    .right {
+        margin: initial;
+    }
+    #search, #account_preview {
+        display: none;
     }
 }
