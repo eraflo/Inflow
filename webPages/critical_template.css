@@ -430,7 +430,7 @@ input:checked[type="checkbox"]:before {
     align-self: center;
 }
 /*Style à appliquer pour les mobiles*/
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     /*Éléments principaux de la page*/
     .main {
         display: flex;
@@ -445,4 +445,14 @@ input:checked[type="checkbox"]:before {
     .right {
         margin: initial;
     }
+    #search_form, #account_preview {
+        display: none;
+    }
+    #search__form_substitute {
+        display: initial;
+    }
+    .dropdown-content {
+        display: none;
+    }
+
 }

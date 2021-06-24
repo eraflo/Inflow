@@ -195,3 +195,4 @@ if mode == "read-write":
 # print(minifier(text))
 print("Original :", len(text))
 print("Minimisé :", len(minified))
+input()

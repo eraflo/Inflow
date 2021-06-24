@@ -73,14 +73,14 @@ include('stats_visites_site.php');
                         </div>
                     </div>
                     <div class="headerFirstElement element navBarHeaderElement"><a href="Infos.php" id="Infos">Infos</a></div>
-                    <div class="headerFirstElement element search">
+                    <div class="headerFirstElement element search" id="search_form">
                         <form action="#">
                             <input type="text" placeholder="Recherche" id="search" name="search" value="" />
                         </form>
                         <div id="result-research"></div>
                     </div>
                     <?php if(!empty($_SESSION)) { ?>
-                        <div class="headerFirstElement element navBarHeaderElement dropdown "><a href="#">Compte</a>
+                        <div class="headerFirstElement element navBarHeaderElement dropdown" id="account_preview"><a href="#">Compte</a>
                             <div class="dropdown-content can_rainbow2" style="transform: translate(-85px); min-width: auto; width: max-content;">
                                 <?php
                                     include 'MODULES/profil.php';
