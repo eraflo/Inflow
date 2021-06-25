@@ -5,3 +5,4 @@ Polices utilisées :
 - Montserrat
 - Roboto
 - Lovers Quarrel
+- Assistant

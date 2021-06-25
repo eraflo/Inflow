@@ -57,7 +57,7 @@
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-    /*Les polices ne doivent pas changer en fonction de la préférence de couleurs*/
+    --font-base: 'Assistant', sans-serif, system-ui;
 }
 
 
@@ -89,7 +89,7 @@
     --color-text-article-title: bold var(--color-text);
     --color-text-article-desc: var(--color-text);
     --color-text-article-author: var(--color-text);
-    /*Les polices ne doivent pas changer en fonction de la préférence de couleurs*/
+    --font-base: 'Assistant', sans-serif, system-ui;
 }
 
 
