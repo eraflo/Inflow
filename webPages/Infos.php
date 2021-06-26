@@ -15,18 +15,18 @@ include 'tmpl_top.php';
             ?>
         <!--Début de là où on pourra mettre du texte-->
         <div class="middle">
-            <article>
+            <article class="À-Refaire">
                 <!-- <<<<<<< HEAD -->
 
                 <h1 id="Staff">Staff</h1>
-                <div class="Plateforme">
-                    <div class="liste-équipe">
+                <div>
+                    <div>
                         <p><b>PDG </b> : Axel </p>
                         <p><b>Rédacteurs</b> : Elouan, Ilyes, Jason, Maxime, Romane</p>
                         <p><b>Modos</b> : Antoine, Simon, Timothée, Titouan C</p>
                         <p><b>Développeurs</b> : Anyr, Florian, Lucas, Titouan L</p>
                     </div>
-                    <div class="liens-sociaux">
+                    <div>
                         <h3><i>Insta</i> :</h3>
                         <p><a href="https://instagram.com/inflow_officiel?igshid" rel="noreferrer noopener">Rejoignez notre Instagram !</a></p>
                         <h3><i>Twitter</i> :</h3>

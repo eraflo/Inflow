@@ -1,0 +1,45 @@
+/*-- Fichier style pour le texte du profil --*/
+
+/* Variables utilisées :
+
+--color-body-background
+--color-profil-title
+--color-profil-line
+--color-links
+
+*/
+
+.ProfilTxt {
+    padding: 30px;
+    background: var(--color-body-background);
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.PTitle {
+    color: var(--color-profil-title);
+    font-family: Times;
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.PCapsule {
+    font-family: sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    width: 450px;
+    background-color: var(--color-body-background);
+    box-shadow: 0 2px 0 var(--color-profil-line);
+    display: table-cell;
+}
+
+.PActions {
+    font-family: sans-serif;
+    color: var(--color-links);
+}
+
+.PName {
+    font-family: Times;
+    font-weight: 600;
+}

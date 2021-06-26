@@ -9,3 +9,11 @@
     width: fit-content;
     line-height: 1.6em;
 }
+
+.Visites {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--color-text);
+    border-width: 0.5px;
+    width: 300px;
+}
