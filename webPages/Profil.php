@@ -74,7 +74,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
             <div class="PTitle">Liens</div>
             <?php while($l = $req_liens->fetch()) { ?>
                 <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
-                <a href="<?= $l['url'] ?>" rel="noreferrer noopener"><div class="PActions"><?= $l['nom'] ?></div></a>
+                <a href="<?= $l['url'] ?>" class="PActions" rel="noreferrer noopener"><?= $l['nom'] ?></a>
                 <br/>
             <?php }
         } ?>
