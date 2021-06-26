@@ -171,11 +171,13 @@ def minifier(text):
     last_len = len(text)
     print("Espace gagné :", temp)
     
+    """ EXPERIMENTAL et assez nul faut pas se le cacher
     print("Changement du nom des variables", end='\t\t')
     text = rename_vars(text)
     temp = last_len - len(text)
     last_len = len(text)
     print("Espace gagné :", temp)
+    """
 
     print()
     optimisation = start_len - len(text)
@@ -195,4 +197,4 @@ if mode == "read-write":
 # print(minifier(text))
 print("Original :", len(text))
 print("Minimisé :", len(minified))
-input()
+print("\nTERMINÉ")

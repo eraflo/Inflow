@@ -79,3 +79,8 @@ include 'MODULES/end.php';
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 
 ?>
+
+<!--Application des fichiers css exclusifs-->
+<link type="text/css" href="style\menu.css" rel="stylesheet">
+<link type="text/css" href="style\articles.css" rel="stylesheet">
+
