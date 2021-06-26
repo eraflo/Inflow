@@ -87,3 +87,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 
 ?>
+
+<!--Application des fichiers css exclusifs-->
+<link type="text/css" href="style\profil.css" rel="stylesheet">

@@ -8,7 +8,7 @@ include('stats_visites_site.php');
         <!--Pour mettre des commentaires dans le code, respecter ma syntaxe-->
         <meta charset="UTF-8">
         <!--Optimisation de livraison-->
-        <link type="text/css" rel="stylesheet" href="critical.css">
+        <link type="text/css" rel="stylesheet" href="style\critical.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="http://cdn.wysibb.com">
         <link rel="preconnect" href="http://ajax.googleapis.com">
@@ -24,8 +24,8 @@ include('stats_visites_site.php');
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant&family=Lovers+Quarrel&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" media="none" onload="if(media!='all')media='all'">
         <noscript><link href="https://fonts.googleapis.com/css2?family=Assistant&family=Lovers+Quarrel&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"></noscript>
         
-        <link type="text/css" rel="stylesheet" href="style.css" media="none" onload="if(media!='all')media='all'">
-        <noscript><link type="text/css" href="style.css" rel="stylesheet"></noscript>
+        <link type="text/css" rel="stylesheet" href="style\style.css" media="none" onload="if(media!='all')media='all'">
+        <noscript><link type="text/css" href="style\style.css" rel="stylesheet"></noscript>
         
         <!--Importer les scripts-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>

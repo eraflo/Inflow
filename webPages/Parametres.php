@@ -94,7 +94,7 @@ include 'MODULES/end.php';
         <input type="submit" name="police" value="Modifier"/>
         <br/>
         <h1 align="center">Dark Mode :</h1>
-        <div class="element BoutonTransition auto_submit_item"><input id="darkTrigger" type="checkbox" class="BoutonTransition"></div>
+        <div class="element BoutonTransition auto_submit_item"><input id="darkTrigger" type="checkbox" class="BoutonTransition can_rainbow2"></div>
     </form>
     <form id="form2" method="POST" enctype="multipart/form-data">
         <input type="text" name="theme" class="hidden" id="SecretSelector" style="height:0px;width:0px;"/>
@@ -107,3 +107,6 @@ include 'MODULES/end.php';
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 
 ?>
+
+<!--Application des fichiers css exclusifs-->
+<link type="text/css" href="style\parametres.css" rel="stylesheet">
