@@ -162,6 +162,12 @@ article,
     color: var(--color-text);
 }
 
+/*--Quand éditeur de texte est en fullscreen, on doit appliquer la couleur noir du texte--*/
+/* A mettre dans un autre fichier si possible */
+.trumbowyg-body-fullscreen {
+    --color-text: black;
+}
+
 .left,
 .right,
 .middle {
@@ -172,8 +178,9 @@ h1 {
     font-variant: small-caps;
 }
 
-.middle article p {
+.middle article .article {
     word-spacing: var(--word-spacing);
+    color: var(--color-text);
 }
 
 
@@ -245,7 +252,6 @@ h1 {
     place-content: center;
     overflow-wrap: break-word;
     text-align: inherit;
-    height: 100%;
     font-family: var(--font-base);
     font-size: large;
     line-height: 1.5em;

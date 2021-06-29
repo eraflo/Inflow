@@ -22,6 +22,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         }
     }
     if(!empty($_POST['article_titre']) AND !empty($_POST['article_contenu']) AND !empty($_POST['article_id_auteur']) AND !empty($_POST['article_comment'])) {
+        //informations générales de l'article
         $article_titre = htmlspecialchars($_POST['article_titre']);
         $article_contenu = htmlspecialchars($_POST['article_contenu']);
         $article_id_auteur = htmlspecialchars($_POST['article_id_auteur']);
@@ -37,7 +38,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $article_auteur = $getAuteur->fetch();
 
         //création d'une nouvelle catégorie
-        if($article_id_categorie = "Nouvelle") {
+        if($article_id_categorie == "Nouvelle") {
             $article_nom_categorie = htmlspecialchars($_POST['article_nom_categorie']);
             $article_desc_categorie = htmlspecialchars($_POST['article_desc_categorie']);
             $ins_cat = $bdd->prepare('INSERT INTO `categories` (nom, auteur, description, date_time_publication) VALUES (?, ?, ?, NOW())');
@@ -83,18 +84,17 @@ include 'MODULES/end.php';
 ?>
 <head>
 <!--Charger ressources pour éditeur de texte-->
-    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" defer></script>
-    <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" defer></script>
-    <script src = "JS/import-wysibb-options.js" defer></script>
-    <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" media="none" onload="if(media!='all')media='all'">
-    <noscript><link href="http://cdn.wysibb.com/css/default/wbbtheme.css" rel="stylesheet"></noscript>
-    <script src="JS/fr.js" defer></script>
+    <link rel="stylesheet" href="JS/trumbowyg/ui/trumbowyg.min.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link href="JS/trumbowyg/ui/trumbowyg.min.css" rel="stylesheet"></noscript>
+    <script type="text/javascript" src="JS/trumbowyg/trumbowyg.min.js" defer></script>
+    <script type="text/javascript" src="JS/trumbowyg/langs/fr.min.js" defer></script>
+    <script type="text/javascript" src="JS/Trumbowyg/trumbowyg.js" defer></script>
 
     <script src="JS/categories.js" defer></script>
 </head>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
-    <article class="ProfilTxt" style="color:black;">
+    <article class="ProfilTxt">
         <!--Formulaire pour postez des articles-->
         <form method="POST" enctype="multipart/form-data">
             <input type="text" name="article_titre" placeholder="Titre" /> <br/>
@@ -113,7 +113,7 @@ include 'MODULES/end.php';
             </select>
             <input id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
             <input id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
-            <input type="text" name="article_comment" placeholder="Description" /> <br/>
+            <textarea type="text" name="article_comment" placeholder="Description"></textarea><br/>
             <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
             <input type="file" name="miniature"/><br/>
             <input type="submit" value="Envoyer l'article" /><br />
