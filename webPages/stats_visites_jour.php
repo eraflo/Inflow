@@ -1,39 +1,22 @@
 <?php
-// On récupère la date du jour.
-
-$now_Y = date("Y");
-$now_m = date("m");
-$now_d = date("d");
-$date  = "$now_d-$now_m-$now_Y";
-
-$ip_User = $_SERVER['REMOTE_ADDR'];
-
-// On efface les IP qui sont "périmées" (date actuelle différente des dates précédentes)
-
-$delete = $bdd->prepare("DELETE FROM compteur_jour WHERE date_visite <> ? ");
-$delete->execute(array($date));
 
 // On effectue une recherche pour savoir si l'IP est déjà enregistrée.
 
-$IP_exist = $bdd->query("SELECT * FROM compteur_jour WHERE date_visite = '.$date.'");
-
+$IP_exist = $bdd->prepare('SELECT * FROM compteur_jour WHERE date_visite = DATE(NOW()) AND ip = ?');
+$IP_exist->execute(array($_SERVER['REMOTE_ADDR']));
 
 // On vérifie l'ip
-while($ip = $IP_exist->fetch()) {
-    if($ip['ip'] != $ip_User)
-    {
 
+if($ip = $IP_exist->rowCount() < 1) {
     // On insère l'ip si elle n'existe pas.
-
-    $insert = $bdd->prepare("INSERT INTO compteur_jour (ip, date_visite) VALUES(?, ?)");
-    $insert->execute(array($ip_User, $date));
-
-    }
+    $insert = $bdd->prepare("INSERT INTO compteur_jour (ip, date_visite) VALUES(?, DATE(NOW()))");
+    $insert->execute(array($_SERVER['REMOTE_ADDR']));
 }
+
 
 // On récupère la valeur du compteur
 
-$select = $bdd->query("SELECT ip FROM compteur_jour WHERE date_visite = '$date'");
+$select = $bdd->query("SELECT * FROM compteur_jour WHERE date_visite = DATE(NOW())");
 $compt = $select->rowCount();
 
 ?>
