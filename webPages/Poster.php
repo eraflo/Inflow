@@ -37,7 +37,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $article_auteur = $getAuteur->fetch();
 
         //création d'une nouvelle catégorie
-        if($article_id_categorie = "Nouvelle") {
+        if($article_id_categorie == "Nouvelle") {
             $article_nom_categorie = htmlspecialchars($_POST['article_nom_categorie']);
             $article_desc_categorie = htmlspecialchars($_POST['article_desc_categorie']);
             $ins_cat = $bdd->prepare('INSERT INTO `categories` (nom, auteur, description, date_time_publication) VALUES (?, ?, ?, NOW())');
