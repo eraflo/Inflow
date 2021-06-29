@@ -57,6 +57,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
             <div class="PTitle">
                     <br />Actions Utilisateur<br />
             </div>
+            <a href="historique.php"><div class="PActions">. <i>Historique </i></div></a><br />
             <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
             <a href="deconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
         <?php } ?>

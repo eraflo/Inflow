@@ -73,6 +73,34 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     die('Erreur');
 }
 
+if(isset($_SESSION)) {
+    $verifie = $bdd->prepare("SELECT * FROM historique WHERE id_pseudo = ? AND id = ?");
+    $verifie->execute(array($_SESSION['id'], $id));
+    $verifie->fetch();
+    if($verifie->rowCount() < 1) {
+        $now_Y = date("Y");
+        $now_m = date("m");
+        $now_d = date("d");
+        $date  = "$now_d-$now_m-$now_Y";
+
+        $ins_view = $bdd->prepare("INSERT INTO historique(id_pseudo, id, date_visite, type_hist, ip) VALUES(?, ?, NOW(), ?, ?)");
+        $ins_view->execute(array($_SESSION["id"], $id, 0, $_SERVER['REMOTE_ADDR']));
+    }
+} else {
+    $verifie = $bdd->prepare("SELECT * FROM historique WHERE ip = ? AND id = ?");
+    $verifie->execute(array($_SERVER['REMOTE_ADDR'], $id));
+    $verifie->fetch();
+    if($verifie->rowCount() < 1) {
+        $now_Y = date("Y");
+        $now_m = date("m");
+        $now_d = date("d");
+        $date  = "$now_d-$now_m-$now_Y";
+
+        $ins_view = $bdd->prepare("INSERT INTO historique(id_pseudo, id, date_visite, type_hist, ip) VALUES(?, ?, ?, ?, ?)");
+        $ins_view->execute(array(0, $id, $date, 0, $_SERVER['REMOTE_ADDR']));
+    }
+}
+
 
 $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
 $commentaires->execute(array($get_id));
