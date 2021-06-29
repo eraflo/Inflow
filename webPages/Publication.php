@@ -44,8 +44,6 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $dislikes->execute(array($id));
         $dislikes = $dislikes->rowCount();
 
-        $vues = 0; // pas encore implémenté
-
     } else {
         die('Cette article n\'existe pas !!!');
     }
@@ -73,7 +71,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     die('Erreur');
 }
 
-if(isset($_SESSION)) {
+if(isset($_SESSION) AND !empty($_SESSION)) {
     $verifie = $bdd->prepare("SELECT * FROM historique WHERE id_pseudo = ? AND id = ?");
     $verifie->execute(array($_SESSION['id'], $id));
     $verifie->fetch();
@@ -100,6 +98,11 @@ if(isset($_SESSION)) {
         $ins_view->execute(array(0, $id, $date, 0, $_SERVER['REMOTE_ADDR']));
     }
 }
+
+
+$view = $bdd->prepare("SELECT * FROM historique WHERE id = ?");
+$view->execute(array($id));
+$vues = $view->rowCount();
 
 
 $commentaires = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC");
