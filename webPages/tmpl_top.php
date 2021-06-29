@@ -10,8 +10,6 @@ include('stats_visites_site.php');
         <!--Optimisation de livraison-->
         <link type="text/css" rel="stylesheet" href="style\critical.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="preconnect" href="http://cdn.wysibb.com">
-        <link rel="preconnect" href="http://ajax.googleapis.com">
 
         <!--Informations sur la page et open graph-->
         <title>Inflow</title>
