@@ -4,25 +4,17 @@ include 'tmpl_top.php';
 include 'MODULES/begin_left.php';
 include 'MODULES/end.php';
 
-// Ajouter le contenu de l'article dans l'éditeur de texte Wysibb
-$parser->parse($article['contenu']);
-$contenu = $parser->getAsHtml();
-echo "<script>var bbdata = `".$contenu."`;</script>";
 ?>
 <head>
 <!--Charger ressources pour éditeur de texte-->
-    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" defer></script>
-    <script src = "http://cdn.wysibb.com/js/jquery.wysibb.min.js" defer></script>
-    <script src = "JS/import-wysibb-options.js" defer></script>
-    <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" media="none" onload="if(media!='all')media='all'">
-    <noscript><link href="http://cdn.wysibb.com/css/default/wbbtheme.css" rel="stylesheet"></noscript>
-    <script src="JS/fr.js" defer></script>
+    <link rel="stylesheet" href="JS/trumbowyg/ui/trumbowyg.min.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link href="JS/trumbowyg/ui/trumbowyg.min.css" rel="stylesheet"></noscript>
+    <script src="JS/trumbowyg/trumbowyg.min.js" defer></script>
 
     <script src="JS/categories.js" defer></script>
 </head>
-
 <div class="middle">
-    <article style="color:black;" id="modification_article">
+    <article id="modification_article">
         <!--Formulaire pour modifier l'article-->
         <form method="POST" enctype="multipart/form-data">
             <input type="text" name="article_titre" value="<?= $article['titre'] ?>" /> <br/>
@@ -42,8 +34,8 @@ echo "<script>var bbdata = `".$contenu."`;</script>";
             </select>
             <input id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
             <input id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
-            <input type="text" name="article_comment" value="<?= $article['descriptions'] ?>" /> <br/>
-            <textarea id="editor" name="article_contenu"></textarea><br/>
+            <textarea type="text" name="article_comment" style="width:100%;resize:vertical;"><?= $article['descriptions'] ?></textarea><br/>
+            <textarea id="editor" name="article_contenu"><?php if(isset($contenu)){echo $contenu;} ?></textarea><br/>
             <input type="file" name="miniature"/><br/>
             <input type="submit" value="Modifier l'article" /><br />
         </form>

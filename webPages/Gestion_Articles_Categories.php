@@ -2,9 +2,6 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
-//appel parser.php
-require_once "JBBCode/Parser.php";
-
 if(!isset($_SESSION['redacteur']) OR $_SESSION['redacteur'] != 1 OR !isset($_SESSION) OR empty($_SESSION)) {
     header("Location: main.php");
 }
@@ -76,12 +73,6 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
 
     $article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
     $article->execute(array($get_id));
-
-    //Changer code BBCode en html
-    $parser = new JBBCode\Parser();
-    $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-    $parser->addBBCode("quote", '<blockquote>{param}</blockquote>');
-    $parser->addBBCode("&nbsp;", '<br/>{param}');
 
     $articles = $bdd->query('SELECT * FROM articles');
     $auteurs = $bdd->query('SELECT * FROM `membres` WHERE redacteur = 1');

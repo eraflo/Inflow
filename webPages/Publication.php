@@ -6,19 +6,10 @@ include('filtre.php');
 
 include 'stats_visites_site.php';
 
-//appel parser.php
-require_once "JBBCode/Parser.php";
-
 if(isset($_GET['id']) AND !empty($_GET['id'])) {
     $get_id = htmlspecialchars($_GET['id']);
     $article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
     $article->execute(array($get_id));
-
-    //Changer code BBCode en html
-    $parser = new JBBCode\Parser();
-    $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-    $parser->addBBCode("quote", '<blockquote>{param}</blockquote>');
-    $parser->addBBCode("&nbsp;", '<br/>{param}');
 
     if($article->rowCount() == 1) {
         $article = $article->fetch();
@@ -96,19 +87,16 @@ include 'MODULES/end.php';
         <h1>
             <?= $titre ?>
         </h1>
-        
+        <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
+            <!--Edition--><a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="noUnderline"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
+            <!--Statistiques-->
+        <?php } ?>
         <div>
-            <span>Publié le <?= $article['date_time_publication'] ?> par <?= $article['auteur'] ?></span>
-            <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
-            <a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="noUnderline"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
-            <?php } ?>
+            <span>Publié le <?= $article['date_time_publication'] ?> par <?= $article['auteur'] ?></span><br/><br/>
         </div>
-        <p class="article">
-            <?php //affiche ici le contenu en html reçu de l'éditeur de texte
-            $parser->parse($contenu);
-            echo $parser->getAsHtml();
-            ?>
-        </p>
+        <div class="article">
+            <?= html_entity_decode($contenu) ?>
+        </div>
         <div class="articleMenuButtonContainer">
             <div class="articleMenuButtonElement"><a href="#" class="noUnderline"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
             <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>

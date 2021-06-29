@@ -172,8 +172,9 @@ h1 {
     font-variant: small-caps;
 }
 
-.middle article p {
+.middle article .article {
     word-spacing: var(--word-spacing);
+    color: var(--color-text);
 }
 
 
