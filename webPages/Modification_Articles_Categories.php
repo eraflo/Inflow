@@ -9,7 +9,9 @@ include 'MODULES/end.php';
 <!--Charger ressources pour éditeur de texte-->
     <link rel="stylesheet" href="JS/trumbowyg/ui/trumbowyg.min.css" media="none" onload="if(media!='all')media='all'">
     <noscript><link href="JS/trumbowyg/ui/trumbowyg.min.css" rel="stylesheet"></noscript>
-    <script src="JS/trumbowyg/trumbowyg.min.js" defer></script>
+    <script type="text/javascript" src="JS/trumbowyg/trumbowyg.min.js" defer></script>
+    <script type="text/javascript" src="JS/trumbowyg/langs/fr.min.js" defer></script>
+    <script type="text/javascript" src="JS/Trumbowyg/trumbowyg.js" defer></script>
 
     <script src="JS/categories.js" defer></script>
 </head>

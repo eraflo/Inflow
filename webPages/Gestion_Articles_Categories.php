@@ -64,7 +64,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                         ));
                 }
             }
-            $message = 'Votre article a bien été modifié';
+            $message = "Votre article a bien été modifié<br/><a href=\"Publication.php?id=".$get_id.'">Retour à l\'article</a>';
+
 
         } else {
             $message = 'Veuillez remplir tous les champs';
