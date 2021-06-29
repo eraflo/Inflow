@@ -20,7 +20,8 @@ include 'MODULES/end.php';
 ?>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
-    <div class="articleGallery hcenter" id="actualisation">
+    <?php if($data->rowCount() > 0) { ?>
+        <div class="articleGallery hcenter" id="actualisation">
             <?php while($d = $data->fetch()) { 
                 $search_art = $bdd->prepare("SELECT * FROM articles WHERE id = ?");
                 $search_art->execute(array($d["id"]));
@@ -45,6 +46,9 @@ include 'MODULES/end.php';
                 </a>
             <?php } ?>
         </div>
+    <?php } else { ?>
+        <h1>Aucun Historique</h1>
+    <?php } ?>
 
 </div>
 <div class="right">
