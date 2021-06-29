@@ -29,6 +29,17 @@ include('stats_visites_site.php');
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
         <script type="text/javascript" src="JS/import-search.js" defer></script>
+
+        <!--OPEN GRAPH-->
+        <meta property="og:url" content="http://inflow.fr.nf/" />
+        <meta property="og:site_name" content="InflowOfficiel<?php if(isset($categorie) && !empty($categorie)){echo ' - '.$categorie;} ?>" />
+        <meta property="og:type" content="object" />
+        <meta property="og:title" content="<?php if(isset($auteur) && isset($titre)){echo $auteur.' - '.$titre;}?>" />
+        <meta property="og:description" content="<?php if(isset($article['descriptions']) && !empty($article['descriptions'])){echo $article['descriptions'];} ?>" />
+        <meta property="og:image" content="<?php if(isset($article['avatar_article']) && !empty($article['avatar_article'])){echo 'http://inflow.fr.nf/membres/avatars_article/'.$article['avatar_article'];}else{echo 'http://inflow.fr.nf/assets/banniere_twi.webp';} ?>" />
+        <meta property="og:image:alt" content="Inflow" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="600" />
         
         <link rel="icon" href="assets/Inflow_logo_64px.png" />
     </head>
