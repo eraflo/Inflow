@@ -88,7 +88,7 @@ include 'tmpl_top.php';
                         <div class="cardArticleContent cardArticleContentProfiles">
                             <span class="cardArticleTitle">ID <?= $m['id'] ?></span>
                             <a class="cardArticleTitle" href="Profil.php?id=<?= $m['id'] ?>">PSEUDO <?= $m['pseudo'] ?></a>
-                            <?php if(($m['admin'] == 0)&&($m['redacteur'] == 0)) { ?><div class="">
+                            <?php if(($m['admin'] == 0) OR ($m['redacteur'] == 0)) { ?><div class="">
                                 <span>COMMANDS </span> 
                                 <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre admin?')">Admin</a></span><?php } ?>
                                 <?php if($m['redacteur'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre rédacteur?')">Rédacteur</a></span><?php } ?>
