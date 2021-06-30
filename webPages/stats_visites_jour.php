@@ -1,5 +1,8 @@
 <?php
 
+$delete = $bdd->query("DELETE FROM compteur_jour WHERE date_visite <> DATE(NOW())");
+
+
 // On effectue une recherche pour savoir si l'IP est déjà enregistrée.
 
 $IP_exist = $bdd->prepare('SELECT * FROM compteur_jour WHERE date_visite = DATE(NOW()) AND ip = ?');
