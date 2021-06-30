@@ -52,7 +52,16 @@ include('stats_visites_site.php');
                 <img class="banniere element" src="assets/banniere_twi.webp" height="130px" loading="lazy" alt="Inflow bannière" />
                 <nav class="navBarHeader container element">
                     <div class="element navBarHeaderElement" style="min-height:80px"></div>
-                    <div class="headerFirstElement element navBarHeaderElement"><a href="main.php">Menu</a></div>
+                    <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
+                        <div class="headerFirstElement element navBarHeaderElement dropdown">
+                            <a href="main.php">Menu</a>
+                            <div class="dropdown-content can_rainbow2">
+                                <div class="navBarHeaderElement">
+                                    <a href="publication_event.php">Nouveauté</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                     <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown ">
                             <a href="Article.php">Article</a>

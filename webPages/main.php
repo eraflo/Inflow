@@ -2,6 +2,7 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+$new = $bdd->query("SELECT * FROM nouveauté ORDER BY date_time_publication DESC LIMIT 6");
 
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 $recom = $bdd->query('SELECT * FROM `articles` ORDER BY nombre_like DESC LIMIT 6');
@@ -25,6 +26,47 @@ include 'MODULES/end.php';
             de faire découvrir la musique urbaine à nos lecteurs, qu'ils soient néophytes ou expérimentés.<br /><br />
             L'équipe d'Inflow vous souhaite une bonne lecture et une bonne écoute !<br /><br /><br />
         </p>
+
+        <?php if($new->rowCount() > 0) {?>
+            <h1>News :</h1>
+            <!--Affiche des news-->
+            <div class="articleRecommendationGallery articleGallery hcenter">
+                <?php while($a_n = $new->fetch()) { 
+                    if($a_n["type_new"] == 2) {
+                    ?>
+                        <a href="<?= $a_n["lien"] ?>" class="noUnderline cardArticleContainer">
+                        <div class="cardArticleContent">
+                            <p class="cardArticleTitle"><?= $a_n['nom'] ?></p>
+                            <p class="cardArticleMainText"><?= $a_n['lien'] ?></p>
+                            <p class="cardArticleMainText"><?= $a_n['horaire'] ?></p>
+                        </div>
+                        </a>
+                    <?php } elseif($a_n["type_new"] == 0) { 
+                        $n_art = $bdd->prepare('SELECT * FROM `articles` WHERE id = ?');
+                        $n_art->execute(array($a_n['lien']));
+                        $new_art = $n_art->fetch();?>
+                        <a href="Publication.php?id=<?= $new_art['id'] ?>" class="noUnderline cardArticleContainer">
+                        <?php if(!empty($new_art['avatar_article'])) { ?>
+                            <img class="cardArticleImage" src="membres/avatars_article/<?php echo $new_art['avatar_article']; ?>" href="Publication.php?id=<?= $new_art['id'] ?>" style="width:100%;" loading="lazy"/>
+                        <?php } ?>
+                            <div class="cardArticleContent">
+                                <p class="cardArticleTitle"><?= $new_art['titre'] ?></p>
+                                <p class="cardArticleMainText"><?= $new_art['descriptions'] ?></p>
+                                <?php 
+                                if(isset($new_art['id_auteur']) AND $new_art['id_auteur'] != NULL) {
+                                    $search_auteur->execute(array($new_art['id_auteur'])); 
+                                    $sa1 = $search_auteur->fetch();?>
+                                    <p class="cardArticleSecondaryText"> <?= $sa1['pseudo'] ?></p>
+                                    <?php } else { ?>
+                                        <p class="cardArticleSecondaryText"> <?= $new_art['auteur'] ?></p>
+                                    <?php } ?>
+                            </div>
+                        </a>
+                    <?php } 
+                } ?>
+            </div>
+            <?php } ?>
+
 
         <h1>Recommandations :</h1>
         <!--Affiche des recommendations d'articles à lire-->
