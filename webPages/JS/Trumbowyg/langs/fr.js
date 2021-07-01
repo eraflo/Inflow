@@ -27,9 +27,9 @@ jQuery.trumbowyg.langs.fr = {
     strikethrough: 'Barré',
     underline: 'Souligné',
 
-    strong: 'Fort',
-    em: 'Emphase',
-    del: 'Supprimé',
+    strong: 'Gras',
+    em: 'Italique',
+    del: 'Barré',
 
     superscript: 'Exposant',
     subscript: 'Indice',

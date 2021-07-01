@@ -7,11 +7,21 @@ include 'MODULES/end.php';
 ?>
 <head>
 <!--Charger ressources pour éditeur de texte-->
+    <!--Trumbowyg resources-->
     <link rel="stylesheet" href="JS/trumbowyg/ui/trumbowyg.min.css" media="none" onload="if(media!='all')media='all'">
     <noscript><link href="JS/trumbowyg/ui/trumbowyg.min.css" rel="stylesheet"></noscript>
     <script type="text/javascript" src="JS/trumbowyg/trumbowyg.min.js" defer></script>
-    <script type="text/javascript" src="JS/trumbowyg/langs/fr.min.js" defer></script>
-    <script type="text/javascript" src="JS/Trumbowyg/trumbowyg.js" defer></script>
+    <script type="text/javascript" src="JS/trumbowyg/langs/fr.js" defer></script>
+    <!--Plugins for Trumbowyg-->
+    <script src="JS/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js" defer></script>
+    <script src="JS/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js" defer></script>
+    <script src="JS/trumbowyg/plugins/history/trumbowyg.history.min.js" defer></script>
+    <script src="JS/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js" defer></script>
+    <script src="JS/trumbowyg/plugins/resizimg/jquery-resizable.min.js" defer></script>
+    <script src="JS/trumbowyg/plugins/colors/trumbowyg.colors.min.js" defer></script>
+    <link rel="stylesheet" href="JS/trumbowyg/plugins/colors/ui/trumbowyg.colors.min.css">
+    <!--Init Trumbowyg-->
+    <script type="text/javascript" src="JS/trumbowyg/trumbowyg.js" defer></script>
 
     <script src="JS/categories.js" defer></script>
 </head>
