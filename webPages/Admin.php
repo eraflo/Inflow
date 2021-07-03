@@ -81,27 +81,33 @@ include 'tmpl_top.php';
             ?>
             <!--Début de là où on pourra mettre du texte-->
             <div class="middle">
-                <div class="articleGallery articleGalleryProfiles hcenter" style="">
+                <div class="cardGallery hcenter" style="">
                     <?php while($m = $membres->fetch()) { ?>
-                    <div class="cardArticleContainer cardArticleContainerProfiles">
-                        <?php if($m['avatar'] != NULL) { ?><a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline"><img class="cardArticleImageProfiles avatar" src="membres/avatars/<?php echo $m['avatar']; ?>" loading="lazy" /><?php } ?></a>
-                        <div class="cardArticleContent cardArticleContentProfiles">
-                            <span class="cardArticleTitle">ID <?= $m['id'] ?></span>
-                            <a class="cardArticleTitle" href="Profil.php?id=<?= $m['id'] ?>">PSEUDO <?= $m['pseudo'] ?></a>
-                            <?php if(($m['admin'] == 0) OR ($m['redacteur'] == 0)) { ?><div class="">
-                                <span>COMMANDS </span> 
-                                <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre admin?')">Admin</a></span><?php } ?>
-                                <?php if($m['redacteur'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre rédacteur?')">Rédacteur</a></span><?php } ?>
-                                <?php if($m['admin'] == 0) { ?> 
-                                    <?php if($m['actif'] == 0) { ?> 
-                                        <span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment ban ce compte?')">Ban</a></span> 
-                                    <?php } else {?>
-                                        <span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment deban ce compte?')">Deban</a> </span> 
-                                    <?php } ?> 
-                                <?php } ?>
-                            </div><?php } ?>
+                        <a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline" title="<?= $m['pseudo']?>    ID : <?= $m['id'] ?>">
+                            <div class="cardArticle">
+                                <img style="width:300%" class="" src="membres/avatars/<?php echo $m['avatar']; ?>" loading="lazy" />
+                            </div>    
+                        </a>
+                        <!-- Pour toi flo ;)
+                        <div class="cardArticle cardArticleContentProfiles">
+                            ID <span class="title"><?= $m['id'] ?></span>
+                            PSEUDO <a class="cardArticleTitle" href="Profil.php?id=<?= $m['id'] ?>"><?= $m['pseudo'] ?></a>
+                            <?php if(($m['admin'] == 0) OR ($m['redacteur'] == 0)) { ?>
+                                <div class="">
+                                    <span>COMMANDS </span> 
+                                    <?php if($m['admin'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&admin=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre admin?')">Admin</a></span><?php } ?>
+                                    <?php if($m['redacteur'] == 0) { ?><span class="cardArticleMainText"><a href="Admin.php?type=membre&redacteur=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment le rendre rédacteur?')">Rédacteur</a></span><?php } ?>
+                                    <?php if($m['admin'] == 0) { ?> 
+                                        <?php if($m['actif'] == 0) { ?> 
+                                            <span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment ban ce compte?')">Ban</a></span> 
+                                        <?php } else {?>
+                                            <span class="cardArticleMainText"><a href="Admin.php?type=membre&supprime=<?= $m['id'] ?>" onclick="return confirm('Voulez-vous vraiment deban ce compte?')">Deban</a> </span> 
+                                        <?php } ?> 
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
                         </div>
-                    </div>
+                        -->
                     <?php } ?>
                 </div>
 

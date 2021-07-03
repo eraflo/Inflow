@@ -17,20 +17,19 @@ include 'MODULES/end.php';
 
 <div class="middle">
     <article>
-        <div class="articleGalleryArticles hcenter" id="actualisation">
+        <div class="cardGallery hcenter">
             <?php while($a = $articles->fetch()) { ?>
-                <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
-                    <div class="cardArticleContent">
-                        <p class="cardArticleTitle"><?= $a['titre'] ?></p>
-                        <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
+                <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a['descriptions'] ?>">
+                    <div class="cardArticle">
+                        <p class="title"><?= $a['titre'] ?></p>
+                        <p class="date"> <?= $a['date_time_publication'] ?></p>
                         <?php if(isset($a['id_auteur'])) {
                             $search_auteur->execute(array($a['id_auteur']));
                             $sa = $search_auteur->fetch();?>
-                            <p class="cardArticleSecondaryText"> <?= $sa['pseudo'] ?></p>
+                            <p class="author"> <?= $sa['pseudo'] ?></p>
                         <?php } else { ?>
-                            <p class="cardArticleSecondaryText"> <?= $a['auteur'] ?></p>
+                            <p class="author"> <?= $a['auteur'] ?></p>
                         <?php } ?>
-                        <p class="cardArticleSecondaryText"> <?= $a['date_time_publication'] ?></p>
                     </div>
                 </a>
             <?php } ?>

@@ -6,6 +6,7 @@
 --word-spacing
 --color-text
 --color-background
+--color-background-alt
 --color-text-article-title
 --color-text-article-desc
 --color-text-article-author
@@ -28,49 +29,61 @@ h1 {
 
 
 /*--Gallerie d'éléments, affiche comme des cartes--*/
-.articleGallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-.articleGalleryArticles {
-    display: flex;
-    flex-direction: column-reverse;
-}
-.cardArticleContainer {
-    height: 14em;
-    margin: 6px 10px;
-    background-color: var(--color-background);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: ease 0.5s;
+.cardGallery {
     display: flex;
     flex-wrap: wrap;
+    gap: 5px
 }
-.cardArticleContainer:hover {
-    transform: scale(1.1);
-    z-index: 10;
+.cardArticle {
+    width: 14em;
+    height: 14em;
+    background-color: var(--color-background);
+    overflow: hidden;
+    border-radius: 15%;
+    display: grid;
+    grid-template-areas: "title title title"
+                         "more more more"
+                         ". author author"
+                         "option option option";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr) auto;
 }
-.cardArticleImage {
-    max-height: 5em;
-    object-fit: cover;
+.cardArticle > * {
+    align-self: center;
+    margin: 0;
 }
-.cardArticleContent {
-    padding: 2px 10px;
-    align-self: flex-end;
+.cardArticle .title {
+    grid-area: title;
+    width: 100%;
+    padding: 2% 10%;
 }
-.cardArticleTitle {
-    font-weight: bold;
-    color: var(--color-text-article-title);
+.cardArticle .date {
+    grid-area: more;
+    width: 100%;
+    padding: 2% 15%;
+    white-space: nowrap;
+} /* Can't have both date and desc */
+.cardArticle .desc {
+    grid-area: more;
+    width: 100%;
+    padding: 2% 5%;
 }
-.cardArticleMainText {
-    color: var(--color-text-article-desc);
-    font-size: small;
+.cardArticle .author {
+    grid-area: author;
+    width: 100%;
+    padding: 2% 10%;
+    white-space: nowrap;
+    text-align: center;
 }
-.cardArticleSecondaryText {
-    opacity: 0.8;
-    color: var(--color-text-article-author);
-    align-self: flex-end;
+.cardArticle .option {
+    grid-area: option;
+    background-color: antiquewhite;
+    height: 2.5em;
+    width: 100%;
+    padding: 2% 10%;
+}
+.cardCategory {
+    background-color: var(--color-background-alt);
 }
 /*--Gestion des pages lorsqu'il existe plusieurs pages--*/
 .articleGalleryPageContainer {
@@ -84,16 +97,6 @@ h1 {
     padding: 0.1em 0.3em;
 }
 /*--Spécifique à la page admin--*/
-.articleGalleryProfiles {
-    grid-template-columns: repeat(auto-fill, 450px);
-}
-.cardArticleContainerProfiles {
-    flex-wrap: nowrap;
-    height: 4em;
-}
-.cardArticleContentProfiles {
-    display: inline;
-}
 .cardArticleContentProfiles span,
 .cardArticleContentProfiles a {
     font-size: small;
