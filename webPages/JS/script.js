@@ -3,10 +3,10 @@ last_height_scroll = 0;
 
 
 
-// Actualisation des articles (#actualisation ET actualisation_page.php À CHANGER DE NOM IMPÉRATIVEMENT)
-// setInterval('load_page()', 10000);
-function load_page() {
-    $('#actualisation').load('actualisation_page.php');
+// Actualisation des articles (#actualisation_publication ET actualisation_publication.php)
+setInterval('actualisation_publication()', 15000); // 15s
+function actualisation_publication() {
+    $('#actualisation_publication').load('actualisation_publication.php');
 }
 
 
