@@ -7,12 +7,12 @@ if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION)) {
 }
 ?>
 
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
-        <title>Redirection vers le site</title>
-        <meta http-equiv="refresh" content="0; URL=main.php">
-    </head>
+<head>
+    <title>Redirection vers le site</title>
+    <meta http-equiv="refresh" content="0; URL=main.php">
+</head>
 
-    </html>
+</html>
