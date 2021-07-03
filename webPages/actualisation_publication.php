@@ -3,7 +3,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 $articlesParPage = 12;
-$articlesTotalReq = $bdd->query('SELECT id FROM articles');
+$articlesTotalReq = $bdd->query('SELECT id FROM `articles`');
 $articlesTotal = $articlesTotalReq->rowCount();
 
 $pagesTotales = ceil($articlesTotal/$articlesParPage);
@@ -17,8 +17,9 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 }
 
 $depart = ($pageCourante-1)*$articlesParPage;
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
-$search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?'); 
+$articles = $bdd->query('SELECT * FROM `articles` ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
+$categories = $bdd->query('SELECT * FROM `categories`');
+$search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 ?>
 
 <div class="cardGallery hcenter" id="actualisation_publication">
