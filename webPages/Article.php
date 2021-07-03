@@ -52,7 +52,7 @@ include 'MODULES/end.php';
         <br/>
         <h1>News :</h1>
         <!--Affiche les titres de chaque article, cliquer dessus amène sur l'article-->
-        <div class="cardGallery hcenter" id="actualisation">
+        <div class="cardGallery hcenter" id="actualisation_publication">
             <?php while($a = $articles->fetch()) { ?>
                 <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a['descriptions'] ?>">
                     <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>

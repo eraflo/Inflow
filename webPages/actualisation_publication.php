@@ -17,10 +17,11 @@ if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GE
 }
 
 $depart = ($pageCourante-1)*$articlesParPage;
-$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.''); 
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_time_publication DESC LIMIT '.$depart.','.$articlesParPage.'');
+$search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?'); 
 ?>
 
-<div class="cardGallery hcenter" id="actualisation">
+<div class="cardGallery hcenter" id="actualisation_publication">
     <?php while($a = $articles->fetch()) { ?>
         <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a['descriptions'] ?>">
             <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>
