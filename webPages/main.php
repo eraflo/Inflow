@@ -30,36 +30,34 @@ include 'MODULES/end.php';
         <?php if($new->rowCount() > 0) {?>
             <h1>News :</h1>
             <!--Affiche des news-->
-            <div class="articleRecommendationGallery articleGallery hcenter">
+            <div class="cardGallery hcenter">
                 <?php while($a_n = $new->fetch()) { 
                     if($a_n["type_new"] == 2) {
                     ?>
-                        <a href="<?= $a_n["lien"] ?>" class="noUnderline cardArticleContainer">
-                        <div class="cardArticleContent">
-                            <p class="cardArticleTitle"><?= $a_n['nom'] ?></p>
-                            <p class="cardArticleMainText"><?= $a_n['lien'] ?></p>
-                            <p class="cardArticleMainText"><?= $a_n['horaire'] ?></p>
+                        <a href="<?= $a_n["lien"] ?>" class="noUnderline">
+                        <div class="cardArticle">
+                            <p class="title"><?= $a_n['nom'] ?></p>
+                            <p class="date"><?= $a_n['lien'] ?></p>
+                            <p class="author"><?= $a_n['horaire'] ?></p><!--Anyr -> J'ai utilisé author parce que j'ai pas envie de m'embêter -->
                         </div>
                         </a>
                     <?php } elseif($a_n["type_new"] == 0) { 
                         $n_art = $bdd->prepare('SELECT * FROM `articles` WHERE id = ?');
                         $n_art->execute(array($a_n['lien']));
                         $new_art = $n_art->fetch();?>
-                        <a href="Publication.php?id=<?= $new_art['id'] ?>" class="noUnderline cardArticleContainer">
-                        <?php if(!empty($new_art['avatar_article'])) { ?>
-                            <img class="cardArticleImage" src="membres/avatars_article/<?php echo $new_art['avatar_article']; ?>" href="Publication.php?id=<?= $new_art['id'] ?>" style="width:100%;" loading="lazy"/>
-                        <?php } ?>
-                            <div class="cardArticleContent">
-                                <p class="cardArticleTitle"><?= $new_art['titre'] ?></p>
-                                <p class="cardArticleMainText"><?= $new_art['descriptions'] ?></p>
-                                <?php 
-                                if(isset($new_art['id_auteur']) AND $new_art['id_auteur'] != NULL) {
-                                    $search_auteur->execute(array($new_art['id_auteur'])); 
-                                    $sa1 = $search_auteur->fetch();?>
-                                    <p class="cardArticleSecondaryText"> <?= $sa1['pseudo'] ?></p>
-                                    <?php } else { ?>
-                                        <p class="cardArticleSecondaryText"> <?= $new_art['auteur'] ?></p>
-                                    <?php } ?>
+                        <a href="Publication.php?id=<?= $new_art['id'] ?>" class="noUnderline">
+                            <div class="cardArticle" style='<?php if(!empty($new_art['avatar_article'])) { ?>
+                            background: center url("membres/avatars_article/<?= $new_art['avatar_article'] ?>");
+                            background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
+                                <p class="title"><?= $new_art['titre'] ?></p>
+                                <p class="desc"><?= $new_art['descriptions'] ?></p>
+                                <?php if(isset($new_art['id_auteur']) AND $new_art['id_auteur'] != NULL) {
+                                $search_auteur->execute(array($new_art['id_auteur'])); 
+                                $sa1 = $search_auteur->fetch();?>
+                                    <p class="author"> <?= $sa1['pseudo'] ?></p>
+                                <?php } else { ?>
+                                    <p class="author"> <?= $new_art['auteur'] ?></p>
+                                <?php } ?>
                             </div>
                         </a>
                     <?php } 
@@ -70,24 +68,26 @@ include 'MODULES/end.php';
 
         <h1>Recommandations :</h1>
         <!--Affiche des recommendations d'articles à lire-->
-        <div class="articleRecommendationGallery articleGallery hcenter">
+        <div class="cardGallery hcenter">
             <?php while($a_r = $recom->fetch()) { 
                 ?>
-                <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline cardArticleContainer">
+                <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline">
                 <?php if(!empty($a_r['avatar_article'])) { ?>
                     <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
                 <?php } ?>
-                    <div class="cardArticleContent">
-                        <p class="cardArticleTitle"><?= $a_r['titre'] ?></p>
-                        <p class="cardArticleMainText"><?= $a_r['descriptions'] ?></p>
+                    <div class="cardArticle" style='<?php if(!empty($a_r['avatar_article'])) { ?>
+                    background: center url("membres/avatars_article/<?= $a_r['avatar_article'] ?>");
+                    background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
+                        <p class="title"><?= $a_r['titre'] ?></p>
+                        <p class="desc"><?= $a_r['descriptions'] ?></p>
                         <?php 
                         if(isset($a_r['id_auteur']) AND $a_r['id_auteur'] != NULL) {
-                            $search_auteur->execute(array($a_r['id_auteur'])); 
-                            $sa1 = $search_auteur->fetch();?>
-                            <p class="cardArticleSecondaryText"> <?= $sa1['pseudo'] ?></p>
-                            <?php } else { ?>
-                                <p class="cardArticleSecondaryText"> <?= $a_r['auteur'] ?></p>
-                            <?php } ?>
+                        $search_auteur->execute(array($a_r['id_auteur'])); 
+                        $sa1 = $search_auteur->fetch();?>
+                            <p class="author"> <?= $sa1['pseudo'] ?></p>
+                        <?php } else { ?>
+                            <p class="author"> <?= $a_r['auteur'] ?></p>
+                        <?php } ?>
                     </div>
                 </a>
             <?php } ?>

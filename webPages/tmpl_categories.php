@@ -35,16 +35,15 @@ include 'tmpl_top.php';
                 <?= $nom ?>
             </h1>
             
-            <div class="articleCategoryGallery articleGallery hcenter">
+            <div class="cardGallery hcenter">
                 <?php while($a = $articles->fetch()) { ?>
-                    <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline cardArticleContainer">
-                    <?php if(!empty($a['avatar_article'])) { ?>
-                        <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a['avatar_article']; ?>" style="width:100%;" />
-                    <?php } ?>
-                        <div class="cardArticleContent">
-                            <p class="cardArticleTitle"><?= $a['titre'] ?></p>
-                            <p class="cardArticleMainText"><?= $a['descriptions'] ?></p>
-                            <p class="cardArticleSecondaryText"><?= $a['auteur'] ?></p>
+                    <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline">
+                        <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>
+                        background: center url("membres/avatars_article/<?= $a['avatar_article'] ?>");
+                        background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
+                            <p class="title"><?= $a['titre'] ?></p>
+                            <p class="desc"><?= $a['descriptions'] ?></p>
+                            <p class="author"><?= $a['auteur'] ?></p>
                         </div>
                     </a>
                 <?php } ?>
