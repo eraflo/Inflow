@@ -3,13 +3,13 @@
 session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
+include 'stats_visites_site.php';
+
 $articlesParPage = 12;
 $articlesTotalReq = $bdd->query('SELECT id FROM `articles`');
 $articlesTotal = $articlesTotalReq->rowCount();
 
 $pagesTotales = ceil($articlesTotal/$articlesParPage);
-
-include 'stats_visites_site.php';
 
 if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
     $_GET['page'] = intval($_GET['page']);

@@ -6,7 +6,7 @@ last_height_scroll = 0;
 // Actualisation des articles (#actualisation_publication ET actualisation_publication.php)
 setInterval('actualisation_publication()', 15000); // 15s
 function actualisation_publication() {
-    $('#actualisation_publication').load('actualisation_publication.php');
+    $('#actualisation_publication').load('actualisation_publication.php'+$(location).attr('search'));
 }
 
 
