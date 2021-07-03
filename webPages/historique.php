@@ -21,27 +21,24 @@ include 'MODULES/end.php';
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
     <?php if($data->rowCount() > 0) { ?>
-        <div class="articleGallery hcenter" id="actualisation">
+        <div class="cardGallery hcenter">
             <?php while($d = $data->fetch()) { 
                 $search_art = $bdd->prepare("SELECT * FROM articles WHERE id = ?");
                 $search_art->execute(array($d["id"]));
-                $s = $search_art->fetch();
-                ?>
-                <a href="Publication.php?id=<?= $s['id'] ?>" class="noUnderline cardArticleContainer">
-                <?php if(!empty($s['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $s['avatar_article']; ?>" href="Publication.php?id=<?= $s['id'] ?>" style="width:100%;" loading="lazy" />
-                <?php } ?>
-                    <div class="cardArticleContent">
-                        <p class="cardArticleTitle"><?= $s['titre'] ?></p>
-                        <p class="cardArticleMainText"><?= $s['descriptions'] ?></p>
-                        <?php 
-                        if(isset($s['id_auteur'])) {
+                $s = $search_art->fetch(); ?>
+                <a href="Publication.php?id=<?= $s['id'] ?>" class="noUnderline" title="<?= $d['date_visite'] ?>">
+                    <div class="cardArticle" style='<?php if(!empty($s['avatar_article'])) { ?>
+                    background: center url("membres/avatars_article/<?= $s['avatar_article'] ?>");
+                    background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
+                        <p class="title"><?= $s['titre'] ?></p>
+                        <p class="desc"><?= $s['descriptions'] ?></p>
+                        <?php if(isset($s['id_auteur'])) {
                             $search_auteur->execute(array($s['id_auteur'])); 
                             $sa = $search_auteur->fetch();?>
-                            <p class="cardArticleSecondaryText"> <?= $sa['pseudo'] ?></p>
-                            <?php } else { ?>
-                                <p class="cardArticleSecondaryText"> <?= $s['auteur'] ?></p>
-                            <?php } ?>
+                            <p class="author"> <?= $sa['pseudo'] ?></p>
+                        <?php } else { ?>
+                            <p class="author"> <?= $s['auteur'] ?></p>
+                        <?php } ?>
                     </div>
                 </a>
             <?php } ?>

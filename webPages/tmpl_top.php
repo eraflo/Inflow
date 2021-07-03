@@ -107,10 +107,4 @@ include('stats_visites_site.php');
                         </div>
                     <?php } ?>
                 </nav>
-                <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
-                    <div class="element cookie-alert">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
-                        proposez des contenus et services adaptés à vos centres d'interêt.<br/>
-                        <a class="cookie-alert-ok-button" href="accept_cookie.php">OK</a>
-                    </div>
-                <?php } ?>
             </header>

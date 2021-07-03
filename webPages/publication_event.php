@@ -29,41 +29,41 @@ include 'MODULES/end.php';
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
 <form method="POST" action="" enctype="multipart/form-data">
-                            <table>
-                                <tr>
-                                    <td align="right">
-                                        <label for="name_event">Nom event :</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="name_event" id="name_event" placeholder="Name event"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <label for="lien_event">Lien vers event :</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="lien_event" id="lien_event" placeholder="Lien event"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <label for="horaire">Horaire :</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="horaire" id="horaire" placeholder="Horaire"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td align="left">
-                                        <br />
-                                        <input type="submit" value="Mise à jour" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+    <table>
+        <tr>
+            <td align="right">
+                <label for="name_event">Nom event :</label>
+            </td>
+            <td>
+                <input type="text" name="name_event" id="name_event" placeholder="Name event"/>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="lien_event">Lien vers event :</label>
+            </td>
+            <td>
+                <input type="text" name="lien_event" id="lien_event" placeholder="Lien event"/>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="horaire">Horaire :</label>
+            </td>
+            <td>
+                <input type="text" name="horaire" id="horaire" placeholder="Horaire"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td align="left">
+                <br />
+                <input type="submit" value="Mise à jour" />
+            </td>
+        </tr>
+    </table>
+</form>
 </div>
 <div class="right">
 </div>

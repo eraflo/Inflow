@@ -8,11 +8,11 @@ $membres2 = $bdd->query('SELECT * FROM membres');
 $m = $membres2->fetch();
 include 'tmpl_top.php';
 ?>
-            <?php
-            include 'MODULES/begin_left.php';
-            include 'MODULES/categories.php';
-            include 'MODULES/end.php';
-            ?>
+<?php
+include 'MODULES/begin_left.php';
+include 'MODULES/categories.php';
+include 'MODULES/end.php';
+?>
     <!--Début de là où on pourra mettre du texte-->
     <div class="middle">
         <article>
