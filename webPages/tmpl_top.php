@@ -61,6 +61,10 @@ include('stats_visites_site.php');
                                 </div>
                             </div>
                         </div>
+                    <?php } else { ?>
+                        <div class="headerFirstElement element navBarHeaderElement dropdown">
+                            <a href="main.php">Menu</a>
+                        </div>
                     <?php } ?>
                     <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown ">
