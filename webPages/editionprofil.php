@@ -85,7 +85,7 @@ if(isset($_SESSION['id'])) {
         }
     }
 
-    if(isset($_POST['social_link'])) {
+    if(isset($_POST['social_link']) && !empty($_POST['social_link'])) {
         $social_link = htmlspecialchars($_POST['social_link']);
         
         if (filter_var($social_link, FILTER_VALIDATE_URL)) {
