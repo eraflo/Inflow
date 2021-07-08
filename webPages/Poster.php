@@ -4,6 +4,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 include 'stats_visites_site.php';
+include 'webp_convert.php';
 
 if(!isset($_SESSION['redacteur']) OR $_SESSION['redacteur'] != 1 OR !isset($_SESSION) OR empty($_SESSION)) {
     header("Location: main.php");
@@ -68,6 +69,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
             if(in_array($extensionUpload, $extensionValides)) {
                 $chemin = "membres/avatars_article/".$lastid.".".$extensionUpload;
                 move_uploaded_file($_FILES['miniature']['tmp_name'], $chemin);
+                generate_webp_image($chemin);
                 $ins2 = $bdd->prepare("UPDATE articles SET avatar_article = :avatar WHERE id = :id");
                 $ins2->execute(array(
                     'avatar' => $lastid.".".$extensionUpload,

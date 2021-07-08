@@ -133,9 +133,10 @@ include 'MODULES/end.php';
                 if(isset($a['id_categories']) AND !empty($a['id_categories']) AND $a['id_categories'] != NULL) {
                     if($a['id'] != $article['id']) {?>
                         <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a["date_time_publication"] ?>">
-                            <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>
-                            background: center url("membres/avatars_article/<?= $a['avatar_article'] ?>");
-                            background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
+                            <div class="cardArticle">
+                                <?php if(!empty($a['avatar_article'])) { ?>
+                                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                <?php } ?>
                                 <p class="title"><?= $a['titre'] ?></p>
                                 <p class="desc"><?= $a['descriptions'] ?></p>
                                 <?php 

@@ -55,9 +55,10 @@ include 'MODULES/end.php';
         <div class="cardGallery hcenter" id="actualisation_publication">
             <?php while($a = $articles->fetch()) { ?>
                 <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a['descriptions'] ?>">
-                    <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>
-                    background: center url("membres/avatars_article/<?= $a['avatar_article'] ?>");
-                    background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
+                    <div class="cardArticle">
+                        <?php if(!empty($a['avatar_article'])) { ?>
+                            <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                        <?php } ?>
                         <p class="title"><?= $a['titre'] ?></p>
                         <p class="date"><?= date('m/d', strtotime($a['date_time_publication'])) ?></p>
                         <?php if(isset($a['id_auteur'])) {
