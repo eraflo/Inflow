@@ -3,6 +3,7 @@ session_start();
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 
 include 'stats_visites_site.php';
+include 'webp_convert.php';
 
 if(isset($_SESSION['id'])) {
     $requeser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
@@ -67,6 +68,7 @@ if(isset($_SESSION['id'])) {
             if(in_array($extensionUpload, $extensionValides)) {
                 $chemin = "membres/avatars/".$_SESSION['id'].".".$extensionUpload;
                 $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                generate_webp_image($chemin);
                 if($resultat) {
                     $updateAvatar = $bdd->prepare("UPDATE membres SET avatar = :avatar WHERE id = :id");
                     $updateAvatar->execute(array(
@@ -85,7 +87,7 @@ if(isset($_SESSION['id'])) {
         }
     }
 
-    if(isset($_POST['social_link'])) {
+    if(isset($_POST['social_link']) && !empty($_POST['social_link'])) {
         $social_link = htmlspecialchars($_POST['social_link']);
         
         if (filter_var($social_link, FILTER_VALIDATE_URL)) {
