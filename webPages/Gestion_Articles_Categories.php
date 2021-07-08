@@ -48,7 +48,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
             $ins = $bdd->prepare('UPDATE articles SET titre = ?, contenu = ?, auteur = ?, id_auteur = ?, descriptions = ?, id_categories = ? WHERE id = ?');
             $ins->execute(array($article_titre, $article_contenu, $article_auteur['pseudo'], $article_id_auteur, $article_comment, $article_id_categorie, $get_id));
 
-            $lastid = $bdd->LastInsertId();
+            $lastid = $get_id;
 
             $tailleMax = 5242880;
             $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
