@@ -85,7 +85,7 @@ include 'MODULES/end.php';
         <?php while($m = $membres->fetch()) { ?>
             <a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline" title="<?= $m['pseudo']?>    ID : <?= $m['id'] ?>">
                 <div class="cardArticle">
-                    <img style="width:300%" class="" src="membres/avatars/<?php echo $m['avatar']; ?>" loading="lazy" />
+                    <img style="width:300%" class="" src="membres/avatars/<?php echo $m['avatar'].'.webp'; ?>" loading="lazy" />
                 </div>    
             </a>
             <!-- Pour toi flo ;)
