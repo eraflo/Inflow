@@ -73,7 +73,7 @@ include 'MODULES/end.php';
                 ?>
                 <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline">
                 <?php if(!empty($a_r['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
+                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article'].'.webp'; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
                 <?php } ?>
                     <div class="cardArticle" style='<?php if(!empty($a_r['avatar_article'])) { ?>
                     background: center url("membres/avatars_article/<?= $a_r['avatar_article'] ?>");

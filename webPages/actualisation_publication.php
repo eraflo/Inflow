@@ -27,7 +27,7 @@ $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
         <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a['descriptions'] ?>">
             <div class="cardArticle">
                 <?php if(!empty($a['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'].'.webp' ?>" />
                 <?php } ?>
                 <p class="title"><?= $a['titre'] ?></p>
                 <p class="date"><?= date('m/d', strtotime($a['date_time_publication'])) ?></p>
