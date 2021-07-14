@@ -88,9 +88,8 @@ include('stats_visites_site.php');
                                 <div class="navBarHeaderElement"><a href="Parametres.php">Paramètres</a></div>
                             <?php } ?>
                             <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
-                                <div class="navBarHeaderElement">
-                                    <a href="Admin.php">Admin</a>
-                                </div>
+                                <div class="navBarHeaderElement"><a href="Admin.php">Admin</a></div>
+                                <div class="navBarHeaderElement"><a href="Admin-images.php">Gestion Images</a></div>
                             <?php } ?>
                         </div>
                     </div>
