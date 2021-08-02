@@ -135,7 +135,7 @@ include 'MODULES/end.php';
                         <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a["date_time_publication"] ?>">
                             <div class="cardArticle">
                                 <?php if(!empty($a['avatar_article'])) { ?>
-                                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'].'.webp' ?>" />
+                                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
                                 <?php } ?>
                                 <p class="title"><?= $a['titre'] ?></p>
                                 <p class="desc"><?= $a['descriptions'] ?></p>
@@ -179,7 +179,7 @@ include 'MODULES/end.php';
                     $avatarInfos = $pseudoAvatar->fetch(); ?>
                 <div class="CBlock">
                     <?php if(!empty($avatarInfos)) { ?>
-                        <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar'].'.webp'; ?>" width="50"></a>
+                        <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50"></a>
                     <?php } ?>
                     
                     <a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><div class=NCapsule><b><?= $c['pseudo'] ?><br /></b></div></a>
