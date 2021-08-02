@@ -276,6 +276,10 @@ h1 {
     text-align: center;
     font-family: var(--font-header);
     font-weight: 500;
+    display: grid;
+    grid-template-areas: "contact equipe equipe"
+                         "inflow void void";
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 
@@ -373,17 +377,6 @@ a:any-link:hover:after {
 }
 a.noUnderline:after {
     display: none;
-}
-
-/* Consentement recueil cookies */
-.cookie-alert {
-    width: 100%;
-    margin: 20px 0px;
-    line-height: normal;
-}
-.cookie-alert-ok-button {
-    margin-top: 5px;
-    padding: 2px 5px;
 }
 
 

@@ -73,7 +73,7 @@ include 'MODULES/end.php';
                 ?>
                 <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline">
                 <?php if(!empty($a_r['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article'].'.webp'; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
+                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
                 <?php } ?>
                     <div class="cardArticle" style='<?php if(!empty($a_r['avatar_article'])) { ?>
                     background: center url("membres/avatars_article/<?= $a_r['avatar_article'] ?>");
@@ -92,28 +92,6 @@ include 'MODULES/end.php';
                 </a>
             <?php } ?>
         </div>
-                    
-        <br/><p> Pour nous suivre sur tous nos réseaux: </p>
-        <a href="https://twitter.com/InflowOfficiel" rel="noreferrer noopener" target="_blank">
-            <img src="assets/twitter.webp"
-            class= "ImageLien noUnderline" loading="lazy" alt="twitter" />
-        </a>
-        <a href="https://www.instagram.com/inflow_officiel/?igshid=1642d7pjo8yi1" rel="noreferrer noopener" target="_blank">
-            <img src="assets/instagram.webp"
-            class= "ImageLien noUnderline" loading="lazy" alt="instagram" />
-        </a>
-        <a href="https://www.facebook.com/Inflow-100173238898216/" rel="noreferrer noopener" target="_blank">
-            <img src="assets/facebook.webp"
-            class= "ImageLien noUnderline" loading="lazy" alt="facebook" />
-        </a>
-        <a href="https://www.twitch.tv/inflowofficiel" rel="noreferrer noopener" target="_blank">
-            <img src="assets/twitch.webp"
-            class= "ImageLien noUnderline" loading="lazy" alt="twitch" />
-        </a>
-        <a href="https://www.youtube.com/channel/UC7cUqgADmD2xV9VDlt6NOXg" rel="noreferrer noopener" target="_blank">
-            <img src="assets/youtube.webp"
-            class= "ImageLien noUnderline" loading="lazy" alt="youtube" />
-        </a>
     </article>
 </div>
 <div class="right"></div>

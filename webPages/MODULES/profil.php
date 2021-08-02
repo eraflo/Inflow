@@ -9,7 +9,7 @@ if(isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
 ?>
 <div class="module">
     <?php if(!empty($M_userinfos['avatar'])) { ?>
-        <img src="membres/avatars/<?php echo $M_userinfos['avatar'].'.webp'; ?>" class="avatar hcenter" style="max-width:7em;">
+        <img src="membres/avatars/<?php echo $M_userinfos['avatar']; ?>" class="avatar hcenter" style="max-width:7em;">
     <?php } ?>
     <b><a href="Profil.php?id=<?= $M_userinfos['id'] ?>"><?php echo $M_userinfos['pseudo']; ?></a></b>
     <a href="deconnexion.php"><div class="PActions">Se déconnecter</div></a>

@@ -1,0 +1,35 @@
+/*NOTE : LA CLASS .footer EST DEFINIE DANS LE FICHIER STYLE.CSS*/
+
+/* Consentement recueil cookies */
+.cookie-alert {
+    width: 100%;
+    margin: 20px 0px;
+    line-height: normal;
+}
+.cookie-alert-ok-button {
+    margin-top: 5px;
+    padding: 2px 5px;
+}
+
+.footer_grid_element {
+    margin: 3em;
+    border-color: rgba(117, 124, 133,0.3);
+}
+
+.footer_Contact{
+    grid-area: contact;
+}
+
+.footer_Equipe {
+    grid-area: equipe;
+    border-style: none none none solid;
+    display: grid;
+    grid-template-areas: "a a a"
+               "b c d";
+    grid-template: 1fr 4fr / 1fr 1fr 1fr;
+}
+
+.footer_Inflow {
+    grid-area: inflow;
+    border-style: solid none none none;
+}
