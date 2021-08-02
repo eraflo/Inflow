@@ -18,12 +18,12 @@ h1 {
     font-variant: small-caps;
 }
 
-.middle article p {
+.middle .article p {
     word-spacing: var(--word-spacing);
     color: var(--color-text);
 }
 
-.middle article img {
+.middle .article img {
     max-width: 100%;
 }
 
