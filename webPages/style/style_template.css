@@ -490,6 +490,7 @@ a.noUnderline:after {
     }
     .footer {
         align-self: flex-end;
+        display: flex;
     }
     .left {
         display: none;
