@@ -1,68 +1,10 @@
-/*-- Fichier style pour le menu
-    Soit les trucs à la con d'Enzo avec les images rondes */
+/*-- Fichier style pour le menu --*/
 
 /* Variables utilisées :
 
 
 */
 
-@keyframes ImageLienAnimation {
-    0% {
-        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        transform: rotation(50%);
-        height: 117px;
-        width: 117px;
-        filter: grayscale();
-        border-radius: 50%; 
-    }
-    35% {
-        filter: grayscale();
-        border-radius: 50%; 
-    }
-    50% {
-        border-radius: 50%;
-    }
-    100% {
-        transition: transform 0.4s ease-out;
-        transform: rotateZ(360deg);
-        filter: none;
-        border-radius: 0%;
-    }
-}
-@-webkit-keyframes ImageLienAnimation {
-    0% {
-        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        transform: rotation(50%);
-        height: 117px;
-        width: 117px;
-        filter: grayscale();
-        border-radius: 50%; 
-    }
-    35% {
-        filter: grayscale();
-        border-radius: 50%; 
-    }
-    50% {
-        border-radius: 50%;
-    }
-    100% {
-        transition: transform 0.4s ease-out;
-        transform: rotateZ(360deg);
-        filter: none;
-        border-radius: 0%;
-    }
-}
-.ImageLien {
-    height: 117px;
-    width: 117px;
-    filter: grayscale();
-    border-radius: 50%;
-}
-.ImageLien:hover {
-    animation: ImageLienAnimation 0.8s;
-    -webkit-animation: ImageLienAnimation 0.8s;
-    animation-fill-mode: forwards
-}
 
 /*Texte de présentation du site*/
 .MenuTxt {
