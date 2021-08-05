@@ -55,11 +55,13 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                 <?php } ?>
         <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
             <div class="PTitle">
-                    <br />Actions Utilisateur<br />
+                </br>
+                Actions Utilisateur
+                </br>
             </div>
-            <a href="historique.php"><div class="PActions">. <i>Historique </i></div></a><br />
-            <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
-            <a href="deconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
+            <a href="historique.php"><div class="PActions"><img src="assets/historique.png" style="height: 20%; width: 20%;"> : Historique</div></a><br />
+            <a href="editionprofil.php"><div class="PActions"><img src="assets/edit.png"> : Edit</div></a><br />
+            <a href="deconnexion.php"><div class="PActions"><img src="assets/deconnect.png"> : Déconnexion</div></a>
         <?php } ?>
         <br/>
         <br/>
