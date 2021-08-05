@@ -278,7 +278,7 @@ h1 {
     font-weight: 500;
     display: grid;
     grid-template-areas: "contact equipe equipe"
-                         "inflow void void";
+                         "inflow inflow inflow";
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -429,6 +429,65 @@ a.noUnderline:after {
 }
 
 
+@keyframes ImageLienAnimation {
+    0% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: rotation(50%);
+        height: 117px;
+        width: 117px;
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    35% {
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        transition: transform 0.4s ease-out;
+        transform: rotateZ(360deg);
+        filter: none;
+        border-radius: 0%;
+    }
+}
+@-webkit-keyframes ImageLienAnimation {
+    0% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: rotation(50%);
+        height: 117px;
+        width: 117px;
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    35% {
+        filter: grayscale();
+        border-radius: 50%; 
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        transition: transform 0.4s ease-out;
+        transform: rotateZ(360deg);
+        filter: none;
+        border-radius: 0%;
+    }
+}
+.ImageLien {
+    height: 117px;
+    width: 117px;
+    filter: grayscale();
+    border-radius: 50%;
+}
+.ImageLien:hover {
+    animation: ImageLienAnimation 0.8s;
+    -webkit-animation: ImageLienAnimation 0.8s;
+    animation-fill-mode: forwards
+}
+
+
 /*--NE PAS AFFICHER UN ELEMENT--*/
 .hidden {
     visibility: hidden;
@@ -490,6 +549,7 @@ a.noUnderline:after {
     }
     .footer {
         align-self: flex-end;
+        display: flex;
     }
     .left {
         display: none;
