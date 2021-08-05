@@ -99,6 +99,7 @@
 
 .input_form:hover,
 .input_form[type="text"]:focus,
+.input_form[type="file"]:focus,
 .input_form[type="email"]:focus,
 .input_form[type="submit"]:focus,
 .input_form[type="password"]:focus {
