@@ -52,13 +52,26 @@ if(isset($_POST["formconnexion"])) {
                 <article>
                     <!--Formulaire à remplir pour s'inscrire-->
                     <div align="center">
-                        <h1>Connexion</h1>
-                        <br /><br />
-                        <form method="POST" action="">
-                            <input type="text" name="pseudoconnect" placeholder="Identifiant" />
-                            <input type="password" name="passconnect" placeholder="Mot de Passe" />
-                            <input type="submit" name="formconnexion" value="Se connecter" />
-                        </form>
+                        <div class="form_con_ins">
+                            <div class="container">
+                                <!--Formulaire-->
+                                <form class="con_ins" method="POST" action="">
+                                    <p class="Titre_form">Connexion</p>
+                                    <input class="input_form" type="text" name="pseudoconnect" placeholder="Identifiant" /></br>
+                                    <input class="input_form" type="password" name="passconnect" placeholder="Mot de Passe" /></br>
+                                    <input class="input_form" type="submit" name="formconnexion" value="Se connecter" /></br>
+                                    <a href="#" class="Oublie">Mot de passe oublié</a>
+                                </form>
+
+                                <!--Ombres-->
+                                <div class="drop_drop" id="drop_1"></div>
+                                <div class="drop_drop" id="drop_2"></div>
+                                <div class="drop_drop" id="drop_3"></div>
+                                <div class="drop_drop" id="drop_4"></div>
+                                <div class="drop_drop" id="drop_5"></div>
+                            </div>
+                        </div>
+
                         <!--Affiche message si erreur ou si compte bien créé-->
                         <?php
                         if(isset($erreur)){
