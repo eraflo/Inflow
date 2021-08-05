@@ -116,4 +116,6 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
     include 'Selection_Articles_Categories.php';
 }
 
+// Le bas de l'interface est ajouté après le contenu
+include 'tmpl_bottom.php';
 ?>
