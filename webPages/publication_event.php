@@ -28,42 +28,25 @@ include 'MODULES/end.php';
 ?>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
-<form method="POST" action="" enctype="multipart/form-data">
-    <table>
-        <tr>
-            <td align="right">
-                <label for="name_event">Nom event :</label>
-            </td>
-            <td>
-                <input type="text" name="name_event" id="name_event" placeholder="Name event"/>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-                <label for="lien_event">Lien vers event :</label>
-            </td>
-            <td>
-                <input type="text" name="lien_event" id="lien_event" placeholder="Lien event"/>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-                <label for="horaire">Horaire :</label>
-            </td>
-            <td>
-                <input type="text" name="horaire" id="horaire" placeholder="Horaire"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            </td>
-            <td align="left">
-                <br />
-                <input type="submit" value="Mise à jour" />
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="form_con_ins">
+    <div class="container">
+        <!--Formulaire-->
+        <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
+            <p class="Titre_form">Events</p>
+            <input class="input_form" type="text" name="name_event" id="name_event" placeholder="Nom event"/></br>
+            <input class="input_form" type="text" name="lien_event" id="lien_event" placeholder="Lien event"/></br>
+            <input class="input_form" type="text" name="horaire" id="horaire" placeholder="Horaire"/></br>
+            <input class="input_form" type="submit" value="Mise à jour" />
+        </form>
+
+        <!--Ombres-->
+        <div class="drop_drop" id="drop_1"></div>
+        <div class="drop_drop" id="drop_2"></div>
+        <div class="drop_drop" id="drop_3"></div>
+        <div class="drop_drop" id="drop_4"></div>
+        <div class="drop_drop" id="drop_5"></div>
+    </div>
+</div>
 </div>
 <div class="right">
 </div>
