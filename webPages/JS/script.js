@@ -91,3 +91,17 @@ function apply_settings() {
         activate_rainbow();
     }
 }
+
+
+// Script permettant de ne pas afficher certains éléments du footer sur certaines pages
+$(document).ready(function () {
+    var actual_page_address = $(location).attr('pathname').split("/").pop();
+    var actual_page_name = actual_page_address.split(".")[0].toUpperCase();
+    var pages_minimal_footer = ["parametres", "inscription", "connexion"].map(page => page.toUpperCase());
+    if ($.inArray(actual_page_name, pages_minimal_footer) != -1) {
+        $("footer .footer_Contact").css("display", "none");
+        $("footer .footer_Equipe").css("display", "none");
+    }
+    
+});
+
