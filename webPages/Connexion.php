@@ -89,3 +89,5 @@ if(isset($_POST["formconnexion"])) {
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 
 ?>
+
+<link type="text/css" rel="stylesheet" href="style\style_connexion_inscription.css">
