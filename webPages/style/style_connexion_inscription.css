@@ -166,3 +166,11 @@
     bottom: 170px;
     left: 90px;
 }
+
+#drop_6 {
+    height: 90px;
+    width: 90px;
+    top: 20px;
+    left: -140px;
+    z-index: 100;
+}
