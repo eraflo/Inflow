@@ -109,75 +109,29 @@ if(isset($_SESSION['id'])) {
 <div class="middle">
     <article>
         <div align="center">
-            <h1>Edition de mon profil</h1>
-            <form method="POST" action="" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <td align="right">
-                            <label for="newpseudo">Identifiant :</label>
-                        </td>
-                        <td>
-                            <input type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" placeholder="<?php echo $user['pseudo']; ?>" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <label for="newpass"> Mot de passe :</label>
-                        </td>
-                        <td>
-                            <input type="password" name="newpass" id="newpass" placeholder="•••••••••••" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <label for="newpass2"> Confirmer Mot de passe :</label>
-                        </td>
-                        <td>
-                            <input type="password" name="newpass2" id="newpass2" placeholder="•••••••••••" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <label for="newemail"> Adresse Email :</label>
-                        </td>
-                        <td>
-                            <input type="email" id="newemail" name="newemail" placeholder="<?php echo $user['adresse_email']; ?>" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <label>Avatar :</label>
-                        </td>
-                        <td>
-                            <input type="file" name="avatar" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <label>Bio :</label>
-                        </td>
-                        <td>
-                        <input type="text" name="newbio" id="newbio" placeholder="Bio" style="resize:vertical;" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <label>Nouveau lien</label>
-                        </td>
-                        <td>
-                        <input type="text" name="social_link" id="social_link" placeholder="https://twitter.com/Inflow"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td align="left">
-                            <br />
-                            <input type="submit" value="Mise à jour" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <div class="form_con_ins">
+                <div class="container">
+                    <!--Formulaire-->
+                    <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
+                        <p class="Titre_form">Edition</p>
+                        <input class="input_form" type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" placeholder="<?php echo $user['pseudo']; ?>" /></br>
+                        <input class="input_form" type="password" name="newpass" id="newpass" placeholder="•••••••••••" /></br>
+                        <input class="input_form" type="password" name="newpass2" id="newpass2" placeholder="•••••••••••" /></br>
+                        <input class="input_form" type="email" id="newemail" name="newemail" placeholder="<?php echo $user['adresse_email']; ?>" /></br>
+                        <input class="input_form" type="text" name="newbio" id="newbio" placeholder="Bio" style="resize:vertical;" /></br>
+                        <input class="input_form" type="text" name="social_link" id="social_link" placeholder="https://twitter.com/Inflow"/></br>
+                        <input class="input_form" type="file" name="avatar" /></br>
+                        <input class="input_form" type="submit" value="Mise à jour" />
+                    </form>
+
+                    <!--Ombres-->
+                    <div class="drop_drop" id="drop_1"></div>
+                    <div class="drop_drop" id="drop_2"></div>
+                    <div class="drop_drop" id="drop_3"></div>
+                    <div class="drop_drop" id="drop_4"></div>
+                    <div class="drop_drop" id="drop_5"></div>
+                </div>
+            </div>
             <?php if(isset($erreur)) { echo $erreur; } ?>
         </div>
 
