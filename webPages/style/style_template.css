@@ -44,6 +44,7 @@
     --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
     --color-text-shadow-active: inherit;
     --color-text-hover: #C0C0C0;
+    --color-placeholder: rgba(255, 255, 255, 0.8);
     --color-links: white;
     --color-unselected-links: white;
     --color-selected-text: #808080;
@@ -72,6 +73,7 @@
     --color-text-shadow-selected: 0px 0px 4px black, 0px 0px 8px white;
     --color-text-shadow-active: inherit;
     --color-text-hover: #C0C0C0;
+    --color-placeholder: rgba(72, 94, 117, 0.8);
     --color-links: var(--pink);
     --color-unselected-links: white;
     --color-selected-text: #808080;
