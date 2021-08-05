@@ -65,61 +65,26 @@ include 'tmpl_top.php';
             <div class="middle">
                 <article>
                     <!--Formulaire à remplir pour s'inscrire-->
-                    <div align="center">
-                        <h1>Inscription</h1>
-                        <br /><br />
-                        <form method="POST" action="">
-                            <table>
-                                <tr>
-                                    <td align="right">
-                                        <label for="pseudo">Identifiant :</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="pseudo" id="pseudo" maxlength="30" placeholder="30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <label for="pass"> Mot de passe :</label>
-                                    </td>
-                                    <td>
-                                        <input type="password" name="pass" id="pass" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <label for="cpass"> Confirmer Mot de passe :</label>
-                                    </td>
-                                    <td>
-                                        <input type="password" name="cpass" id="cpass" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <label for="email"> Adresse Email :</label>
-                                    </td>
-                                    <td>
-                                        <input type="email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <label for="biographie"> Petite bio sur vous : :</label>
-                                    </td>
-                                    <td>
-                                        <input type="text" id="biographie" name="biographie" required />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td align="center">
-                                        <br />
-                                        <input type="submit" name="forminscription" value="Envoyer" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                    <div class="form_con_ins">
+                            <div class="container">
+                                <!--Formulaire-->
+                                <form class="con_ins2" method="POST" action="">
+                                    <p class="Titre_form">Inscription</p>
+                                    <input class="input_form" type="text" name="pseudo" id="pseudo" maxlength="30" placeholder=" Pseudo : 30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required /></br>
+                                    <input class="input_form" type="email" placeholder="Email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required /></br>
+                                    <input class="input_form" type="password" placeholder="Mot de passe" name="pass" id="pass" required /></br>
+                                    <input class="input_form" type="password" placeholder="Confirmer mdp" name="cpass" id="cpass" required /></br>
+                                    <input class="input_form" type="submit" name="forminscription" value="Envoyer" />
+                                </form>
+
+                                <!--Ombres-->
+                                <div class="drop_drop" id="drop_1"></div>
+                                <div class="drop_drop" id="drop_2"></div>
+                                <div class="drop_drop" id="drop_3"></div>
+                                <div class="drop_drop" id="drop_4"></div>
+                                <div class="drop_drop" id="drop_5"></div>
+                            </div>
+                        </div>
                         <!--Affiche message si erreur ou si compte bien créé-->
                         <?php
                         if(isset($erreur)){
