@@ -68,7 +68,7 @@ include 'tmpl_top.php';
                     <div class="form_con_ins">
                             <div class="container">
                                 <!--Formulaire-->
-                                <form class="con_ins" method="POST" action="">
+                                <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
                                     <p class="Titre_form">Inscription</p>
                                     <input class="input_form" type="text" name="pseudo" id="pseudo" maxlength="30" placeholder=" Pseudo : 30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required /></br>
                                     <input class="input_form" type="email" placeholder="Email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required /></br>

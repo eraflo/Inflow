@@ -55,7 +55,7 @@ if(isset($_POST["formconnexion"])) {
                         <div class="form_con_ins">
                             <div class="container">
                                 <!--Formulaire-->
-                                <form class="con_ins" method="POST" action="">
+                                <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
                                     <p class="Titre_form">Connexion</p>
                                     <input class="input_form" type="text" name="pseudoconnect" placeholder="Identifiant" /></br>
                                     <input class="input_form" type="password" name="passconnect" placeholder="Mot de Passe" /></br>
