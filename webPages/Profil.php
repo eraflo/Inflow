@@ -35,31 +35,23 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
         </div>
 
         <?php if(!empty($userinfos['avatar'])) { ?>
-            <img src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150" style="margin:5px;">
+            <img id="avatar_profil" src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
         <?php } ?>
-                <br /><b>Pseudonyme:</b><br />
-                <div class="PCapsule">
-                    <?php echo $userinfos['pseudo']; ?>
-                </div>
-                <br /><b>Adresse Email:</b>
-                <div class="PCapsule">
-                    <?php echo $userinfos['adresse_email']; ?>
-                </div>
-                
-                <?php if(isset($userinfos['biographie']) AND !empty($userinfos['biographie'])) { ?>
-                    <br /><b>Biographie:</b>
-                    <div class="PCapsule">
-                        <?php echo $userinfos['biographie']; ?>
-                    </div>
-                    <br />
-                <?php } ?>
-        <?php if(isset($_SESSION['id']) AND $userinfos['id'] == $_SESSION['id']) { ?>
-            <div class="PTitle">
-                    <br />Actions Utilisateur<br />
+        <br /><b>Pseudonyme:</b><br />
+        <div class="PCapsule">
+            <?php echo $userinfos['pseudo']; ?>
+        </div>
+        <br /><b>Adresse Email:</b>
+        <div class="PCapsule">
+            <?php echo $userinfos['adresse_email']; ?>
+        </div>
+        
+        <?php if(isset($userinfos['biographie']) AND !empty($userinfos['biographie'])) { ?>
+            <br /><b>Biographie:</b>
+            <div class="PCapsule">
+                <?php echo $userinfos['biographie']; ?>
             </div>
-            <a href="historique.php"><div class="PActions">. <i>Historique </i></div></a><br />
-            <a href="editionprofil.php"><div class="PActions">. <i>Editer mon profil </i></div></a><br />
-            <a href="deconnexion.php"><div class="PActions">. <i>Se déconnecter</i></div></a>
+            <br />
         <?php } ?>
         <br/>
         <br/>

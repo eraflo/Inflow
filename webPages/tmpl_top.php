@@ -52,7 +52,6 @@ include('stats_visites_site.php');
             <header class="header container">
                 <img class="banniere element" src="assets/banniere_twi.webp" height="130px" loading="lazy" alt="Inflow bannière" />
                 <nav class="navBarHeader container element">
-                    <div class="element navBarHeaderElement" style="min-height:80px"></div>
                     <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown">
                             <a href="main.php">Menu</a>
@@ -102,7 +101,7 @@ include('stats_visites_site.php');
                     </div>
                     <?php if(!empty($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown" id="account_preview"><a href="#">Compte</a>
-                            <div class="dropdown-content can_rainbow2" style="transform: translate(-85px); min-width: auto; width: max-content;">
+                            <div class="dropdown-content can_rainbow2" style="transform: translate(-112px); min-width: auto; width: max-content;">
                                 <?php
                                     include 'MODULES/profil.php';
                                 ?>
