@@ -1,4 +1,4 @@
-/*-- Fichier style pour le texte du profil --*/
+/*-- Fichier style pour le profil --*/
 
 /* Variables utilisées :
 
@@ -42,4 +42,8 @@
 .PName {
     font-family: Times;
     font-weight: 600;
+}
+
+#avatar_profil {
+    margin:5px;
 }
