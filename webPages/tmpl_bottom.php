@@ -57,8 +57,8 @@
                     </div>
                 </div>
                 <div class="footer_Inflow footer_grid_element">
-                    <p></b>Inflow</b></p>
-                    <p></b>InflowOfficiel</b></p>
+                    <p><a href="Infos.php" id="Infos"></b>Inflow</b></a></p>
+                    <p><a href="Infos.php" id="Infos"></b>InflowOfficiel</b></a></p>
                 </div>
             </footer>
         </div>

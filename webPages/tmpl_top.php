@@ -94,7 +94,6 @@ include('stats_visites_site.php');
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerFirstElement element navBarHeaderElement"><a href="Infos.php" id="Infos">Infos</a></div>
                     <div class="headerFirstElement element search" id="search_form">
                         <form action="#">
                             <input type="text" placeholder="Recherche" id="search" name="search" value="" />
