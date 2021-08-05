@@ -29,28 +29,7 @@
 .con_ins {
     background: rgba(255, 255, 255, .5);
     padding: 3rem;
-    height: 420px;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    border-left: 1px solid rgba(255, 255, 255, .3);
-    border-top: 1px solid rgba(255, 255, 255, .3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    -moz-backdrop-filter: blur(10px);
-    -ms-border-radius: blur(10px);
-    -o-border-radius: blur(10px);
-    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
-    text-align: center;
-    z-index: 2;
-}
-
-.con_ins2 {
-    background: rgba(255, 255, 255, .5);
-    padding: 3rem;
-    height: 510px;
+    height: auto;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -121,6 +100,9 @@
     margin-bottom: 10px;
     outline: none;
 }
+
+
+/*couleur placeholder*/
 
 .input_form::placeholder {
     color: var(--color-placeholder);
