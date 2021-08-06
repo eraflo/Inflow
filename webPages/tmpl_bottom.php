@@ -2,12 +2,6 @@
                 <link type="text/css" rel="stylesheet" href="style\footer.css" media="none" onload="if(media!='all')media='all'">
                 <noscript><link type="text/css" href="style\footer.css" rel="stylesheet"></noscript>
 
-                <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
-                    <div class="element cookie-alert">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
-                        proposez des contenus et services adaptés à vos centres d'interêt.<br/>
-                        <a class="cookie-alert-ok-button" href="accept_cookie.php">OK</a>
-                    </div>
-                <?php } ?>
                 <div class="footer_Contact footer_grid_element">
                     <p><b><i>Rejoignez nous !</b></i></p>
                     <a href="https://twitter.com/InflowOfficiel" rel="noreferrer noopener" target="_blank">
@@ -61,6 +55,14 @@
                     <p><a href="Infos.php" id="Infos"></b>InflowOfficiel</b></a></p>
                 </div>
             </footer>
+
+            <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
+                <div class="cookie-alert drop_drop" id="drop_7">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
+                    proposez des contenus et services adaptés à vos centres d'interêt.<br/>
+                    <button class="cookie-alert-ok-button" onclick="accept_cookie()">OK</button>
+                </div>
+            <?php } ?>
+
         </div>
     </body>
 </html>

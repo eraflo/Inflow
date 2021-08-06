@@ -1,0 +1,10 @@
+.profil:hover .container {
+    filter: opacity(1);
+}
+.profil .container {
+    transition: all .3s ease-in-out;
+    animation: .3s;
+    z-index: 10000;
+    filter: opacity(0);
+    display: initial;
+}

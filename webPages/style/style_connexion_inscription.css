@@ -177,10 +177,21 @@
     left: 90px;
 }
 
+/*admin*/
 #drop_6 {
     height: 90px;
     width: 90px;
-    top: 20px;
-    left: -140px;
+    bottom: 160px;
+    right: 10px;
+    z-index: 100;
+}
+
+/*liens editionprofil*/
+#drop_7 {    
+    width: 500px;
+    max-width: 60vw;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
     z-index: 100;
 }

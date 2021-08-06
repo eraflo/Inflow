@@ -9,6 +9,15 @@ function actualisation_publication() {
     $('#actualisation_publication').load('actualisation_publication.php'+$(location).attr('search'));
 }
 
+function accept_cookie() {
+    $.ajax({
+        type: 'GET',
+        url: "accept_cookie.php",
+        success: function(data) {
+            $(".cookie-alert").css("display", "none");
+        }
+    });
+}
 
 function activate_rainbow() {
     // change la couleur des éléments en permanence (rainbow) au cours du temps
