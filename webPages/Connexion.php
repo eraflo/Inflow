@@ -90,4 +90,3 @@ if(isset($_POST["formconnexion"])) {
 include 'tmpl_bottom.php'; 
 ?>
 
-<link type="text/css" rel="stylesheet" href="style\style_connexion_inscription.css">

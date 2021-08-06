@@ -24,6 +24,8 @@ include('stats_visites_site.php');
         
         <link type="text/css" rel="stylesheet" href="style\style_template.css" media="none" onload="if(media!='all')media='all'">
         <noscript><link type="text/css" href="style\style_template.css" rel="stylesheet"></noscript>
+        <link type="text/css" rel="stylesheet" href="style\style_connexion_inscription.css" media="none" onload="if(media!='all')media='all'">
+        <noscript><link type="text/css" href="style\style_connexion_inscription.css" rel="stylesheet"></noscript>
         
         <!--Importer les scripts-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>

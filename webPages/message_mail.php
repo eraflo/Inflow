@@ -41,6 +41,6 @@ $message = '
 ';
 
 mail($recup_mail, "Récupération de mot de passe - Inflow.com", $message,  $header);
-header("Location: http://88.163.212.206:49160/webPages/recuperation.php?section=code&rm=$recup_mail");
+header("Location: recuperation.php?section=code&rm=$recup_mail");
 
 ?>
