@@ -60,14 +60,14 @@ if(isset($_POST["formconnexion"])) {
                                     <input class="input_form" type="text" name="pseudoconnect" placeholder="Identifiant" /></br>
                                     <input class="input_form" type="password" name="passconnect" placeholder="Mot de Passe" /></br>
                                     <input class="input_form" type="submit" name="formconnexion" value="Se connecter" /></br>
-                                    <a href="#" class="Oublie">Mot de passe oublié</a>
+                                    <a href="recuperation.php" class="Oublie">Mot de passe oublié</a>
                                 </form>
 
                                 <!--Ombres-->
                                 <div class="drop_drop" id="drop_1"></div>
                                 <div class="drop_drop" id="drop_2"></div>
                                 <div class="drop_drop" id="drop_3"></div>
-                                <div class="drop_drop" id="drop_4"></div>
+                                <div class="drop_drop" id="drop_4">Pas encore inscrit ?<a href="Inscription.php">C'est par ici</a></div>
                                 <div class="drop_drop" id="drop_5"></div>
                             </div>
                         </div>

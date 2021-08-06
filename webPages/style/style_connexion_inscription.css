@@ -166,6 +166,8 @@
     top: -60px;
     right: -50px;
     z-index: 3;
+    padding: 10px;
+    color: var(--color-text);
 }
 
 #drop_5 {
