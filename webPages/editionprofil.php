@@ -5,10 +5,12 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=inflow;charset=utf8", "root", "");
 include 'stats_visites_site.php';
 include 'webp_convert.php';
 
-if(isset($_SESSION['id'])) {
+if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
     $requeser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
     $requeser->execute(array($_SESSION['id']));
     $user = $requeser->fetch();
+    $req_liens = $bdd->prepare('SELECT * FROM `liens_sociaux` WHERE id_membre = ?');
+    $req_liens->execute(array($user['id']));
 
     if(isset($_POST['newpseudo']) AND !empty($_POST['newpseudo']) AND $_POST['newpseudo'] != $user['pseudo']) {
         $newpseudo = htmlspecialchars($_POST['newpseudo']);
@@ -94,16 +96,29 @@ if(isset($_SESSION['id'])) {
             $social_name = parse_url($social_link, PHP_URL_HOST);
             $insertlink = $bdd->prepare("INSERT INTO `liens_sociaux` (id_membre, nom, url) VALUES(?, ?, ?)");
             $insertlink->execute(array($user['id'], $social_name, $social_link));
+
+            // echoes answer only if nohead is sent to the server
+            if($_POST['nohead'] == "true") {
+                $data = ['link_name' => $social_name, 'link_url' => $social_link];
+                header('Content-Type: application/json;charset=utf-8');
+                echo json_encode($data);
+            }
         } else {
-            $erreur = "Le lien entré ne fonctionne pas";
+            $links_mess = "error";
+            if($_POST['nohead'] == "true") {
+                echo $links_mess;
+            }
         }
+        
     }
 
     if(isset($_POST['newpseudo']) AND $_POST['newpseudo'] == $user['pseudo']) {
         header("Location: Profil.php?id=".$_SESSION['id']);
     }
 
-    include 'tmpl_top.php'; 
+    // n'affiche pas la page quand "nohead" est envoyé au serveur
+    if(!isset($_POST['nohead'])) {
+        include 'tmpl_top.php'; 
 ?>
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
@@ -114,12 +129,11 @@ if(isset($_SESSION['id'])) {
                     <!--Formulaire-->
                     <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
                         <p class="Titre_form">Edition</p>
-                        <input class="input_form" type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" placeholder="<?php echo $user['pseudo']; ?>" /></br>
-                        <input class="input_form" type="password" name="newpass" id="newpass" placeholder="•••••••••••" /></br>
-                        <input class="input_form" type="password" name="newpass2" id="newpass2" placeholder="•••••••••••" /></br>
-                        <input class="input_form" type="email" id="newemail" name="newemail" placeholder="<?php echo $user['adresse_email']; ?>" /></br>
-                        <input class="input_form" type="text" name="newbio" id="newbio" placeholder="Bio" style="resize:vertical;" /></br>
-                        <input class="input_form" type="text" name="social_link" id="social_link" placeholder="https://twitter.com/Inflow"/></br>
+                        <input class="input_form" type="text" name="newpseudo" id="newpseudo" maxlength="30" placeholder="Pseudo" placeholder="<?php echo $user['pseudo']; ?>" autocomplete="off" /></br>
+                        <input class="input_form" type="password" name="newpass" id="newpass" placeholder="•••••••••••" autocomplete="off" /></br>
+                        <input class="input_form" type="password" name="newpass2" id="newpass2" placeholder="•••••••••••" autocomplete="off" /></br>
+                        <input class="input_form" type="email" id="newemail" name="newemail" placeholder="<?php echo $user['adresse_email']; ?>" autocomplete="off" /></br>
+                        <input class="input_form" type="text" name="newbio" id="newbio" placeholder="Bio" style="resize:vertical;" autocomplete="off" /></br>
                         <input class="input_form" type="file" name="avatar" /></br>
                         <input class="input_form" type="submit" value="Mise à jour" />
                     </form>
@@ -138,13 +152,41 @@ if(isset($_SESSION['id'])) {
     </article>
 </div>
 
-<div class="right"></div>
+<div class="right">
+    <article style="margin-top:40%">
+        <div>
+            <span class="PTitle">Liens</span>
+            <?php if ($req_liens->rowCount() > 0) { ?>
+                <div id="links_list_list">
+                    <?php while($l = $req_liens->fetch()) { ?>
+                        <a href="<?= $l['url'] ?>" class="noUnderline PActions links_list" rel="noreferrer noopener" title="<?= $l['url'] ?>">
+                            <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
+                            <?= $l['nom'] ?>
+                        </a>
+                        <br/>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+            <input style="max-width:100%" class="links_list" type="text" name="social_link" id="social_link" placeholder="https://www.twitter.com/Inflow" autocomplete="off"/></br>
+            <button id="links_list_send" class="links_list" onclick="send_new_link()">Nouveau lien</button>
+            <button id="links_list_error_message" class="links_list" style="display: none"></button>
+        </div>
+    </article>
+</div>
 
 
 <?php
+// Le bas de l'interface est ajouté après le contenu
+include 'tmpl_bottom.php';
+?>
+
+<link type="text/css" rel="stylesheet" href="style\style_connexion_inscription.css">
+<link type="text/css" rel="stylesheet" href="style\editionprofil.css">
+<script type="text/javascript" src="JS/editionprofil.js" defer></script>
+
+<?php
+}
 } else {
     header("Location: Connexion.php");
 }
-// Le bas de l'interface est ajouté après le contenu
-include 'tmpl_bottom.php'; 
 ?>
