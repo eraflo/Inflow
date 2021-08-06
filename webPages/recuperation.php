@@ -56,7 +56,7 @@ if(isset($_POST['verif_submit'], $_POST['verif_code'])) {
         if($verif_req == 1) {
             $up_req = $bdd->prepare('UPDATE recuperation SET confirme = 1 WHERE mail = ?');
             $up_req->execute(array($_GET['rm']));
-            header("Location: http://88.163.212.206:49160/webPages/recuperation.php?section=changemdp&rm=".$_GET['rm']."");
+            header("Location: recuperation.php?section=changemdp&rm=".$_GET['rm']."");
         } else {
             $erreur = "Code invalide";
         }
