@@ -31,7 +31,14 @@ if(isset($_SESSION['id']) AND !empty($_SESSION['id'])) {
     $reqtheme->execute(array($settings['user_color_mode']));
     $theme = $reqtheme->fetch();
 
-    
+    $reqtheme = $bdd->prepare('SELECT nom_theme FROM themes_couleurs WHERE id_theme = ?');
+    $reqtheme->execute(array($settings['user_color_mode']));
+    $theme = $reqtheme->fetch();
+
+    $statut_compte = $bdd->prepare('SELECT prive FROM membres WHERE id = ?');
+    $statut_compte->execute(array($_SESSION['id']));
+    $statut_compte = $statut_compte->fetch();
+
     if(isset($_POST['police'])) {
         $CHANGE_JS = true;
         // Insérer dans la base de données
@@ -65,6 +72,11 @@ if (isset($theme) && !empty($theme)){
 } else {
     echo '<script>theme = 0;</script>';
 }
+if (isset($statut_compte) && !empty($statut_compte)){
+    echo '<script>statut = "'.$statut_compte[0].'";</script>';
+} else {
+    echo '<script>statut = 0;</script>';
+}
 
 ?>
 <script src="JS/parametres.js" defer></script>
@@ -92,6 +104,9 @@ include 'MODULES/end.php';
             <?php } ?>
         </select><br/><br/>
         <input type="submit" name="police" value="Modifier"/>
+        <br/>
+        <h1 align="center">Private Mode :</h1>
+        <div class="element BoutonTransition auto_submit_item"><input type="checkbox" id="private" class="BoutonTransition can_rainbow2"></div>
         <br/>
         <h1 align="center">Dark Mode :</h1>
         <div class="element BoutonTransition auto_submit_item"><input id="darkTrigger" type="checkbox" class="BoutonTransition can_rainbow2"></div>

@@ -41,37 +41,48 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
         <div class="PCapsule">
             <?php echo $userinfos['pseudo']; ?>
         </div>
-        <br /><b>Adresse Email:</b>
-        <div class="PCapsule">
-            <?php echo $userinfos['adresse_email']; ?>
-        </div>
-        
-        <?php if(isset($userinfos['biographie']) AND !empty($userinfos['biographie'])) { ?>
-            <br /><b>Biographie:</b>
+        <?php 
+        if($userinfos['prive'] == 0 OR (isset($_SESSION) AND !empty($_SESSION) AND $_SESSION['admin'] == 1) OR (isset($_SESSION) AND !empty($_SESSION) AND $userinfos['id'] == $_SESSION['id'])) {?>
+            <br /><b>Adresse Email:</b>
             <div class="PCapsule">
-                <?php echo $userinfos['biographie']; ?>
+                <?php echo $userinfos['adresse_email']; ?>
             </div>
-            <br />
+            
+            <?php if(isset($userinfos['biographie']) AND !empty($userinfos['biographie'])) { ?>
+                <br /><b>Biographie:</b>
+                <div class="PCapsule">
+                    <?php echo $userinfos['biographie']; ?>
+                </div>
+                <br />
+            <?php } ?>
+            <br/>
+            <br/>
+            <?php if ($req_articles->rowCount() > 0) { ?>
+                <div class="PTitle">Articles écris</div>
+                <?php while($u = $req_articles->fetch()) { ?>
+                    <a href="Publication.php?id=<?= $u['id'] ?>" title="<?= $u['descriptions'] ?>"> <div class="PActions"><i>-  <?= $u['titre'] ?></i></div></a>
+                    <br/>
+                <?php }
+            } ?>
+            <br/>
+            <?php if ($req_liens->rowCount() > 0) { ?>
+                <div class="PTitle">Liens</div>
+                <?php while($l = $req_liens->fetch()) { ?>
+                    <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
+                    <a href="<?= $l['url'] ?>" class="PActions" rel="noreferrer noopener" title="<?= $l['url'] ?>"><?= $l['nom'] ?></a>
+                    <br/>
+                <?php }
+            } ?>
+        <?php } else { ?>
+            <div align="center">
+                <br/>
+                <h1><b>Compte Privé</b></h1>
+                <br/>
+                <img src="assets/prive.png">
+            </div>
         <?php } ?>
-        <br/>
-        <br/>
-        <?php if ($req_articles->rowCount() > 0) { ?>
-            <div class="PTitle">Articles écris</div>
-            <?php while($u = $req_articles->fetch()) { ?>
-                <a href="Publication.php?id=<?= $u['id'] ?>" title="<?= $u['descriptions'] ?>"> <div class="PActions"><i>-  <?= $u['titre'] ?></i></div></a>
-                <br/>
-            <?php }
-        } ?>
-        <br/>
-        <?php if ($req_liens->rowCount() > 0) { ?>
-            <div class="PTitle">Liens</div>
-            <?php while($l = $req_liens->fetch()) { ?>
-                <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
-                <a href="<?= $l['url'] ?>" class="PActions" rel="noreferrer noopener" title="<?= $l['url'] ?>"><?= $l['nom'] ?></a>
-                <br/>
-            <?php }
-        } ?>
     </div>
+    
 
     <div class="right"></div>
 
