@@ -114,27 +114,29 @@ include 'MODULES/end.php';
 <div class="middle">
     <article class="ProfilTxt">
         <!--Formulaire pour postez des articles-->
-        <form method="POST" enctype="multipart/form-data">
-            <input type="text" name="article_titre" placeholder="Titre" /> <br/>
-            <select type="text" name="article_id_auteur" placeholder="Auteur">
+        <form method="POST" enctype="multipart/form-data" class="con_ins">
+            <input class="input_form" type="text" name="article_titre" placeholder="Titre" />
+            <select class="input_form" type="text" name="article_id_auteur" placeholder="Auteur">
                 <option value=""><i>Auteur</i></option>
                 <?php while($a = $auteurs->fetch()) { ?>
                     <option value="<?= $a['id'] ?>"><?= $a['pseudo'] ?></option>
                 <?php } ?>
-            </select><br/>
-            <select id="categorie_selection" type="text" name="article_id_categorie">
+            </select>
+            <select class="input_form" id="categorie_selection" type="text" name="article_id_categorie">
                 <option value="" style="font-style:italic;">Aucune catégorie</option>
                 <option value="Nouvelle" style="font-weight:bold;">Nouvelle catégorie</option>
                 <?php while($c = $categories->fetch()) { ?>
                     <option value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
                 <?php } ?>
-            </select>
-            <input id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
-            <input id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
-            <textarea type="text" name="article_comment" placeholder="Description"></textarea><br/>
-            <textarea id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea><br/>
-            <input type="file" name="miniature"/><br/>
-            <input type="submit" value="Envoyer l'article" /><br />
+            </select><br/>
+            <input class="input_form" id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
+            <input class="input_form" id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
+            <textarea class="input_form" type="text" name="article_comment" placeholder="Description" style="resize:vertical;width:100%"></textarea><br/>
+            <div style="text-align:initial;">
+                <textarea class="input_form" id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea>
+            </div><br/>
+            <label class="Titre_form" for="miniature">Miniature : </label><input class="input_form" type="file" name="miniature"/><br/>
+            <input class="input_form" type="submit" value="Envoyer l'article" /><br />
         </form>
         <br />
         <!--Affiche message en lien avec le transfert des données du formulaire.
