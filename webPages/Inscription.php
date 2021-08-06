@@ -57,49 +57,51 @@ if(isset($_POST["forminscription"])) {
 }
 include 'tmpl_top.php';
 ?>
-            <?php
-            include 'MODULES/begin_left.php';
-            include 'MODULES/end.php';
-            ?>
-            <!--Début de là où on pourra mettre du texte-->
-            <div class="middle">
-                <article>
-                    <!--Formulaire à remplir pour s'inscrire-->
-                    <div class="form_con_ins">
-                            <div class="container">
-                                <!--Formulaire-->
-                                <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
-                                    <p class="Titre_form">Inscription</p>
-                                    <input class="input_form" type="text" name="pseudo" id="pseudo" maxlength="30" placeholder=" Pseudo : 30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required /></br>
-                                    <input class="input_form" type="email" placeholder="Email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required /></br>
-                                    <input class="input_form" type="password" placeholder="Mot de passe" name="pass" id="pass" required /></br>
-                                    <input class="input_form" type="password" placeholder="Confirmer mdp" name="cpass" id="cpass" required /></br>
-                                    <input class="input_form" type="submit" name="forminscription" value="Envoyer" />
-                                </form>
+<?php
+include 'MODULES/begin_left.php';
+include 'MODULES/end.php';
+?>
+<!--Début de là où on pourra mettre du texte-->
+<div class="middle">
+    <article>
+        <!--Formulaire à remplir pour s'inscrire-->
+        <div class="form_con_ins">
+                <div class="container">
+                    <!--Formulaire-->
+                    <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
+                        <p class="Titre_form">Inscription</p>
+                        <input class="input_form" type="text" name="pseudo" id="pseudo" maxlength="30" placeholder=" Pseudo : 30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required /></br>
+                        <input class="input_form" type="email" placeholder="Email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required /></br>
+                        <input id="password_input" class="input_form" type="password" placeholder="Mot de passe" name="pass" id="pass" required />
+                        <img id="password_visibility" class="visibility_button" src="assets/afficher.png" /></br>
+                        <input class="input_form" type="password" placeholder="Confirmer mdp" name="cpass" id="cpass" required /></br>
+                        <input class="input_form" type="submit" name="forminscription" value="Envoyer" />
+                    </form>
 
-                                <!--Ombres-->
-                                <div class="drop_drop" id="drop_1"></div>
-                                <div class="drop_drop" id="drop_2"></div>
-                                <div class="drop_drop" id="drop_3"></div>
-                                <div class="drop_drop" id="drop_4"></div>
-                                <div class="drop_drop" id="drop_5"></div>
-                            </div>
-                        </div>
-                        <!--Affiche message si erreur ou si compte bien créé-->
-                        <?php
-                        if(isset($erreur)){
-                        echo $erreur;
-                        }
-                        ?>
-                    </div>
-
-
-                </article>
+                    <!--Ombres-->
+                    <div class="drop_drop" id="drop_1"></div>
+                    <div class="drop_drop" id="drop_2"></div>
+                    <div class="drop_drop" id="drop_3"></div>
+                    <div class="drop_drop" id="drop_4"></div>
+                    <div class="drop_drop" id="drop_5"></div>
+                </div>
             </div>
+            <!--Affiche message si erreur ou si compte bien créé-->
+            <?php
+            if(isset($erreur)){
+            echo $erreur;
+            }
+            ?>
+        </div>
 
-            <div class="right"></div>
+
+    </article>
+</div>
+
+<div class="right"></div>
 <?php 
 // Le bas de l'interface est ajouté après le contenu
 include 'tmpl_bottom.php'; 
 ?>
-
+<link type="text/css" href="style\inscription-connexion.css" rel="stylesheet">
+<script src="JS/inscription-connexion.js" defer></script>
