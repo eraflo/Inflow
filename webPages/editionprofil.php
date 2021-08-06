@@ -180,7 +180,6 @@ if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
 include 'tmpl_bottom.php';
 ?>
 
-<link type="text/css" rel="stylesheet" href="style\style_connexion_inscription.css">
 <link type="text/css" rel="stylesheet" href="style\editionprofil.css">
 <script type="text/javascript" src="JS/editionprofil.js" defer></script>
 
