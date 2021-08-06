@@ -19,11 +19,6 @@
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    -moz-backdrop-filter: blur(5px);
-    -ms-border-radius: blur(5px);
-    -o-border-radius: blur(5px);
     box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
     color: var(--color-text);
     font-weight: 500;
