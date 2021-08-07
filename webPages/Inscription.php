@@ -14,7 +14,7 @@ if(isset($_POST["forminscription"])) {
 
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $email = htmlspecialchars($_POST['email']);
-    $biographie = htmlspecialchars($_POST['biographie']);
+    $biographie = htmlspecialchars($_POST['bio']);
     $pass = sha1($_POST['pass']);
     $cpass = sha1($_POST['cpass']);
 
@@ -66,36 +66,43 @@ include 'MODULES/end.php';
     <article>
         <!--Formulaire à remplir pour s'inscrire-->
         <div class="form_con_ins">
-                <div class="container">
-                    <!--Formulaire-->
-                    <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
-                        <p class="Titre_form">Inscription</p>
-                        <input class="input_form" type="text" name="pseudo" id="pseudo" maxlength="30" placeholder=" Pseudo : 30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" required /></br>
-                        <input class="input_form" type="email" placeholder="Email" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>" required /></br>
-                        <input id="password_input" class="input_form" type="password" placeholder="Mot de passe" name="pass" id="pass" required />
-                        <img id="password_visibility" class="visibility_button" src="assets/afficher.png" /></br>
-                        <input class="input_form" type="password" placeholder="Confirmer mdp" name="cpass" id="cpass" required /></br>
-                        <input class="input_form" type="submit" name="forminscription" value="Envoyer" />
-                    </form>
+            <div class="container">
+                <!--Formulaire-->
+                <form class="con_ins" method="POST" action="" enctype="multipart/form-data">
+                    <p class="Titre_form">Inscription</p>
+                    <input class="input_form" type="text" name="pseudo" id="pseudo" maxlength="30"
+                        placeholder=" Pseudo : 30 caractères max" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>"
+                        required /></br>
+                    <input class="input_form" type="email" placeholder="Email" id="email" name="email"
+                        value="<?php if(isset($email)) { echo $email; } ?>" required /></br>
+                    <input id="password_input" class="input_form" type="password" placeholder="Mot de passe" name="pass"
+                        id="pass" required />
+                    <img id="password_visibility" class="visibility_button" src="assets/afficher.png" /></br>
+                    <input class="input_form" type="password" placeholder="Confirmer mdp" name="cpass" id="cpass"
+                        required /></br>
+                    <input class="input_form" type="text" name="bio" id="bio" placeholder="Petite Bio sur vous"
+                        required /></br>
+                    <input class="input_form" type="submit" name="forminscription" value="Envoyer" />
+                </form>
 
-                    <!--Ombres-->
-                    <div class="drop_drop" id="drop_1"></div>
-                    <div class="drop_drop" id="drop_2"></div>
-                    <div class="drop_drop" id="drop_3"></div>
-                    <div class="drop_drop" id="drop_4"></div>
-                    <div class="drop_drop" id="drop_5"></div>
-                </div>
+                <!--Ombres-->
+                <div class="drop_drop" id="drop_1"></div>
+                <div class="drop_drop" id="drop_2"></div>
+                <div class="drop_drop" id="drop_3"></div>
+                <div class="drop_drop" id="drop_4"></div>
+                <div class="drop_drop" id="drop_5"></div>
             </div>
-            <!--Affiche message si erreur ou si compte bien créé-->
-            <?php
+        </div>
+        <!--Affiche message si erreur ou si compte bien créé-->
+        <?php
             if(isset($erreur)){
             echo $erreur;
             }
             ?>
-        </div>
+</div>
 
 
-    </article>
+</article>
 </div>
 
 <div class="right"></div>
