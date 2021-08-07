@@ -39,9 +39,9 @@ $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
                     <div class="date"><?= date('m/d', strtotime($a['date_time_publication'])) ?></div>                        
 
                     <?php if(isset($a["option"])) { ?>
-                        <span class="option" style="background=var(--color-background-alt)"><?= $a["option"] ?>
+                        <div class="new"><?= $a["option"] ?></div>
                     <?php } elseif(strtotime($a["date_time_publication"]) >= strtotime('-3 days')) { ?>
-                        <span class="option" style="background:pink">Nouveau!</span>
+                        <div class="new">New</div>
                     <?php } ?>
                 </div>
                 <div class="miniature">
