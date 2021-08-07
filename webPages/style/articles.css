@@ -29,92 +29,93 @@ h1 {
 
 
 /*--Gallerie d'éléments, affiche comme des cartes--*/
-.cardGallery {
+.card_article {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px
+    gap: 2em;
 }
-.cardArticle {
-    width: 14em;
-    height: 14em;
-    background-color: var(--color-background);
-    overflow: hidden;
-    border-radius: 15%;
-    display: grid;
-    grid-template-areas: "title title title"
-                         "more more more"
-                         ". author author"
-                         "option option option";
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr) auto;
+.card {
+    width: 550px;
+    height: 220px;
+    max-width: 100%;
+    background-color: lightgray;
+    transition: 0.5s .1s all ease-in-out;
+    border-radius: 25px;
 }
-.cardArticle > * {
-    align-self: center;
-    margin: 0;
-    z-index: 1;
-}
-.cardArticle .title {
-    grid-area: title;
+.card .miniature {
     width: 100%;
-    padding: 2% 10%;
-}
-.cardArticle .date {
-    grid-area: more;
-    width: 100%;
-    padding: 2% 15%;
-    white-space: nowrap;
-} /* Can't have both date and desc */
-.cardArticle .desc {
-    grid-area: more;
-    width: 100%;
-    padding: 2% 5%;
-}
-.cardArticle .author {
-    grid-area: author;
-    width: 100%;
-    padding: 2% 10%;
-    white-space: nowrap;
-    text-align: center;
-}
-.cardArticle .option {
-    grid-area: option;
-    background-color: antiquewhite;
-    height: 2.5em;
-    width: 100%;
-    padding: 2% 10%;
-}
-/* Effet de flou pour les images d'arrière-plan */
-.cardArticleImage {
-    z-index: 0;
-    grid-column: 1/4;
-    grid-row: 1/5;
-    filter: blur(1.5px) opacity(0.7);
-}
-.cardCategory {
-    background-color: var(--color-background-alt);
-}
-/*--Gestion des pages lorsqu'il existe plusieurs pages--*/
-.articleGalleryPageContainer {
-    width: 100%;
-    height: 2em;
-    display: flex;
-    font-size: x-large;
-}
-.articleGalleryPageElement {
-    margin: 0.5em;
-    padding: 0.1em 0.3em;
-}
-/*--Spécifique à la page admin--*/
-.cardArticleContentProfiles span,
-.cardArticleContentProfiles a {
-    font-size: small;
-}
-.cardArticleImageProfiles {
-    max-width: 160px;
     height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+    overflow: hidden;
+    transition: .3s all ease-out;
+    border-radius: 25px;
+    opacity: .85;
 }
+.card .text_card {
+    display: none;
+    grid-template-areas: "titre titre titre" "auteur . ." "description description description" ". . date";
+    grid-template-rows: auto 1.5em 1fr 1em;
+    position: absolute;
+    z-index: -1;
+    padding: 0.5em 0.5em 0.5em 230px;
+    height: 95%;
+}
+.card .titre {
+    grid-area: titre;
+    font-size: x-large;
+    transition: .3s all ease-out;
+}
+.card .auteur {
+    grid-area: auteur;
+    font-size: smaller;
+}
+
+.card .new {
+    display: initial;
+    z-index: 20;
+    position: relative;
+    top: -60%;
+    left: 45%;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.card .description {
+    grid-area: description;
+}
+.card .date {
+    grid-area: date;
+    font-size: x-small;
+}
+.card:hover .miniature {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    margin-left: 15px;
+    border-radius: 2px;
+    opacity: 1;
+}
+.card:hover .text_card {
+    display: grid;
+}
+.card:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    z-index: 10;
+    box-shadow: 15px 10px 30px 10px rgba(93, 123, 143, 0.6);
+}
+.card:hover .titre {
+    font-weight: bold;
+}
+
+.card:hover .new {
+    display: none;
+}
+
+
+
 .article {
     font-family: var(--font-article);
 }
