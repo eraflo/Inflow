@@ -22,28 +22,34 @@ $categories = $bdd->query('SELECT * FROM `categories`');
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 ?>
 
-<div class="cardGallery hcenter" id="actualisation_publication">
+<div class="card_article" id="actualisation_publication">
     <?php while($a = $articles->fetch()) { ?>
-        <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a['descriptions'] ?>">
-            <div class="cardArticle">
-                <?php if(!empty($a['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
-                <?php } ?>
-                <p class="title"><?= $a['titre'] ?></p>
-                <p class="date"><?= date('m/d', strtotime($a['date_time_publication'])) ?></p>
-                <?php if(isset($a['id_auteur'])) {
-                $search_auteur->execute(array($a['id_auteur'])); 
-                $sa = $search_auteur->fetch();?>
-                    <p class="author"> <?= $sa['pseudo'] ?></p>
-                <?php } else { ?>
-                    <p class="author"> <?= $a['auteur'] ?></p>
-                <?php } ?>
-                <?php if(isset($a["option"])) { ?>
-                    <span class="option" style="background=var(--color-background-alt)"><?= $a["option"] ?>
-                <?php } elseif(strtotime($a["date_time_publication"]) >= strtotime('-3 days')) { ?>
-                    <span class="option" style="background:pink">Nouveau!</span>
-                <?php } ?>
-            </div>
-        </a>
+        <div class="card">
+            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" >
+                <div class="text_card">
+                    <div class="titre"><?= $a['titre'] ?></div>
+                    <?php if(isset($a['id_auteur'])) {
+                        $search_auteur->execute(array($a['id_auteur'])); 
+                        $sa = $search_auteur->fetch();?>
+                        <div class="auteur"> <?= $sa['pseudo'] ?></div>
+                    <?php } else { ?>
+                        <div class="auteur"> <?= $a['auteur'] ?></div>
+                    <?php } ?>
+                    <div class="description"><?= $a['descriptions'] ?>"</div>
+                    <div class="date"><?= date('m/d', strtotime($a['date_time_publication'])) ?></div>                        
+
+                    <?php if(isset($a["option"])) { ?>
+                        <div class="new"><?= $a["option"] ?></div>
+                    <?php } elseif(strtotime($a["date_time_publication"]) >= strtotime('-3 days')) { ?>
+                        <div class="new">New</div>
+                    <?php } ?>
+                </div>
+                <div class="miniature">
+                    <?php if(!empty($a['avatar_article'])) { ?>
+                            <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                    <?php } ?>
+                </div> 
+            </a>
+        </div>
     <?php } ?>
 </div>
