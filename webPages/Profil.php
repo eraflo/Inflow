@@ -101,7 +101,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     <?php } ?>
     <br />
     <?php
-        if(isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+        if(isset($_SESSION['id']) AND ($_SESSION['id'] > 0) AND $userinfos['id'] == $_SESSION['id']) {
             $M_requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
             $M_requser->execute(array($_SESSION['id']));
             $M_userinfos = $M_requser->fetch();
