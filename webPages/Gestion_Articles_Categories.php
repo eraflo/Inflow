@@ -96,9 +96,6 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         $dislikes->execute(array($id));
         $dislikes = $dislikes->rowCount();
 
-        $vues = 0; // pas encore implémenté
-
-
         $req_article_categorie = $bdd->prepare('SELECT nom FROM `categories` WHERE id = ?');
         $req_article_categorie->execute(array($article['id_categories']));
         $article_categorie = $req_article_categorie->fetch();
