@@ -41,6 +41,7 @@ h1 {
     background-color: lightgray;
     transition: 0.5s .1s all ease-in-out;
     border-radius: 25px;
+    overflow: hidden;
 }
 .card .miniature {
     width: 100%;
@@ -50,6 +51,11 @@ h1 {
     border-radius: 25px;
     opacity: .85;
 }
+.card .miniature img {
+    min-height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 .card .text_card {
     display: none;
     grid-template-areas: "titre titre titre" "auteur . ." "description description description" ". . date";
@@ -58,6 +64,7 @@ h1 {
     z-index: -1;
     padding: 0.5em 0.5em 0.5em 230px;
     height: 95%;
+    opacity: 0;
 }
 .card .titre {
     grid-area: titre;
@@ -96,6 +103,7 @@ h1 {
 }
 .card:hover .text_card {
     display: grid;
+    opacity: 1;
 }
 .card:hover {
     transform: scale(1.2);
