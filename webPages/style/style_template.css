@@ -309,17 +309,13 @@ h1 {
     text-decoration: none;
     padding: 0 10px;
     color: var(--color-unselected-links);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(.2,1,.5,1);
+    display: inline-block;
 }
 /*--Affecte les liens lorsque l'on a la souris dessus dans la navbar--*/
 .navBarHeader a:any-link:hover {
     color: var(--color-text-hover);
     text-shadow: 0px 0px 18px white;
-    transition: all 0.3s ease 0.2s;
-    -webkit-transition: all 0.3s ease 0.2s;
-    -moz-transition: all 0.3s ease 0.2s;
-    -ms-transition: all 0.3s ease 0.2s;
-    -o-transition: all 0.3s ease 0.2s;
 }
 
 
@@ -357,7 +353,12 @@ a:hover {
     color: var(--color-text-hover);
 }
 /*--Souligner les liens (c bo ptn)--*/
-a:any-link:after {
+.underline {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+.underline:any-link:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -369,16 +370,9 @@ a:any-link:after {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
-a:any-link:hover:after {
+.underline:any-link:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
-/*--Ne pas afficher la barre des liens (cf a:any-link:after)--*/
-.noUnderline {
-    color: inherit;
-}
-a.noUnderline:after {
-    display: none;
 }
 
 

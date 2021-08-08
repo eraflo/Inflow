@@ -85,7 +85,7 @@ include 'MODULES/end.php';
             <?= $titre ?>
         </h1>
         <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
-            <!--Edition--><a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="noUnderline" title="Modifier l'article"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
+            <!--Edition--><a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="" title="Modifier l'article"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
             <!--Statistiques-->
         <?php } ?>
         <div>
@@ -95,9 +95,9 @@ include 'MODULES/end.php';
             <?= html_entity_decode($contenu) ?>
         </div>
         <div class="articleMenuButtonContainer">
-            <div class="articleMenuButtonElement"><a href="#" class="noUnderline" title="Nombre de vues"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
-            <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="noUnderline" title="J'aime"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>
-            <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="noUnderline" title="Je n'aime pas"><img src="assets/dislike.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="#" class="" title="Nombre de vues"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="" title="J'aime"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="" title="Je n'aime pas"><img src="assets/dislike.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
         </div>
     </article>
 
@@ -108,7 +108,7 @@ include 'MODULES/end.php';
             <?php while($a = $reco_article->fetch()) { 
                 if(isset($a['id_categories']) AND !empty($a['id_categories']) AND $a['id_categories'] != NULL) {
                     if($a['id'] != $article['id']) {?>
-                        <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" title="<?= $a["date_time_publication"] ?>">
+                        <a href="Publication.php?id=<?= $a['id'] ?>" class="" title="<?= $a["date_time_publication"] ?>">
                             <div class="cardArticle">
                                 <?php if(!empty($a['avatar_article'])) { ?>
                                     <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />

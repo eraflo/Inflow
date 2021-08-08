@@ -26,7 +26,7 @@ include 'MODULES/end.php';
                 $search_art = $bdd->prepare("SELECT * FROM articles WHERE id = ?");
                 $search_art->execute(array($d["id"]));
                 $s = $search_art->fetch(); ?>
-                <a href="Publication.php?id=<?= $s['id'] ?>" class="noUnderline" title="<?= $d['date_visite'] ?>">
+                <a href="Publication.php?id=<?= $s['id'] ?>" class="" title="<?= $d['date_visite'] ?>">
                     <div class="cardArticle" style='<?php if(!empty($s['avatar_article'])) { ?>
                     background: center url("membres/avatars_article/<?= $s['avatar_article'] ?>");
                     background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>

@@ -25,7 +25,7 @@ $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 <div class="card_article" id="actualisation_publication">
     <?php while($a = $articles->fetch()) { ?>
         <div class="card">
-            <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" >
+            <a href="Publication.php?id=<?= $a['id'] ?>" class="" >
                 <div class="text_card">
                     <div class="titre"><?= $a['titre'] ?></div>
                     <?php if(isset($a['id_auteur'])) {

@@ -35,7 +35,7 @@ include 'MODULES/end.php';
                     if($a_n["type_new"] == 2) {
                     ?>
                     <div class="card">
-                        <a href="<?= $a_n["lien"] ?>" class="noUnderline">
+                        <a href="<?= $a_n["lien"] ?>">
                             <div class="text_card">
                                 <div class="titre"><?= $a_n['nom'] ?></div>
                                 <div class="description"><?= $a_n['lien'] ?></div>
@@ -48,7 +48,7 @@ include 'MODULES/end.php';
                         $n_art->execute(array($a_n['lien']));
                         $new_art = $n_art->fetch();?>
                         <div class="card">
-                            <a href="Publication.php?id=<?= $new_art['id'] ?>" class="noUnderline">
+                            <a href="Publication.php?id=<?= $new_art['id'] ?>">
                                 <div class="text_card">
                                     <div class="titre"><?= $new_art['titre'] ?></div>
                                     <?php if(isset($new_art['id_auteur']) AND $new_art['id_auteur'] != NULL) {
@@ -85,7 +85,7 @@ include 'MODULES/end.php';
             <?php while($a_r = $recom->fetch()) { 
                 ?>
                 <div class="card">
-                    <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline">
+                    <a href="Publication.php?id=<?= $a_r['id'] ?>">
                         <div class="text_card">
                             <div class="titre"><?= $a_r['titre'] ?></div>
                             <?php 
