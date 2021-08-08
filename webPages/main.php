@@ -30,66 +30,87 @@ include 'MODULES/end.php';
         <?php if($new->rowCount() > 0) {?>
             <h1>News :</h1>
             <!--Affiche des news-->
-            <div class="cardGallery hcenter">
+            <div class="card_article">
                 <?php while($a_n = $new->fetch()) { 
                     if($a_n["type_new"] == 2) {
                     ?>
-                        <a href="<?= $a_n["lien"] ?>" class="">
-                        <div class="cardArticle">
-                            <p class="title"><?= $a_n['nom'] ?></p>
-                            <p class="date"><?= $a_n['lien'] ?></p>
-                            <p class="author"><?= $a_n['horaire'] ?></p><!--Anyr -> J'ai utilisé author parce que j'ai pas envie de m'embêter -->
-                        </div>
+                    <div class="card">
+                        <a href="<?= $a_n["lien"] ?>">
+                            <div class="text_card">
+                                <div class="titre"><?= $a_n['nom'] ?></div>
+                                <div class="description"><?= $a_n['lien'] ?></div>
+                                <div class="date"><?= $a_n['horaire'] ?></div>
+                            </div>
                         </a>
+                    </div>
                     <?php } elseif($a_n["type_new"] == 0) { 
                         $n_art = $bdd->prepare('SELECT * FROM `articles` WHERE id = ?');
                         $n_art->execute(array($a_n['lien']));
                         $new_art = $n_art->fetch();?>
-                        <a href="Publication.php?id=<?= $new_art['id'] ?>" class="">
-                            <div class="cardArticle" style='<?php if(!empty($new_art['avatar_article'])) { ?>
-                            background: center url("membres/avatars_article/<?= $new_art['avatar_article'] ?>");
-                            background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
-                                <p class="title"><?= $new_art['titre'] ?></p>
-                                <p class="desc"><?= $new_art['descriptions'] ?></p>
-                                <?php if(isset($new_art['id_auteur']) AND $new_art['id_auteur'] != NULL) {
-                                $search_auteur->execute(array($new_art['id_auteur'])); 
-                                $sa1 = $search_auteur->fetch();?>
-                                    <p class="author"> <?= $sa1['pseudo'] ?></p>
-                                <?php } else { ?>
-                                    <p class="author"> <?= $new_art['auteur'] ?></p>
+                        <div class="card">
+                            <a href="Publication.php?id=<?= $new_art['id'] ?>">
+                                <div class="text_card">
+                                    <div class="titre"><?= $new_art['titre'] ?></div>
+                                    <?php if(isset($new_art['id_auteur']) AND $new_art['id_auteur'] != NULL) {
+                                        $search_auteur->execute(array($new_art['id_auteur'])); 
+                                        $sa1 = $search_auteur->fetch();?>
+                                        <div class="auteur"> <?= $sa1['pseudo'] ?></div>
+                                    <?php } else { ?>
+                                        <div class="auteur"> <?= $new_art['auteur'] ?></div>
+                                    <?php } ?>
+                                    <div class="description"><?= $new_art['descriptions'] ?></div>
+                                    <div class="date"><?= $new_art['date_time_publication'] ?></div>
+                                </div>
+                                <div class="miniature">
+                                    <?php if(!empty($new_art['avatar_article'])) { ?>
+                                        <img src="membres/avatars_article/<?= $new_art['avatar_article'] ?>" />
+                                    <?php } ?>
+                                </div>
+                                <?php if(isset($a["option"])) { ?>
+                                    <div class="new"><?= $new_art["option"] ?></div>
+                                <?php } elseif(strtotime($new_art["date_time_publication"]) >= strtotime('-3 days')) { ?>
+                                    <div class="new">New</div>
                                 <?php } ?>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     <?php } 
                 } ?>
             </div>
-            <?php } ?>
+        <?php } ?>
 
 
         <h1>Recommandations :</h1>
         <!--Affiche des recommendations d'articles à lire-->
-        <div class="cardGallery hcenter">
+        <div class="card_article">
             <?php while($a_r = $recom->fetch()) { 
                 ?>
-                <a href="Publication.php?id=<?= $a_r['id'] ?>" class="">
-                <?php if(!empty($a_r['avatar_article'])) { ?>
-                    <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
-                <?php } ?>
-                    <div class="cardArticle" style='<?php if(!empty($a_r['avatar_article'])) { ?>
-                    background: center url("membres/avatars_article/<?= $a_r['avatar_article'] ?>");
-                    background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
-                        <p class="title"><?= $a_r['titre'] ?></p>
-                        <p class="desc"><?= $a_r['descriptions'] ?></p>
-                        <?php 
-                        if(isset($a_r['id_auteur']) AND $a_r['id_auteur'] != NULL) {
-                        $search_auteur->execute(array($a_r['id_auteur'])); 
-                        $sa1 = $search_auteur->fetch();?>
-                            <p class="author"> <?= $sa1['pseudo'] ?></p>
-                        <?php } else { ?>
-                            <p class="author"> <?= $a_r['auteur'] ?></p>
+                <div class="card">
+                    <a href="Publication.php?id=<?= $a_r['id'] ?>">
+                        <div class="text_card">
+                            <div class="titre"><?= $a_r['titre'] ?></div>
+                            <?php 
+                            if(isset($a_r['id_auteur']) AND $a_r['id_auteur'] != NULL) {
+                            $search_auteur->execute(array($a_r['id_auteur'])); 
+                            $sa1 = $search_auteur->fetch();?>
+                                <div class="auteur"> <?= $sa1['pseudo'] ?></div>
+                            <?php } else { ?>
+                                <div class="auteur"> <?= $a_r['auteur'] ?></div>
+                            <?php } ?>
+                            <div class="description"><?= $a_r['descriptions'] ?></div>
+                            <div class="date"><?= $a_r['date_time_publication'] ?></div>
+                        </div>
+                        <div class="miniature">
+                            <?php if(!empty($a_r['avatar_article'])) { ?>
+                                <img src="membres/avatars_article/<?= $a_r['avatar_article'] ?>" />
+                            <?php } ?>
+                        </div>
+                        <?php if(isset($a_r["option"])) { ?>
+                            <div class="new"><?= $a_r["option"] ?></div>
+                        <?php } elseif(strtotime($a_r["date_time_publication"]) >= strtotime('-3 days')) { ?>
+                            <div class="new">New</div>
                         <?php } ?>
-                    </div>
-                </a>
+                    </a>
+                </div>
             <?php } ?>
         </div>
     </article>
