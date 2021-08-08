@@ -52,7 +52,7 @@ h1 {
     opacity: .85;
 }
 .card .miniature img {
-    min-height: 100%;
+    height: 100%;
     width: 100%;
     object-fit: cover;
 }
