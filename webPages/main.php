@@ -19,7 +19,7 @@ include 'MODULES/stats_visites_site.php';
 include 'MODULES/end.php';
 ?>
 <!--Début de là où on pourra mettre du texte-->
-<div class="middle">
+<div class="middle ProfilTxt">
     <article class="ProfilTxt MenuTxt">
         <h1> Qui sommes nous ? </h1>
         <p, style="font-family: sans-serif;"> Inflow est un média musical entièrement géré par des lycéens dont le but est 

@@ -65,6 +65,11 @@ $view = $bdd->prepare("SELECT * FROM historique WHERE id = ?");
 $view->execute(array($id));
 $vues = $view->rowCount();
 
+$get_id_cat = htmlspecialchars($_GET['id']);
+$article_cat = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
+$article_cat->execute(array($get_id_cat));
+$article_cat = $article_cat->fetch(); 
+$cat = $article_cat['id_categories'];
 
 $reco_article = $bdd->prepare("SELECT * FROM articles WHERE id_categories = ? ORDER BY date_time_publication DESC LIMIT 3");
 $reco_article->execute(array($cat));
@@ -104,27 +109,31 @@ include 'MODULES/end.php';
     <article class="RecommendationArticle">
         <h1>Recommandations en lien avec cet article :</h1>
         <?php if ($reco_article->rowCount() > 1) { ?>
-            <div class="cardGallery">
+            <div class="card_article">
             <?php while($a = $reco_article->fetch()) { 
                 if(isset($a['id_categories']) AND !empty($a['id_categories']) AND $a['id_categories'] != NULL) {
                     if($a['id'] != $article['id']) {?>
-                        <a href="Publication.php?id=<?= $a['id'] ?>" class="" title="<?= $a["date_time_publication"] ?>">
-                            <div class="cardArticle">
-                                <?php if(!empty($a['avatar_article'])) { ?>
-                                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
-                                <?php } ?>
-                                <p class="title"><?= $a['titre'] ?></p>
-                                <p class="desc"><?= $a['descriptions'] ?></p>
-                                <?php 
-                                if(isset($a['id_auteur'])) {
-                                    $search_auteur->execute(array($a['id_auteur'])); 
-                                    $sa = $search_auteur->fetch();?>
-                                    <p class="author"> <?= $sa['pseudo'] ?></p>
-                                <?php } else { ?>
-                                    <p class="author"> <?= $a['auteur'] ?></p>
-                                <?php } ?>
-                            </div>
-                        </a>
+                        <div class="card">
+                            <a href="Publication.php?id=<?= $a['id'] ?>" class="" title="<?= $a["date_time_publication"] ?>">
+                                <div class="text_card">
+                                    <div class="titre"><?= $a['titre'] ?></div>
+                                    <?php 
+                                    if(isset($a['id_auteur'])) {
+                                        $search_auteur->execute(array($a['id_auteur'])); 
+                                        $sa = $search_auteur->fetch();?>
+                                        <div class="auteur"> <?= $sa['pseudo'] ?></div>
+                                    <?php } else { ?>
+                                        <p class="auteur"> <?= $a['auteur'] ?></div>
+                                    <?php } ?>
+                                    <div class="description"><?= $a['descriptions'] ?></div>
+                                </div>
+                                <div class="miniature">
+                                    <?php if(!empty($a['avatar_article'])) { ?>
+                                        <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                    <?php } ?>
+                                </div>
+                            </a>
+                        </div>
                 <?php }
                 } 
             } ?>

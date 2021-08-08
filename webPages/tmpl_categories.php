@@ -35,17 +35,23 @@ include 'tmpl_top.php';
                 <?= $nom ?>
             </h1>
             
-            <div class="cardGallery hcenter">
+            <div class="card_article">
                 <?php while($a = $articles->fetch()) { ?>
-                    <a href="Publication.php?id=<?= $a['id'] ?>" class="">
-                        <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>
-                        background: center url("membres/avatars_article/<?= $a['avatar_article'] ?>");
-                        background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
-                            <p class="title"><?= $a['titre'] ?></p>
-                            <p class="desc"><?= $a['descriptions'] ?></p>
-                            <p class="author"><?= $a['auteur'] ?></p>
-                        </div>
-                    </a>
+                    <div class="card">
+                        <a href="Publication.php?id=<?= $a['id'] ?>">
+                            <div class="text_card">
+                                <div class="titre"><?= $a['titre'] ?></div>
+                                <div class="auteur"><?= $a['auteur'] ?></div>
+                                <div class="description"><?= $a['descriptions'] ?></div>
+                                <div class="date"><?= date('m/d', strtotime($a['date_time_publication'])) ?></div>  
+                            </div>
+                            <div class="miniature">
+                                <?php if(!empty($a['avatar_article'])) { ?>
+                                    <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                <?php } ?>
+                            </div>
+                        </a>
+                    </div>
                 <?php } ?>
             </div>
 
