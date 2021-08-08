@@ -6,12 +6,28 @@ if(!isset($_SESSION['admin']) OR $_SESSION['admin'] != 1 OR !isset($_SESSION) OR
     header("Location: main.php");
 }
 
-if(isset($_POST['name_event']) AND !empty($_POST['name_event']) AND isset($_POST['lien_event']) AND !empty($_POST['lien_event']) AND isset($_POST['horaire']) AND !empty($_POST['horaire'])) {
+if(isset($_POST['name_event']) AND !empty($_POST['name_event']) AND isset($_POST['lien_event']) AND !empty($_POST['lien_event']) AND isset($_POST['horaire']) AND !empty($_POST['horaire']) AND isset($_FILES['miniature_event']) AND !empty($_FILES['miniature_event']['name'])) {
     $name_event = htmlspecialchars($_POST['name_event']);
     $lien_event = htmlspecialchars($_POST['lien_event']);
     $horaire = htmlspecialchars($_POST['horaire']);
     $insertevent = $bdd->prepare("INSERT INTO nouveauté (date_time_publication, type_new, nom, lien, horaire) VALUES(NOW(), 2, ?, ?, ?)");
     $insertevent->execute(array($name_event, $lien_event, $horaire));
+    $lastid = $bdd->LastInsertId();
+    $tailleMax = 5242880;
+    $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
+    if($_FILES['miniature_event']['size'] <= $tailleMax) {
+        $extensionUpload = strtolower(substr(strrchr($_FILES['miniature_event']['name'], '.'), 1));
+        if(in_array($extensionUpload, $extensionValides)) {
+            $chemin = "membres/avatar_events/".$lastid.".".$extensionUpload;
+            move_uploaded_file($_FILES['miniature_event']['tmp_name'], $chemin);
+            /*generate_webp_image($chemin);*/
+            $ins2 = $bdd->prepare("UPDATE nouveauté SET avatar_event = :avatar WHERE id = :id");
+            $ins2->execute(array(
+                'avatar' => $lastid.".".$extensionUpload,
+                'id' => $lastid
+                ));
+        }
+    }
     header("Location: main.php");
 }
 
@@ -36,6 +52,7 @@ include 'MODULES/end.php';
             <input class="input_form" type="text" name="name_event" id="name_event" placeholder="Nom event"/></br>
             <input class="input_form" type="text" name="lien_event" id="lien_event" placeholder="Lien event"/></br>
             <input class="input_form" type="text" name="horaire" id="horaire" placeholder="Horaire"/></br>
+            <label class="Titre_form" for="miniature_event">Miniature : </label><input class="input_form" type="file" name="miniature_event"/><br/>
             <input class="input_form" type="submit" value="Mise à jour" />
         </form>
 

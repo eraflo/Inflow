@@ -59,9 +59,7 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
         $s_id = $bdd->prepare("SELECT * FROM articles WHERE titre = ? AND auteur = ?");
         $s_id->execute(array($article_titre, $article_auteur['pseudo']));
         $s_ID = $s_id->fetch();
-        $ins_new = $bdd->prepare('INSERT INTO nouveauté (date_time_publication, type_new, nom, lien) VALUES(NOW(), 0, ?, ?)');
-        $ins_new->execute(array($article_titre, $s_ID['id']));
-
+        
         $tailleMax = 5242880;
         $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
         if($_FILES['miniature']['size'] <= $tailleMax) {
@@ -77,6 +75,9 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
                     ));
             }
         }
+        $ins_new = $bdd->prepare('INSERT INTO nouveauté (date_time_publication, type_new, nom, lien, avatar_event) VALUES(NOW(), 0, ?, ?, ?)');
+        $ins_new->execute(array($article_titre, $s_ID['id'], $s_ID['avatar_article']));
+        
         $message = 'Votre article a bien été posté';
 
     } else {
