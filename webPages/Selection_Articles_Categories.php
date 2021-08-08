@@ -35,7 +35,7 @@ include 'MODULES/end.php';
                             <?php } ?>
                             <div class="description">
                                 <img src="assets/vues.png"> <?= $vues ?><br/>
-                                Nombre de commentaires : <?= $comment ?>
+                                <img src="assets/commentaires.png"> <?= $comment ?>
                             </div>
                             <div class="date"> <?= $a['date_time_publication'] ?></div>
                         </div>

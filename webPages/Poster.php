@@ -48,6 +48,22 @@ if(isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['article_id_
             $get_article_id_categorie = $bdd->query('SELECT id FROM `categories` WHERE nom = "'.$article_nom_categorie.'" LIMIT 1');
             $article_id_categorie = $get_article_id_categorie->fetch();
             $article_id_categorie = $article_id_categorie[0];
+
+            $tailleMax = 5242880;
+            $extensionValides = array('jpg', 'png', 'jpeg', 'gif');
+            if($_FILES['miniature_categorie']['size'] <= $tailleMax) {
+                $extensionUpload = strtolower(substr(strrchr($_FILES['miniature_categorie']['name'], '.'), 1));
+                if(in_array($extensionUpload, $extensionValides)) {
+                    $chemin = "membres/avatars_categorie/".$article_id_categorie.".".$extensionUpload;
+                    move_uploaded_file($_FILES['miniature_categorie']['tmp_name'], $chemin);
+                    generate_webp_image($chemin);
+                    $ins2 = $bdd->prepare("UPDATE categories SET avatar_categorie = :avatar WHERE id = :id");
+                    $ins2->execute(array(
+                        'avatar' => $article_id_categorie.".".$extensionUpload,
+                        'id' => $article_id_categorie
+                        ));
+                }
+            }
         }
 
         $ins = $bdd->prepare('INSERT INTO articles (titre, contenu, auteur, id_auteur, descriptions, date_time_publication, id_categories)
@@ -132,11 +148,15 @@ include 'MODULES/end.php';
             </select><br/>
             <input class="input_form" id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
             <input class="input_form" id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
+            <div id="categorie_img_div">
+                <label class="Titre_form" for="miniature_categorie">Miniature de la catégorie : </label>
+                <input class="input_form" id="categorie_img" type="file" name="miniature_categorie"/>
+            </div><br/>
             <textarea class="input_form" type="text" name="article_comment" placeholder="Description" style="resize:vertical;width:100%"></textarea><br/>
             <div style="text-align:initial;">
                 <textarea class="input_form" id="editor" name="article_contenu" placeholder="Contenu de l'article"></textarea>
             </div><br/>
-            <label class="Titre_form" for="miniature">Miniature : </label><input class="input_form" type="file" name="miniature"/><br/>
+            <label class="Titre_form" for="miniature">Miniature de l'article : </label><input class="input_form" type="file" name="miniature"/><br/>
             <input class="input_form" type="submit" value="Envoyer l'article" /><br />
         </form>
         <br />
