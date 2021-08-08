@@ -21,26 +21,31 @@ include 'MODULES/end.php';
 <!--Début de là où on pourra mettre du texte-->
 <div class="middle">
     <?php if($data->rowCount() > 0) { ?>
-        <div class="cardGallery hcenter">
+        <div class="card_article">
             <?php while($d = $data->fetch()) { 
                 $search_art = $bdd->prepare("SELECT * FROM articles WHERE id = ?");
                 $search_art->execute(array($d["id"]));
                 $s = $search_art->fetch(); ?>
-                <a href="Publication.php?id=<?= $s['id'] ?>" class="" title="<?= $d['date_visite'] ?>">
-                    <div class="cardArticle" style='<?php if(!empty($s['avatar_article'])) { ?>
-                    background: center url("membres/avatars_article/<?= $s['avatar_article'] ?>");
-                    background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
-                        <p class="title"><?= $s['titre'] ?></p>
-                        <p class="desc"><?= $s['descriptions'] ?></p>
-                        <?php if(isset($s['id_auteur'])) {
-                            $search_auteur->execute(array($s['id_auteur'])); 
-                            $sa = $search_auteur->fetch();?>
-                            <p class="author"> <?= $sa['pseudo'] ?></p>
-                        <?php } else { ?>
-                            <p class="author"> <?= $s['auteur'] ?></p>
-                        <?php } ?>
-                    </div>
-                </a>
+                <div class="card">
+                    <a href="Publication.php?id=<?= $s['id'] ?>">
+                        <div class="text_card">
+                            <div class="titre"><?= $s['titre'] ?></div>
+                            <?php if(isset($s['id_auteur'])) {
+                                $search_auteur->execute(array($s['id_auteur'])); 
+                                $sa = $search_auteur->fetch();?>
+                                <div class="auteur"> <?= $sa['pseudo'] ?></div>
+                            <?php } else { ?>
+                                <div class="auteur"> <?= $s['auteur'] ?></div>
+                            <?php } ?>
+                            <div class="description"><?= $s['descriptions'] ?></div>
+                        </div>
+                        <div class="miniature">
+                            <?php if(!empty($s['avatar_article'])) { ?>
+                                <img src="membres/avatars_article/<?= $s['avatar_article'] ?>" />
+                            <?php } ?>
+                        </div>
+                    </a>
+                </div>
             <?php } ?>
         </div>
     <?php } else { ?>
