@@ -22,13 +22,13 @@ include 'MODULES/end.php';
                 $comment = $bdd->prepare('SELECT * FROM commentaires WHERE id_article = ?');
                 $comment->execute(array($a['id']));
                 $comment = $comment->rowCount();?>
-            <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>" class="noUnderline"
+            <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>" class=""
                 title="<?= $a['descriptions'] ?>">
                 <div class="cardArticle">
                     <p class="title"><?= $a['titre'] ?></p>
                     <p class="date"> <?= $a['date_time_publication'] ?></p><br />
                     <div class="articleMenuButtonElement">
-                        <a href="#" class="noUnderline" title="Nombre de vues">
+                        <a href="#" class="" title="Nombre de vues">
                             <img src="assets/vues.png" class="visitsButton">
                             <p><?= $vues ?></p>
                         </a>

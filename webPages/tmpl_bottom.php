@@ -6,23 +6,23 @@
                     <p><b><i>Rejoignez nous !</b></i></p>
                     <a href="https://twitter.com/InflowOfficiel" rel="noreferrer noopener" target="_blank">
                         <img src="assets/twitter.webp"
-                        class= "ImageLien noUnderline" loading="lazy" alt="twitter" />
+                        class= "ImageLien" loading="lazy" alt="twitter" />
                     </a>
                     <a href="https://www.instagram.com/inflow_officiel/?igshid=1642d7pjo8yi1" rel="noreferrer noopener" target="_blank">
                         <img src="assets/instagram.webp"
-                        class= "ImageLien noUnderline" loading="lazy" alt="instagram" />
+                        class= "ImageLien" loading="lazy" alt="instagram" />
                     </a>
                     <a href="https://www.facebook.com/Inflow-100173238898216/" rel="noreferrer noopener" target="_blank">
                         <img src="assets/facebook.webp"
-                        class= "ImageLien noUnderline" loading="lazy" alt="facebook" />
+                        class= "ImageLien" loading="lazy" alt="facebook" />
                     </a>
                     <a href="https://www.twitch.tv/inflowofficiel" rel="noreferrer noopener" target="_blank">
                         <img src="assets/twitch.webp"
-                        class= "ImageLien noUnderline" loading="lazy" alt="twitch" />
+                        class= "ImageLien" loading="lazy" alt="twitch" />
                     </a>
                     <a href="https://www.youtube.com/channel/UC7cUqgADmD2xV9VDlt6NOXg" rel="noreferrer noopener" target="_blank">
                         <img src="assets/youtube.webp"
-                        class= "ImageLien noUnderline" loading="lazy" alt="youtube" />
+                        class= "ImageLien" loading="lazy" alt="youtube" />
                     </a>
                 </div>
                 <div class="footer_Equipe footer_grid_element">
@@ -51,8 +51,8 @@
                     </div>
                 </div>
                 <div class="footer_Inflow footer_grid_element">
-                    <p><a href="Infos.php" id="Infos"></b>Inflow</b></a></p>
-                    <p><a href="Infos.php" id="Infos"></b>InflowOfficiel</b></a></p>
+                    <p><a href="Infos.php" id="Infos" class="underline"></b>Inflow</b></a></p>
+                    <p><a href="Infos.php" id="Infos" class="underline"></b>InflowOfficiel</b></a></p>
                 </div>
             </footer>
 

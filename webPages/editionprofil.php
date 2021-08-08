@@ -159,7 +159,7 @@ if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
             <?php if ($req_liens->rowCount() > 0) { ?>
                 <div id="links_list_list">
                     <?php while($l = $req_liens->fetch()) { ?>
-                        <a href="<?= $l['url'] ?>" class="noUnderline PActions links_list" rel="noreferrer noopener" title="<?= $l['url'] ?>">
+                        <a href="<?= $l['url'] ?>" class="PActions links_list" rel="noreferrer noopener" title="<?= $l['url'] ?>">
                             <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
                             <?= $l['nom'] ?>
                         </a>

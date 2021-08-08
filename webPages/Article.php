@@ -40,7 +40,7 @@ include 'MODULES/end.php';
         <!--Affiche les catégories des articles-->
         <div class="cardGallery hcenter">
             <?php while($c = $categories->fetch()) { ?>
-                <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="noUnderline">
+                <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="">
                     <div class="cardArticle cardCategory">
                         <p class="title"> <?= $c['nom'] ?></p>
                         <p class="desc"> <?= $c['description'] ?></p>
@@ -55,7 +55,7 @@ include 'MODULES/end.php';
         <div class="card_article" id="actualisation_publication">
             <?php while($a = $articles->fetch()) { ?>
                 <div class="card">
-                    <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline" >
+                    <a href="Publication.php?id=<?= $a['id'] ?>" class="" >
                         <div class="text_card">
                             <div class="titre"><?= $a['titre'] ?></div>
                             <?php if(isset($a['id_auteur'])) {

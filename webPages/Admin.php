@@ -96,7 +96,7 @@ include 'MODULES/end.php';
     <div class="cardGallery hcenter">
         <?php while($m = $membres->fetch()) { ?>
         <div class="profil">
-            <a href="Profil.php?id=<?= $m['id'] ?>" class="noUnderline"
+            <a href="Profil.php?id=<?= $m['id'] ?>" class=""
                 title="<?= $m['pseudo']?>    ID : <?= $m['id'] ?>">
                 <div class="cardArticle">
                     <img style="width:300%" class="" src="membres/avatars/<?php echo $m['avatar']; ?>" loading="lazy" />

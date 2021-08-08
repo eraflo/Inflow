@@ -37,7 +37,7 @@ if(isset($_GET['load']) && ($_GET['load'] == "html")) { ?>
         $avatarInfos = $pseudoAvatar->fetch(); ?>
         <div class="CBlock">
             <?php if(!empty($avatarInfos)) { ?>
-                <a class="noUnderline" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50"></a>
+                <a class="" href="Profil.php?id=<?= $avatarInfos['id'] ?>"><img src="membres/avatars/<?php echo $avatarInfos['avatar']; ?>" width="50"></a>
             <?php } ?>
             
             <a href="Profil.php?id=<?= $avatarInfos['id'] ?>"><div class=NCapsule><b><?= $c['pseudo'] ?><br /></b></div></a>
