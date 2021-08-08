@@ -51,7 +51,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     </div>
 
     <?php if(!empty($userinfos['avatar'])) { ?>
-    <img id="avatar_profil" src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
+        <img id="avatar_profil" src="membres/avatars/<?php echo $userinfos['avatar']; ?>" class="avatar" width="150">
     <?php } ?>
     <br /><b>Pseudonyme:</b><br />
     <div class="PCapsule">
@@ -76,7 +76,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     <?php if ($req_articles->rowCount() > 0) { ?>
     <div class="PTitle">Articles écris</div>
     <?php while($u = $req_articles->fetch()) { ?>
-    <a href="Publication.php?id=<?= $u['id'] ?>" title="<?= $u['descriptions'] ?>">
+    <a class="underline" href="Publication.php?id=<?= $u['id'] ?>" title="<?= $u['descriptions'] ?>">
         <div class="PActions"><i>- <?= $u['titre'] ?></i></div>
     </a>
     <br />
@@ -87,7 +87,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     <div class="PTitle">Liens</div>
     <?php while($l = $req_liens->fetch()) { ?>
     <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
-    <a href="<?= $l['url'] ?>" class="PActions" rel="noreferrer noopener" title="<?= $l['url'] ?>"><?= $l['nom'] ?></a>
+    <a href="<?= $l['url'] ?>" class="PActions underline" rel="noreferrer noopener" title="<?= $l['url'] ?>"><?= $l['nom'] ?></a>
     <br />
     <?php }
                 } ?>

@@ -34,7 +34,7 @@ include 'MODULES/end.php';
                 <?php while($a_n = $new->fetch()) { 
                     if($a_n["type_new"] == 2) {
                     ?>
-                        <a href="<?= $a_n["lien"] ?>" class="noUnderline">
+                        <a href="<?= $a_n["lien"] ?>" class="">
                         <div class="cardArticle">
                             <p class="title"><?= $a_n['nom'] ?></p>
                             <p class="date"><?= $a_n['lien'] ?></p>
@@ -45,7 +45,7 @@ include 'MODULES/end.php';
                         $n_art = $bdd->prepare('SELECT * FROM `articles` WHERE id = ?');
                         $n_art->execute(array($a_n['lien']));
                         $new_art = $n_art->fetch();?>
-                        <a href="Publication.php?id=<?= $new_art['id'] ?>" class="noUnderline">
+                        <a href="Publication.php?id=<?= $new_art['id'] ?>" class="">
                             <div class="cardArticle" style='<?php if(!empty($new_art['avatar_article'])) { ?>
                             background: center url("membres/avatars_article/<?= $new_art['avatar_article'] ?>");
                             background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
@@ -71,7 +71,7 @@ include 'MODULES/end.php';
         <div class="cardGallery hcenter">
             <?php while($a_r = $recom->fetch()) { 
                 ?>
-                <a href="Publication.php?id=<?= $a_r['id'] ?>" class="noUnderline">
+                <a href="Publication.php?id=<?= $a_r['id'] ?>" class="">
                 <?php if(!empty($a_r['avatar_article'])) { ?>
                     <img class="cardArticleImage" src="membres/avatars_article/<?php echo $a_r['avatar_article']; ?>" href="Publication.php?id=<?= $a_r['id'] ?>" style="width:100%;" loading="lazy"/>
                 <?php } ?>

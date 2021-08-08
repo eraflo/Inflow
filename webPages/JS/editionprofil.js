@@ -33,7 +33,7 @@ function send_new_link() {
             var link_name = response["link_name"];
             var link_url = response["link_url"];
             html = `
-        <a href="`+ link_url +`" class="noUnderline PActions links_list" rel="noreferrer noopener" title="`+ link_name +`">
+        <a href="`+ link_url +`" class="PActions links_list" rel="noreferrer noopener" title="`+ link_name +`">
             <img src="https://www.google.com/s2/favicons?domain=`+ link_url +`" height="16" />
             `+ link_name +`
         </a>

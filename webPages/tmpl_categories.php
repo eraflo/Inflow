@@ -37,7 +37,7 @@ include 'tmpl_top.php';
             
             <div class="cardGallery hcenter">
                 <?php while($a = $articles->fetch()) { ?>
-                    <a href="Publication.php?id=<?= $a['id'] ?>" class="noUnderline">
+                    <a href="Publication.php?id=<?= $a['id'] ?>" class="">
                         <div class="cardArticle" style='<?php if(!empty($a['avatar_article'])) { ?>
                         background: center url("membres/avatars_article/<?= $a['avatar_article'] ?>");
                         background-size: cover;backdrop-filter: grayscale(25%) blur(3px);<?php } ?>'>
