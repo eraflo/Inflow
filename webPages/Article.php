@@ -49,6 +49,11 @@ include 'MODULES/end.php';
                                 <div class="description"> <?= $c['description'] ?></div>
                             </div>
                         </div>
+                        <div class="miniature">
+                            <?php if(!empty($c['avatar_categorie'])) { ?>
+                                <img src="membres/avatars_categorie/<?= $c['avatar_categorie'] ?>" />
+                            <?php } ?>
+                        </div>
                     </a>
                 </div>
             <?php } ?>
