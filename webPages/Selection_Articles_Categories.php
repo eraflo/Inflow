@@ -14,7 +14,7 @@ include 'MODULES/end.php';
 
 <div class="middle">
     <article>
-        <div class="cardGallery hcenter">
+        <div class="card_article">
             <?php while($a = $articles->fetch()) { 
                 $view = $bdd->prepare("SELECT * FROM historique WHERE id = ?");
                 $view->execute(array($a['id']));
@@ -22,27 +22,30 @@ include 'MODULES/end.php';
                 $comment = $bdd->prepare('SELECT * FROM commentaires WHERE id_article = ?');
                 $comment->execute(array($a['id']));
                 $comment = $comment->rowCount();?>
-            <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>" class=""
-                title="<?= $a['descriptions'] ?>">
-                <div class="cardArticle">
-                    <p class="title"><?= $a['titre'] ?></p>
-                    <p class="date"> <?= $a['date_time_publication'] ?></p><br />
-                    <div class="articleMenuButtonElement">
-                        <a href="#" class="" title="Nombre de vues">
-                            <img src="assets/vues.png" class="visitsButton">
-                            <p><?= $vues ?></p>
-                        </a>
-                    </div><br />
-                    <p><?= $comment ?></p>
-                    <?php if(isset($a['id_auteur'])) {
-                            $search_auteur->execute(array($a['id_auteur']));
-                            $sa = $search_auteur->fetch();?>
-                    <p class="author"> <?= $sa['pseudo'] ?></p>
-                    <?php } else { ?>
-                    <p class="author"> <?= $a['auteur'] ?></p>
-                    <?php } ?>
+                <div class="card">
+                    <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>">
+                        <div class="text_card">
+                            <div class="titre"><?= $a['titre'] ?></div>
+                            <?php if(isset($a['id_auteur'])) {
+                                $search_auteur->execute(array($a['id_auteur']));
+                                $sa = $search_auteur->fetch();?>
+                                <div class="auteur"> <?= $sa['pseudo'] ?></div>
+                            <?php } else { ?>
+                                <div class="auteur"> <?= $a['auteur'] ?></div>
+                            <?php } ?>
+                            <div class="description">
+                                <img src="assets/vues.png"> <?= $vues ?><br/>
+                                Nombre de commentaires : <?= $comment ?>
+                            </div>
+                            <div class="date"> <?= $a['date_time_publication'] ?></div>
+                        </div>
+                        <div class="miniature">
+                            <?php if(!empty($a['avatar_article'])) { ?>
+                                <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                            <?php } ?>
+                        </div>
+                    </a>
                 </div>
-            </a>
             <?php } ?>
         </div>
     </article>

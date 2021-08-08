@@ -38,15 +38,19 @@ include 'MODULES/end.php';
     <article class="ProfilTxt">
         <h1>Catégories :</h1>
         <!--Affiche les catégories des articles-->
-        <div class="cardGallery hcenter">
+        <div class="card_article">
             <?php while($c = $categories->fetch()) { ?>
-                <a href="tmpl_categories.php?id=<?= $c['id'] ?>" class="">
-                    <div class="cardArticle cardCategory">
-                        <p class="title"> <?= $c['nom'] ?></p>
-                        <p class="desc"> <?= $c['description'] ?></p>
-                        <p class="author"> <?= $c['auteur'] ?></p>
-                    </div>
-                </a>
+                <div class="card">
+                    <a href="tmpl_categories.php?id=<?= $c['id'] ?>">
+                        <div class="text_card">
+                            <div class="cardArticle cardCategory">
+                                <div class="titre"> <?= $c['nom'] ?></div>
+                                <div class="auteur"> <?= $c['auteur'] ?></div>
+                                <div class="description"> <?= $c['description'] ?></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             <?php } ?>
         </div>
         <br/>
