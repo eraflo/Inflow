@@ -47,6 +47,10 @@ include 'MODULES/end.php';
             </select><br/>
             <input class="input_form" id="categorie_name" type="text" name="article_nom_categorie" placeholder="Nom de la catégorie" />
             <input class="input_form" id="categorie_desc" type="text" name="article_desc_categorie" placeholder="Description de la catégorie" /><br/>
+            <div id="categorie_img_div">
+                <label class="Titre_form" for="miniature_categorie">Miniature de la catégorie : </label>
+                <input class="input_form" id="categorie_img" type="file" name="miniature_categorie"/>
+            </div><br/>
             <textarea class="input_form" type="text" name="article_comment" placeholder="Description" style="resize:vertical;width:100%"><?= $article['descriptions'] ?></textarea><br/>
             <div style="text-align:initial;">
                 <textarea class="input_form" id="editor" name="article_contenu" placeholder="Contenu de l'article">
