@@ -30,6 +30,7 @@
     -o-transition: all .3s;
     margin-bottom: 10px;
     outline: none;
+    display: inline-block;
 }
 /*couleur placeholder*/
 .links_list::placeholder {
