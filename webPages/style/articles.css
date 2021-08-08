@@ -33,10 +33,15 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 2em;
+    justify-content: center;
 }
 .card {
-    width: 550px;
-    height: 220px;
+    width: 450px; /* lié à:
+                        .card .text_card -> padding: 0.5em 0.5em 0.5em XXX (XXX = .card:hover .miniature -> width + 10px);
+                        .card:hover .miniature -> width: XXX (XXX = .card -> height - 20px);
+                                               -> height: XXX (XXX = .card -> height - 20px);
+                  */
+    height: 180px;
     max-width: 100%;
     background-color: lightgray;
     transition: 0.5s .1s all ease-in-out;
@@ -63,7 +68,7 @@ h1 {
     grid-template-rows: auto 1.5em 1fr 1em;
     position: absolute;
     z-index: -1;
-    padding: 0.5em 0.5em 0.5em 230px;
+    padding: 0.5em 0.5em 0.5em 170px;
     height: 95%;
     opacity: 0;
     min-width: 100%;
@@ -101,8 +106,8 @@ h1 {
     justify-self: end;
 }
 .card:hover .miniature {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     margin: 10px;
     margin-left: 15px;
     border-radius: 2px;
@@ -112,6 +117,12 @@ h1 {
     display: grid;
     opacity: 1;
 }
+.card:hover .titre {
+    font-weight: bold;
+}
+.card:hover .new {
+    display: none;
+}
 .card:hover {
     transform: scale(1.2);
     -webkit-transform: scale(1.2);
@@ -120,13 +131,6 @@ h1 {
     -o-transform: scale(1.2);
     z-index: 10;
     box-shadow: 15px 10px 30px 10px rgba(93, 123, 143, 0.6);
-}
-.card:hover .titre {
-    font-weight: bold;
-}
-
-.card:hover .new {
-    display: none;
 }
 
 
@@ -161,4 +165,31 @@ h1 {
 :root[user-color-mode=dark] .dislikeButton,
 :root[user-color-mode=dark] .editButton {
     filter: invert(1);
+}
+
+/*--À appliquer à la fin; Pour les petits écrans--*/
+/*  Il faut laisser cette partie en fin de css    */
+@media (max-width: 800px) {
+    .card {
+        width: 300px;
+        height: 130px;
+    }
+    .card:hover .miniature {
+        width: 130px;
+        height: 130px;
+        margin: 0;
+    }
+    .card .text_card {
+        grid-template-rows: max-content 1.5em ;
+        padding: 0.1em 0.5em 0.1em 135px;
+        height: 130px !important;
+        min-height: 130px !important;
+    }
+    .card:hover {
+        transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+    }
 }
