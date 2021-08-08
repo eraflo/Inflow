@@ -68,7 +68,7 @@ h1 {
     grid-template-rows: auto 1.5em 1fr 1em;
     position: absolute;
     z-index: -1;
-    padding: 0.5em 0.5em 0.5em 170px;
+    padding: 0.5em 0.5em 0.5em 180px;
     height: 95%;
     opacity: 0;
     min-width: 100%;
