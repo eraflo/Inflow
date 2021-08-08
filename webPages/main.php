@@ -41,6 +41,11 @@ include 'MODULES/end.php';
                                 <div class="description"><?= $a_n['lien'] ?></div>
                                 <div class="date"><?= $a_n['horaire'] ?></div>
                             </div>
+                            <div class="miniature">
+                                <?php if(!empty($a_n['avatar_event'])) { ?>
+                                    <img src="membres/avatar_events/<?= $a_n['avatar_event'] ?>" />
+                                <?php } ?>
+                            </div>
                         </a>
                     </div>
                     <?php } elseif($a_n["type_new"] == 0) { 
@@ -66,11 +71,6 @@ include 'MODULES/end.php';
                                         <img src="membres/avatars_article/<?= $new_art['avatar_article'] ?>" />
                                     <?php } ?>
                                 </div>
-                                <?php if(isset($a["option"])) { ?>
-                                    <div class="new"><?= $new_art["option"] ?></div>
-                                <?php } elseif(strtotime($new_art["date_time_publication"]) >= strtotime('-3 days')) { ?>
-                                    <div class="new">New</div>
-                                <?php } ?>
                             </a>
                         </div>
                     <?php } 
