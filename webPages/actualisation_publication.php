@@ -46,7 +46,7 @@ $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
                 </div>
                 <div class="miniature">
                     <?php if(!empty($a['avatar_article'])) { ?>
-                            <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                            <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
                     <?php } ?>
                 </div> 
             </a>
