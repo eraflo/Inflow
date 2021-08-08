@@ -70,7 +70,7 @@ include 'MODULES/end.php';
                         </div>
                         <div class="miniature">
                             <?php if(!empty($a['avatar_article'])) { ?>
-                                    <img class="cardArticleImage" src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
                             <?php } ?>
                         </div>
                         <?php if(isset($a["option"])) { ?>

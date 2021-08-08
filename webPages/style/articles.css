@@ -56,6 +56,7 @@ h1 {
     width: 100%;
     object-fit: cover;
 }
+
 .card .text_card {
     display: none;
     grid-template-areas: "titre titre titre" "auteur . ." "description description description" ". . date";
@@ -65,7 +66,11 @@ h1 {
     padding: 0.5em 0.5em 0.5em 230px;
     height: 95%;
     opacity: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
+
+
 .card .titre {
     grid-area: titre;
     font-size: x-large;
@@ -88,10 +93,12 @@ h1 {
 
 .card .description {
     grid-area: description;
+    overflow: hidden;
 }
 .card .date {
     grid-area: date;
     font-size: x-small;
+    justify-self: end;
 }
 .card:hover .miniature {
     width: 200px;
