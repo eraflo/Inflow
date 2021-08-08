@@ -22,7 +22,7 @@ include 'MODULES/end.php';
 <div class="middle ProfilTxt">
     <article class="ProfilTxt MenuTxt">
         <h1> Qui sommes nous ? </h1>
-        <p, style="font-family: sans-serif;"> Inflow est un média musical entièrement géré par des lycéens dont le but est 
+        <p style="font-family: sans-serif;"> Inflow est un média musical entièrement géré par des lycéens dont le but est 
             de faire découvrir la musique urbaine à nos lecteurs, qu'ils soient néophytes ou expérimentés.<br /><br />
             L'équipe d'Inflow vous souhaite une bonne lecture et une bonne écoute !<br /><br /><br />
         </p>
