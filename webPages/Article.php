@@ -64,7 +64,7 @@ include 'MODULES/end.php';
         <div class="card_article" id="actualisation_publication">
             <?php while($a = $articles->fetch()) { ?>
                 <div class="card">
-                    <a href="Publication.php?id=<?= $a['id'] ?>" class="" >
+                    <a href="Publication.php?id=<?= $a['id'] ?>">
                         <div class="text_card">
                             <div class="titre"><?= $a['titre'] ?></div>
                             <?php if(isset($a['id_auteur'])) {
