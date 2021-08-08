@@ -84,7 +84,7 @@ include 'MODULES/end.php';
             <?= $titre ?>
         </h1>
         <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
-            <!--Edition--><a href="Gestion_Articles_Categories.php?id=<?= $get_id ?>" class="" title="Modifier l'article"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
+            <!--Edition--><a href="Gestion_Articles_Categories.php?type=article&id=<?= $get_id ?>" class="" title="Modifier l'article"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
             <!--Statistiques-->
         <?php } ?>
         <div>

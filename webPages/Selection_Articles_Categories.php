@@ -2,9 +2,9 @@
 // Page sur laquelle on va avoir le choix de selectionner un article ou une catégorie
 
 
-$articles = $bdd->query('SELECT * FROM articles');
+$articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
 $auteurs = $bdd->query('SELECT * FROM `membres` WHERE redacteur = 1');
-$categories = $bdd->query('SELECT * FROM categories');
+$categories = $bdd->query('SELECT * FROM categories ORDER BY id DESC');
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 
 include 'tmpl_top.php';
@@ -14,6 +14,27 @@ include 'MODULES/end.php';
 
 <div class="middle">
     <article>
+        <h2>Catégories</h1>
+        <div class="card_article">
+            <?php while($c = $categories->fetch()) { ?>
+                <div class="card">
+                    <a href="Gestion_Articles_Categories.php?type=categorie&id=<?= $c['id'] ?>">
+                        <div class="text_card">
+                            <div class="titre"><?= $c['nom'] ?></div>
+                            <div class="auteur"><?= $c['auteur'] ?></div>
+                            <div class="description"><?= $c['description'] ?></div>
+                            <div class="date"><?= $c['date_time_publication'] ?></div>
+                        </div>
+                        <div class="miniature">
+                            <?php if(!empty($c['avatar_categorie'])) { ?>
+                                <img src="membres/avatars_categorie/<?= $c['avatar_categorie'] ?>" />
+                            <?php } ?>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+        <h1>Articles</h1>
         <div class="card_article">
             <?php while($a = $articles->fetch()) { 
                 $view = $bdd->prepare("SELECT * FROM historique WHERE id = ?");
@@ -23,7 +44,7 @@ include 'MODULES/end.php';
                 $comment->execute(array($a['id']));
                 $comment = $comment->rowCount();?>
                 <div class="card">
-                    <a href="Gestion_Articles_Categories.php?id=<?= $a['id'] ?>">
+                    <a href="Gestion_Articles_Categories.php?type=article&id=<?= $a['id'] ?>">
                         <div class="text_card">
                             <div class="titre"><?= $a['titre'] ?></div>
                             <?php if(isset($a['id_auteur'])) {

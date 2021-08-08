@@ -138,7 +138,7 @@ include 'MODULES/end.php';
                 <?php while($a = $auteurs->fetch()) { ?>
                     <option value="<?= $a['id'] ?>"><?= $a['pseudo'] ?></option>
                 <?php } ?>
-            </select>
+            </select><br/>
             <select class="input_form" id="categorie_selection" type="text" name="article_id_categorie">
                 <option value="" style="font-style:italic;">Aucune catégorie</option>
                 <option value="Nouvelle" style="font-weight:bold;">Nouvelle catégorie</option>
