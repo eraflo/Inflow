@@ -30,7 +30,7 @@ include('stats_visites_site.php');
         <!--Importer les scripts-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
         <script type="text/javascript" src="JS/script.js" defer></script>
-        <script type="text/javascript" src="JS/import-search.js" defer></script>
+        <script type="text/javascript" src="JS/recherche.js" defer></script>
 
         <!--OPEN GRAPH-->
         <meta property="og:url" content="http://inflow.fr.nf/" />
@@ -94,11 +94,11 @@ include('stats_visites_site.php');
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="headerFirstElement element search" id="search_form">
+                    <div class="headerFirstElement element search dropdown" id="search_form">
                         <form action="#">
-                            <input type="text" placeholder="Recherche" id="search" name="search" value="" />
+                            <input type="text" placeholder="Recherche" id="search" name="search" value="" autocomplete="off"/>
                         </form>
-                        <div id="result-research"></div>
+                        <div id="result-search" class="result-search dropdown-content"></div>
                     </div>
                     <?php if(!empty($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown" id="account_preview"><a href="#">Compte</a>
