@@ -65,14 +65,8 @@ $view = $bdd->prepare("SELECT * FROM historique WHERE id = ?");
 $view->execute(array($id));
 $vues = $view->rowCount();
 
-$get_id_cat = htmlspecialchars($_GET['id']);
-$article_cat = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
-$article_cat->execute(array($get_id_cat));
-$article_cat = $article_cat->fetch(); 
-$cat = $article_cat['id_categories'];
-
-$reco_article = $bdd->prepare("SELECT * FROM articles WHERE id_categories = ? ORDER BY date_time_publication DESC LIMIT 3");
-$reco_article->execute(array($cat));
+$reco_article = $bdd->prepare("SELECT * FROM articles WHERE id_categories = ? AND id <> ? ORDER BY date_time_publication DESC LIMIT 3");
+$reco_article->execute(array($cat, $_GET['id']));
 $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
 include 'tmpl_top.php';
 ?>
@@ -108,7 +102,7 @@ include 'MODULES/end.php';
 
     <article class="RecommendationArticle">
         <h1>Recommandations en lien avec cet article :</h1>
-        <?php if ($reco_article->rowCount() > 1) { ?>
+        <?php if ($reco_article->rowCount() != 0) { ?>
             <div class="card_article">
             <?php while($a = $reco_article->fetch()) { 
                 if(isset($a['id_categories']) AND !empty($a['id_categories']) AND $a['id_categories'] != NULL) {
@@ -123,7 +117,7 @@ include 'MODULES/end.php';
                                         $sa = $search_auteur->fetch();?>
                                         <div class="auteur"> <?= $sa['pseudo'] ?></div>
                                     <?php } else { ?>
-                                        <p class="auteur"> <?= $a['auteur'] ?></div>
+                                        <div class="auteur"> <?= $a['auteur'] ?></div>
                                     <?php } ?>
                                     <div class="description"><?= $a['descriptions'] ?></div>
                                 </div>
