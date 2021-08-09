@@ -43,7 +43,7 @@ h1 {
                   */
     height: 180px;
     max-width: 100%;
-    background-color: lightgray;
+    background-color: var(--color-body-background);
     transition: 0.5s .1s all ease-in-out;
     border-radius: 25px;
     overflow: hidden;
@@ -116,6 +116,7 @@ h1 {
 .card:hover .text_card {
     display: grid;
     opacity: 1;
+    color: var(--color-text);
 }
 .card:hover .titre {
     font-weight: bold;
