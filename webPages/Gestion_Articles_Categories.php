@@ -71,7 +71,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                         ));
                 }
             }
-            $message = "Votre article a bien été modifié<br/><a href=\"Publication.php?id=".$get_id."\">Retour à l\'article</a>";
+            $message = "Votre article a bien été modifié<br/><a class=\"underline\" href=\"Publication.php?id=".$get_id."\">Retour à l\'article</a>";
 
 
         } else {
@@ -105,7 +105,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                     ));
             }
         }
-        $message = "Votre catégorie a bien été modifié<br/><a href=\"tmpl_categories.php?id=".$get_id."\">Retour à la categorie</a>";
+        $message = "Votre catégorie a bien été modifié<br/><a class=\"underline\" href=\"tmpl_categories.php?id=".$get_id."\">Retour à la categorie</a>";
 
     }
 

@@ -39,6 +39,9 @@ include 'MODULES/end.php';
                     <?php if(!empty($categorie['description'])){echo str_replace(array("<br />", "<br/>", "<br >", "<br>"), '', $categorie['description']);} ?>
                 </textarea>
             </div><br/>
+            <?php if(isset($categorie['avatar_categorie']) && !empty($categorie['avatar_categorie'])){ ?>
+                <img width="90%" src="membres/avatars_categorie/<?= $categorie['avatar_categorie'] ?>" /><br/>
+            <?php } ?>
             <label class="Titre_form" for="miniature_categorie">Miniature : </label><input class="input_form" type="file" name="miniature_categorie"/><br/>
             <input class="input_form" type="submit" value="Modifier la catégorie" /><br />
         </form>
