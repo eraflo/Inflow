@@ -51,13 +51,13 @@
                     </div>
                 </div>
                 <div class="footer_Inflow footer_grid_element">
-                    <p><a href="Infos.php" id="Infos" class="underline"></b>Inflow</b></a></p>
-                    <p><a href="Infos.php" id="Infos" class="underline"></b>InflowOfficiel</b></a></p>
+                    <p><a href="Infos.php" id="Infos" class="underline can_rainbow"></b>Inflow</b></a></p>
+                    <p><a href="Infos.php" id="Infos" class="underline can_rainbow"></b>InflowOfficiel</b></a></p>
                 </div>
             </footer>
 
             <?php if(!isset($_COOKIE['accept_cookie'])) { ?>
-                <div class="cookie-alert drop_drop" id="drop_7">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
+                <div class="cookie-alert drop_drop can_rainbow" id="drop_7">En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour vous 
                     proposez des contenus et services adaptés à vos centres d'interêt.<br/>
                     <button class="cookie-alert-ok-button" onclick="accept_cookie()">OK</button>
                 </div>
