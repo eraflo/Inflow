@@ -51,7 +51,10 @@ include('stats_visites_site.php');
         <div class="main container">
             <!--Header, c'est-à-dire, le menu pour changer de page-->
             <header class="header container">
-                <img class="banniere element" src="assets/banniere_twi.webp" height="130px" loading="lazy" alt="Inflow bannière" />
+                <picture class="banniere element" height="130px" alt="Inflow bannière" >
+                    <source class="banniere element" height="130px" srcset="assets/banniere_twi.webp" type="image/webp">
+                    <img class="banniere element" height="130px" src="assets/banniere_twi.png" type="image/png">
+                </picture>
                 <nav class="navBarHeader container element can_rainbow2">
                     <?php if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 1 AND isset($_SESSION)) { ?>
                         <div class="headerFirstElement element navBarHeaderElement dropdown">

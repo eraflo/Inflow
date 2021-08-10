@@ -5,24 +5,34 @@
                 <div class="footer_Contact footer_grid_element">
                     <p><b><i>Rejoignez nous !</b></i></p>
                     <a href="https://twitter.com/InflowOfficiel" rel="noreferrer noopener" target="_blank">
-                        <img src="assets/twitter.webp"
-                        class= "ImageLien" loading="lazy" alt="twitter" />
+                        <picture>
+                            <source srcset="assets/twitter.webp" type="image/webp" class="ImageLien" loading="lazy" alt="instagram">
+                            <img src="assets/twitter.png" type="image/png" class="ImageLien" loading="lazy" alt="instagram">
+                        </picture>
                     </a>
                     <a href="https://www.instagram.com/inflow_officiel/?igshid=1642d7pjo8yi1" rel="noreferrer noopener" target="_blank">
-                        <img src="assets/instagram.webp"
-                        class= "ImageLien" loading="lazy" alt="instagram" />
+                        <picture>
+                            <source srcset="assets/instagram.webp" type="image/webp" class="ImageLien" loading="lazy" alt="instagram">
+                            <img src="assets/instagram.png" type="image/png" class="ImageLien" loading="lazy" alt="instagram">
+                        </picture>    
                     </a>
                     <a href="https://www.facebook.com/Inflow-100173238898216/" rel="noreferrer noopener" target="_blank">
-                        <img src="assets/facebook.webp"
-                        class= "ImageLien" loading="lazy" alt="facebook" />
+                        <picture>
+                            <source srcset="assets/facebook.webp" type="image/webp" class="ImageLien" loading="lazy" alt="instagram">
+                            <img src="assets/facebook.png" type="image/png" class="ImageLien" loading="lazy" alt="instagram">
+                        </picture>
                     </a>
                     <a href="https://www.twitch.tv/inflowofficiel" rel="noreferrer noopener" target="_blank">
-                        <img src="assets/twitch.webp"
-                        class= "ImageLien" loading="lazy" alt="twitch" />
+                        <picture>
+                            <source srcset="assets/twitch.webp" type="image/webp" class="ImageLien" loading="lazy" alt="instagram">
+                            <img src="assets/twitch.png" type="image/png" class="ImageLien" loading="lazy" alt="instagram">
+                        </picture>
                     </a>
                     <a href="https://www.youtube.com/channel/UC7cUqgADmD2xV9VDlt6NOXg" rel="noreferrer noopener" target="_blank">
-                        <img src="assets/youtube.webp"
-                        class= "ImageLien" loading="lazy" alt="youtube" />
+                        <picture>
+                            <source srcset="assets/youtube.webp" type="image/webp" class="ImageLien" loading="lazy" alt="instagram">
+                            <img src="assets/youtube.png" type="image/png" class="ImageLien" loading="lazy" alt="instagram">
+                        </picture>
                     </a>
                 </div>
                 <div class="footer_Equipe footer_grid_element">

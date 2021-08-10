@@ -51,7 +51,10 @@ include 'tmpl_top.php';
                             </div>
                             <div class="miniature">
                                 <?php if(!empty($a['avatar_article'])) { ?>
-                                    <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                    <picture>
+                                        <source srcset="membres/avatars_article/<?=$a['avatar_article'].'.webp'?>" type="image/webp">
+                                        <img src="membres/avatars_article/<?=$a['avatar_article']?>" type="image/png">
+                                    </picture>
                                 <?php } ?>
                             </div>
                         </a>

@@ -51,7 +51,10 @@ include 'MODULES/end.php';
                         </div>
                         <div class="miniature">
                             <?php if(!empty($c['avatar_categorie'])) { ?>
-                                <img src="membres/avatars_categorie/<?= $c['avatar_categorie'] ?>" />
+                                <picture>
+                                    <source srcset="membres/avatars_categorie/<?= $c['avatar_categorie'].'.webp' ?>" type="image/webp">
+                                    <img src="membres/avatars_categorie/<?= $c['avatar_categorie'] ?>" type="image/png" />
+                                </picture>
                             <?php } ?>
                         </div>
                     </a>
@@ -79,7 +82,10 @@ include 'MODULES/end.php';
                         </div>
                         <div class="miniature">
                             <?php if(!empty($a['avatar_article'])) { ?>
-                                <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                <picture>
+                                    <source srcset="membres/avatars_article/<?=$a['avatar_article'].'.webp'?>" type="image/webp">
+                                    <img src="membres/avatars_article/<?=$a['avatar_article']?>" type="image/png">
+                                </picture>
                             <?php } ?>
                         </div>
                         <?php if(isset($a["option"])) { ?>

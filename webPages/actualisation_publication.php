@@ -46,9 +46,17 @@ $search_auteur = $bdd->prepare('SELECT * FROM `membres` WHERE id = ?');
                 </div>
                 <div class="miniature">
                     <?php if(!empty($a['avatar_article'])) { ?>
-                            <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                        <picture>
+                            <source srcset="membres/avatars_article/<?=$a['avatar_article'].'.webp'?>" type="image/webp">
+                            <img src="membres/avatars_article/<?=$a['avatar_article']?>" type="image/png">
+                        </picture>
                     <?php } ?>
-                </div> 
+                </div>
+                <?php if(isset($a["option"])) { ?>
+                    <div class="new"><?= $a["option"] ?></div>
+                <?php } elseif(strtotime($a["date_time_publication"]) >= strtotime('-3 days')) { ?>
+                    <div class="new">New</div>
+                <?php } ?>
             </a>
         </div>
     <?php } ?>
