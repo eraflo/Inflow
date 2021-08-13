@@ -69,3 +69,8 @@
 #one.links_buttons {
     margin: -17px -25px;
 }
+
+/*-- Augmente la visibilité des boutons en mode dark --*/
+:root[user-color-mode=dark] .links_buttons {
+    filter: invert(1);
+}
