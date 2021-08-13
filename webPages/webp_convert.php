@@ -11,7 +11,7 @@ function generate_webp_image($file, $compression_quality = 95)
         $line = '"scripts/libwebp-1.2.0-windows-x64/bin/cwebp.exe" -q '.$compression_quality.' '.$file.' -o '.$output;
     }
     exec($line.' 2>&1', $result);
-    print_r($result);
+    
     return $result;
 }
 
