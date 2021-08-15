@@ -84,7 +84,7 @@ include 'MODULES/end.php';
             <?= $titre ?>
         </h1>
         <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
-            <!--Edition--><a href="Gestion_Articles_Categories.php?type=article&id=<?= $get_id ?>" class="" title="Modifier l'article"><img class="editButton" src="assets/edit.png" title="Modifier l'article" /></a>
+            <!--Edition--><a href="Gestion_Articles_Categories.php?type=article&id=<?= $get_id ?>" class="" title="Modifier l'article"><img class="to_invert editButton" src="assets/edit.png" title="Modifier l'article" /></a>
             <!--Statistiques-->
         <?php } ?>
         <div>
@@ -94,9 +94,9 @@ include 'MODULES/end.php';
             <?= html_entity_decode($contenu) ?>
         </div>
         <div class="articleMenuButtonContainer">
-            <div class="articleMenuButtonElement"><a href="#" class="" title="Nombre de vues"><img src="assets/vues.png" class="visitsButton"><p><?= $vues ?></p></a></div>
-            <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="" title="J'aime"><img src="assets/like.png" class="likeButton"><p><?= $likes ?></p></a></div>
-            <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="" title="Je n'aime pas"><img src="assets/dislike.png"class="dislikeButton"><p><?= $dislikes ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="#" class="" title="Nombre de vues"><img src="assets/vues.png" class="to_invert visitsButton"><p><?= $vues ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="Action.php?t=1&id=<?= $id ?>" class="" title="J'aime"><img src="assets/like.png" class="to_invert likeButton"><p><?= $likes ?></p></a></div>
+            <div class="articleMenuButtonElement"><a href="Action.php?t=2&id=<?= $id ?>" class="" title="Je n'aime pas"><img src="assets/dislike.png"class="to_invert dislikeButton"><p><?= $dislikes ?></p></a></div>
         </div>
     </article>
 

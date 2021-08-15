@@ -487,6 +487,12 @@ a:hover {
 }
 
 
+:root[user-color-mode=dark] .to_invert {
+    filter: invert(1);
+}
+
+
+
 /*--NE PAS AFFICHER UN ELEMENT--*/
 .hidden {
     visibility: hidden;

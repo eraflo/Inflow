@@ -160,13 +160,7 @@ h1 {
     margin: 0px 5px;
     font-family: 'Montserrat';
 }
-/*--Affiche les boutons vues, likes et dislikes en blanc lorsqu'on est en mode nuit--*/
-:root[user-color-mode=dark] .visitsButton,
-:root[user-color-mode=dark] .likeButton,
-:root[user-color-mode=dark] .dislikeButton,
-:root[user-color-mode=dark] .editButton {
-    filter: invert(1);
-}
+
 
 /*--À appliquer à la fin; Pour les petits écrans--*/
 /*  Il faut laisser cette partie en fin de css    */

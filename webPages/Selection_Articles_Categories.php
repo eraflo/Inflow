@@ -55,8 +55,8 @@ include 'MODULES/end.php';
                                 <div class="auteur"> <?= $a['auteur'] ?></div>
                             <?php } ?>
                             <div class="description">
-                                <img src="assets/vues.png"> <?= $vues ?><br/>
-                                <img src="assets/commentaires.png"> <?= $comment ?>
+                                <img class="to_invert" src="assets/vues.png"> <?= $vues ?><br/>
+                                <img class="to_invert" src="assets/commentaires.png"> <?= $comment ?>
                             </div>
                             <div class="date"> <?= $a['date_time_publication'] ?></div>
                         </div>
