@@ -33,7 +33,7 @@ include 'MODULES/end.php';
 <div class="middle">
     <article>
         <?php if($categories->rowCount() > 0) { ?>
-        <h2 title="<?=$categoriesParPage?> par page max" >Catégories</h1>
+        <h1 title="<?=$categoriesParPage?> par page max" >Catégories</h1>
         <div class="card_article">
             <?php while($c = $categories->fetch()) { ?>
                 <div class="card">
@@ -54,7 +54,7 @@ include 'MODULES/end.php';
             <?php } ?>
         </div>
         <?php } else { ?>
-        <h2>Pas de catégorie</h2>
+        <h1>Pas de catégorie</h1>
         <?php } ?>
         <?php if($articles->rowCount() > 0) { ?>
         <h1 title="<?=$articlesParPage?> par page max">Articles</h1>
@@ -93,7 +93,7 @@ include 'MODULES/end.php';
             <?php } ?>
         </div>
         <?php } else { ?>
-        <h2>Pas d'article</h2>
+        <h1>Pas d'article</h1>
         <?php } ?>
         <div class="pageBox hcenter vcenter">
             <?php for($i=1;$i<=$pagesTotales;$i++) {
