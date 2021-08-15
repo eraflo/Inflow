@@ -102,7 +102,7 @@ include 'MODULES/end.php';
                 if($i == $pageCourante) {
                     echo '<a class="page selected">'.$i.' </a>';
                 } else {
-                    echo '<a class="page" href="Article.php?page='.$i.'">'.$i.'</a>';
+                    echo '<a class="page" href="?page='.$i.'">'.$i.'</a>';
                 }
             }?>
         </div>
