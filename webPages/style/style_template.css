@@ -251,7 +251,7 @@ h1 {
 }
 .header nav .search .result-search {
     display: flex;
-    right: -100px;
+    right: 0;
 }
 
 
