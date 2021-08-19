@@ -68,6 +68,9 @@ if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
         if($_FILES['avatar']['size'] <= $tailleMax) {
             $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
             if(in_array($extensionUpload, $extensionValides)) {
+                // Suppr les anciens avatars
+                array_map('unlink', glob('membres/avatars/'.$_SESSION['id'].'.*'));
+
                 $chemin = "membres/avatars/".$_SESSION['id'].".".$extensionUpload;
                 $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
                 generate_webp_image($chemin);
