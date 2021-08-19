@@ -49,6 +49,7 @@ include 'MODULES/end.php';
         <!--Affiche message en lien avec le transfert des données du formulaire.
             Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
         <?php if(isset($message)) { echo $message; } ?>
+        <a class="underline" href="Publication.php?id=<?=$get_id?>">Retour à l'article</a>
         <br />
     </article>
 </div>

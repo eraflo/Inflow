@@ -74,7 +74,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                         ));
                 }
             }
-            $message = "Votre article a bien été modifié<br/><a class=\"underline\" href=\"Publication.php?id=".$get_id."\">Retour à l\'article</a>";
+            $message = "Votre article a bien été modifié<br/>";
 
 
         } else {
