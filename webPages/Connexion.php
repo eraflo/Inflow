@@ -59,7 +59,7 @@ include 'MODULES/end.php';
                         <p class="Titre_form">Connexion</p>
                         <input class="input_form" type="text" name="pseudoconnect" placeholder="Identifiant" /></br>
                         <input id="password_input" class="input_form" type="password" name="passconnect" placeholder="Mot de Passe"></img>
-                        <img id="password_visibility" class="visibility_button" src="assets/afficher.png" /></br>
+                        <img id="password_visibility" class="visibility_button" src="assets/afficher.png" width="24px" /></br>
                         <input class="input_form" type="submit" name="formconnexion" value="Se connecter" /></br>
                         <a href="recuperation.php" class="Oublie">Mot de passe oublié</a>
                     </form>

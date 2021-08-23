@@ -6,7 +6,7 @@
 
 */
 
-/* principalement .links_list (style_connexion_inscription.css) */
+/* principalement .input_form (style_connexion_inscription.css) */
 .links_list {
     background: var(--color-body-background);
     border: none;
@@ -30,6 +30,7 @@
     -o-transition: all .3s;
     margin-bottom: 10px;
     outline: none;
+    display: inline-flex;
 }
 /*couleur placeholder*/
 .links_list::placeholder {
@@ -53,4 +54,23 @@
 .links_list_error {
     border-color: 1px solid rgba(255, 0, 0, 0.6);
     background: radial-gradient(var(--color-body-background) 20%, rgba(255, 0, 0, 0.3) 150%);
+}
+
+
+
+.links_text {
+    width: 100%;
+}
+.links_buttons {
+    position: absolute;
+    margin: 0px 0px;
+    padding: 15px 5px;
+}
+#one.links_buttons {
+    margin: -17px -25px;
+}
+
+/*-- Augmente la visibilité des boutons en mode dark --*/
+:root[user-color-mode=dark] .links_buttons {
+    filter: invert(1);
 }

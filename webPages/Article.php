@@ -51,7 +51,10 @@ include 'MODULES/end.php';
                         </div>
                         <div class="miniature">
                             <?php if(!empty($c['avatar_categorie'])) { ?>
-                                <img src="membres/avatars_categorie/<?= $c['avatar_categorie'] ?>" />
+                                <picture>
+                                    <source srcset="membres/avatars_categorie/<?= $c['avatar_categorie'].'.webp' ?>" type="image/webp">
+                                    <img src="membres/avatars_categorie/<?= $c['avatar_categorie'] ?>" type="image/png" />
+                                </picture>
                             <?php } ?>
                         </div>
                     </a>
@@ -79,7 +82,10 @@ include 'MODULES/end.php';
                         </div>
                         <div class="miniature">
                             <?php if(!empty($a['avatar_article'])) { ?>
-                                <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                <picture>
+                                    <source srcset="membres/avatars_article/<?=$a['avatar_article'].'.webp'?>" type="image/webp">
+                                    <img src="membres/avatars_article/<?=$a['avatar_article']?>" type="image/png">
+                                </picture>
                             <?php } ?>
                         </div>
                         <?php if(isset($a["option"])) { ?>
@@ -91,12 +97,12 @@ include 'MODULES/end.php';
                 </div>
             <?php } ?>
         </div>
-        <div class="articleGalleryPageContainer hcenter vcenter">
+        <div class="pageBox hcenter vcenter">
             <?php for($i=1;$i<=$pagesTotales;$i++) {
                 if($i == $pageCourante) {
-                    echo '<a class="selected articleGalleryPageElement">'.$i.' </a>';
+                    echo '<a class="page selected">'.$i.' </a>';
                 } else {
-                    echo '<a class="articleGalleryPageElement" href="Article.php?page='.$i.'">'.$i.'</a>';
+                    echo '<a class="page" href="?page='.$i.'">'.$i.'</a>';
                 }
             }?>
         </div>
@@ -112,3 +118,4 @@ include 'tmpl_bottom.php';
 
 <!--Application des fichiers css exclusifs-->
 <link type="text/css" href="style\articles.css" rel="stylesheet">
+<link type="text/css" href="style\pages.css" rel="stylesheet">

@@ -61,6 +61,9 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
             if($_FILES['miniature']['size'] <= $tailleMax) {
                 $extensionUpload = strtolower(substr(strrchr($_FILES['miniature']['name'], '.'), 1));
                 if(in_array($extensionUpload, $extensionValides)) {
+                    // Suppr les anciens avatars
+                    array_map('unlink', glob('membres/avatars_article/'.$get_id.'.*'));
+
                     $chemin = "membres/avatars_article/".$get_id.".".$extensionUpload;
                     move_uploaded_file($_FILES['miniature']['tmp_name'], $chemin);
                     generate_webp_image($chemin);
@@ -71,7 +74,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                         ));
                 }
             }
-            $message = "Votre article a bien été modifié<br/><a href=\"Publication.php?id=".$get_id."\">Retour à l\'article</a>";
+            $message = "Votre article a bien été modifié<br/>";
 
 
         } else {
@@ -95,6 +98,9 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
         if($_FILES['miniature_categorie']['size'] <= $tailleMax) {
             $extensionUpload = strtolower(substr(strrchr($_FILES['miniature_categorie']['name'], '.'), 1));
             if(in_array($extensionUpload, $extensionValides)) {
+                // Suppr les anciens avatars
+                array_map('unlink', glob('membres/avatars_categorie/'.$get_id.'.*'));
+
                 $chemin = "membres/avatars_categorie/".$get_id.".".$extensionUpload;
                 move_uploaded_file($_FILES['miniature_categorie']['tmp_name'], $chemin);
                 generate_webp_image($chemin);
@@ -105,7 +111,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])) {
                     ));
             }
         }
-        $message = "Votre catégorie a bien été modifié<br/><a href=\"tmpl_categories.php?id=".$get_id."\">Retour à la categorie</a>";
+        $message = "Votre catégorie a bien été modifié<br/><a class=\"underline\" href=\"tmpl_categories.php?id=".$get_id."\">Retour à la categorie</a>";
 
     }
 

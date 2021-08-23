@@ -77,7 +77,7 @@ include 'MODULES/end.php';
                         value="<?php if(isset($email)) { echo $email; } ?>" required /></br>
                     <input id="password_input" class="input_form" type="password" placeholder="Mot de passe" name="pass"
                         id="pass" required />
-                    <img id="password_visibility" class="visibility_button" src="assets/afficher.png" /></br>
+                    <img id="password_visibility" class="visibility_button" src="assets/afficher.png" width="24px" /></br>
                     <input class="input_form" type="password" placeholder="Confirmer mdp" name="cpass" id="cpass"
                         required /></br>
                     <input class="input_form" type="text" name="bio" id="bio" placeholder="Petite Bio sur vous"

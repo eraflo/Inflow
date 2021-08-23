@@ -35,7 +35,7 @@ include 'tmpl_top.php';
                 <?= $nom ?>
             </h1>
             <?php if(isset($_SESSION['redacteur']) AND $_SESSION['redacteur'] == 1 AND isset($_SESSION)) { ?>
-                <!--Edition--><a href="Gestion_Articles_Categories.php?type=categorie&id=<?= $get_id ?>" class="" title="Modifier la catégorie"><img class="editButton" src="assets/edit.png" title="Modifier la catégorie" /></a>
+                <!--Edition--><a href="Gestion_Articles_Categories.php?type=categorie&id=<?= $get_id ?>" class="" title="Modifier la catégorie"><img class="to_invert editButton" src="assets/edit.png" title="Modifier la catégorie" /></a>
                 <!--Statistiques-->
             <?php } ?>
             
@@ -51,7 +51,10 @@ include 'tmpl_top.php';
                             </div>
                             <div class="miniature">
                                 <?php if(!empty($a['avatar_article'])) { ?>
-                                    <img src="membres/avatars_article/<?= $a['avatar_article'] ?>" />
+                                    <picture>
+                                        <source srcset="membres/avatars_article/<?=$a['avatar_article'].'.webp'?>" type="image/webp">
+                                        <img src="membres/avatars_article/<?=$a['avatar_article']?>" type="image/png">
+                                    </picture>
                                 <?php } ?>
                             </div>
                         </a>

@@ -133,12 +133,12 @@ include 'MODULES/end.php';
         <?php } ?>
     </div>
 
-    <div class="articleGalleryPageContainer hcenter vcenter">
+    <div class="pageBox hcenter vcenter">
         <?php for($i=1;$i<=$pagesTotales;$i++) {
                 if($i == $pageCourante) {
-                    echo '<a class="selected articleGalleryPageElement">'.$i.' </a>';
+                    echo '<a class="page selected">'.$i.' </a>';
                 } else {
-                    echo '<a class="articleGalleryPageElement" href="Admin.php?page='.$i.'">'.$i.'</a>';
+                    echo '<a class="page" href="Admin.php?page='.$i.'">'.$i.'</a>';
                 }
             }?>
     </div>
@@ -153,3 +153,4 @@ include 'tmpl_bottom.php';
 <!--Application des fichiers css exclusifs-->
 <link type="text/css" href="style\articles.css" rel="stylesheet">
 <link type="text/css" href="style\admin.css" rel="stylesheet">
+<link type="text/css" href="style\pages.css" rel="stylesheet">

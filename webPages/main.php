@@ -43,7 +43,10 @@ include 'MODULES/end.php';
                             </div>
                             <div class="miniature">
                                 <?php if(!empty($a_n['avatar_event'])) { ?>
-                                    <img src="membres/avatar_events/<?= $a_n['avatar_event'] ?>" />
+                                    <picture>
+                                        <source srcset="membres/avatar_events/<?= $a_n['avatar_event'].'.webp' ?>" type="image/webp">
+                                        <img src="membres/avatar_events/<?= $a_n['avatar_event'] ?>" type="image/png">
+                                    </picture>
                                 <?php } ?>
                             </div>
                         </a>
@@ -68,7 +71,10 @@ include 'MODULES/end.php';
                                 </div>
                                 <div class="miniature">
                                     <?php if(!empty($new_art['avatar_article'])) { ?>
-                                        <img src="membres/avatars_article/<?= $new_art['avatar_article'] ?>" />
+                                        <picture>
+                                            <source srcset="membres/avatars_article/<?= $new_art['avatar_article'].'.webp' ?>" type="image/webp">
+                                            <img src="membres/avatars_article/<?= $new_art['avatar_article'] ?>" type="image/png">
+                                        </picture>
                                     <?php } ?>
                                 </div>
                             </a>
@@ -101,7 +107,10 @@ include 'MODULES/end.php';
                         </div>
                         <div class="miniature">
                             <?php if(!empty($a_r['avatar_article'])) { ?>
-                                <img src="membres/avatars_article/<?= $a_r['avatar_article'] ?>" />
+                                <picture>
+                                    <source srcset="membres/avatars_article/<?= $a_r['avatar_article'].'.webp' ?>" type="image/webp">
+                                    <img src="membres/avatars_article/<?= $a_r['avatar_article'] ?>" type="image/png">
+                                </picture>
                             <?php } ?>
                         </div>
                         <?php if(isset($a_r["option"])) { ?>

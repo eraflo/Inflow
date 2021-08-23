@@ -20,10 +20,10 @@ function check_new_comments(bypass = false) {
     var d = new Date();
     var n = d.getTime();
 
-    if ((n > last_check_for_comments + 200) || bypass) {
+    if ((n > last_check_for_comments + 500) || bypass) {
         // cooldown  (200ms)               bypass (automatic function)
         bypass = false;
-        if ($(window).scrollTop() + $(window).height() + 100 >= $(document).height()) {
+        if ($(window).scrollTop() + ($(window).height() * 0.7) >= $(document).height() - $("footer").height()) {
             bypass = true;
         }
         last_check_for_comments = n;

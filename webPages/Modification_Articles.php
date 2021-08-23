@@ -57,6 +57,9 @@ include 'MODULES/end.php';
                     <?php if(isset($contenu)){echo str_replace(array("<br />", "<br/>", "<br >", "<br>"), '', $contenu);} ?>
                 </textarea>
             </div><br/>
+            <?php if(isset($article['avatar_article']) && !empty($article['avatar_article'])){ ?>
+                <img width="90%" src="membres/avatars_article/<?= $article['avatar_article'] ?>" /><br/>
+            <?php } ?>
             <label class="Titre_form" for="miniature">Miniature : </label><input class="input_form" type="file" name="miniature"/><br/>
             <input class="input_form" type="submit" value="Modifier l'article" /><br />
         </form>
@@ -64,6 +67,7 @@ include 'MODULES/end.php';
         <!--Affiche message en lien avec le transfert des données du formulaire.
             Ex : 1 des champs n'est pas remplie -> Affiche "Erreur"; Si tout est bien remplie, affiche "Votre article a été posté"-->
         <?php if(isset($message)) { echo $message; } ?>
+        <a class="underline" href="Publication.php?id=<?=$get_id?>">Retour à l'article</a>
         <br />
     </article>
 </div>

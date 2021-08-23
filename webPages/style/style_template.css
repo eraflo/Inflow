@@ -120,8 +120,8 @@
 78%{background:#c67de8}80%{background:#d37de8}82%{background:#df7de8}84%{background:#e87de4}86%{background:#e87dd7}
 88%{background:#e87dca}90%{background:#e87dbd}92%{background:#e87db0}94%{background:#e87da4}96%{background:#e87d97}
 98%{background:#e87d8a}100%{background:#e87d7d}}
-.rainbow{animation:rainbowself 15s infinite}
-.rainbow2{animation:rainbowbg 15s infinite}
+.rainbow{color:white;animation:rainbowself 5s infinite}
+.rainbow2{background-color:white;animation:rainbowbg 5s infinite}
 
 
 
@@ -230,7 +230,6 @@ h1 {
     top: 0;
     min-height: 80px;
     line-height: 80px;
-    background-color: var(--color-background);
     width: 100%;
     transition: 1s;
     z-index: 100;
@@ -252,7 +251,7 @@ h1 {
 }
 .header nav .search .result-search {
     display: flex;
-    right: -100px;
+    right: 0;
 }
 
 
@@ -486,6 +485,12 @@ a:hover {
     -webkit-animation: ImageLienAnimation 0.8s;
     animation-fill-mode: forwards
 }
+
+
+:root[user-color-mode=dark] .to_invert {
+    filter: invert(1);
+}
+
 
 
 /*--NE PAS AFFICHER UN ELEMENT--*/

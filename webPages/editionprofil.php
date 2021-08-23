@@ -68,6 +68,9 @@ if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
         if($_FILES['avatar']['size'] <= $tailleMax) {
             $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
             if(in_array($extensionUpload, $extensionValides)) {
+                // Suppr les anciens avatars
+                array_map('unlink', glob('membres/avatars/'.$_SESSION['id'].'.*'));
+
                 $chemin = "membres/avatars/".$_SESSION['id'].".".$extensionUpload;
                 $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
                 generate_webp_image($chemin);
@@ -91,26 +94,48 @@ if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
 
     if(isset($_POST['social_link']) && !empty($_POST['social_link'])) {
         $social_link = htmlspecialchars($_POST['social_link']);
+        $req_check_links = $bdd->prepare("SELECT * FROM `liens_sociaux` WHERE ((id_membre = ?) AND (url = ?))");
+        $req_check_links->execute(array($user['id'], $social_link));
         
-        if (filter_var($social_link, FILTER_VALIDATE_URL)) {
-            $social_name = parse_url($social_link, PHP_URL_HOST);
-            $insertlink = $bdd->prepare("INSERT INTO `liens_sociaux` (id_membre, nom, url) VALUES(?, ?, ?)");
-            $insertlink->execute(array($user['id'], $social_name, $social_link));
+        if($req_check_links->rowCount() > 0 AND (isset($_POST["social_link_delete"]) AND htmlspecialchars($_POST["social_link_delete"]) == "true")) {
+            $delete_link = $bdd->prepare("DELETE FROM `liens_sociaux` WHERE (id_membre = ? AND url = ?)");
+            $delete_link->execute(array($user['id'], $social_link));
 
             // echoes answer only if nohead is sent to the server
             if($_POST['nohead'] == "true") {
-                $data = ['link_name' => $social_name, 'link_url' => $social_link];
+                $data = ['deleted' => $social_link];
                 header('Content-Type: application/json;charset=utf-8');
                 echo json_encode($data);
             }
+        } elseif(filter_var($social_link, FILTER_VALIDATE_URL)) {
+            
+            if($req_check_links->rowCount() > 0){
+                $links_mess = "error - a link with this url already exists";
+                if($_POST['nohead'] == "true") {
+                    echo $links_mess;
+                }
+            } else {
+                $social_name = parse_url($social_link, PHP_URL_HOST);
+                $insertlink = $bdd->prepare("INSERT INTO `liens_sociaux` (id_membre, nom, url) VALUES(?, ?, ?)");
+                $insertlink->execute(array($user['id'], $social_name, $social_link));
+
+                // echoes answer only if nohead is sent to the server
+                if($_POST['nohead'] == "true") {
+                    $data = ['link_name' => $social_name, 'link_url' => $social_link];
+                    header('Content-Type: application/json;charset=utf-8');
+                    echo json_encode($data);
+                }
+            }
         } else {
-            $links_mess = "error";
+            $links_mess = "error - url of link could not be validated";
             if($_POST['nohead'] == "true") {
                 echo $links_mess;
             }
         }
         
     }
+
+    if(isset($_POST['social_link_modify']))
 
     if(isset($_POST['newpseudo']) AND $_POST['newpseudo'] == $user['pseudo']) {
         header("Location: Profil.php?id=".$_SESSION['id']);
@@ -156,17 +181,20 @@ if(isset($_SESSION['id']) || $_POST['nohead'] == "true") {
     <article style="margin-top:40%">
         <div>
             <span class="PTitle">Liens</span>
-            <?php if ($req_liens->rowCount() > 0) { ?>
-                <div id="links_list_list">
+            <div id="links_list_list">
+                <?php if ($req_liens->rowCount() > 0) { ?>
+                
                     <?php while($l = $req_liens->fetch()) { ?>
-                        <a href="<?= $l['url'] ?>" class="PActions links_list" rel="noreferrer noopener" title="<?= $l['url'] ?>">
-                            <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
-                            <?= $l['nom'] ?>
-                        </a>
-                        <br/>
+                        <div class="links_list">
+                            <a class="PActions links_text" href="<?= $l['url'] ?>"  rel="noreferrer noopener" title="<?= $l['url'] ?>">
+                                <img src="https://www.google.com/s2/favicons?domain=<?= $l['nom'] ?>" height="16" />
+                                <span><?= $l['nom'] ?></span>
+                            </a>
+                            <a><img class="links_buttons" id="one" src="assets/delete.png" onclick="delete_link(this)"/></a>
+                        </div>
                     <?php } ?>
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
             <input style="max-width:100%" class="links_list" type="text" name="social_link" id="social_link" placeholder="https://www.twitter.com/Inflow" autocomplete="off"/></br>
             <button id="links_list_send" class="links_list" onclick="send_new_link()">Nouveau lien</button>
             <button id="links_list_error_message" class="links_list" style="display: none"></button>
